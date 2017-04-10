@@ -1,0 +1,56 @@
+<link rel="stylesheet" href="template/module/deptmanage/dept.css">
+<script src="lib/jquery/jquery.validate.min.js"></script>
+<script src="lib/jquery/additional-methods.min.js"></script>
+<div class="row pad">
+    <form id="teacheradd_form" class="form-horizontal">
+        <div class="form-top">
+            <legend ng-bind="app_name"></legend>
+            <a class="btn btn-sm btn-icon btn-rounded btn-default pull-right m-t-n-xs btn-close" ui-sref="main.usermanage.userlist"><i class=" icon-remove"></i>
+            </a>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 col-sm-3 control-label">姓名</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" id="name" name="name" placeholder="" ng-model="record.name">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 col-sm-3 control-label">登录名</label>
+            <div class="col-sm-6" >
+                <input type="text" class="form-control" id="loginName" name="loginName" placeholder="" ng-model="record.loginName" ng-disabled="record.id">
+            </div>
+        </div>
+        <div class="form-group" ng-hide="record.id">
+            <label class="col-lg-2 col-sm-3 control-label">密码</label>
+            <div class="col-sm-6" >
+                <input type="text" class="form-control" id="password" name="password" placeholder="" ng-model="record.password" value="111111" >
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 col-sm-3 control-label">用户类型</label>
+            <div class="col-sm-6">
+                <select name="userType" id="userType" ng-model="record.userType"  ng-options="key-0 as value for (key,value) in uType" class="form-control" ng-disabled="record.userFlag">
+                    <option  value="">选择</option>
+                </select>
+            </div>
+        </div>
+       
+        <div class="form-group">
+            <label class="col-lg-2 col-sm-3 control-label">备注</label>
+            <div class="col-sm-6">
+                <textarea name="remark" id="remark" class="form-control" rows="3" required="required" ng-model="record.remark" max-length="100"></textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 col-sm-3 control-label"></label>
+            <div class="col-sm-6">
+                <button type="submit" class="btn btn-success">提交</button>
+            </div>
+        </div>
+        
+    </form>
+</div>
+
+<!-- toaster directive -->
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+<!-- / toaster directive -->

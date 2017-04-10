@@ -1,0 +1,66 @@
+<link rel="stylesheet" href="template/module/teachermanage/teacher.css">
+<script src="lib/jquery/jquery.validate.min.js"></script>
+<script src="lib/jquery/additional-methods.min.js"></script>
+<div class="row pad">
+    <div class="col-sm-4">
+        <label style="margin-right: 10px;" class="">
+            <div class="icheckbox_minimal-blue" ng-click="select_all()" ng-class="{checked:s_all==true}"
+                 style="position: relative;"><input type="checkbox" id="check-all"
+                                                    style="position: absolute; opacity: 0;"></div>
+        </label>
+        <!-- Action button -->
+        <div class="btn-group">
+            <button type="button" class="btn btn-default btn-sm btn-flat dropdown-toggle" data-toggle="dropdown">
+                操作 <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+                <li><a ng-click="del()">删除</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-sm-6 search-form">
+        <form ng-submit="search()" class="text-right">
+            <div class="input-group">
+                <input type="text" class="form-control input-sm" ng-model="param.keyword" placeholder="Search">
+                <div class="input-group-btn">
+                    <button type="submit" name="q" class="btn btn-sm btn-success"><i class="fa icon-search"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="col-sm-2">
+        <a ng-click="subjectGroupDetail()" class="btn btn-success pull-right m-l-sm"> <i
+                class="icon-user-follow text-md"></i>添加科目</a>
+    </div>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-mailbox">
+        <tbody>
+        <tr class="unread">
+            <td class="small-col">
+                <div></div>
+            </td>
+            <td class="name">名称</td>
+            <td class="opt">操作</td>
+        </tr>
+        <tr ng-repeat="item in pageInfo.list">
+            <td class=" v-middle">
+                <div class="icheckbox_minimal-blue" ng-class="{checked:$parent.pageInfo.list[$index].selected}"
+                     ng-click="select_per($index)" style="position: relative;"><input type="checkbox" style="position: absolute; opacity: 0;">
+                </div>
+            </td>
+            <td class="name v-middle">{{item.name}}</td>
+            <td class="opt v-middle">
+                <a ng-click="del(item.id)">删除</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <div ng-include="'template/module/tpl/pageInfo.html'"></div>
+</div>
+
+<!-- toaster directive -->
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+<!-- / toaster directive -->

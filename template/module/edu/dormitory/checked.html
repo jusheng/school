@@ -1,0 +1,23 @@
+
+<script src="lib/angular/angular-echarts.js"></script>
+<style>
+	
+
+.ngdialog.ngdialog-theme-green-big .ngdialog-close:before{
+	color: #C0C0C0;
+}
+</style>
+    <div class="row row1" style="padding-top:5px;">
+
+        <div class="box-body no-padding" style="height:600px;">
+    		<div class="" style="position: absolute; width:100%;left:0;top:15px;bottom:0;">
+
+        
+				<line-chart config="config" data="data"></line-chart>
+    		</div>
+		</div>
+    </div>
+
+    <!-- toaster directive -->
+    <toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+    <!-- / toaster directive -->

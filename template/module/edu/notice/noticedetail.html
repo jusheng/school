@@ -1,0 +1,19 @@
+<script src="lib/jquery/jquery.validate.min.js"></script>
+<script src="lib/jquery/additional-methods.min.js"></script>
+<div class="noticedetail">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="notice-panel">
+                <div class="panel-heading">
+                <h3 class="panel-title">{{record.title}}
+                <span class="block text-xs text-left">发布日期：{{record.publishTime | date:'yyyy-MM-dd HH:mm:ss'}}</span>
+            </h3></div>
+            </div>
+            <div class="panel-body" ng-bind-html="record.context">
+            
+            </div>
+
+        </div>
+
+    </div>
+</div>

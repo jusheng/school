@@ -1,0 +1,39 @@
+<style>
+    .table > tbody > tr> td {
+        width:20px;
+        padding:0;
+        line-height: 33px;
+        text-align: center;
+    }
+    td>input.form-control {
+        padding:6px;
+        height:inherit;
+        text-align: center;
+    }
+</style>
+<div class="news">
+    <div class="row no-padding">
+        <!-- <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+        <a class="btn btn-block btn-success" ui-sref="main.score.scoreInput({id:item.id})" ng-repeat="item in pageInfo"><i class="fa fa-pencil"></i>{{item.name}}</a>
+        </div> -->
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 news_view_lay">
+            <table class="table table-bordered table-mailbox">
+                <tr>
+                    <td></td>
+                    <td ng-repeat="i in subjectGroup">{{i.name}}</td>
+                    <td>进度是否一致</td>
+                    <td>连堂节数</td>
+                </tr>
+                <tr ng-repeat="(key,value) in courseNum">
+                    <td>{{value.subjectName}}</td>
+                    <td ng-repeat="(index,item) in value.data">
+                        <input type="number" class="form-control" ng-model="item.num" ng-focus="focus(key,index,item)" ng-blur="submit2(key,index,item)">
+                    </td>
+                    <td><input type="checkbox"></td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+        <!--<button class="btn btn-primary" type="button" ng-click="submit()">提交</button>-->
+    </div>
+</div>

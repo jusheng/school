@@ -1,0 +1,196 @@
+ <script src="lib/jquery/jquery.validate.min.js"></script>
+  <script src="lib/jquery/additional-methods.min.js"></script>  
+
+	<style>
+		.upload_area span{
+			display: inline-block;
+		    width: 50px;
+		    height: 40px;
+		    vertical-align: middle;
+		    background: #ccc;
+		    position: relative;
+		    margin-right: 2px;
+		}
+		.upload_area span img{
+			width: 100%;
+			height: 100%;
+			border: solid #ccc 1px;
+
+		}
+		.tempimgurl img{
+			max-width: 100%;
+		}
+		.upload_area .remove{
+			    position: absolute;
+		        right: -6px;
+		        top: -7px;
+		        color: #EA0B0B;
+		        font-style: normal;
+		}
+		.courselist{
+			width: 50%;
+			display: inline-block;
+		}
+	</style>
+
+		<div class="row">
+			<div class="col-xs-12 col-lg-6">
+				
+				
+				<div class="panel panel-default">
+
+					<form id="dt_form">
+						<div class="panel-heading">
+							<textarea name="releaseContent" id="releaseContent" class="form-control" rows="3" placeholder="说点什么吧！" ng-model="record.releaseContent"></textarea>
+						</div>
+						
+						<div class="panel-footer text-right">
+							<div class="pull-left upload_area">
+								<i class="icon-picture ico-30 ico-gray" ngf-select="onFileSelect($files)"></i>
+								<span ng-repeat="v in record.tempimgurl">
+									<img src="{{v}}" alt="">
+									<i class="icon-remove remove" ng-click="del_img($index)" title="删除"></i>
+								</span>
+							</div> 
+							<button type="submit" class="btn  btn-danger">发表</button>
+
+						</div>
+					</form>
+					
+
+					
+				</div>
+
+
+				<ul class="list-group">
+					<li class="list-group-item" ng-repeat="(key, value) in pageInfo.list">
+	                    <div class="media v-middle margin-v-0-10">
+	                      <div class="media-body">
+	                        <p class="text-subhead">
+	                          <a >
+	                            <img src="{{value.userImgurl}}" class="width-30 img-circle">
+	                          </a> &nbsp;
+	                          <a ng-bind="value.name"></a>
+	                          <span class="text-caption text-light" ng-bind="formatTime(value.releaseTime)"></span>
+	                        </p>
+	                      </div>
+	                    
+	                    </div>
+	                    <p ng-bind-html="value.releaseContent"></p>
+	                    <p class="tempimgurl">
+	                    	<span ng-repeat="(k, v) in value.tempimgurl">
+	                    		<img src="{{v}}" alt="">
+	                    	</span>
+	                    </p>
+	                  </li>	
+
+	                  <li  class="list-group-item" ng-show="pageInfo.size && pageInfo.nextPage>pageInfo.pageNum">
+	                  	<div class="text-center">
+	                  		<span class="input-group-btn">
+	                  			<button type="button" class="btn btn-default" ng-click="pagination(pageInfo.nextPage)">更多...</button>
+	                  		</span>
+	                 	 </div>
+	                  </li>
+
+	                  <li  class="list-group-item" ng-show="(pageInfo.total>0) && (pageInfo.nextPage==0)">
+	                  	<div class="text-center">
+	                  		<span class="input-group-btn">
+	                  			<button type="button" class="btn btn-default">没有了</button>
+	                  		</span>
+	                 	 </div>
+	                  </li>
+
+	                   <!-- 无数据提醒 -->
+            		<div ng-hide="pageInfo.size" class="m-md alert alert-warning text-center text-lg">暂无数据</div>
+	                  
+				</ul>
+			</div>
+			<div class="col-xs-12 col-lg-6">
+				
+				<div class="panel panel-default">
+					<div class="panel-heading"><a ui-sref="main.teachercenter.info" class="pull-right" title="修改基本信息"><i class="icon-pencil"></i></a>
+						<h3 class="panel-title">基本信息</h3>
+					</div>
+					<div class="panel-body">
+						<div class="media v-middle margin-v-0-10">
+	                      <div class="media-body">
+	                        <p class="text-subhead">
+	                          <a >
+
+	                            <img src="template/img/a0.jpg" ng-show="profile[0].pic==null" alt="person" class="width-60 img-circle">
+
+								<img ng-src="{{profile[0].imgUrl}}" ng-hide="profile[0].pic==null" alt="person" class="width-60 img-circle">
+
+
+	                          </a> &nbsp;
+	                          <a >{{profile[0].name}}	 </a>
+							  
+							 
+	                          
+	                        </p>
+	                      </div>
+	                    
+	                    </div>
+					</div>
+							<ul class="list-group">
+							 	
+							 	<li class="list-group-item">
+							 		性别：
+							 		<span ng-show="profile[0].sex==1">男</span>
+							 		<span ng-show="profile[0].sex==0">女</span>
+							 	</li>
+							 	<li class="list-group-item">
+							 		电话：{{profile[0].tel}}
+							 	</li>
+								
+								<li class="list-group-item">
+							 		地址： {{profile[0].address}}
+							 	</li>
+
+							 </ul>
+
+
+				</div>
+				<div class="panel panel-default">
+					<!-- <div class="pull-right"><a href="" class="btn">编辑</a></div> -->
+					<div class="panel-heading">
+						<h3 class="panel-title">授课班级</h3>
+					</div>
+					<div ng-show="classSubject.length==0" style="text-align:center">暂无授课信息</div>
+					<ul class="list-group">
+					 	<li class="list-group-item courselist" ng-repeat="item in classSubject">
+					 		{{item.gradeName}}<span ng-show="item.master">[班主任]</span> {{item.className}} : {{item.subjectName}} <span ng-show="item.subjectName==''">未授课</span>
+					 	</li>
+					 </ul>
+				</div>
+				<div class="panel panel-default">
+					<!-- <div class="pull-right"><a href="" class="btn">编辑</a></div> -->
+					<div class="panel-heading">
+						<h3 class="panel-title">学校信息</h3>
+					</div>
+					<div class="panel-body">
+						<h2>{{profile[1].name}}</h2>
+					</div>
+					<ul class="list-group">
+							 	
+							 	<li class="list-group-item">
+							 		详细地址：{{profile[1].address}}
+							 	</li>
+								<li class="list-group-item">
+							 		规模： {{profile[1].scopeNameref}}
+							 	</li>
+								<li class="list-group-item">
+							 		类型： {{profile[1].typeNameref}}
+							 	</li>
+							 	<li class="list-group-item">
+							 		性质： {{profile[1].natureNameref}}
+							 	</li>
+
+							 </ul>
+				</div>
+			</div>
+			
+		</div>
+<!-- toaster directive -->
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+<!-- / toaster directive -->	

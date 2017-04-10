@@ -1,0 +1,23 @@
+<link rel="stylesheet" href="template/module/teachermanage/teacher.css">
+<div class="row pad">
+<div class="table-responsive">
+    <div></div>
+</div>
+</div>
+
+<!--<div class="box-body no-padding" style="height:400px;">-->
+    <!--<div class="" style="position: absolute; width:100%;left:0;top:0;bottom:0;">-->
+
+        <!--<pie-chart config="config" data="data"></pie-chart>-->
+
+    <!--</div>-->
+<!--</div>-->
+
+<select class="form-control" style="width:30%" ng-model="subjectIndex"
+        ng-options="key as item.name for (key,item) in subjectData" ng-change="getData()">
+</select>
+<div class="box-body no-padding" style="height:450px;">
+    <div class=""  style="height:400px;">
+        <line-chart config="config" data="data"></line-chart>
+    </div>
+</div>

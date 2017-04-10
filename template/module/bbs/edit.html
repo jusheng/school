@@ -1,0 +1,33 @@
+<script src="lib/jquery/jquery.validate.min.js"></script>
+<script src="lib/jquery/additional-methods.min.js"></script>  
+<div class="ngdialog-title" ng-bind="title"></div>
+<br>
+<div class="row" id="dialog">
+   <form id="teacheradd_form" class="form-horizontal">
+            <div class="form-group list-group row">
+                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 col-xs-push-1 col-sm-push-1 col-md-push-1 col-lg-push-1">
+                        <label for="remark" class="control-label">评论内容</label>
+                    </div>
+                    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8" style="position:relative">
+                           
+                                <div style="width:100%; position:relative;z-index:1" class="ppue_lay">
+                                    <!-- <div name="content" id="content" type="text" ng-model="record.content" config="_simpleConfig1"></div>   -->
+                                     
+                                </div>
+                                <div style="position:absolute;top:0;bottom:0;z-index:0;">
+                                    <textarea name="content_temp" id="content_temp"  ng-bind-html="record.content" style="height:100%;width:100%;visibility: hidden;"></textarea>
+                                </div>
+                         
+                        
+                    
+                    </div>
+                    <div class="clearfix"></div><br>
+                    <div class="text-center"  style="position:relative;z-index:1;margin-top:20px;">
+                              <button type="submit" class="btn btn-success submit" >修 改</button>
+                   </div>
+            </div>
+    </form>       
+</div>
+<!-- toaster directive -->
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+<!-- / toaster directive -->      

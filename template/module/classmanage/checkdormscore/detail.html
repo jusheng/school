@@ -1,0 +1,57 @@
+<div class="tdetail row" style="margin-top:12px;">
+    <a ui-sref="main.checkdormscore.historyscorelist({classId:param.classId,dormId:branch.dormId,dorm:branch.dormName,id:branch.id})" title="返回列表">
+        <span class="icon-reply pull-right"  style="position: absolute;top: 2px;right: 10px;font-size:20px;color:#AFC3E1;opacity:10;"></span>
+    </a>
+    
+    <!-- <div class="row"></div> -->
+    <table class="table table-bordered" style="width: 80%;margin:0 auto;">
+        <caption style="text-align:center;font-size:22px;font-family:'宋体'">宿舍打分记录</caption>
+        <tbody>
+            <tr>
+                <td class="titles">宿舍名称</td>
+                <td>{{dorm}}</td>
+                <td class="titles">楼层</td>
+                <td colspan="2.5">{{record.floor}}</td>
+                <td class="titles">所在公寓</td>
+                <td colspan="1.5">{{record.houseName}}</td>
+            </tr>
+            <tr>
+                <td class="titles">所属班级</td>
+                <td colspan="1.5">{{record.className}}</td>
+                <td class="titles">所在年级</td>
+                <td colspan="4.5"><span>{{record.gradeName}}</span></td>
+                
+            </tr>
+            <tr>
+                <td class="titles">扣除分数</td>
+                <td >{{record.score}}</td>
+                <td class="titles">宿舍基础分数</td>
+                <td colspan="2.5">{{dormBaseScore}}</td>
+                <td class="titles">最后分数</td>
+                <td colspan="1.5">{{dormBaseScore-record.score}}</td> 
+            </tr>
+            <tr ng-show="record.sidName">
+                <td class="titles">违纪学生姓名</td>
+                <td colspan="6">{{record.sidName}}</td>
+            </tr> 
+            <tr ng-show="record.sidName">
+                <td class="titles">打分时间</td>
+                <td colspan="3">{{record.createTime}}</td>
+                <td class="titles">最后更新时间</td>
+                <td colspan="3">{{record.updateTime}}</td>
+            </tr> 
+            
+            
+            
+            <tr >
+                <td class="titles" style="height:300px;">备注</td>
+                <td colspan="7" ng-bind-html="record.note"></td>       
+            </tr>
+        </tbody>
+    </table>
+</div>
+</div>
+       
+<!-- toaster directive -->
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+<!-- / toaster directive -->

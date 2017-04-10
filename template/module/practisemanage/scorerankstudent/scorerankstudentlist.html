@@ -1,0 +1,49 @@
+<link rel="stylesheet" href="template/module/usermanage/user.css">
+<div class="row pad">
+    <div class="col-sm-10">
+        <form class="text-right user-form" ng-submit="search()">
+        <div class="form-group clearfix">
+                <label class="control-label">选择考试</label>
+                <select name="examId" id="examId" ng-model="param.examId" class="form-control"
+                ng-options="m.id as m.name for m  in examList">
+                </select>
+                
+        </div>
+            <button class="chaxun btn btn-success" type="submit">查询</button>
+        </form>
+    </div>
+    <div class="col-sm-2" style="text-align:right;">
+        <a ui-sref="" class="btn btn-success"> <i class="icon-user-follow m-r-sm text-md"></i>打印</a>
+        <a ui-sref="" class="btn btn-success"> <i class="icon-user-follow m-r-sm text-md"></i>导出</a>
+    </div>
+
+</div>
+<div class="table-responsive">
+                                               
+    <table class="table table-mailbox">
+        <tbody>
+        <tr class="unread">
+            <td class="code">学号</td>
+            <td class="name">姓名</td>
+            <td class="subject" ng-repeat="item in record">{{item.name}}</td>
+            <td class="total">总分</td>
+            <td class="class">班级排名</td>
+            <td class="school">学校排名</td>
+        </tr>
+        <tr ng-repeat="item in pageInfo.list">
+            <td class="code v-middle">{{item.student.code}}</a></td>
+            <td class="name v-middle">{{item.student.name}}</td>
+            <td class="subject v-middle" ng-repeat="i in record">
+                {{item[i.code]}}</td>
+            <td class="total v-middle">{{item.totalScore}}</td>
+            <td class="class v-middle">{{item.classRanking}}</td>
+            <td class="school v-middle">{{item.gradeRanking}}</td> 
+        </tr>
+    </tbody>
+    </table>
+    <div ng-include="'template/module/tpl/pageInfo.html'"></div>
+</div>
+
+<!-- toaster directive -->
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+<!-- / toaster directive -->

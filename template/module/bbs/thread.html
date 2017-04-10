@@ -1,0 +1,55 @@
+
+<div id="breadcrumb">
+  <a ui-sref="main.desk"><i class="icon-home"></i> 学习云平台</a> 
+  <i class="icon-angle-right"></i><a>{{app_name}}</a>
+</div>
+<div class="bbs">
+	<div class="row  no-padding">
+		<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+<!-- 		<a class="btn btn-block btn-success" ui-sref="main.bbs.threadadd" >
+			
+			<i class="icon-plus"></i>  发帖  
+		</a>
+		<a class="btn btn-block btn-success" ui-sref="main.bbs.draftlist" >
+			
+			草稿箱
+		</a> -->
+		
+		<a class="btn btn-block btn-success acc" ui-sref="main.bbs.section" ng-click="selected = 1">
+			<i ng-class="{'fa icon-ok': selected == 1}" class="wid"></i> 
+			全部版块
+		</a>
+		<a class="btn btn-block btn-success acc" ui-sref="main.bbs.threadlist({id:0})" ng-click="selected = 2">
+			<i ng-class="{'fa icon-ok': selected == 2}" class="wid"></i> 
+			全部帖子
+		</a>
+		<a class="btn btn-block btn-success acc" ui-sref="main.bbs.mythreadlist({id:0})" ng-click="selected = 3">
+			<i ng-class="{'fa icon-ok': selected == 3}" class="wid"></i> 
+			我的帖子
+		</a><br> 
+			<div class="bbs_left bbstd_desk" >
+				<h1 class="text-lg"> 版块</h1>
+					<a ng-repeat="(key, value) in sorts.list" ui-sref="main.bbs.threadlist({id:value.id})"  style="padding-right: 20px;" title="{{value.title}}"><i class="fa icon-ok text-success bbstd_desk" ng-show="value.id==curr"></i>{{value.title}} 
+						
+					</a>
+				
+            </div>
+           <!--  <div class="news_left" >
+				<h1 class="text-lg"> 热帖排名</h1>
+				
+					<a ui-sref="main.news.detail({id:value.id})" ng-repeat="(key, value) in views.list">· {{value.title}}</a>
+            </div> -->
+
+			<!-- <div class="news_left" >
+				<h1 class="text-lg"> 阅读排名</h1>
+				
+					<a ui-sref="main.news.detail({id:value.id})" ng-repeat="(key, value) in views.list">· {{value.title}}</a>
+            </div> -->
+            
+		</div>
+		<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 news_view_lay">
+			<div ui-view></div>
+		</div>
+	</div>
+
+</div>

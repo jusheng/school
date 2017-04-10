@@ -1,0 +1,63 @@
+  <script src="lib/jquery/jquery.validate.min.js"></script>
+  <script src="lib/jquery/additional-methods.min.js"></script>  
+<div class="row pad add_new">
+    <form id="homewordadd_form" class="form-horizontal">
+         <a ui-sref="main.teacherhomework.statelist({classId:classId,id:record.homework.id})" class="pull-right icon-remove"></a>
+        <legend ng-bind="title"></legend>
+        
+        <div class="form-group">
+            <label for="title" class="col-lg-2 col-sm-3 text-right">作业名称</label>
+            <div  class="col-sm-9">
+                {{record.homework.title}}
+            
+            </div>
+        </div>
+        
+       
+        <div class="form-group">
+            <label for="title" class="col-lg-2 col-sm-3 text-right">科目</label>
+            <div  class="col-sm-9">
+               {{record.homework.subject.name}}
+            </div>
+        </div>
+        
+        
+        <div class="form-group">
+            <label for="remark"  class="col-lg-2 col-sm-3 text-right">内容</label>
+            <div  class="col-sm-9" ng-bind-html="record.homework.content">
+            </div>
+        </div>
+        <div class="line line-dashed b-b line-lg pull-in"></div>
+        
+        
+              <div class="form-group">
+                    <label for="remark"  class="col-lg-2 col-sm-3 text-right">学生</label>
+                    <div  class="col-sm-9" ng-bind-html="record.student.name">
+                    </div>
+                </div>
+        <div ng-hide="record.pic!=null">
+             <label for="remark"  class="col-lg-2 col-sm-3 text-right"></label>
+                    <div  class="col-sm-9">
+                        该学生还没有提交作业！     
+                    </div>
+              
+        </div>        
+        <div ng-show="record.pic!=null">        
+                <div class="form-group">
+                    <label for="remark"  class="col-lg-2 col-sm-3 text-right">提交时间</label>
+                    <div  class="col-sm-9" ng-bind-html="record.releaseTime">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="remark"  class="col-lg-2 col-sm-3 text-right">提交内容</label>
+                    <div  class="col-sm-9" >
+                        <img src="{{record.imgUrl}}" alt="">
+                    </div>
+                </div>  
+        </div>
+        
+    </form>
+</div>
+<!-- toaster directive -->
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+<!-- / toaster directive -->

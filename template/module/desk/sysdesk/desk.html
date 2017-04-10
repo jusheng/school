@@ -1,0 +1,53 @@
+<div id="breadcrumb">
+  <a href="#/main"><i class="icon-home"></i> 学习云平台</a> 
+  <i class="icon-angle-right"></i><a>{{app_name}}</a>
+  
+  				<span class="dropdown navbar-right">
+  					<button ng-click="save_lay()" ng-show="save_btn" class="btn btn-xs btn-danger">保存布局</button><a class="dropdown-toggle text-warning" data-toggle="dropdown"><b class="icon-wrench"></b> 布局管理器 </a>
+  					<ul class="dropdown-menu bj sysdesk_bj">
+
+  					</ul>
+  				</span>
+</div>
+<link href="template/js/ui-css/main.css" rel="stylesheet" type="text/css" />
+<link href="template/js/ui-css/jquery-fallr-1.3.css" rel="stylesheet" type="text/css" />
+
+<div class="col-sm-12 ico_app">
+    <div class="panel-body" ng-show="ico_app_status">
+	    <ul class="list-inline">
+
+		      <li class="success {{value.attrs_identify}}" ng-repeat="(key, value) in DATA[1]" >
+             <a href="{{value.attrs_url}}" title="{{value.label}}">
+             <img src="{{value.attrs_imgUrl}}" width="100" height="100" alt="">
+             <!-- <i class="icon-cog"></i> -->
+             <h5>{{value.label}}</h5></a>
+		    </li>
+	    </ul>
+   </div>
+   <div class="op_ico" title="图标应用" ng-show="DATA[1].length">
+	   <i class="icon-double-angle-up" ng-show="ico_app_status" ng-click="ico_app_op()"></i>
+	   <i class="icon-double-angle-down" ng-hide="ico_app_status" ng-click="ico_app_op()"></i>
+   </div>
+</div>
+
+<div clas="desk_lay">
+	<div class="lay_grid sysdesk_lay_grid">
+  		<div class="text-center" ng-show="loading"><i class="icon-spinner icon-spin"></i> 正在加载...</div>
+      <div ng-show="!exis_desk" class="text-center">
+          <img src="template/img/no_desk.png" alt=""><br>
+          暂无桌面数据，马上去<a ui-sref="main.appcenter" class="text-success">【应用中心】</a>添加
+      </div>
+	</div>
+	<div class="desk_cover" ng-show="ico_app_status" ng-click="ico_app_op()"></div>
+</div>
+
+<script type="text/javascript" src="template/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="template/js/ui-js/ui/ui.core.min.js"></script>
+<script type="text/javascript" src="template/js/ui-js/ui/ui.sortable.js"></script>
+<script type="text/javascript" src="template/js/ui-js/jquery-fallr-1.3.pack.js"></script>
+<script type="text/javascript" src="template/js/ui-js/jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="template/js/ui-js/Jh.js"></script>
+
+<!-- toaster directive -->
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+<!-- / toaster directive -->

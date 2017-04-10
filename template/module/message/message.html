@@ -1,0 +1,24 @@
+
+<div id="breadcrumb">
+  <a href="#"><i class="icon-home"></i> 学习云平台</a> 
+  <i class="icon-angle-right"></i><a >{{app_name}}</a>
+</div>
+
+<div class="email">
+	<div class="row no-padding">
+		<div class="col-xs-1 col-sm-1 col-md-2 col-lg-2">
+			<a class="btn btn-block btn-primary" ui-sref="main.message.write.userlist"><i class="fa fa-pencil"></i> 添写留言</a>
+			<div class="email_menu">
+            
+            
+                <ul class="nav nav-stacked">
+                    <li ng-class={active:menu.curr==1}><a ui-sref="main.message.list"><i class="fa icon-inbox"></i> 我的留言 </a></li>
+                    <li ng-class={active:menu.curr==2}><a ui-sref="main.message.sended"><i class="fa icon-mail-forward"></i> 我发布的留言</a></li>
+                </ul>
+            </div>
+		</div>
+		<div class="col-xs-11 col-sm-11 col-md-10 col-lg-10 email_view_lay">
+			<div ui-view>子页</div>
+		</div>
+	</div>
+</div>

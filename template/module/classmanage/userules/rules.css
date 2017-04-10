@@ -1,0 +1,148 @@
+.news {
+    padding-top: 15px;
+}
+
+.news_left{
+        background: #fff;
+    border-top: solid #19a9d5 2px;
+    border-radius: 3px;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    padding-top: 0;
+        margin-bottom: 15px;
+}
+
+.news_view_lay{
+    background: #fff;
+    padding: 15px;
+}
+.news_left a{
+    display: block;
+    line-height: 36px;
+    border-bottom: solid #ddd 1px;
+}
+.newsdetail h2{
+    text-align: center;
+    margin-top: 0;
+}
+
+.newsdetail h2 span{
+    display: block;
+}
+.row{
+    padding: 6px 0;
+}
+.pad {
+    padding: 10px;
+}
+
+/* 列表样式 */
+.table-teacherclass {
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+}
+.table-teacherclass tr > td {
+    white-space: nowrap;
+}
+.table-teacherclass tr.unread > td {
+    background-color: rgba(0, 0, 0, 0.05);
+    color: #000;
+    font-weight: 600;
+}
+.table-teacherclass tr > td.small-col {
+    width: 30px;
+    color: #f39c12;
+}
+.table-teacherclass tr > td.name {
+    width: 150px;
+    font-weight: 600;
+}
+.pad{
+    padding:10px;
+}
+.table-teacherclass tr > td.time {
+    text-align: right;
+    width: 100px;
+}
+.table-teacherclass tr > td.opt {
+    text-align: right;
+    width: 100px;
+}
+
+
+/* iCheck plugin Minimal skin, blue
+----------------------------------- */
+.icheckbox_minimal-blue,
+.iradio_minimal-blue {
+    display: inline-block;
+    *display: inline;
+    vertical-align: middle;
+    margin: 0;
+    padding: 0;
+    width: 18px;
+    height: 18px;
+    background: url(../../../img/blue.png) no-repeat;
+    border: none;
+    cursor: pointer;
+}
+
+.icheckbox_minimal-blue {
+    background-position: 0 0;
+}
+    .icheckbox_minimal-blue.hover {
+        background-position: -20px 0;
+    }
+    .icheckbox_minimal-blue.checked {
+        background-position: -40px 0;
+    }
+    .icheckbox_minimal-blue.disabled {
+        background-position: -60px 0;
+        cursor: default;
+    }
+    .icheckbox_minimal-blue.checked.disabled {
+        background-position: -80px 0;
+    }
+
+.iradio_minimal-blue {
+    background-position: -100px 0;
+}
+    .iradio_minimal-blue.hover {
+        background-position: -120px 0;
+    }
+    .iradio_minimal-blue.checked {
+        background-position: -140px 0;
+    }
+    .iradio_minimal-blue.disabled {
+        background-position: -160px 0;
+        cursor: default;
+    }
+    .iradio_minimal-blue.checked.disabled {
+        background-position: -180px 0;
+    }
+
+/* Retina support */
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+       only screen and (-moz-min-device-pixel-ratio: 1.5),
+       only screen and (-o-min-device-pixel-ratio: 3/2),
+       only screen and (min-device-pixel-ratio: 1.5) {
+    .icheckbox_minimal-blue,
+    .iradio_minimal-blue {
+        background-image: url(../../../img/blue@2x.png);
+        -webkit-background-size: 200px 20px;
+        background-size: 200px 20px;
+    }
+}
+
+#fileInput,
+.fileInput {
+    width: 116px;
+    height: 34px;
+    margin-top: -34px;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+
+.curr_teaclass{
+    margin-left:-20px;
+}

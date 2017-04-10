@@ -1,0 +1,77 @@
+<link rel="stylesheet" href="template/module/usermanage/user.css">
+<div class="row pad">
+    <div class="col-sm-10">
+        <form class="text-right user-form" ng-submit="search()">
+            <div class="form-group clearfix">
+                <label class="control-label">选择班级</label>
+                <select name="classId" id="classId" ng-model="param.classId" ng-change="getexam()" class="form-control" ng-options="m.id as m.name for m  in classNameList">
+                </select>
+        </div> 
+        <div class="form-group clearfix">
+                <label class="control-label">选择测试</label>
+                <select name="practiseId" id="practiseId" ng-model="param.practiseId" class="form-control"
+                ng-options="m.id as m.name for m  in examList.list">
+                </select>
+        </div>
+            <button class="chaxun btn btn-success" type="submit">查询</button>
+        </form>
+        <!--<div class="allsubject pull-right">-->
+            <!--<select name="code" id="code" ng-model="record.code" class="pull-left form-control" ng-options="m.subject.code as m.subject.name for m in allsubject.details" ng-change="onlysubject()">-->
+            <!--<option value="">全部</option>-->
+            <!--</select>-->
+        <!--</div>-->
+    </div>
+    <div class="col-sm-2" style="text-align:right;">
+        <a ui-sref="" class="btn btn-success"> <i class="icon-print"></i> 打印</a>
+        <a  href="/res/practise/score/exportScore?classId={{param.classId}}&practiseId={{param.practiseId}}" class="btn btn-success"> <i class="icon-download-alt"></i> 导出</a>
+    </div>
+
+</div>
+<div ng-hide="record.code">
+                                               
+    <table class="table table-mailbox">
+        <tbody>
+        <tr class="unread">
+            <td class="code" width="200">学号</td>
+            <td class="name" width="200">姓名</td>
+            <td class="subject" width="200" ng-repeat="item in allsubject.details">{{item.subject.name}}</td>
+            <td class="total" width="200">总分</td>
+            <td class="class" width="200">班级排名</td>
+        </tr>
+        <tr ng-repeat="item in pageInfo.list">
+            <td class="code v-middle">{{item.student.code}}</a></td>
+            <td class="name v-middle">{{item.student.name}}</td>
+            <td class="subject v-middle" ng-repeat="i in allsubject.details">
+                {{item[i.subject.code]>=0?item[i.subject.code]:"未录入"}}</td>
+            <td class="total v-middle">{{item.totalScore}}</td>
+            <td class="class v-middle">{{item.classRanking}}</td>
+        </tr>
+    </tbody>
+    </table>
+    <div ng-include="'template/module/tpl/pageInfo.html'"></div>
+</div>
+<div class="table-responsive" ng-show="record.code">
+                                               
+    <table class="table table-mailbox">
+        <tbody>
+        <tr class="unread">
+            <td class="code">学号</td>
+            <td class="name">姓名</td>
+            <td class="subject">{{record.code}}</td>
+            <td class="class">班级排名</td>
+            <td class="school">学校排名</td>
+        </tr>
+        <tr ng-repeat="m in subjectrank">
+            <td class="code v-middle">{{m.student.code}}</a></td>
+            <td class="name v-middle">{{m.student.name}}</td>
+            <td class="subject v-middle">{{m[record.code]}}</td>
+            <td class="class v-middle">{{m.classRanking}}</td>
+            <td class="school v-middle">{{m.gradeRanking}}</td>
+        </tr>
+    </tbody>
+    </table>
+    <div ng-include="'template/module/tpl/pageInfo.html'"></div>
+</div>
+<!-- toaster directive -->
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+<!-- / toaster directive -->

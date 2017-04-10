@@ -1,0 +1,81 @@
+<link rel="stylesheet" href="template/module/teachermanage/teacher.css">
+
+<div class="row pad">
+    <div class="col-sm-12">
+        <form class="text-right user-form" ng-submit="search()">
+            <div class="col-sm-2" style="margin-left:-30px;">
+            <label style="margin-right: 10px;" class="">
+                <div class="icheckbox_minimal-blue" ng-click="select_all()" ng-class="{checked:s_all==true}"
+                 style="position: relative;z-index:99;"><input type="checkbox" id="check-all" style="position: absolute; opacity: 0;left:0"></div>
+            </label>
+            <!-- Action button -->
+            <div class="btn-group">
+                <button type="button" class="btn btn-default btn-sm btn-flat dropdown-toggle" data-toggle="dropdown">
+                    操作 <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a ng-click="del()">删除</a></li>
+                </ul>
+            </div>
+
+        </div>
+            <div class="form-group clearfix">
+                <label class="control-label">入库编号</label>
+                <input type="text" class="form-control" id="code" name="code" ng-model="param.code">
+            </div>
+            <div class="form-group clearfix">
+                <label class="control-label">入库状态</label>
+                <select name="userType" id="userType" ng-model="param.status"
+                        ng-options="key-0 as value for (key,value) in uType" class="form-control">
+                    <option value="">选择状态</option>
+                </select>
+            </div>
+            <button class="chaxun btn btn-success" type="submit">查询</button>
+        </form>
+    </div>
+</div>
+
+<div class="table-responsive">
+                                               
+    <table class="table table-mailbox">
+        <tbody>
+            <tr class="unread">
+                 <td class="small-col">
+                    <div></div>
+                </td>
+                <td class="code">入库编号</td>
+                <td class="createByNameref">入库人</td>
+                <td class="createTime">入库时间</td>
+                <td class="status">入库状态</td>
+                <!-- <td class="toalAmount">库存总量</td> -->
+                <td class="totalNum">入库总量</td>
+                <td class="opt">操作</td>
+            </tr>
+            <tr ng-repeat="item in pageInfo.list">
+                <td class=" v-middle">
+                    <div class="icheckbox_minimal-blue" ng-class="{checked:$parent.pageInfo.list[$index].selected}"
+                         ng-click="select_per($index)" style="position: relative;"><input type="checkbox"
+                                                                                          style="position: absolute; opacity: 0;">
+                    </div>
+                </td>
+                <td class="code v-middle">{{item.code}}</td>
+                <td class="borrowUserNameref v-middle">{{item.createByNameref}}</td>
+                <td class="createTime v-middle">{{item.createTime}}</td>
+                <td class="status v-middle">{{item.statusNameref}}</td>
+                <!-- <td class="toalAmount v-middle">{{item.toalAmount}}</td> -->
+                <td class="totalNum v-middle">{{item.totalNum}}</td>
+                <td class="opt v-middle">
+                    <a class="btn-primary btn btn-sm" ng-click="to_submit(item.id)" ng-show="item.status==2">入库</a>
+                    <a ui-sref="main.instock.instockBookedit({id:item.id})" class="btn-primary btn btn-sm" ng-show="item.status==2">编辑</a>
+                    <a ng-click="del(item.id)" class="btn-danger btn btn-sm" ng-show="item.status==2">删除</a>
+                    <a ui-sref="main.instock.instockdetail({id:item.id})" class="btn-default btn btn-sm">详情</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+   <div ng-include="'template/module/tpl/pageInfo.html'"></div>
+</div>
+
+<!-- toaster directive -->
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+<!-- / toaster directive -->

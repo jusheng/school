@@ -1,0 +1,129 @@
+<script type="text/javascript" src="lib/jquery/jquery.min.js"></script>
+<script src="lib/My97DatePicker/WdatePicker.js"></script>
+  <script src="lib/jquery/jquery.validate.min.js"></script>
+  <script src="lib/jquery/additional-methods.min.js"></script>  
+<a ui-sref="main.adddormscore.scorelist({id:classId})"><i class="pull-right icon-reply"></i></a>
+<div class="search-form row">
+    <ul id="myTab" class="nav nav-tabs">
+   
+        <li  role="presentation"  class="active">
+            <a role="tab"  data-toggle="tab">{{dorm}}宿舍打分</a>
+        </li>
+    </ul>
+</div>
+
+                                   
+<div class="row pad add_new">
+    <form id="newsadd_form" class="form-horizontal" >
+         <legend style="border-bottom:none">{{title}}</legend>
+        <div class="form-group">
+            <label for="remark"  class="col-lg-2 col-sm-3 control-label">寝室名</label>
+            <label for="remark"  class="col-sm-5 control-label" style="text-align:left">{{dorm}}宿舍</label>
+        </div>
+        
+        <div class="form-group">
+                <label for="if" class="col-lg-2 col-sm-3 control-label">
+                    <span class="text-danger wrapper-sm">*</span>参照制度
+                </label>
+                <!-- <label class="control-label" for="sortsId">参照制度:</label> -->
+                <div  class="col-sm-5">
+                    <select  name="sortsId" id="sortsId" class="form-control" ng-model="object"  ng-options="value as value.institution for (key,value) in record.list">
+                        <option value="">选择制度</option>
+                    </select>
+                    
+                </div>
+               
+        </div>
+
+        <div class="form-group">
+            <label for="score"  class="col-lg-2 col-sm-3 control-label" >
+                <span class="text-danger wrapper-sm">*</span>扣除分数
+            </label>
+            <div  class="col-sm-5" >
+                <label for="score"   class="control-label">
+                    <span class="wrapper-sm">{{object.score}}</span>
+                </label>
+
+            </div>
+        </div>
+        
+        
+        <div class="form-group">
+            <label for="if" class="col-lg-2 col-sm-3 control-label">
+                <!-- <span class="text-danger wrapper-sm">*</span> -->
+                标出违纪人员
+            </label>
+            <div  class="col-sm-5">
+               
+                        <div class="table-responsive">
+                                           
+                                <table class="table table-teacherclass">
+                                    <tbody>
+                                        <tr class="unread">
+
+                                            <td class="small-col"><input type="checkbox" style="position: absolute; opacity: 0;">
+                                            </td>
+                                            <td class="subject">学生姓名</td>
+                                            <td class="subject">学号</td>
+                                            <td class="subject">性别</td>
+                                            <td class="subject">民族</td>                     
+                                            <td class="subject">年龄</td>
+                                            
+                                        </tr>
+                                        <tr ng-repeat="item in pageInfo.studentInfo">
+                                            <td class="small-col v-middle">
+                                                <div class="icheckbox_minimal-blue" ng-class="{checked:$parent.pageInfo.studentInfo[$index].selected}" ng-click="select_per($index)"  style="position: relative;"><input type="checkbox" style="position: absolute; opacity: 0;"></div>
+                                            </td>
+                                            
+                                            <td class="subject">{{item.name}}</td>
+                                            <td class="subject">{{item.code}}</td>
+                                            <td class="subject">{{item.sexNameref}}</td>
+                                            <td class="subject">{{item.nationNameref}}</td>
+                                            <td class="subject">{{item.age}}</td>
+                                            
+                                          
+                                        </tr>
+        
+                                    </tbody>
+                                </table>
+                                <!-- <div ng-include="'template/module/tpl/pageInfo.html'"></div> -->
+                            </div> 
+
+            </div>
+        </div>
+        <!-- <div class="form-group">
+            <label for="if" class="col-lg-2 col-sm-3 control-label">
+                <span class="text-danger wrapper-sm">*</span>是否标出违纪人员
+            </label>
+            <div  class="col-sm-5">
+               
+                    <label ><input name="three" type="radio" class="icheckbox_minimal-blue" ng-click="change1(true)"/> <a href="" >是</a> </label>
+                    <label><input name="three" type="radio" class="icheckbox_minimal-blue"   checked  ng-click="change1(false)"/>否 </label>
+
+            </div>
+        </div> -->
+        
+       
+
+        <div class="form-group">
+            <label for="remark"  class="col-lg-2 col-sm-3 control-label" >
+                情况说明
+            </label>
+            <div  class="col-sm-7">
+                <textarea name="remark" class="form-control" rows="3" ng-model="rec.note"></textarea>
+            </div>
+        </div> 
+        <div class="form-group">
+            <label for="content"  class="col-lg-2 col-sm-3 control-label"></label>
+            <div  class="col-sm-9">
+                <button ng-click="submit()" class="btn btn-success">提交</button>
+            </div>
+        </div>
+    </form>
+
+</div>
+
+<!-- toaster directive -->
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+<!-- / toaster directive -->                   
+     

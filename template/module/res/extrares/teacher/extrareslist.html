@@ -1,0 +1,87 @@
+<div id="breadcrumb">
+  <a href="#"><i class="icon-home"></i> {{app.name}}</a> 
+  <i class="icon-angle-right"></i><a>{{app_name}}</a>
+</div>
+
+
+<div class="extrares_lay">
+	<div class="row condition">
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 condition_row">
+		 	<div class="condition_title">
+		 
+		 		科目：
+		 	</div> 
+		 	<a class="btn btn-sm" ng-class="{'btn-primary':params.subjectId==0}" ng-click="set_subject(0)">全部</a>
+		 	<a class="btn btn-sm" ng-repeat="(key, value) in subject" ng-class="{'btn-primary':params.subjectId==value.id}" ng-click="set_subject(value.id)">{{value.name}}</a>
+		</div>
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 condition_row">
+		 	<div class="condition_title">
+		 		资源分类：
+		 	</div>
+		 		<a class="btn btn-sm" ng-class="{'btn-primary':params.classifyId==0}" ng-click="set_class(0)">全部</a>
+				<a class="btn btn-sm" ng-repeat="(key, value) in class | filter:myfilter" ng-class="{'btn-primary':params.classifyId==value.id}" ng-click="set_class(value.id)">{{value.title}}</a>
+
+		</div>
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 condition_row">
+		 	<div class="condition_title">
+		 		资源类型：
+		 	</div>
+		 	<a class="btn btn-sm" ng-class="{'btn-primary':params.resType==0}" ng-click="set_res(0)">全部</a>
+			<a class="btn btn-sm" ng-repeat="(key, value) in resType" ng-class="{'btn-primary':params.resType==value.code}" ng-click="set_res(value.code)">{{value.codeText}}</a>
+
+		</div>
+	</div>
+
+	
+	<div class="result_lay">
+		<!-- <div class="table-responsive">
+			<table class="table table-hover">
+			
+				<tbody>
+					<tr ng-repeat="(key, value) in pageInfo.list">
+						<td>
+							<a ui-sref="main.extrares.detail({id:value.id})">
+								<div>
+									
+									<h4 ng-bind="value.title" class="text-bold"></h4>
+									<i class="icon-music text-primary" ng-if="value.resType==2"></i>
+									<i class="icon-play-circle text-primary" ng-if="value.resType==3" title="视频类"></i>
+								</div>
+								<div ng-bind-html="value.description"></div>
+							</a>
+						</td>
+						<td width="200" align="right">
+							<a ui-sref="main.extrares.detail({id:value.id})" ng-bind="value.createTime" ></a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div> -->
+	
+		<div class="row">
+			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-3 resitem_lay"  ng-repeat="(key, value) in pageInfo.list">
+				<div class="resitem_placeholder"></div>
+				<div class="resitem">
+					<a ui-sref="main.extrares.detailindex.detail({id:value.id,title:value.title,resType:value.resType})">
+						<div class="bbs_c img-responsive" ng-if="value.icon!=null" style="background: url({{value.icon}}) center center no-repeat;background-size:cover;">
+                		</div>
+                		<div class="bbs_c img-responsive" ng-if="value.icon==null" style="background: url(/res/img/no.jpg) center center no-repeat;background-size:cover;">
+                		</div>    
+						<img src="{{value.icon}}" alt="" class="img-responsive" id="extraImgs">
+						<div class="extrares_cover">
+							<span>开始学习</span>
+						</div>
+					</a>
+					<div class="resitem_title">
+						<a ui-sref="main.extrares.detailindex.detail({id:value.id,title:value.title,resType:value.resType})" ng-bind="value.title"></a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		
+		<div ng-include="'template/module/tpl/pageInfo.html'"></div>
+	</div>
+
+
+</div>

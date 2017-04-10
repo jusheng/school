@@ -1,0 +1,36 @@
+<div class="row pad">
+
+</div>
+
+<div class="table-responsive">                                          
+    <table class="table table-mailbox">
+        <tbody>
+        <tr class="unread">
+            <td style="border-right:1px solid #ddd">时间</td>
+            <td class="lesson">节次</td>
+            <td class="mon">周一</td>
+            <td class="tue">周二</td>
+            <td class="wed">周三</td>
+            <td class="thu">周四</td>
+            <td class="fri">周五</td>
+            <!-- <td class="sat">周六</td>
+            <td class="sun">周日</td> -->
+        </tr>
+        <tr ng-repeat="key in studentcourse">
+            <td style="border-right:1px solid #ddd" rowspan="">{{sDict[key.type]}}</td>
+            <td class="lesson v-middle">{{key.lesson}}</td>
+            <td class="mon v-middle">{{studentcourse[key.lesson].mon.name}}</td>
+            <td class="tue v-middle">{{studentcourse[key.lesson].tue.name}}</td>
+            <td class="wed v-middle">{{studentcourse[key.lesson].wed.name}}</td>
+            <td class="thu v-middle">{{studentcourse[key.lesson].thu.name}}</td>
+            <td class="fri v-middle">{{studentcourse[key.lesson].fri.name}}</td>
+            <!-- <td class="sat v-middle">{{item.sat.name}}</td>
+            <td class="sun v-middle">{{item.sun.name}}</td> -->
+        </tr>
+    </tbody>
+    </table>
+</div>
+
+<!-- toaster directive -->
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+<!-- / toaster directive -->

@@ -1,0 +1,172 @@
+<!-- <script type="text/javascript" src="lib/jquery/jquery.min.js"></script> -->
+<a ui-sref="main.dormitories.ourdormlist({id:classId})"><i class="pull-right icon-reply"></i></a>
+<div class="search-form row">
+    <ul id="myTab" class="nav nav-tabs">
+   
+        <li  role="presentation"  class="active">
+            <a role="tab" ng-click="change(1)"  data-toggle="tab">全校宿舍列表</a>
+        </li>
+    </ul>
+</div>
+
+
+<div class="row pad">
+
+   
+    <div class="col-sm-12">
+        <form class="text-right user1-form" ng-submit="search0()">
+            <div class="form-group clearfix col-sm-5">
+                <label class="control-label pull-left">选择公寓</label>
+                <select name="classId" id="classId" ng-model="param.houseId" ng-change="getexam()" class="form-control pull-left" ng-options="m.id as m.houseName for m  in houseList.list" >
+                    <option value="">选择公寓</option>
+                </select>
+            </div> 
+            <div class="form-group clearfix col-sm-5">
+                <label class="control-label pull-left">选择楼层</label>
+                <select name="practiseId" id="practiseId" ng-model="param.floor" class="form-control pull-left"
+                ng-options="m  as  m  for m  in examList">
+                    <option value="">选择楼层</option>
+                </select>
+            </div>
+            <button class="chaxun btn btn-success pull-left" type="submit">查询</button>
+        </form>
+    </div>
+
+</div>
+
+<div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="home">
+    <br>
+        <div class="row">
+            <div class="row">
+                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                     <div class="table-responsive">
+                                   
+                        <table class="table table-mailbox dormtable_desk">
+                            <tbody>
+                                <tr class="unread">
+                                    <td class="small-col">
+                                    </td>
+                                    <td class="subject">宿舍名</td>
+                                    <td class="subject">住宿生类别</td>
+                                    <td class="subject">所属年级</td>
+                                    <td class="subject">所属班</td>
+                                    <td class="subject">宿舍床数</td>
+                                    <td class="subject">实住人数</td>
+                                    <!-- <td class="subject">平房/楼房</td> -->
+                                    <td class="subject">楼层</td>
+                                    <td class="subject">公寓名称</td>
+                                    <!-- <td class="subject">创建时间</td> -->
+                                    
+                                    
+                                    <td class="opt">操作</td>
+                                </tr>
+                                <tr ng-repeat="item in pageInfo.list" class="dormtd_desk">
+                                    <td class="small-col v-middle">
+                                    </td>
+                                    <td class="subject v-middle">{{item.dormInfo.roomName}}</td>
+                                    <td class="subject v-middle">
+                                        <span ng-show="item.dormInfo.dormType">男生</span>
+                                        <span ng-show="item.dormInfo.dormType == false">女生</span>
+                                    </td>
+                                    <td class="subject v-middle">
+                                        <span ng-show="item.classId">{{item.gradeName}}</span>
+                                        <span ng-show="item.classId == false">暂无年级</span>
+                                    </td>
+                                    <td class="subject v-middle">
+                                        <span ng-show="item.classId">{{item.className}}</span>
+                                        <span ng-show="item.classId == false">暂无班级</span>
+                                        
+                                    </td>
+                                    <td class="subject v-middle">{{item.dormInfo.roomNum}}个</td>
+                                    <td class="subject v-middle">{{item.dormInfo.currentNum}}人</td>
+                                   
+                                    <!-- <td class="subject v-middle">
+                                        <span ng-show="item.dormType == true">楼房</span>
+                                        <span ng-show="item.dormType == false">平房</span>
+                                    </td> -->
+                                    <td class="subject v-middle">
+                                        {{item.dormInfo.floor}}
+                                        <span ng-show="item.houseType == false">1层</span>
+                                    </td>
+                                    <td class="subject v-middle">{{item.dormInfo.houseName}}</td>
+                                    <!-- <td class="subject v-middle">{{item.housemasterName}}</td> -->
+                                    <!-- <td class="subject v-middle">{{item.createTime}}</td> -->
+                                    
+                                   
+                                    <td class="opt v-middle">
+                                       
+                                       <!-- <button class="btn btn-default" type="submit"  ng-click="submit(item);selected = 1" ng-class="{'btn-success active': selected== 2 ,'disabled': selected!= 2}">确认添加</button> -->
+                                       <!-- <button class="btn btn-default" type="submit"  ng-click="submit(item);selected = 1" ng-class="{'btn-success active': item.classId == false ,'disabled': item.classId}">确认添加</button> -->
+                                       <!-- <button class="btn btn-success active" ng-show="item.classId" type="submit"  ng-click="open_confrim(item,1)">确认添加</button> -->
+                                       <button class="btn btn-primary" ng-show="item.classId!='' && classId!=item.classId" type="submit"  ng-click="open_confrim(item,1)">确认添加</button>
+                                       <button class="btn btn-success" ng-show="item.classId==''" type="submit"  ng-click="open_confrim(item,2)">确认添加</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div ng-include="'template/module/tpl/pageInfo.html'"></div>
+                    </div>  
+                </div>
+                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                     <div class="table-responsive">
+                                   
+                        <table class="table table-mailbox">
+                            <th ng-show="class.list==false">该班级暂无宿舍</th>
+                            <tbody ng-hide="class.list==false"  >
+                                <tr class="unread" >
+                                    <td class="small-col">
+                                    </td>
+                                    <td class="subject" >宿舍名</td>
+                                    <td class="subject">住宿生类别</td>
+                                    
+                                    <!-- <td class="subject">平房/楼房</td> -->
+                                    <td class="subject">所在楼层</td>
+                                  
+                                    <td class="subject">宿舍楼名称</td>
+                                    <td class="opt">操作</td>
+                                    <!-- <td class="subject">创建时间</td> -->
+                                    
+                                    
+                                  
+                                </tr>
+                                <tr ng-repeat="item in class.list"  class="">
+                                    <td class="small-col v-middle">
+                                    </td>
+                                    <td class="subject v-middle" >{{item.roomName}}</td>
+                                    <td class="subject v-middle">
+                                        <span ng-show="item.dormType">男生</span>
+                                        <span ng-show="item.dormType == false">女生</span>
+                                    </td>
+                                    
+                                    <td class="subject v-middle">{{item.floor}}层</td>
+                                   
+                                    <td class="subject v-middle">{{item.houseName}}</td>
+                                    <td class="opt v-middle" ng-init="selected = item.x">
+                                        <!-- <button class="btn btn-default" ng-click="submit1(item);selected = 2" ng-class="{'btn-success active': selected== 1,'disabled': selected!= 1}">取消添加</button> -->
+                                        <button class="btn btn-danger" ng-click="open_confrim(item,0)" >删除宿舍</button>
+                                    </td>
+
+                                    
+                                   
+                                    
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!-- <div ng-include="'template/module/tpl/pageInfo.html'"></div> -->
+                    </div>
+                </div>
+            </div>
+           
+
+
+
+        </div>        
+        
+    </div>
+</div>        
+
+
+  <!-- toaster directive -->
+            <toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+            <!-- / toaster directive -->   

@@ -1,0 +1,61 @@
+
+<!--<input type="text" class="form-control" ng-focus="openWithJSSpecificWidth()" id="to" tabindex="1">-->
+<!--{{title}}-->
+<!--<a ng-click="openWithJSSpecificWidth()">dfdfd</a>-->
+
+<!--<div class="gridStyle" ng-grid="gridOptions"></div>-->
+
+<!--https://www.npmjs.com/package/angular-ivh-treeview#ivhtreeviewmgrselecttree-node-opts-isselected-->
+<!--<div ivh-treeview="stuff"-->
+			<!--ivh-treeview-use-checkboxes="true">-->
+    <!--</div>-->
+
+
+<!--<form>-->
+        <!--<legend ng-bind="title"></legend>-->
+        <!--<div class="form-group">-->
+            <!--<label for="title">标题</label>-->
+            <!--<input type="text" class="form-control" id="title" name="title" placeholder="" ng-model="record.title">-->
+        <!--</div>-->
+        <!--<div class="form-group">-->
+            <!--<label for="select_time">时间</label>-->
+            <!--<input type="text" class="form-control" id="select_time" date-picker placeholder=""  ng-model="record.remindTime" autocomplete="off" readonly="">-->
+        <!--</div>-->
+        <!--<div class="list-group">-->
+        	<!--<label for="content">内容</label>-->
+
+            <!--<div class="ueditor" name="content"  ng-model="record.content" config="_simpleConfig" required></div>-->
+
+
+        <!--</div>-->
+
+        <!--<div class="list-group">-->
+            <!--<label for="isRemind">到时间提醒</label>-->
+            <!--<input type="radio" name="remind" value="1" ng-model="record.isRemind">是-->
+            <!--<input type="radio" name="remind" value="0" ng-checked="true" ng-model="record.isRemind">否-->
+
+        <!--</div>-->
+        <!--<button type="submit" class="btn btn-danger">提交</button>-->
+<!--</form>-->
+
+<!--checklist-model-->
+
+<!--<label ng-repeat="role in roles">-->
+  <!--<input type="checkbox" checklist-model="user.roles" checklist-value="role"> {{role}}-->
+<!--</label>-->
+
+
+<div class="btn btn-gray btn-single btn-block" ngf-select="onFileSelect($files)" multiple="multiple">添加附件</div>
+
+<form action="/res/exam/score/importTemplate" method="post" enctype="multipart/form-data">
+    <input type="file" name="excelFile" id="excelFile">
+    <input type="submit" value="submit">
+</form>
+            
+
+<div style="height: 500px; width: 100%;">
+    <radar-chart config="config" data="data"></radar-chart>
+</div>
+
+
+<div ng-include="'template/module/edu/news/editor.html'" ng-controller="editorController"></div>

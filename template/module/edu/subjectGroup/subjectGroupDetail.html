@@ -1,0 +1,84 @@
+<!--<link rel="stylesheet" href="template/module/teachermanage/teacher.css">-->
+<script src="lib/jquery/jquery.validate.min.js"></script>
+<script src="lib/jquery/additional-methods.min.js"></script>
+<div class="ngdialog-title"  ng-bind="app_name"></div>
+<br>
+<div class="teacheradd">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="row pad">
+                <form id="subject_group_form" class="form-horizontal">
+                 
+
+                    <div class="form-group">
+                        <label class="col-lg-4 col-sm-5 control-label">所属年级</label>
+                        <div class="col-sm-7">
+                            <select name="grade.id" id="grade.id" ng-model="record.basegrade.id"
+                                    class="form-control" ng-options="m.id as m.name for m in baseGrade">
+                            </select>
+                            <!--<input type="text" class="form-control" id="basegrade.id" name="baseGrade.id" placeholder="" ng-model="record.basegrade.id">-->
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-lg-4 col-sm-5 control-label">科目组名称</label>
+                        <div class="col-sm-7">
+                            <input type="text" class="form-control" id="name" name="name" placeholder=""
+                                   ng-model="record.name" maxlength="15">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-lg-4 col-sm-5 control-label">排序</label>
+                        <div class="col-sm-7">
+                            <input type="number" class="form-control" id="sortNo" name="sortNo" placeholder=""
+                                   ng-model="record.sortNo">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-lg-4 col-sm-5 control-label">备注</label>
+                        <div class="col-sm-7">
+                            <input type="text" class="form-control" id="remark" name="remark" placeholder=""
+                                   ng-model="record.remark">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-lg-4 col-sm-5 control-label">包含科目</label>
+                        <div class="col-sm-7">
+                            <table class="subject-table">
+
+                                <tr class="table-title">
+                                    <td></td>
+                                </tr>
+                                <tr ng-repeat="item in detailList">
+                               
+                                <!-- <tr ng-repeat="item in subjectList"> -->
+
+                                    <td>
+                                        <input type="checkbox" id="id" name="id" ng-checked="item.checked" ng-model="$parent.detailList[$index]['checked']">
+                                    </td>
+                                    <td ng-bind="item['subject'].name">
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-lg-12 text-center">
+                            <button type="submit" class="btn btn-success">提交</button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+
+            <!-- toaster directive -->
+            <toaster-container
+                    toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+            <!-- / toaster directive -->
+        </div>
+    </div>
+</div>

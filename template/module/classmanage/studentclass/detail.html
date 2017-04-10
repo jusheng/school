@@ -1,0 +1,140 @@
+ <script src="lib/jquery/jquery.validate.min.js"></script>
+  <script src="lib/jquery/additional-methods.min.js"></script>  
+
+<div class="news_view_lay">
+	<div>
+<a ui-sref="main.studentclass.list" class="pull-right icon-remove"></a>
+	<legend>学生信息</legend>
+	<form class="mini_form" id="student_form">
+	
+
+		<table>
+			<tr>
+				<td width="80">姓名</td>
+				<td><input type="text" class="form-control" id="name" name="name" ng-model="record.name" disabled=""></td>
+			</tr>
+			<tr>
+				<td valign="top">头像</td>
+				<td>
+					<div class="inline bg-white wrapper-sm b-a" ng-show="record.pic!=''">
+                        <div class="bg-light">
+                            <img ng-src="{{myCroppedImage}}" />
+                        </div>
+		            </div>
+				</td>
+			</tr>
+
+			<tr>
+				<td>民族</td>
+				<td>
+					<div class="row">
+							<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+								<select name="sex" id="sex" class="form-control" ng-options="value.code as value.codeText for value in nation" ng-model="record.nation" disabled="">
+									<option value="">选择</option>
+								</select>
+							</div>
+						</div>
+				</td>
+			</tr>
+			<tr>
+				<td>性别</td>
+				<td>
+					<div class="row">
+							<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+								<select name="sex" id="sex" class="form-control" ng-options="value.code as value.codeText for value in sexData" ng-model="record.sex" disabled="">
+									<option value="">选择</option>
+								</select>
+							</div>
+						</div>
+				</td>
+			</tr>
+			<tr>
+				<td>学号</td>
+				<td>
+					<input type="text" class="form-control" id="code" name="code" ng-model="record.code" disabled="">
+				</td>
+			</tr>
+
+			<tr>
+				<td>身份证号码</td>
+				<td>
+					<input type="text" class="form-control" id="idCard" name="idCard" ng-model="record.idCard" disabled="">
+				</td>
+			</tr>
+
+			<tr>
+				<td>年龄</td>
+				<td>
+					<input type="text" class="form-control" id="age" name="age" ng-model="record.age" disabled="">
+				</td>
+			</tr>
+
+			<tr>
+				<td>电话</td>
+				<td>
+					<input type="text" class="form-control" id="tel" name="tel" ng-model="record.tel" disabled="">
+				</td>
+			</tr>
+			<tr>
+				<td>政治面貌</td>
+				<td>
+					
+					
+					<div class="row">
+							<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+								<select name="sex" id="sex" class="form-control" ng-options="value.code as value.codeText for value in politics" ng-model="record.politics" disabled="">
+									<option value="">选择</option>
+								</select>
+							</div>
+						</div>
+
+				</td>
+			</tr>
+
+			<tr>
+				<td>家庭住址</td>
+				<td>
+					<input type="text" class="form-control" id="address" name="address" ng-model="record.address" disabled="">
+				</td>
+			</tr>
+			<tr>
+				<td>家长姓名</td>
+				<td>
+					<input type="text" class="form-control" id="parentName" name="parentName" ng-model="record.parentName" disabled="">
+				</td>
+			</tr>
+			<tr>
+				<td>家长电话</td>
+				<td>
+					<input type="text" class="form-control" id="parentTel" name="parentTel" ng-model="record.parentTel" disabled="">
+				</td>
+			</tr>
+			<tr>
+				<td>家长工作</td>
+				<td>
+					<input type="text" class="form-control" id="parentWork" name="parentWork" ng-model="record.parentWork" disabled="">
+				</td>
+			</tr>
+
+			<tr>
+				<td colspan="2">
+					
+					<a ui-sref="main.studentclass.list"  class="btn btn-success">返回</a>
+				</td>
+			</tr>
+
+
+
+		</table>
+
+	
+		
+	</form>
+
+</div>
+
+</div>
+
+<!-- toaster directive -->
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+<!-- / toaster directive -->

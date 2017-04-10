@@ -1,0 +1,144 @@
+<!-- toaster directive -->
+<toaster-container toaster-options="{'position':'toast-top-right','close-button':'true'}"></toaster-container>
+<!-- / toaster directive -->
+
+<!-- 导航条 -->
+<div class="bg-white bread-crumb">
+	<ul class="breadcrumb b-a m-b-n-xs lter b-b wrapper-md">
+		<li>
+			<a ui-href="main">
+				<i class="fa fa-home"></i>
+				首页
+			</a>
+			<li class="active" ng-bind="title"></li>
+		</li>
+	</ul>
+</div>
+
+<!-- 加载提醒 -->
+<div ng-show="loading" class="text-center m-t-md text-lg"> <i class="fa fa-spin fa-spinner"></i>
+	数据加载中...
+</div>
+
+<!-- 内容区域 -->
+<div class="wrapper-md content">
+	<div class="panel panel-default">
+		<!-- 头部 -->
+		<div class="panel-heading font-bold">
+			{{title}}
+			<a class="btn btn-sm btn-icon btn-rounded btn-default pull-right m-t-n-xs" ui-sref="main.res.extra.reslist({subject_id: subjectId,km:km})">
+				<i class="text-md fa fa-times text-muted"></i>
+			</a>
+		</div>
+		<!--表单-->
+		<div class="panel-body">
+			<form class="form-horizontal"  name="user_form">
+				<div class="line line-dashed b-b line-lg pull-in"></div>
+
+
+				<div class="form-group">
+					<label class="col-lg-2 col-sm-3 control-label" for="address">
+						<span class="text-danger wrapper-sm">*</span>
+						章节名
+					</label>
+					<div class="col-sm-6">
+					<input type="text" name="title" id="title" class="form-control" ng-model="record.title">
+						</div>
+				</div>
+
+				<div class="form-group">
+					<label class="col-lg-2 col-sm-3 control-label" for="code">
+						<span class="text-danger wrapper-sm">*</span>
+						封面图片
+					</label>
+					<div class="col-sm-6" style="position: relative;">
+						<input type="text" id="pic" name="pic" ng-model="record.pic" class="form-control" style="width: 100px;position: absolute;top:0;left:0;z-index: -1">
+						<a class="btn btn-sm btn-success" ngf-select="onFileSelect00($files)" accept="image/*">上传图片 </a>
+						<img ng-show="record.imgUrl" src="{{record.imgUrl}}" width="130" height="100" alt="">
+					</div>
+				</div>
+			
+				<!--btn-->
+				<div ng-show="record.resType==3">
+					<div class="form-group">
+						<label class="col-lg-2 col-sm-3 control-label" for="address">
+							<span class="text-danger wrapper-sm">*</span>
+							上传视频
+						</label>
+						<div class="col-sm-6" style="position: relative;">
+							<input type="text" name="originalName" id="originalName" style="position: absolute;left:0;top:0;width: 100px;z-index:-1" class="form-control" ng-model="record.originalName">
+							<button class="btn btn-gray btn-single" ngf-select="onFileSelect($files)">添加文件(mp4)</button>
+							<span ng-show="record.originalName">{{record.resUrl}}</span>
+
+							<span ng-show="upload1_progress && !record.originalName" ng-bind="upload1_progress+'%'"></span>
+						
+						</div>
+					</div>
+					<div class="line line-dashed b-b line-lg pull-in"></div>		
+				</div>
+
+
+				<div ng-show="record.resType==2">
+
+					<div class="form-group">
+						<label class="col-lg-2 col-sm-3 control-label" for="address">
+							<span class="text-danger wrapper-sm">*</span>
+							上传音频
+						</label>
+						<div class="col-sm-6" style="position: relative;">
+							<input type="text" name="originalName1" id="originalName1" style="position: absolute;left:0;top:0;width: 100px;	z-index: -1" class="form-control" ng-model="record.originalName1">
+						<button class="btn btn-gray btn-single" ngf-select="onFileSelect1($files)" >添加文件(mp3)</button>
+						<span ng-show="record.originalName1">{{record.resUrl}}</span>
+						<span ng-show="upload2_progress && !record.originalName1" ng-bind="upload2_progress+'%'"></span>
+						</div>
+					</div>
+					<div class="line line-dashed b-b line-lg pull-in"></div>	
+				</div>
+				<div class="editor-kityformula-js"></div>
+				<div ng-show="record.resType ==2 || record.resType ==3">
+						<div class="form-group">
+							<label class="col-lg-2 col-sm-3 control-label" for="remark">
+								<span class="text-danger wrapper-sm">*</span>
+								介绍描述
+							</label>
+							<div class="col-sm-6">
+								<textarea id="description" name="description" style="position: absolute;top: 0; left:0;opacity: 0" ng-model="record.description" class="form-control" rows="3"></textarea>
+								<div class="include_editor" ng-model="record.description" config="_simpleConfig" required></div>
+									
+								
+							</div>
+						</div>
+						<div class="line line-dashed b-b line-lg pull-in"></div>
+
+				</div>
+
+				<div ng-show="record.resType==1">
+					<div class="form-group">
+						<label class="col-lg-2 col-sm-3 control-label" for="remark">
+							<span class="text-danger wrapper-sm">*</span>
+							内容
+						</label>
+						<div class="col-sm-6">
+							<textarea id="content" name="content" style="position: absolute;top: 0; left:0;opacity: 0" ng-model="record.content" class="form-control" rows="3"></textarea>
+							<div class="include_editor" ng-model="record.content" config="_simpleConfig" required></div>
+							
+						
+						</div>
+					</div>
+					<div class="line line-dashed b-b line-lg pull-in"></div>
+
+				</div>
+
+
+
+
+				<div class="form-group">
+					<div class="col-sm-6 col-sm-offset-2">
+						<button type="reset" class="btn btn-default w-xs">重置</button>
+						<button type="submit" class="btn btn-info w-xs m-l-xl" >保存</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,29 @@
+
+<div ng-show="cu==1" class="ngdialog-title">{{title1}}</div>
+<div ng-show="cu==2" class="ngdialog-title">{{title2}}</div>
+<br>
+<div class="scroll_lay">
+
+	<div id="wrapper" ng-iscroll='wrapper' ng-iscroll-delay='50'>
+		<div id="scroller">
+			<div ng-show="cu==1">
+				<div ng-repeat="v in boyslist" style="width:33.3%; float:left">
+					<input type="checkbox" name="zhr"  data-checklist-model="selectArray" data-checklist-value="v"> {{v.name}}
+				</div>
+			</div>
+			<div ng-show="cu==2">
+				<div ng-repeat="v in girlslist" style="width:33.3%; float:left">
+					<input type="checkbox" name="zhr"  data-checklist-model="selectArray" data-checklist-value="v"> {{v.name}}
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+	
+</div>
+<div class="text-center">
+	<!-- <button class="btn btn-success" ng-click="closeThisDialog()">确定</button> -->
+	<button type="submit" class="btn btn-success" ng-click="submit()">提 交</button>
+</div>
+

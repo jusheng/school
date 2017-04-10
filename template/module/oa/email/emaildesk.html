@@ -1,0 +1,21 @@
+<div class="box box-email" id="loading-example" style="position: relative;">
+                    <div class="box-header" style="cursor: move;">
+                      <i class="fa {{appicon}}"></i>
+                      <h3 class="box-title"><a href="{{appurl}}">{{appname}}</a></h3>
+                      <i class="fa pull-right  icon-remove" ng-click="delapp(appidentify)"></i>
+                    </div>
+                    <div class="box-body">
+                      <div class="mail_tip">
+                         <a ui-sref="main.email.list"><i class="icon-envelope"></i> 未读({{num}})</a> <div class="pull-right"><a href="" ng-click="get_mail()"><i class="fa " ng-class="{'icon-spinner icon-spin':loading==true,'icon-download-alt':loading==false}" ></i> 收信</a> <a ui-sref="main.email.write.emailbook"><i class="fa icon-edit"></i> 写信</a></div>
+                      </div>
+                       <div class="news_desk">
+
+                         <a ui-sref="main.email.detail({eid:item.empInboxid.id,id:item.id})" ng-repeat="item in pageInfo.list" title="{{item.empInboxid.inboxTitle}}">
+                           <span class="pull-right">{{item.empInboxid.inboxIntime}}</span>
+                            <span ng-class="{'font-bold':item.empIsread==2}">· {{item.empInboxid.inboxTitle | limitTo:15}}</span>
+                          </a>
+
+                       </div>
+                       <div ng-show="loading"></div>
+                    </div>
+                  </div>

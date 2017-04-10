@@ -1,0 +1,79 @@
+<div id="breadcrumb">
+  <a href="#"><i class="icon-home"></i> 学习云平台</a> 
+  <i class="icon-angle-right"></i><a >{{app_name}}</a>
+</div>
+
+<div style="padding: 15px">
+    <div class="email_view_lay" >
+        <form id="homewordadd_form" class="form-horizontal">
+        <a ui-sref="main.studenthomework.list" class="pull-right icon-remove"></a>
+            <legend >作业详情</legend>
+            
+            <div class="form-group">
+                <label for="title" class="col-lg-2 col-sm-3 text-right">作业名称</label>
+                <div  class="col-sm-9">
+                        {{detail.homework.title}}
+                </div>
+            </div>
+            
+           
+            <div class="form-group">
+                <label for="title" class="col-lg-2 col-sm-3 text-right">科目</label>
+                <div  class="col-sm-9">
+                    {{detail.homework.subject.name}}
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="title" class="col-lg-2 col-sm-3 text-right">要求完成时间</label>
+                <div  class="col-sm-9">
+                    {{detail.endDate}}
+                </div>
+            </div>
+            
+            
+            <div class="form-group">
+                <label for="remark"  class="col-lg-2 col-sm-3 text-right">内容</label>
+                <div  class="col-sm-9" ng-bind-html="detail.homework.content">
+                  
+                </div>
+            </div>
+            <div ng-show="detail.pic!=null">        
+                <div class="form-group">
+                    <label for="remark"  class="col-lg-2 col-sm-3 text-right">提交时间</label>
+                    <div  class="col-sm-9" ng-bind-html="detail.releaseTime">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="remark"  class="col-lg-2 col-sm-3 text-right">提交内容</label>
+                    <div  class="col-sm-9" >
+                        <img src="{{detail.imgUrl}}" alt="">
+                    </div>
+                </div>  
+            </div>
+
+            <div class="form-group" ng-hide="detail.pic!=null">
+                <label for="content"  class="col-lg-2 col-sm-3 text-right"></label>
+                <div  class="col-sm-9">
+                    
+                    <a class="btn btn-default" ngf-select="onFileSelect($files)"><i class="fa icon-cloud-upload"></i>上传作业截图</a>
+                    <button type="submit" class="btn btn-primary" ng-show="record.pic" ng-click="submit()">提交</button>
+                    <div ng-show="record.pic">
+                        <img src="{{record.imgUrl}}" width="500" alt="">
+                    </div>
+                </div>
+            </div>
+
+
+        </form>
+    
+    </div>        
+</div>
+
+
+
+
+
+
+<!-- toaster directive -->
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+<!-- / toaster directive -->

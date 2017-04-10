@@ -1,0 +1,91 @@
+<link rel="stylesheet" href="template/module/teachermanage/teacher.css">
+
+<div class="row pad">
+    <div class="col-sm-2">
+        <label style="margin-right: 10px;" class="">
+            <div class="icheckbox_minimal-blue" ng-click="select_all()" ng-class="{checked:s_all==true}" style="position: relative;"><input type="checkbox" id="check-all" style="position: absolute; opacity: 0;"></div>
+        </label>
+        <!-- Action button -->
+        <div class="btn-group">
+            <button type="button" class="btn btn-default btn-sm btn-flat dropdown-toggle" data-toggle="dropdown">
+                操作 <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+                <li><a ng-click="open_confrim()">删除</a></li>
+            </ul>
+        </div>
+
+    </div>
+    <div class="col-sm-3 search-form">
+        <form  class="text-right" ng-submit="search()" >
+            <div class="input-group" role="form">                                                            
+                <input type="text" class="form-control" placeholder="按ISBN、图书名称搜索" ng-model="param.keyword">
+                <div class="input-group-btn">
+                    <button type="submit" name="q" class="btn btn-sm btn-success"><i class="fa icon-search"></i></button>
+                </div>
+            </div>                                                     
+        </form>
+    </div>
+    <div class="col-sm-7 search-form ">
+        <div class="btn-group" style="width:100%;text-align: right;">
+       
+        <a href="/res/books/exportData?keyword={{param.keyword}}" class="btn btn-success pull-right mar" multiple="multiple" ><i
+                class="icon-download-alt"></i> Excel导出信息</a>
+        <a class="btn btn-success pull-right mar" ngf-select="onFileSelect($files)" multiple="multiple"
+         ><i class="icon-upload-alt"></i> Excel导入信息
+        </a>
+        <a href="/res/books/downloadTemplate" class="btn btn-success pull-right mar" ><i
+                class="icon-download-alt"></i> 下载模板</a>
+                 <a ui-sref="main.book.bookadd({sorts_id:param.typeId,code:param.typeCode,name:name})" class="btn btn-success pull-right"><i class="icon-plus"></i>添加图书</a>
+        </div>
+    </div>
+</div>
+
+<div class="table-responsive">
+                                               
+    <table class="table table-mailbox">
+        <tbody>
+            <tr class="unread">
+                <td class="small-col">
+                </td>
+                <td class="subject">ISBN编码</td>
+                <td class="subject">图书名称</td>
+                <td class="subject">图书分类</td>
+                <td class="subject">作者</td>
+                <td class="subject">出版社</td>
+                <td class="subject">出版日期</td>
+                <td class="subject">库存数量</td>
+                <td class="subject">可借数量</td>
+                <td class="subject">图书位置</td>
+                <td class="opt">操作</td>
+            </tr>
+            <tr ng-repeat="item in pageInfo.list">
+                <td class="small-col v-middle">
+                    <div class="icheckbox_minimal-blue" ng-class="{checked:$parent.pageInfo.list[$index].selected}" ng-click="select_per($index)"  style="position: relative;">
+                        <input type="checkbox" style="position: absolute; opacity: 0;">
+                    </div>
+                </td>
+                <td class="subject v-middle">{{item.isbn}}</td>
+                <td class="subject v-middle"><a title="{{item.name}}">{{item.name}}</a></td>
+                <td class="subject v-middle">{{item.typeCodeNameref}}</td>
+                <td class="subject v-middle"><a title="{{item.author}}">{{item.author}}</a></td>
+                <td class="subject v-middle"><a title="{{item.pubUnit}}">{{item.pubUnit}}</a></td>
+                <td class="subject v-middle">{{item.pubDate}}</td>
+                <td class="subject v-middle">{{item.totalNum}}</td>
+                <td class="subject v-middle">{{item.divNum}}</td>
+                <td class="subject v-middle">{{item.location}}</td>
+
+                <td class="opt v-middle">
+                    <a ui-sref="main.book.bookdetail({id:item.id,sorts_id:param.typeId,code:param.typeCode,name:name})" class="btn btn-default btn-sm">查看详情</a>    
+                    <a ui-sref="main.book.bookedit({id:item.id,sorts_id:param.typeId,code:param.typeCode,name:name})" class="btn btn-primary btn-sm">编辑</a>  
+                    <a ng-click="open_confrim(item.id)" class="btn btn-danger btn-sm">删除</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+   <div ng-include="'template/module/tpl/pageInfo.html'"></div>
+</div>
+
+<!-- toaster directive -->
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+<!-- / toaster directive -->

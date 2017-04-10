@@ -1,0 +1,74 @@
+<div role="tabpanel">
+<a ui-sref="main.res.teacherresindex" class="pull-right icon-remove"></a>
+				<!-- Nav tabs -->
+				<ul class="nav nav-tabs" role="tablist">
+					<li role="presentation" class="active">
+						<a  aria-controls="home" role="tab" ng-click="change(1)" data-toggle="tab">教案</a>
+					</li>
+					<li role="presentation">
+						<a aria-controls="tab" role="tab" ng-click="change(2)" data-toggle="tab">PPT</a>
+					</li>
+					<li role="presentation">
+						<a aria-controls="tab" role="tab" ng-click="change(3)" data-toggle="tab">视频</a>
+					</li>
+					<li role="presentation">
+						<a aria-controls="tab" role="tab" ng-click="change(4)" data-toggle="tab">试题</a>
+					</li>
+				</ul>
+			
+				<!-- Tab panes -->
+				<div class="tab-content">
+					<div role="tabpanel" class="tab-pane active" id="home">
+						<br>
+						
+
+						<!-- 教案  PPT 视频  -->
+						<div ng-if="type!=4">
+							
+								<div class="res_item" ng-repeat="(key, value) in pageInfo.list">
+									<a href="#/main/res/teacherrestree/{{param.textbookId}}/detail/{{param.textbookId}}/{{value.id}}/{{value.type}}" class="res_item_a">
+									<img src="{{value.ico}}" width="150" height="180">
+									
+									</a>
+									<div class="res_title">{{value.name}}</div>
+									
+									<div class="row">
+										<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+											<a down-file="/download/fileById?id={{value.fileId}}" down-file-type="{{value.extension}}" down-file-name="{{value.name}}" class="btn btn-sm btn-success" title="下载"><i class="icon-download-alt"></i></a>
+										</div>
+										<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+											<a class="btn btn-sm btn-success" title="收藏"><i class="icon-star-empty"></i></a>
+										</div>
+									</div>
+										
+								</div>
+							
+						</div>
+						
+
+						<!-- 试题 -->
+						<div class="row" ng-if="type==4">
+							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" ng-repeat="(key, value) in pageInfo.list">
+
+							<!-- 填空题 问答题 解答题-->
+							<div ng-if="value.type==80 || value.type==78 || value.type==147" ng-include="'template/module/res/res/teacher/question/temp80.html'" ></div>
+
+							<!-- 单选题  多选题 判断题-->
+							<div ng-if="value.type==76 || value.type==77 || value.type==79" ng-include="'template/module/res/res/teacher/question/temp76.html'" ></div>
+
+									
+
+							</div>
+						</div>
+						
+
+
+
+					</div>
+				</div>
+			</div>
+			<div class="clearfix">
+			
+			</div>
+
+			<div ng-include="'template/module/tpl/pageInfo.html'"></div>

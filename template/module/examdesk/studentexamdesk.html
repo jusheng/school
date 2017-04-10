@@ -1,0 +1,70 @@
+<style type="text/css">
+    [app-identify="{{appidentify}}"] .row {
+        margin: 0 -10px;
+    }
+
+    [app-identify="{{appidentify}}"] .col-sm-1, [app-identify="{{appidentify}}"] .col-sm-2,
+    [app-identify="{{appidentify}}"] .col-sm-3, [app-identify="{{appidentify}}"] .col-sm-4,
+    [app-identify="{{appidentify}}"] .col-sm-5, [app-identify="{{appidentify}}"] .col-sm-6,
+    [app-identify="{{appidentify}}"] .col-sm-7, [app-identify="{{appidentify}}"] .col-sm-8,
+    [app-identify="{{appidentify}}"] .col-sm-9, [app-identify="{{appidentify}}"] .col-sm-10,
+    [app-identify="{{appidentify}}"] .col-sm-11, [app-identify="{{appidentify}}"] .col-sm-12,
+    [app-identify="{{appidentify}}"] .col-md-1, [app-identify="{{appidentify}}"] .col-md-2,
+    [app-identify="{{appidentify}}"] .col-md-3, [app-identify="{{appidentify}}"] .col-md-4,
+    [app-identify="{{appidentify}}"] .col-md-5, [app-identify="{{appidentify}}"] .col-md-6,
+    [app-identify="{{appidentify}}"] .col-md-7, [app-identify="{{appidentify}}"] .col-md-8,
+    [app-identify="{{appidentify}}"] .col-md-9, [app-identify="{{appidentify}}"] .col-md-10,
+    [app-identify="{{appidentify}}"] .col-md-11, [app-identify="{{appidentify}}"] .col-md-12 {
+        padding: 0 10px;
+    }
+
+    [app-identify="{{appidentify}}"] div.tab-pane > div.row:nth-child(even) {
+        background-color: rgb(245, 245, 245);
+    }
+</style>
+
+<div class="box box-danger" id="loading-example" style="position: relative;">
+    <div class="box-header" style="cursor: move;">
+        <i class="fa {{appicon}}"></i>
+        <h3 class="box-title"><a href="{{appurl}}">{{appname}}</a></h3>
+        <i class="fa pull-right  icon-remove" ng-click="delapp(appidentify)"></i>
+
+        <!-- <div class="nav-tabs-custom pull-right">
+            <ul class="nav nav-tabs" role="">
+              <li role="presentation" ng-repeat="item in examclassInfograde" ng-class="{'active':$index==0}" ng-click="getexamlist2(item.id)" >
+                <a href="main/desk/book#c{{item.id}}" aria-controls="tab" role="{{item.id}}" data-toggle="tab">{{item.name}}</a>
+              </li>
+            </ul>
+        </div> -->
+
+    </div>
+    <div class="box-body no-padding">
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="home">
+                <div class="row" ng-repeat="item in examSubject3"
+                     style="line-height: 30px;padding:10px 0 0 0">
+                    <div class="col-md-12 col-sm-12">
+                        <div class="row" style="padding-right: 15px;">
+                            <div class="col-md-6 col-sm-6">科目 : {{item.subjectName}}</div>
+                            <div class="col-md-5 col-sm-5">状态 : {{examStatus[item.status]}}</div>
+                            <div class="col-md-1 col-sm-1"><a style="color:#79cce1"
+                                    ui-sref="main.examStudent.examscoreStudentDetail({id:examId})"
+                                    ng-click="submit3(item.subject.id)" title="查看成绩"><i
+                                    class="fa icon-edit"></i></a></div>
+                            <div class="col-md-12 col-sm-12">时间 : {{item.beginTime|date:'yyyy-MM-dd HH:mm'}} 至
+                                {{item.endTime|date:'HH:mm'}}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="clear:both"></div>
+                    <hr style="margin:0">
+                </div>
+            
+            </div>
+
+        </div>
+
+    </div>
+</div>

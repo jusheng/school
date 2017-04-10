@@ -1,0 +1,33 @@
+<script src="lib/jquery/jquery.validate.min.js"></script>
+  <script src="lib/jquery/additional-methods.min.js"></script>  
+
+
+<div class="pwd_lay">
+		<a  ui-sref="main.teachercenter.index" class="pull-right icon-remove"></a>
+		<legend>修改登录密码</legend>
+		<form id="pwd_form" class="mini_form">
+			
+			<table>
+				<tr>
+					<td width="80">当前密码</td>
+					<td><input type="password" class="form-control" ng-model="record.oldPassword" id="oldPassword" name="oldPassword" placeholder="请输入当前密码"></td>
+				</tr>
+				<tr>
+					<td>新密码</td>
+					<td><input type="password" class="form-control" id="newPassword" name="newPassword" placeholder="请输入新密码"></td>
+				</tr>
+				<tr>
+					<td>重复密码</td>
+					<td><input type="password" class="form-control" ng-model="record.newPassword" id="confirmnewpassword" name="confirmnewpassword" placeholder="请重复输入新密码"></td>
+				</tr>
+				<tr>
+					<td colspan="2" class="text-center"><button type="submit" class="btn btn-danger">修改</button></td>
+				</tr>
+			</table>
+		
+		</form>
+</div>
+
+<!-- toaster directive -->
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+<!-- / toaster directive -->

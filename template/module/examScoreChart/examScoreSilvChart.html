@@ -1,0 +1,59 @@
+<link rel="stylesheet" href="template/module/teachermanage/teacher.css">
+<div class="row pad">
+<div class="table-responsive">
+    
+        <table class="table table-mailbox">
+            <tbody>
+            <tr class="unread">
+                <td class="name">考试科目</td>
+                <td class="total">参考总人数</td>
+                <td class="excellentScore">优秀分数线</td>
+                <td class="goodScore">良好分数线</td>
+                <td class="passScore">及格分数线</td>
+                <td class="unpassScore">低分分数线</td>
+            </tr>
+            <tr ng-repeat="item in examSubject2.details">
+                <td class="code v-middle" >{{item.subject.name}}</td>
+                <td class="total v-middle">{{classData[item.subject.code].total}}</td>
+                <td class="excellentScore v-middle">>={{classData[item.subject.code].excellentScore}}分</td>
+                <td class="goodScore v-middle">>={{classData[item.subject.code].goodScore}}分</td>
+                <td class="passScore v-middle">>={{classData[item.subject.code].passScore}}分</td>
+                <td class="unpassScore v-middle"><={{classData[item.subject.code].unpassScore}}分</td>
+            </tr>
+            </tbody>
+        </table>
+</div>
+</div>
+<div class="row pad">
+<div class="table-responsive">
+    
+        <table class="table table-mailbox">
+            <tbody>
+                <tr class="unread">
+                    <td class="name">考试科目</td>
+                    <!--<td class="total">参考总人数</td>-->
+                    <td class="excellent">优秀率</td>
+                    <td class="good">良好率</td>
+                    <td class="pass">及格率</td>
+                    <td class="unpass">低分率</td>
+                </tr>
+                <tr ng-repeat="item in examSubject2.details">
+                    <td class="name v-middle" >{{item.subject.name}}</td>
+                    <!--<td class="total v-middle">{{classData[item.subject.code].total}}</td>-->
+                    <td class="excellent v-middle">{{classData[item.subject.code].excellent/classData[item.subject.code].attendedCount*100 | number:1}}%</td>
+                    <td class="good v-middle">{{classData[item.subject.code].good/classData[item.subject.code].attendedCount*100 | number:1}}%</td>
+                    <td class="pass v-middle">{{classData[item.subject.code].pass/classData[item.subject.code].attendedCount*100 | number:1}}%</td>
+                    <td class="unpass v-middle">{{(1-((classData[item.subject.code].unpass-1)/classData[item.subject.code].attendedCount))*100 | number:1}}%</td>
+                </tr>
+            </tbody>
+        </table>
+</div>
+</div>
+
+<!-- <select class="form-control" style="width:30%;" id="" ng-model="subject" ng-options="item.subject.code as item.subject.name for item in examgradeList.list[0].details" ng-change="getData()">
+</select>
+<div class="box-body no-padding" style="height:600px;">
+    <div class=""  style="height:600px;">
+        <pie-chart config="config" data="data"></pie-chart>
+    </div>
+</div> -->

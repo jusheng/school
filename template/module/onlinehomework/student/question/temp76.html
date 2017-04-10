@@ -1,0 +1,41 @@
+<div class="question_item" ng-class="{'done':!value.status}">
+                <div>
+                {{$parent.pageInfo.startRow + $index}}、
+                  <a class="btn btn-xs btn-primary">{{answertype[value.resQuestion.type]}}</a>
+                  <a class="btn btn-xs btn-primary">{{level[value.resQuestion.rank]}}</a>
+                </div>
+                <div class="question_content">
+                  <div ng-bind-html="value.resQuestion.content.c">
+                  </div>
+                  <div>
+                    <span ng-repeat="(k, v) in value.resQuestion.content.img">
+                      <img src="{{v}}" alt="">
+                    </span>
+                    
+                  </div>
+                  <div class="answer_content">
+                    <p ng-repeat="(k, v) in value.resQuestion.answer">
+                      
+                      <!-- 单选题  -->
+                      <input type="radio" name="r_{{value.resQuestion.id}}" ng-if="value.resQuestion.type==76" value="{{k}}" ng-model="value.answerSheet">
+                  
+                      <!-- 多选题 判断题 -->
+                      <input type="checkbox" name="s_{{value.resQuestion.id}}"  ng-if="value.resQuestion.type==77 || value.resQuestion.type==79 " ng-model="value.answerSheet[$index]">  
+
+                      <span ng-bind-html="v.select +' '+ v.text"></span>
+                      <!-- <i ng-show="v.is_correct==1" class="icon-ok text-success"></i> -->
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+
+
+                  </div>
+                  <br>
+
+                  <button ng-click="answerSheet(value.resQuestion.id,$index,value.id,value.resQuestion.type)" ng-show="show_answerBtn($index)">
+                    <span ng-hide="!value.status">提交答案</span>
+                    <span ng-show="!value.status">修改答案</span>
+                  </button>
+                    
+                </div>
+
+                  
+              </div>

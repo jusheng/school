@@ -1,0 +1,88 @@
+.filemanage_lay{
+    margin: 15px;
+   	background: #fff;
+    padding: 15px;
+
+}
+.file_lay a.item{
+	display: inline-block;
+    width: 100px;
+    height: 105px;
+    overflow: hidden;
+    text-align: center;
+    margin: 10px;
+
+    float: left;
+    border:solid #fff 1px;
+
+}
+.file_lay a.item button{
+    visibility: hidden;
+}
+
+.file_lay a.s_item{
+    background: #eff3f9;
+    border:solid #bcccde 1px;
+}
+/*.file_lay a.s_item:after{
+    content: "";
+    display: block;
+    position: absolute;
+    left:0;
+    top:0;
+    bottom: 0;
+    right:0;
+    border:solid #bcccde 1px;
+}*/
+
+
+
+.file_lay a span{
+    display: block;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+.file_lay a.add{
+    display: inline-block;
+    width: 100px;
+    height: 105px;
+    overflow: hidden;
+    text-align: center;
+    margin: 10px;
+	border:dashed #ccc 1px;
+	font-size:50px;
+	color:#ccc;
+	line-height:102px;
+    
+    float: left;
+}
+
+
+.file_lay a img{
+    max-width: 100px;
+    max-height: 82px;
+}
+
+.teacher_grid_lay{
+    margin-bottom: 10px;
+}
+.teacher_grid div{
+    text-align: left;
+    text-indent: 10px;
+}
+
+.target_tree{
+    padding-left: 10px;
+}
+
+.filemanage_info{
+    font-size: 13px;
+}
+
+.file_lay{
+    min-height: 300px;
+}

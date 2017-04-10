@@ -1,0 +1,90 @@
+
+<link rel="stylesheet" href="src/app/edu/user/user.css">
+<!-- 导航条 -->
+<div class="bg-white bread-crumb">
+	<ul class="breadcrumb b-a m-b-n-xs lter b-b wrapper-md">
+		<li>
+			<a ui-href="main"> <i class="fa fa-home"></i>
+				首页
+			</a>
+		</li>
+		<li class="active" ng-bind="title"></li>
+	</ul>
+</div>
+
+<!-- 加载提醒 -->
+<div ng-show="loading" class="text-center m-t-md text-lg"> <i class="fa fa-spin fa-spinner"></i>
+	数据加载中...
+</div>
+
+<!-- 内容区域 -->
+<div class="wrapper-md content">
+	<div class="panel panel-default">
+		<!-- 头部 -->
+		<div class="panel-heading font-bold">
+			{{title}}
+			<a class="btn btn-sm btn-icon btn-rounded btn-default pull-right m-t-n-xs" ui-sref="main.edu.user.userlist({school_id:school_id,name:name})">
+				<i class="text-md fa fa-times text-muted"></i>
+			</a>
+		</div>
+		<!--表单-->
+		<div class="panel-body">
+			<form class="form-horizontal" id="roleconfig_form"  name="user_form">
+				<!--用户名-->
+				<div class="form-group">
+					<label class="col-lg-2 col-sm-3 control-label" for="name">
+						<span class="text-danger wrapper-sm">*</span>
+						姓名
+					</label>
+					<div class="col-sm-6">
+						<span class="table-title">{{record.name}}</span>
+						
+						</div>
+				</div>
+				<div class="line line-dashed b-b line-lg pull-in"></div>
+				
+				<div class="form-group">
+					<label class="col-lg-2 col-sm-3 control-label" for="sex">
+						<span class="text-danger wrapper-sm">*</span>
+						角色
+					</label>
+					<div class="col-sm-6">
+						<div class="row">
+							<table class="user-table">
+								<tr class="table-title">
+									<td></td>
+									<td>名称</td>
+									<td>默认角色</td>
+								</tr>
+								<tr ng-repeat="(key, value) in role">
+									<td>
+									<input type="checkbox" id="role_name" name="role_name" ng-checked="value.checked" ng-model="$parent.role[$index].checked" value="{{value.role.id}}">
+									</td>
+									<td ng-bind="value.role.roleName">
+										
+									</td>
+									<td>
+									<input type="radio" id="isDefault" name="isDefault" ng-checked="value.isDefault" ng-model="$parent.record.isDefault" value="{{value.role.id}}" name="isDefault">
+									</td>
+								</tr>
+
+							</table>
+
+						</div>
+
+
+						</div>
+				</div>
+				<div class="line line-dashed b-b line-lg pull-in"></div>
+				
+				<!--btn-->
+				<div class="form-group">
+					<div class="col-sm-6 col-sm-offset-2">
+						<!-- <button type="reset" class="btn btn-default w-xs">重置</button> -->
+						<button type="buttom" class="btn btn-info w-xs m-l-xl" >保存</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,38 @@
+  <script src="lib/jquery/jquery.validate.min.js"></script>
+  <script src="lib/jquery/additional-methods.min.js"></script> 
+<div id="breadcrumb">
+  <a href="#"><i class="icon-home"></i> {{app.name}}</a> 
+  <i class="icon-angle-right"></i><a>{{app_name}}</a>
+</div>
+
+<div class="filemanage_lay">
+	
+	<div class="row">
+		<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+
+		<a class="btn btn-block btn-success" ui-sref="main.res.teacherfile.sharefilemanage">
+			共享资源
+		</a>
+		<a class="btn btn-block btn-success" ui-sref="main.res.teacherfile.mysharefilemanage">
+			我的共享
+		</a>
+		
+		<br>
+		<div class="directory">
+			
+		</div>
+            
+		</div>
+		<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 file_lay" ui-view>
+			
+
+		</div>
+	</div>
+
+
+</div>
+
+
+<!-- toaster directive -->
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+<!-- / toaster directive -->

@@ -1,0 +1,27 @@
+<div class="ngdialog-title" ng-bind="title"></div>
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div style="height: 300px;">
+            <div id="wrapper" ng-iscroll='wrapper' ng-iscroll-delay='50'>
+                    <div id="scroller">
+                       
+                        <table class="table table-hover">
+                      
+                            <tbody>
+                                <tr ng-repeat="(key, value) in alltextbook">
+                                    <td>{{value.name}}</td>
+                                    <td> 
+                                        <a ng-click="bind(value.id,value)" ng-show="!value.s" class="btn btn-xs btn-success ">授权</a>
+                                        <a ng-show="value.s" class="btn btn-xs btn-default">已授权</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+        </div>
+                
+        </div>
+    </div>

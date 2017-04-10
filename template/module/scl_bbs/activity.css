@@ -1,0 +1,427 @@
+.news {
+    padding-top: 15px;
+}
+
+.news_left{
+	    background: #fff;
+    border-top: solid #79c447 2px;
+    border-radius: 3px;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    padding-top: 0;
+        margin-bottom: 15px;
+}
+
+.news_view_lay{
+	background: #fff;
+	padding: 15px;
+}
+.news_left a{
+	display: block;
+    line-height: 36px;
+    border-bottom: solid #ddd 1px;
+}
+.newsdetail h2{
+	text-align: center;
+	margin-top: 0;
+}
+
+.newsdetail h2 span{
+	display: block;
+}
+
+.pad {
+    padding: 10px;
+}
+
+/* 列表样式 */
+.table-mailbox {
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+}
+.table-mailbox tr > td {
+    white-space: nowrap;
+}
+.table-mailbox tr.unread > td {
+    background-color: rgba(0, 0, 0, 0.05);
+    color: #000;
+    font-weight: 600;
+}
+.table-mailbox tr > td.small-col {
+    width: 30px;
+    color: #f39c12;
+}
+.table-mailbox tr > td.name {
+    width: 150px;
+    font-weight: 600;
+}
+.pad{
+	padding:10px;
+}
+.table-mailbox tr > td.time {
+    text-align: right;
+    width: 100px;
+}
+.table-mailbox tr > td.opt {
+    text-align: right;
+    width: 100px;
+}
+.table-mailbox tr > td.activity {
+    text-align: right;
+    width: 100px;
+}
+
+
+/* iCheck plugin Minimal skin, blue
+----------------------------------- */
+.icheckbox_minimal-blue,
+.iradio_minimal-blue {
+    display: inline-block;
+    *display: inline;
+    vertical-align: middle;
+    margin: 0;
+    padding: 0;
+    width: 18px;
+    height: 18px;
+    background: url(../../../img/blue.png) no-repeat;
+    border: none;
+    cursor: pointer;
+}
+
+.icheckbox_minimal-blue {
+    background-position: 0 0;
+}
+    .icheckbox_minimal-blue.hover {
+        background-position: -20px 0;
+    }
+    .icheckbox_minimal-blue.checked {
+        background-position: -40px 0;
+    }
+    .icheckbox_minimal-blue.disabled {
+        background-position: -60px 0;
+        cursor: default;
+    }
+    .icheckbox_minimal-blue.checked.disabled {
+        background-position: -80px 0;
+    }
+
+.iradio_minimal-blue {
+    background-position: -100px 0;
+}
+    .iradio_minimal-blue.hover {
+        background-position: -120px 0;
+    }
+    .iradio_minimal-blue.checked {
+        background-position: -140px 0;
+    }
+    .iradio_minimal-blue.disabled {
+        background-position: -160px 0;
+        cursor: default;
+    }
+    .iradio_minimal-blue.checked.disabled {
+        background-position: -180px 0;
+    }
+
+/* Retina support */
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+       only screen and (-moz-min-device-pixel-ratio: 1.5),
+       only screen and (-o-min-device-pixel-ratio: 3/2),
+       only screen and (min-device-pixel-ratio: 1.5) {
+    .icheckbox_minimal-blue,
+    .iradio_minimal-blue {
+        background-image: url(../../../img/blue@2x.png);
+        -webkit-background-size: 200px 20px;
+        background-size: 200px 20px;
+    }
+}
+
+
+.upload{
+    display: inline-block;
+    border:solid #ccc 1px;
+    position: relative;
+    padding: 3px;
+    overflow: hidden;
+
+}
+.news {
+    padding-top: 15px;
+}
+
+.news_left{
+        background: #fff;
+        border-top: solid #79c447 2px;
+        border-radius: 3px;
+        box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+        padding: 10px;
+        padding-top: 0;
+        margin-bottom: 15px;
+}
+.title2{
+    text-overflow: ellipsis;
+    height: 36px;
+    line-height: 36px;
+    white-space:nowrap;
+    overflow: hidden;
+    border-top: solid #fff 2px;
+
+}
+.news_view_lay{
+    background: #fff;
+    padding: 15px;
+}
+.news_left .title2{
+    display: block;
+    line-height: 36px;
+    height: 36px;
+    border-bottom: solid #ddd 1px;
+    height: 36px;
+    text-overflow: ellipsis;
+}
+.news_left .title2:hover{
+    border-bottom: 1px #79c447 solid; 
+}
+.newsdetail h2{
+    text-align: center;
+    margin-top: 0;
+}
+
+.newsdetail h2 span{
+    /*display: inline-block;*/
+}
+
+.pad {
+    padding: 10px;
+}
+/*浏览模式*/
+/*.title0{
+    text-align: center;
+}*/
+.title{
+    margin-top: 0;
+    width:100%;
+    height:33px;   
+
+    /*background-color: #D2FF4D;*/
+}
+.title1 h1{
+    text-align: center;
+}
+
+.newsBox_lay{
+    margin-top: -10px;
+}
+.newsBox_lay:after{
+    content:"";
+    display: block;
+    clear: both;
+}
+.newsBox{
+   padding: 9px;   
+}
+.newsBox_inner:hover{
+    border:1px #0099CC solid;
+}
+.newsBox_inner{
+    border:1px #cacbcd solid;
+    background-color: #fff;
+   /*   height: 300px;  */
+    position: relative;
+  /*   padding: 10px; */
+  overflow: hidden;
+}
+
+.newsBox_inner .delete{
+    position: absolute;
+    right:10px;
+    top:10px;
+    color: #fff;
+}
+.newsBox_inner .sort_no{
+    position: absolute;
+    left:10px;
+    top:10px;
+}
+
+
+.newsBox_inner .activity_img{
+    width: 29%;
+    margin-left: -15px;
+}
+
+.newsBox_inner .activity_img_lay{
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+.newsBox_inner .activity_intro{
+    position: relative;
+    z-index: 1;
+    background: #fff;
+    padding: 10px;
+}
+
+.newsBox_inner .add_ico{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 200px;
+    width: 158px;
+    height: 200px;
+    display: inline-block;
+    margin-left: -79px;
+    margin-top: -100px;
+    z-index: 1;
+    color:#cdcdcd;
+}
+
+.newsBox_inner .titlebox{
+    padding: 0;
+    margin: 0;
+    overflow: hidden; 
+    width:100%;
+    height:30px;
+    padding: 10px;
+    /*background-color: #D2FF4D;*/
+    text-overflow: ellipsis;
+}
+.newsBox_inner .titlebox a{
+    font-weight:bold;
+    font-size: 14px;
+    line-height: 25px;
+    font-family: "微软雅黑";
+    color:#444;
+}
+.newsBox_inner .contentbox{
+    height:50px;
+    overflow: hidden; 
+    line-height: 20px;
+    font-size: 14px;
+    font-family: "微软雅黑";
+    color: #666;
+    padding: 10px;
+    text-overflow: ellipsis;
+}
+/*.foot{
+    margin-bottom: 0;
+    margin-right: 0;
+    height:20px;
+    width:60px;
+    
+}*/
+.pic a img,
+.pic1 a img{    
+    width:50%;
+    /* height:206px; */
+}
+
+.pic1{
+    height: 150px;
+    overflow: hidden;
+}
+
+
+.newsBox_inner ul li{
+    list-style: none;
+}
+.foot_time{
+    position: absolute;
+    right:10px;
+    bottom: 10px;
+}
+
+.col-lg-top{
+    margin-top:23%;
+    height: 0;
+}
+
+.col-lg-top1{
+    margin-top:90%;
+    height: 0;
+}
+
+
+.news_c{
+    position: absolute;
+    width: 100%;
+    top:0;
+    left:0;
+    bottom: 10px;
+    overflow: hidden;
+}
+
+
+.foot ul li a{
+    position: absolute;
+    top:290px;
+    left:10px;
+    /*float: left;*/
+    /*display: inline-block;*/
+    /*text-align: left;*/
+}
+.foot ul li a i{
+    font-size: 14px;
+}
+/*deitail页面*/
+.newsdetail .panel {
+    padding: 15px;
+}
+.newsdetail .panel img{
+    width:100%;
+    height:100%;
+}
+.panel-heading h1{
+    text-align: center;
+}
+.activity_img_lay .last div{
+    font-size: 200px;
+    text-align: left;
+    line-height: 100%;
+    color: #cdcdcd;
+    height: 120px;
+
+}
+.activity_img_lay .last i{
+    position:absolute;
+    top:50%;
+    left:25%;
+    background-color: #cdcdcd;
+}
+.delete{
+    height:20px;
+}
+.row{
+    margin-bottom: 10px;
+}
+.titlebox{
+    height: 20px;
+}
+.act-xq{
+    position: absolute;
+    bottom: 15px;
+    right:15px;
+}
+.panel-content{
+    width: 100%;
+    float:left;
+}
+.ngdialog-title{
+    text-align: center;
+}
+.left_author{
+    background-color: #E5EDF2;
+    overflow: hidden;
+    border-right: 1px solid #C2D5E3;
+    vertical-align: top;
+    
+}
+
+.left_author img{
+    margin: 0 auto;
+    width: 90%;
+    height: 75%;
+    margin-left: 6%;
+}

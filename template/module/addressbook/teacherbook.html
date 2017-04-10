@@ -1,0 +1,38 @@
+<div class="row pad">
+	<div class="col-sm-6">
+    </div>
+    <div class="col-sm-6 search-form">
+        <form class="text-right" ng-submit="search()">
+            <div class="input-group">
+                <input type="text" class="form-control input-sm" ng-model="param.keyword" placeholder="Search">
+                <div class="input-group-btn">
+                    <button type="submit" name="q" class="btn btn-sm btn-success"><i class="fa icon-search"></i></button>
+                </div>
+            </div>                                                     
+        </form>
+    </div>
+</div>
+
+<div class="table-responsive">                                          
+    <table class="table table-mailbox">
+        <tbody>
+        <tr class="unread">
+            <td class="name">姓名</td>
+            <td class="dept">所属部门</td>
+            <td class="tel">电话</td>
+            <td class="email">邮箱</td>
+        </tr>
+        <tr ng-repeat="item in pageInfo.list">
+            <td class="name v-middle">{{item.name}}</a></td>
+            <td class="dept v-middle">{{item.dept.deptName}}</td>
+            <td class="tel v-middle">{{item.tel}}</td>
+            <td class="email v-middle">{{item.email}}</td>
+        </tr>
+    </tbody>
+    </table>
+    <div ng-include="'template/module/tpl/pageInfo.html'"></div>
+</div>
+
+<!-- toaster directive -->
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+<!-- / toaster directive -->

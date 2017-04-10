@@ -1,0 +1,76 @@
+
+<div class="row pad">
+	<div class="col-sm-6">
+        <label style="margin-right: 10px;" class="">
+            <div class="icheckbox_minimal-blue" ng-click="select_all()" ng-class="{checked:s_all==true}" style="position: relative;"><input type="checkbox" id="check-all" style="position: absolute; opacity: 0;"></div>
+        </label>
+        <!-- Action button -->
+        <div class="btn-group">
+            <button type="button" class="btn btn-default btn-sm btn-flat dropdown-toggle" data-toggle="dropdown" >
+                操作 <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+            <!-- remove_trash() -->
+                <li><a ng-click="allow()">通过</a></li>
+                <li><a ng-click="refuse()">拒绝</a></li>
+                <li class="divider"></li>
+                <li><a ng-click="del()">删除</a></li>
+            </ul>
+        </div>
+
+    </div>
+    <div class="col-sm-6 search-form">
+        <form action="" class="text-right">
+            <div class="input-group">                                                            
+                <input type="text" class="form-control input-sm" placeholder="Search">
+                <div class="input-group-btn">
+                    <button type="submit" name="q" class="btn btn-sm btn-info"><i class="fa icon-search" ng-click="search"></i></button>
+                </div>
+            </div>                                                     
+        </form>
+    </div>
+</div>
+
+<div class="table-responsive">
+                                               
+    <table class="table table-mailbox">
+        <tbody>
+        <tr class="unread">
+            <td class="small-col">
+            </td>
+            <td class="subject">标题</td>
+            <td class="name">上报人</td>
+            <td class="name">状态</td>
+            <td class="name">开始时间</td>
+            <td class="name">结束时间</td>
+            <td class="time">添加时间</td>
+            <td class="time">周期</td>
+            <td class="opt">操作</td>
+        </tr>
+        
+        <tr ng-repeat="item in pageInfo.list">
+            <td class="small-col"  ><div class="icheckbox_minimal-blue" ng-class="{checked:$parent.pageInfo.list[$index].selected}" ng-click="select_per($index)" style="position: relative;"><input type="checkbox" style="position: absolute; opacity: 0;"></div>
+            </td>
+            <td class="subject"><a ui-sref="main.plan.detail({id:item.id})">{{item.title}}</a></td>
+            <td>{{item.presideUser.name}}</td>
+            <td class="text-danger">{{item.status.codeText}}</td>
+             <td>{{item.beginTime.split(" ")[0]}}</td>
+            <td>{{item.endTime.split(" ")[0]}}</td>
+            <td class="time">{{item.createTime}}</td>
+            <td class="time">{{item.periodType.codeText}}</td>
+            <td class="opt">
+            <div ng-if="item.status.codeText=='上报中'">
+            <a ng-click="allow($index)"  class="text-info">通过</a> 
+            <a ng-click="refuse($index)" class="text-info">拒绝</a>
+            </div>
+            </td>
+        </tr>
+    </tbody>
+    </table>
+    <div ng-include="'template/module/tpl/pageInfo.html'"></div>
+</div>
+
+
+<!-- toaster directive -->
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+<!-- / toaster directive -->

@@ -1,0 +1,28 @@
+
+<div class="ngdialog-title">{{app_name}}</div>
+<br>
+<div class="password">
+    <div class="row">
+       <form id="teacheradd_form" class="form-horizontal">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="form-group">
+                <label class="col-lg-4 col-sm-5 control-label">图书室名称</label>
+                <div class="col-sm-7">
+                    <input type="text" class="form-control" id="name" name="name" placeholder="请输入图书室名称" ng-model="record.name">
+                </div>
+            </div>
+            <div class="form-group-last">
+                <label class="col-lg-4 col-sm-5 control-label"></label>
+                <div class="col-sm-7">
+                    <button type="submit" class="btn btn-success">提交</button>
+                </div>
+            </div>
+        </div>
+      </form>
+    </div>
+
+</div>
+
+<!-- toaster directive -->
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+<!-- / toaster directive -->

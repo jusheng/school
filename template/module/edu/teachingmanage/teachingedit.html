@@ -1,0 +1,130 @@
+<script src="lib/My97DatePicker/WdatePicker.js"></script>
+  <script src="lib/jquery/jquery.validate.min.js"></script>
+  <script src="lib/jquery/additional-methods.min.js"></script>  
+<div class="row pad add_new">
+    <a ui-sref="main.teachingmanage.teachinglist({id:''})" title="返回列表"><span class="icon-reply pull-right" style="line-height:0px;margin:0px 0px;font-size:22px;color:#AFC3E1;opacity:10;"></span></a>
+    <form id="newsadd_form" class="form-horizontal">
+        <legend ng-bind="title" class="title0"></legend>
+        <div class="form-group row">
+            
+            <label for="sortsId" class="col-lg-2 col-sm-3 control-label">选择授课老师</label>
+            <div  class="col-lg-7 col-sm-3 "> 
+              <div class="user_lay">
+                  <span class="s_name" ng-show="record.teacherId">{{record.teacherName}} </span>
+                
+                  <!-- <span style="position: relative;display: inline-block;">
+                      <a href="" ng-click="open_te(1)" style="line-height:34px;display: inline-block;"><i class="icon-plus"></i>选择授课老师</a>
+                  </span> -->
+                  <div class="clearfix"></div>
+              </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="title" class="col-lg-2 col-sm-3 control-label">课题</label>
+            <div  class="col-sm-7">
+            <input type="text" class="form-control" disabled="true"  id="title" name="title" placeholder="" required="required" ng-model="record.classTitle">
+            </div>
+        </div>
+
+        <div class="form-group">
+          <label for="" class="col-lg-2 col-sm-3 control-label">地点</label>
+          <div class="col-sm-7">
+             <textarea name="" disabled="true" class="form-control" rows="2" ng-model="record.lessionPlace"></textarea>
+          </div>
+        </div>
+         <div class="form-group row">
+      
+            <label for="sortsId" class="col-lg-2 col-sm-3 control-label">记录人</label>
+            <div  class="col-lg-7 col-sm-3"> 
+              <div class="user_lay">
+                <span class="s_name" ng-show="record.recorderId">{{record.recorderName}} </span>
+
+                <div class="clearfix"></div>
+              </div>
+            </div>
+          </div>
+
+         <div class="form-group row">
+      
+            <label for="sortsId" class="col-lg-2 col-sm-3 control-label">应邀参评人员</label>
+            <div  class="col-lg-7 col-sm-3"> 
+              <div class="user_lay">
+                <span class="s_name" ng-repeat="(k,v) in record.attendeePlanList">{{v.name}}</span>
+
+                <div class="clearfix"></div>
+              </div>
+            </div>
+        </div>
+       
+        <div class="form-group"> 
+            <label for="" class="col-lg-2 col-sm-3 control-label">作课时间</label>
+            <div class="col-sm-7 row">
+                   <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5" style="position:relative">      
+
+                     <span style="display: inline-block;line-height:32px;">{{record.classTime}}</span>
+                   </div>
+            </div> 
+            
+        </div>
+
+        
+        <div class="form-group list-group">
+            <label for="content"  class="col-lg-2 col-sm-3 control-label">说课内容</label>
+            <!-- <textarea name="" id="input" class="form-control" rows="3" required="required" ng-model="record.content"></textarea> -->
+            <div  class="col-sm-7">
+                <!-- <div class="ueditor" ng-disabled="true" name="content"  ng-model="record.speakingContent" config="_simpleConfig" required></div> -->
+                <textarea name="remark" id="remark" ng-disabled="true" class="form-control" rows="3" ng-bind-html="record.speakingContent"></textarea>
+            </div>
+        </div> 
+         <div class="form-group row">
+      
+            <label for="name3" class="col-lg-2 col-sm-3 control-label">出席人员</label>
+            <div  class="col-lg-7 col-sm-3"> 
+              <div class="user_lay">
+                <input type="text" name="name3" id="name3" ng-model="record.attendeeList" required="required" style="line-height:0px;width:0px;border-color:#fff;display:inline-block;visibility: hidden">
+                <span class="s_name" ng-repeat="(k,v) in record.attendeeList">{{v.name}} <i class="icon-remove" ng-click="del_a($index)"></i></span>
+                
+                <span style="position: relative;display: inline-block;">
+                      <a href="" ng-click="open_te(4)" style="line-height:34px;display: inline-block;"><i class="icon-plus"></i><!-- 选择出席人员 --></a>
+                </span>
+                <div class="clearfix"></div>
+              </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="" class="col-lg-2 col-sm-3 control-label">缺席人员</label>
+            <div  class="col-lg-7 col-sm-3"> 
+              <div class="user_lay">
+                <input type="text" name="" id="" ng-model="record.defaulterList" style="line-height:0px;width:0px;border-color:#fff;display:inline-block;visibility: hidden">
+                <span class="s_name" ng-repeat="(k,v) in record.defaulterList">{{v.name}} <i class="icon-remove" ng-click="del_b($index)"></i></span>
+                
+                <span style="position: relative;display: inline-block;">
+                      <a href="" ng-click="open_te(5)" style="line-height:34px;display: inline-block;"><i class="icon-plus"></i><!-- 选择缺席人员 --></a>
+                </span>
+                <div class="clearfix"></div>
+              </div>
+            </div>
+        </div>
+        <div class="form-group list-group">
+            <label for=""  class="col-lg-2 col-sm-3 control-label">评课内容</label>
+            <!-- <textarea name="" id="input" class="form-control" rows="3" required="required" ng-model="record.content"></textarea> -->
+            <div  class="col-sm-7">
+                <!-- <div class="ueditor" name="content"  ng-model="record.content" config="_simpleConfig" required></div> -->
+                <textarea name="" id="" class="form-control" rows="3" ng-model="record.comment"></textarea>
+            </div>
+        </div>
+        
+         
+        <div class="form-group">
+            <label for="content"  class="col-lg-2 col-sm-3 control-label"></label>
+            <div  class="col-sm-7">
+                <!-- <button type="submit" ng-click="set_sign(false)" class="btn btn-info">保存草稿</button> -->
+                <button type="submit" class="btn btn-success">提交</button>
+                <button type="submit" class="btn btn-primary">暂存</button>
+            </div>
+        </div>
+    </form>
+</div>
+<!-- toaster directive -->
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+<!-- / toaster directive -->

@@ -1,0 +1,103 @@
+<link rel="stylesheet" type="text/css" href="lib/angular/tree-control.css">
+<link rel="stylesheet" type="text/css" href="lib/angular/tree-control-attribute.css">
+<div class="row">
+	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+		<h3> <i class="linecons-pencil"></i>
+			{{title}}
+		</h3>
+	</div>
+
+	<div role="tabpanel">
+		<!-- Nav tabs -->
+		<ul class="nav nav-tabs" role="tablist">
+			<li role="presentation" class="active">
+				<a href="/main/email/write/emailbook#home" aria-controls="home" role="tab" data-toggle="tab">
+				 <span ng-if="user_data.userType==2">学校通讯录</span>
+				 <span ng-if="user_data.userType==1">任课老师</span>
+				</a>
+			</li>
+			<li role="presentation">
+				<a href="/main/email/write/emailbook#tab" aria-controls="tab" role="tab" data-toggle="tab">
+					班级通讯录
+				</a>
+			</li>
+		</ul>
+
+		<!-- Tab panes -->
+		<div class="tab-content">
+			<div role="tabpanel" class="tab-pane active" id="home">
+				<div class="widget-content nopadding fix_hgt">
+						
+						<div class="list-group">
+							<li class="list-group-item" ng-repeat="(key, value) in schoolMailList | filter:is_teacher">
+							<input type="checkbox" ng-click="select(value)" ng-model="value.selected">	
+							{{value.name}}
+							<span ng-if="value.isClassTeacher==true">(班主任)</span>
+							<span ng-if="value.subjectName1">({{value.subjectName1}})</span>
+							</li>
+						</div>
+					    
+				</div>
+				<div  class="list-group" style="margin-bottom: 0">
+					<li class="list-group-item" >
+						<input type="checkbox" ng-click="select_all_teacher()" ng-checked="is_s_all_teacher"> 全选
+					</li>
+				</div>
+			</div>
+			<div role="tabpanel" class="tab-pane" id="tab">
+				
+				<div class="widget-content nopadding fix_hgt">
+					<a ui-sref="main.teachercenter.index" ng-show="user_data.userType==2">老师</a>
+                   <a ui-sref="main.studentcenter.index" ng-show="user_data.userType==1">学生</a>
+					
+					<!-- 老师的所有班级 （老师身份） -->
+					<div class="list-group" ng-repeat="(key, value) in teacherclass" ng-show="user_data.userType==2">
+						
+
+						<li class="list-group-item  class_title" >
+							<input type="checkbox" ng-click="select_student_byclass($index)" ng-show="value.student.length>0" ng-model="value.selected">
+							<div ng-click="select_class(value.id,$index)">
+								<strong >{{value.name}}</strong>
+							</div>
+						</li>
+						<div ng-show="value.student.length==0">
+							该班暂无学生
+						</div>
+
+						<!-- 学生列表 -->
+							<li class="list-group-item"  ng-repeat="(k, v) in schoolMailList | filter:is_student" ng-show="is_student_in_class($parent.$index,v)">
+								<input type="checkbox" ng-click="select(v)" ng-model="v.selected">	
+								{{v.name}}
+							</li>
+						
+
+					</div>
+
+					<!-- 学生所在班级成员 （学生身份）-->
+				    <div class="list-group" ng-show="user_data.userType==1">
+							<li class="list-group-item" ng-repeat="(key, value) in schoolMailList | filter:is_student">
+							<input type="checkbox" ng-click="select(value)" ng-model="value.selected">	
+							{{value.name}}
+							</li>
+					</div>
+
+				</div>
+				<!-- 全选本班学生（学生身份） -->
+				<div  class="list-group" style="margin-bottom: 0" ng-show="user_data.userType==1">
+					<li class="list-group-item" >
+						<input type="checkbox" ng-click="select_myclass_students()" ng-checked="is_all_myclass_students">全选
+					</li>
+				</div>
+	
+					
+
+				
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!-- toaster directive -->
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+<!-- / toaster directive -->

@@ -1,0 +1,115 @@
+
+
+<!-- 导航条 -->
+<div class="bg-white bread-crumb">
+    <ul class="breadcrumb b-a m-b-n-xs lter b-b wrapper-md">
+        <li><a ui-sref="main"><i class="fa fa-home"></i> 首页</a></li>
+        <li><a ui-sref="main.sys.menu.list">菜单管理</a></li>
+        <li class="active" ng-bind="title"></li>
+    </ul>
+</div>
+
+<!-- 内容区域 -->
+<div class="wrapper-md content">
+    <div class="panel panel-default">
+        <!-- 头部 -->
+        <div class="panel-heading font-bold">{{title}}
+        <a class="btn btn-sm btn-icon btn-rounded btn-default pull-right m-t-n-xs" ui-sref="main.sys.menu.list"><i class="text-md fa fa-times text-muted"></i></a>
+        </div>
+        <!--表单-->
+            <div class="panel-body">
+                <form class="form-horizontal"  name="user_form">
+                    <div class="form-group">
+                        <label class="col-lg-2 col-sm-3 control-label" for="menuName">
+                        <span class="text-danger wrapper-sm">*</span>菜单名称</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" name="menuName" id="menuName" placeholder="请输入菜单名称..." ng-model="record.menuName">
+                        </div>
+                    </div>
+                    <div class="line line-dashed b-b line-lg pull-in"></div>
+                    <div class="form-group">
+                        <label class="col-lg-2 col-sm-3 control-label" for="request">
+                        <span class="text-danger wrapper-sm">*</span>菜单地址</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" name="request" id="request" placeholder="请输入菜单地址..." ng-model="record.request">
+                        </div>
+                    </div>
+                    <div class="line line-dashed b-b line-lg pull-in"></div>
+                    <div class="form-group">
+                        <label class="col-lg-2 col-sm-3 control-label" for="permission">权限标识</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" name="permission" id="permission" placeholder="请输入权限标识..." ng-model="record.permission">
+                        </div>
+                    </div>
+                    <div class="line line-dashed b-b line-lg pull-in"></div>
+                    <div class="form-group">
+                        <label class="col-lg-2 col-sm-3 control-label" for="menuType">菜单类型</label>
+                        <div class="col-sm-6">
+                            <select name="menuType" id="menuType" ng-model="record.menuType" class="form-control">
+                                <option ng-repeat="(key,value) in mType" value="{{key}}" ng-selected="key==record.menuType">{{value}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="line line-dashed b-b line-lg pull-in"></div>
+                    <div class="form-group">
+                        <label class="col-lg-2 col-sm-3 control-label" for="expand">是否展开</label>
+                        <div class="col-sm-6">
+                            <select name="expand" id="expand" ng-model="record.expand" class="form-control selects">
+                                <option value=true ng-selected="record.expand==true">展开</option>
+                                <option value=false ng-selected="record.expand==false">收缩</option>
+                            </select>
+                            <!--<input type="text" class="form-control" name="extend" id="extend" placeholder="请输入排序..." ng-model="record.sortNo">-->
+                            <span class="help-block m-b-none"></span>
+                        </div>
+                    </div>
+                    <div class="line line-dashed b-b line-lg pull-in"></div>
+                    <div class="form-group">
+                        <label class="col-lg-2 col-sm-3 control-label" for="isShow">节点类型</label>
+                        <div class="col-sm-6">
+                            <select name="isShow" id="isShow" ng-model="record.isShow" class="form-control selects">
+                                <option value=true ng-selected="record.isShow==true">叶子节点</option>
+                                <option value=false ng-selected="record.isShow==false">树枝节点</option>
+                            </select>
+                            <!--<input type="text" class="form-control" name="extend" id="extend" placeholder="请输入排序..." ng-model="record.sortNo">-->
+                            <span class="help-block m-b-none"></span>
+                        </div>
+                    </div>
+                    <div class="line line-dashed b-b line-lg pull-in"></div>
+                    <div class="form-group">
+                        <label class="col-lg-2 col-sm-3 control-label" for="iconcls">图标</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" name="iconcls" id="iconcls" placeholder="请输入图标..." ng-model="record.iconcls">
+                            <span class="help-block m-b-none"></span>
+                        </div>
+                    </div>
+                    <div class="line line-dashed b-b line-lg pull-in"></div>
+                    <div class="form-group">
+                        <label class="col-lg-2 col-sm-3 control-label" for="parentId">
+                        <span class="text-danger wrapper-sm">*</span>上级菜单</label>
+                        <div class="col-sm-6">
+                            <!-- <input type="text" class="form-control selects" name="parentId" id="parentId" ng-model="record.parentId"> -->
+                            <select class="form-control selects" name="parentId" id="parentId" ng-model="record.parentId" ng-options="m.id as m.menuName for m in menu | filter:{parentId:0}">
+                                <option value="0">无</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="line line-dashed b-b line-lg pull-in"></div>
+                    <div class="form-group">
+                        <label class="col-lg-2 col-sm-3 control-label" for="sortNo"><span class="text-danger wrapper-sm">*</span>排序</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" name="sortNo" id="sortNo" placeholder="请输入排序..." ng-model="record.sortNo">
+                            <span class="help-block m-b-none"></span>
+                        </div>
+                    </div>
+                    <div class="line line-dashed b-b line-lg pull-in"></div>
+                    <!--btn-->
+                    <div class="form-group">
+                        <div class="col-sm-6 col-sm-offset-2">
+                            <button type="reset" class="btn btn-default w-xs">重置</button>
+                            <button type="submit" class="btn btn-info w-xs m-l-xl" ng-disabled="isDisabled">保存</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+    </div>
+</div>

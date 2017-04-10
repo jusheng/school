@@ -1,0 +1,95 @@
+<script src="lib/My97DatePicker/WdatePicker.js"></script>
+<script src="lib/jquery/jquery.validate.min.js"></script>
+<script src="lib/jquery/additional-methods.min.js"></script>
+<style>
+    .duration.error{
+            border: 1px solid red;
+    }
+</style>
+<div class="row pad">
+    <form id="examadd" class="form-horizontal">
+        <div class="form-top">
+            <legend ng-bind="title"></legend>
+            <a class="btn btn-sm pull-right m-t-n-xs btn-close"
+               ui-sref="main.examTeacher.examTeacherlist({id:id})"><i class="icon-remove"></i>
+            </a>
+        </div>
+
+        <div class="form-group">
+            <label for="name" class="col-lg-2 col-sm-3 control-label">考试名称</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" id="name" name="name" placeholder="" ng-model="record.name">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-lg-2 col-sm-3 control-label">考试科目</label>
+            <div class="col-sm-9">
+                <table class="table table-mailbox" ng-model="record.details">
+                    <tbody>
+                    <tr class="unread">
+                        <td class="small-col"></td>
+                        <td class="subject">科目</td>
+                        <td class="totalPoint">总分</td>
+                        <td class="beginTime">开始时间</td>
+                        <td class="beginTime"></td>
+                        <td>时长</td>
+                        <td class="endTime">结束时间</td>
+                    </tr>
+                    <tr ng-repeat="item in subjects">
+                        <td class=" v-middle">
+                            <input type="checkbox" id="id" name="id" ng-checked="item.checked"
+                                   ng-model="$parent.subjects[$index].checked" ng-click="select($index)">
+                        </td>
+                        <td class="subject v-middle"><span>{{item.name}}</span></td>
+                        <td class="totalPoint v-middle">
+                            <input type="text" class="form-control" style="width: 60px;"  ng-model="$parent.subjects[$index].totalPoint">
+                        </td>
+                        <td class="beginTime v-middle">
+
+                            <input type="text" class="form-control" date-picker datefmt="yyyy-MM-dd"
+                                                              ng-model="$parent.subjects[$index].beginTime_temp"
+                                                              autocomplete="off" readonly="" style="width: 110px;" ng-change="js_time($index)">
+
+                        
+
+                        </td>
+                        <td>
+                            <select name="hour" id="hour" class="form-control" style="width: 45px;display: inline-block; padding: 0" ng-model="$parent.subjects[$index].s_hour"  ng-options="value.h as value.h for value in hour" ng-change="js_time($index)"></select>时 
+
+                            <select name="minutes" id="minutes" class="form-control" style="width: 45px;display: inline-block; padding: 0" ng-model="$parent.subjects[$index].s_minutes"  ng-options="value.m as value.m for value in minutes" ng-change="js_time($index)"></select>分
+
+                        </td>
+                        <td>
+                            <div>
+                                <input type="text" id="duration_{{$index}}" name="duration_{{$index}}" class="form-control duration" ng-model="$parent.subjects[$index].duration"  style="display: inline-block;width: 30px;padding: 0"   ng-change="js_time($index)">分钟
+                            </div>
+                        </td>
+                        <td class="endTime v-middle">
+                            <input type="text" class="form-control" placeholder=""
+                                                            ng-model="$parent.subjects[$index].endTime"
+                                                            autocomplete="off" readonly="" >
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="intro" class="col-lg-2 col-sm-3 control-label">考试简介</label>
+            <div class="col-sm-9">
+                <textarea name="intro" id="intro" rows="3" class="form-control" ng-model="record.intro"> </textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 col-sm-3 control-label"></label>
+            <div class="col-sm-9">
+                <button type="submit" class="btn btn-success">提交</button>
+            </div>
+        </div>
+    </form>
+</div>
+<!-- toaster directive -->
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+<!-- / toaster directive -->

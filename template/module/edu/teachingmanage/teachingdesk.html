@@ -1,0 +1,34 @@
+<div class="box box-success" id="loading-example" style="position: relative;">
+                    <div class="box-header" style="cursor: move;">
+                      <i class="fa {{appicon}}"></i>
+                      <h3 class="box-title"><a href="{{appurl}}">{{appname}}</a></h3>
+                      <i class="fa pull-right  icon-remove" ng-click="delapp(appidentify)"></i>
+                    </div>
+                    <div class="box-body no-padding">
+                        <div class="news_desk" style="position:relative;height:100%;">
+                        
+                        <div class="swiper-container swiper2 " style="min-height:120px;height:100%;">
+                            <div class="swiper-wrapper" style="min-height:120px;min-height:270px;">
+
+
+                              <div class="swiper-slide" ng-repeat="item in pageInfo_act.list"
+                              style="background: url({{item.imgUrl}}) center center no-repeat;background-size:cover;height:100%;">
+                                <!-- <img ng-src="{{item.imgUrl}}" alt=""> -->
+                                <!-- <a ui-sref="main.activity.detail({id:item.id})"></a> -->
+                                <a ui-sref="main.activityteacher.activityteacherdetail({id:item.id})">
+                                    <span class="" style="display:inline-block;height:50px;width:100%;line-height:50px;position: absolute;bottom: 0;background: rgba(0,0,0,0.5);color:#fff;text-align:center;">{{item.name}}</span>
+                                     
+                                </a>
+                              </div>
+
+                            </div>
+                            <!-- Add Pagination -->
+                            <!-- <div class="swiper-pagination"></div> -->
+                            <span class="arrow-left act-left"></span> 
+                            <span class="arrow-right act-right"></span>
+                          </div>
+                        </div>
+                     
+
+                    </div>
+                  </div>

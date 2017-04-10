@@ -1,0 +1,30 @@
+<div class="ngdialog-title">分享</div>
+<br>
+    <div class="row">
+       <form id="folder_form" class="form-horizontal">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			<div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center teacher_grid_lay">
+				    分享给 <input type="radio" name="rangeType" value="1" ng-model="share.rangeType"> 全校 
+                    <input type="radio" name="rangeType"  value="2" ng-model="share.rangeType"> 老师
+
+                    <div class="scroll_lay" ng-iscroll='wrapper' ng-iscroll-delay='0' ng-show="share.rangeType == 2">
+                        <div class="row teacher_grid">
+                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" ng-repeat="(key, value) in teachers">
+                                <input type="checkbox" checklist-model="share.userIds" checklist-value="value.id"> {{value.name}}
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+                    
+                        <button type="submit" class="btn btn-success" ng-click="submit()">确认</button>
+                    
+                        <button type="button" class="btn btn-default" ng-click="closeThisDialog()">取消</button>
+                    
+                </div>
+			</div>
+        </div>
+      </form>
+    </div>

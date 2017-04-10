@@ -1,0 +1,18 @@
+<div class="wraperbox">
+	<div class="row wraper" ng-repeat="item in pageInfo.list" style="margin-bottom: 10px;">
+	    <div class="col-md-5 col-sm-5 pull-left">
+	        <a ui-sref="main.activityteacher.activityteacherdetail({id:item.id})"><img ng-src="{{item.imgUrl}}" src="/res/img/no.jpg"/></a>
+	    </div> 
+	    <div class="col-md-7 col-sm-7">
+	        <a ui-sref="main.activityteacher.activityteacherdetail({id:item.id})" class="act-title">{{item.name}}</a>
+	        <p><span>活动时间：</span> {{item.starttime}} 至 {{item.endtime}} </p>
+	        <p><span>活动简介：</span>  {{item.remark}}</p>
+
+	    </div>
+	    <a ui-sref="main.activityteacher.activityteacherdetail({id:item.id})" class="btn btn-success btn-sm act-xq">活动详情</a>                     
+	</div>
+	<div ng-include="'template/module/tpl/pageInfo.html'"></div>
+</div>
+<!-- toaster directive -->
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+<!-- / toaster directive

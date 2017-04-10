@@ -1,0 +1,147 @@
+<!-- toaster directive -->
+<toaster-container toaster-options="{'position':'toast-top-right','close-button':'true'}"></toaster-container>
+<!-- / toaster directive -->
+<style>
+	/* ul.ivh-treeview li.ivh-treeview-node-collapsed ul.ivh-treeview{
+		display: inline-block;
+	} */
+	ul.ivh-treeview .ivh-treeview-node-leaf .ivh-treeview-toggle{
+		cursor: pointer;
+	}
+	.ivh-treeview-node-content i{
+		font-style: normal;
+		color: red;
+		cursor: pointer;
+	}
+	.ivh-treeview-node-label{
+		    display: inline-block;
+			width: 100px;
+			overflow: hidden;
+			word-break: break-word;
+			white-space: nowrap;
+			/* line-height: 22px; */
+			padding-top: 4px;
+			vertical-align: middle;
+			text-overflow: ellipsis;
+	}
+</style>
+<!-- 导航条 -->
+<div class="bg-white bread-crumb">
+	<ul class="breadcrumb b-a m-b-n-xs lter b-b wrapper-md">
+		<li>
+			<a ui-href="main">
+				<i class="fa fa-home"></i>
+				首页
+			</a>
+			<li class="active" ng-bind="title"></li>
+		</li>
+	</ul>
+</div>
+
+<!-- 加载提醒 -->
+<div ng-show="loading" class="text-center m-t-md text-lg"> <i class="fa fa-spin fa-spinner"></i>
+	数据加载中...
+</div>
+
+<!-- 内容区域 -->
+<div class="wrapper-md content">
+	<div class="panel panel-default">
+		<!-- 头部 -->
+		<div class="panel-heading font-bold">
+			{{title}}
+			<a class="btn btn-sm btn-icon btn-rounded btn-default pull-right m-t-n-xs" ui-sref="main.res.chapter.list">
+				<i class="text-md fa fa-times text-muted"></i>
+			</a>
+		</div>
+		<!--表单-->
+		<div class="row">
+			<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+				<div ivh-treeview="knowledge_tree"
+						ivh-treeview-use-checkboxes="false" 
+						ivh-treeview-on-cb-change="selectCallback(ivhNode, ivhIsSelected, ivhTree)" 
+						ivh-treeview-on-select="select_this(ivhNode)"
+						ivh-treeview-on-del="del_this(ivhNode)" 
+						>
+			    </div>
+			</div>
+			<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+				<div class="panel-body">
+					<form class="form-horizontal"  name="user_form">
+						<!--用户名-->
+						
+
+						<div class="form-group">
+							<label class="col-lg-2 col-sm-3 control-label" for="name">
+								<span class="text-danger wrapper-sm">*</span>
+								章节名称
+							</label>
+							<div class="col-sm-6">
+								<input type="text" class="form-control" name="name" id="name" ng-model="record.name" placeholder="请输入章节名称..."></div>
+						</div>
+						<div class="line line-dashed b-b line-lg pull-in"></div>
+
+						
+						<div class="form-group" style="display: none;">
+							<label class="col-lg-2 col-sm-3 control-label" for="remark">
+								<span class="text-danger wrapper-sm">*</span>
+								年级
+							</label>
+							<div class="col-sm-6">
+								<input type="text" class="form-control" name="grade" id="grade" ng-model="record.grade.id" >
+							</div>
+						</div>
+						<div class="form-group"  style="display: none;">
+							<label class="col-lg-2 col-sm-3 control-label" for="remark">
+								<span class="text-danger wrapper-sm">*</span>
+								教材
+							</label>
+							<div class="col-sm-6">
+								<input type="text" class="form-control" name="textbook" id="textbook" ng-model="record.textbook.id" >
+							</div>
+						</div>
+						<div class="form-group"  style="display: none;">
+							<label class="col-lg-2 col-sm-3 control-label" for="address">
+								<span class="text-danger wrapper-sm">*</span>
+								科目
+							</label>
+							<div class="col-sm-6">
+								<input type="text" class="form-control" name="code" id="code" ng-model="record.subject.id"></div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-lg-2 col-sm-3 control-label" for="remark">
+								<span class="text-danger wrapper-sm">*</span>
+								父节点
+							</label>
+							<div class="col-sm-6" style="position: relative;">
+							<input type="text" style="position: absolute;left:0;top:0; visibility: hidden;" class="form-control" name="parentId" id="parentId" ng-model="record.parentId">
+							<input type="text" class="form-control" disabled="" name="parentName" id="parentName" ng-model="parentName" placeholder="请选择右侧节点" style="background: #222323;">	
+							</div>
+						</div>
+						<div class="line line-dashed b-b line-lg pull-in"></div>
+
+						<div class="form-group">
+							<label class="col-lg-2 col-sm-3 control-label" for="address">
+								<span class="text-danger wrapper-sm">*</span>
+								排序
+							</label>
+							<div class="col-sm-6">
+								<input type="text" class="form-control" name="sort" id="sort" ng-model="record.sort" placeholder="请输入排序号.."></div>
+						</div>
+						<div class="line line-dashed b-b line-lg pull-in"></div>
+						
+						
+
+						<!--btn-->
+						<div class="form-group">
+							<div class="col-sm-6 col-sm-offset-2">
+								<button type="submit" class="btn btn-info w-xs m-l-xl" >添加</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+</div>

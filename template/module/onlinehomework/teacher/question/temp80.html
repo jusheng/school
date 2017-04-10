@@ -1,0 +1,62 @@
+
+<div class="question_item">
+	<div>
+	{{$parent.pageInfo.startRow + $index}}、
+		<a class="btn btn-xs btn-primary">{{answertype[value.type]}}</a>
+		<a class="btn btn-xs btn-primary">{{level[value.rank]}}</a>
+	</div>
+
+	<div class="question_content">
+		<div ng-bind-html="value.content.c">
+		</div>
+		<div>
+			<span ng-repeat="(k, v) in value.content.img">
+				<img src="{{v}}" alt="">
+			</span>
+			
+		</div>
+
+		<div class="answer_content">
+			<div ng-bind-html="value.answer.c">
+				
+			</div>
+			<div>
+				<span ng-repeat="(k, v) in value.answer.img">
+					<img src="{{v}}" alt="">
+				</span>
+			</div>
+		</div>
+
+	</div>
+	
+
+	试题解析：
+	<div class="analysis_content">
+		
+		<div ng-bind-html="value.analysis.c">
+			
+		</div>
+		<div>
+			<span ng-repeat="(k, v) in value.analysis.img">
+				<img src="{{v}}" alt="">
+			</span>
+		</div>
+	</div>
+
+	<div>
+		关键词：{{value.keyword}}
+	</div>
+	<div>
+		关键字：{{value.tag}}
+	</div>
+
+
+	<div class="text-right" ng-if="show_options('main.teacheronlinehomework.show')">
+		<button class="btn btn-sm btn-primary" ng-click="unbindquestion(value.id)">删除</button>	
+	</div>
+
+	<div class="text-right"  ng-if="show_options('main.teacheronlinehomework.choice')">
+	    <button class="btn btn-sm disabled" ng-show="is_exist(value.id)">已添加</button>
+		<button class="btn btn-sm btn-primary" ng-click="bindquestion(value.id)" ng-hide="is_exist(value.id)">添加到作业</button>	
+	</div>	
+</div>

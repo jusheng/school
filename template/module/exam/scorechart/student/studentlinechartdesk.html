@@ -1,0 +1,15 @@
+<div class="box box-danger" id="loading-example" style="position: relative;">
+    <div class="box-header" style="cursor: move;">
+        <i class="fa {{appicon}}"></i>
+        <h3 class="box-title"><a href="{{appurl}}">{{appname}}</a></h3>
+        <i class="fa pull-right  icon-remove" ng-click="delapp(appidentify)"></i>
+    </div>
+    <div class="box-body no-padding" style="height:450px;">
+        <select class="form-control" style="width:30%;margin-left:13px;" ng-model="subjectIndex"
+                ng-options="key as item.name for (key,item) in subjectData" ng-change="getData()">
+        </select>
+        <div class="" style="height:400px;">
+            <line-chart config="config" data="data"></line-chart>
+        </div>
+    </div>
+</div>

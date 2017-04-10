@@ -1,0 +1,75 @@
+<!-- toaster directive -->
+<toaster-container toaster-options="{'position':'toast-top-right','close-button':'true'}"></toaster-container>
+<!-- / toaster directive -->
+
+<!-- 导航条 -->
+<div class="bg-white bread-crumb">
+	<ul class="breadcrumb b-a m-b-n-xs lter b-b wrapper-md">
+		<li>
+			<a ui-href="main">
+				<i class="fa fa-home"></i>
+				首页
+			</a>
+			<li class="active" ng-bind="title"></li>
+		</li>
+	</ul>
+</div>
+
+<!-- 加载提醒 -->
+<div ng-show="loading" class="text-center m-t-md text-lg"> <i class="fa fa-spin fa-spinner"></i>
+	数据加载中...
+</div>
+
+<!-- 内容区域 -->
+<div class="wrapper-md content">
+	<div class="panel panel-default">
+		<!-- 头部 -->
+		<div class="panel-heading font-bold">
+			{{title}}
+			<a class="btn btn-sm btn-icon btn-rounded btn-default pull-right m-t-n-xs" ui-sref="main.res.extraclass.classlist({subject_id: subjectId,school_type:schoolType,km:km,school_name:schoolName})">
+				<i class="text-md fa fa-times text-muted"></i>
+			</a>
+		</div>
+		<!--表单-->
+		<div class="panel-body">
+			<form class="form-horizontal"  name="user_form">
+				<!--用户名-->
+				
+				<div class="form-group">
+					<label class="col-lg-2 col-sm-3 control-label" for="address">
+						<span class="text-danger wrapper-sm">*</span>
+						标题
+					</label>
+					<div class="col-sm-6">
+						<input type="text" name="title" id="title" class="form-control" ng-model="record.title">
+						</div>
+				</div>
+				<div class="line line-dashed b-b line-lg pull-in"></div>
+
+				<div class="form-group">
+					<label class="col-lg-2 col-sm-3 control-label" for="address">
+						<span class="text-danger wrapper-sm">*</span>
+						排序
+					</label>
+					<div class="col-sm-6">
+					<input type="number" name="sort" id="sort" class="form-control" ng-model="record.sort">
+						</div>
+				</div>
+				<div class="line line-dashed b-b line-lg pull-in"></div>
+
+
+
+
+				
+			
+				<!--btn-->
+				<div class="form-group">
+					<div class="col-sm-6 col-sm-offset-2">
+						<button type="reset" class="btn btn-default w-xs">重置</button>
+						<button type="submit" class="btn btn-info w-xs m-l-xl" >发布</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

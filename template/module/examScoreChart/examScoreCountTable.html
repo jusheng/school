@@ -1,0 +1,255 @@
+<link rel="stylesheet" href="template/module/examScoreChart/examScoreCountTable.css">
+<div class="row pad">
+    <div class="col-sm-6">
+        <div class="allsubject row">
+            <select name="code" ng-model="subjectIndex" class="form-control col-sm-3 col-md-3"
+                    ng-change="getData(select)">
+                <option ng-repeat="item in examSubject2.details" value={{$index}} ng-selected="subjectIndex==$index">
+                    {{item.subject.name}}
+                </option>
+            </select>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="allsubject pull-right">
+            <select name="code" ng-model="select" class="pull-left form-control" ng-change="getData(select)">
+                <option value=0 ng-selected="select==1">查看年级</option>
+                <option value=1 ng-selected="select==1"> 查看班级</option>
+            </select>
+        </div>
+    </div>
+
+</div>
+<div class="row pad">
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th colspan="8" style="text-align:center;">试卷分析表</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>单位</td>
+                <td>{{schoolData.name}}</td>
+                <td>年级</td>
+                <td>{{teacherData[examSubject2.details[subjectIndex].subject.code].grade.name}}</td>
+                <td>科目</td>
+                <td>{{examSubject2.details[subjectIndex].subject.name}}</td>
+                <td>考试日期</td>
+                <td>{{examSubject2.details[subjectIndex].beginTime}}</td>
+            </tr>
+            <tr>
+                <td>任课教师</td>
+                <td>{{teacherData[examSubject2.details[subjectIndex].subject.code].teacher.name}}</td>
+                <td>参考人数</td>
+                <td>{{fourRate[examSubject2.details[subjectIndex].subject.code].attendedCount}}</td>
+                <td>班级</td>
+                <td>{{teacherData[examSubject2.details[subjectIndex].subject.code].eduClass.name}}</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td rowspan="3" ng-show="stageData[examSubject2.details[subjectIndex].subject.code].length<=6">成绩分析</td>
+                <td rowspan="6" ng-hide="stageData[examSubject2.details[subjectIndex].subject.code].length<=6">成绩分析</td>
+                <td>分数段</td>
+                <td ng-repeat="item in stageData[examSubject2.details[subjectIndex].subject.code]" ng-show="$index<=5">
+                    {{item.stage}}
+                </td>
+                <td ng-repeat="item in [1,2,3,4,5,6,7,8,9,0]|limitTo:(6-stageData[examSubject2.details[subjectIndex].subject.code].length)"
+                    ng-show="stageData[examSubject2.details[subjectIndex].subject.code].length<6"></td>
+                <td ng-hide="stageData[examSubject2.details[subjectIndex].subject.code].length" colspan="6" rowspan="3">
+                    未录入成绩
+                </td>
+                <!--<td ng-repeat="item in [1,2,3,4,5,6]" ng-hide="stageData[examSubject2.details[subjectIndex].subject.code].length"></td>-->
+            </tr>
+            <tr>
+                <td>人数</td>
+                <td ng-repeat="item in stageData[examSubject2.details[subjectIndex].subject.code]" ng-show="$index<=5">
+                    {{item.count}}
+                </td>
+                <td ng-repeat="item in [1,2,3,4,5,6,7,8,9,0]|limitTo:(6-stageData[examSubject2.details[subjectIndex].subject.code].length)"
+                    ng-show="stageData[examSubject2.details[subjectIndex].subject.code].length<6"></td>
+                <!--<td ng-repeat="item in [1,2,3,4,5,6]" ng-hide="stageData[examSubject2.details[subjectIndex].subject.code].length"></td>-->
+            </tr>
+            <tr>
+                <td>所占百分比</td>
+                <td ng-repeat="item in stageData[examSubject2.details[subjectIndex].subject.code]" ng-show="$index<=5">
+                    {{item.count/item.total*100| number:1}}%
+                </td>
+                <td ng-repeat="item in [1,2,3,4,5,6,7,8,9,0]|limitTo:(6-stageData[examSubject2.details[subjectIndex].subject.code].length)"
+                    ng-show="stageData[examSubject2.details[subjectIndex].subject.code].length<6"></td>
+                <!--<td ng-repeat="item in [1,2,3,4,5,6]" ng-hide="stageData[examSubject2.details[subjectIndex].subject.code].length"></td>-->
+            </tr>
+            <tr ng-hide="stageData[examSubject2.details[subjectIndex].subject.code].length<=6">
+                <td>分数段</td>
+                <td ng-repeat="item in stageData[examSubject2.details[subjectIndex].subject.code]" ng-show="$index>5">
+                    {{item.stage}}
+                </td>
+                <td ng-repeat="item in [1,2,3,4,5,6,7,8,9,0]|limitTo:(12-stageData[examSubject2.details[subjectIndex].subject.code].length)"></td>
+            </tr>
+            <tr ng-hide="stageData[examSubject2.details[subjectIndex].subject.code].length<=6">
+                <td>人数</td>
+                <td ng-repeat="item in stageData[examSubject2.details[subjectIndex].subject.code]" ng-show="$index>5">
+                    {{item.count}}
+                </td>
+                <td ng-repeat="item in [1,2,3,4,5,6,7,8,9,0]|limitTo:(12-stageData[examSubject2.details[subjectIndex].subject.code].length)"></td>
+            </tr>
+            <tr ng-hide="stageData[examSubject2.details[subjectIndex].subject.code].length<=6">
+                <td>所占百分比</td>
+                <td ng-repeat="item in stageData[examSubject2.details[subjectIndex].subject.code]" ng-show="$index>5">
+                    {{item.count/item.total*100| number:1}}%
+                </td>
+                <td ng-repeat="item in [1,2,3,4,5,6,7,8,9,0]|limitTo:(12-stageData[examSubject2.details[subjectIndex].subject.code].length)"></td>
+            </tr>
+            <tr>
+                <td>平均分</td>
+                <td>{{avgData[examSubject2.details[subjectIndex].subject.code]}}</td>
+                <td>全距</td>
+                <td>
+                    {{scoreData.max[examSubject2.details[subjectIndex].subject.code]-scoreData.min[examSubject2.details[subjectIndex].subject.code]
+                    | number:1}}
+                </td>
+                <td>最高分</td>
+                <td>{{scoreData.max[examSubject2.details[subjectIndex].subject.code]}}</td>
+                <td>最低分</td>
+                <td>{{scoreData.min[examSubject2.details[subjectIndex].subject.code]}}</td>
+            </tr>
+            <tr>
+                <td>标准差</td>
+                <td>{{devData[examSubject2.details[subjectIndex].subject.code]}}</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>优秀人数</td>
+                <td>{{fourRate[examSubject2.details[subjectIndex].subject.code].excellent}}</td>
+                <td>优良人数</td>
+                <td>{{fourRate[examSubject2.details[subjectIndex].subject.code].good}}</td>
+                <td>及格人数</td>
+                <td>{{fourRate[examSubject2.details[subjectIndex].subject.code].pass}}</td>
+                <td>不及格人数</td>
+                <td>{{fourRate[examSubject2.details[subjectIndex].subject.code].unpass}}</td>
+            </tr>
+            <tr>
+                <td>优秀率</td>
+                <td>
+                    {{fourRate[examSubject2.details[subjectIndex].subject.code].excellent/fourRate[examSubject2.details[subjectIndex].subject.code].total*100
+                    | number:1}}%
+                </td>
+                <td>优良率</td>
+                <td>
+                    {{fourRate[examSubject2.details[subjectIndex].subject.code].good/fourRate[examSubject2.details[subjectIndex].subject.code].total*100
+                    | number:1}}%
+                </td>
+                <td>及格率</td>
+                <td>
+                    {{fourRate[examSubject2.details[subjectIndex].subject.code].pass/fourRate[examSubject2.details[subjectIndex].subject.code].total*100
+                    | number:1}}%
+                </td>
+                <td>不及格率</td>
+                <td>
+                    {{fourRate[examSubject2.details[subjectIndex].subject.code].unpass/fourRate[examSubject2.details[subjectIndex].subject.code].total*100
+                    | number:1}}%
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+    <!--<div class="table-responsive">-->
+
+    <!--<table class="table table-mailbox">-->
+    <!--<tbody>-->
+    <!--<tr class="unread">-->
+    <!--<td class="name">考试科目</td>-->
+    <!--<td ng-repeat="item in examSubject2.details">{{item.subject.name}}</td>-->
+    <!--</tr>-->
+    <!--<tr>-->
+    <!--<td class="attendedCount v-middle">应考人数</td>-->
+    <!--<td ng-repeat="item in examSubject2.details">{{fourRate[item.subject.code].total}}</td>-->
+    <!--</tr>-->
+    <!--<tr>-->
+    <!--<td class="total v-middle">参考人数</td>-->
+    <!--<td ng-repeat="item in examSubject2.details">{{fourRate[item.subject.code].attendedCount}}</td>-->
+    <!--</tr>-->
+    <!--<tr>-->
+    <!--<td class="code v-middle">平均分</td>-->
+    <!--<td ng-repeat="item in examSubject2.details">{{avgData[item.subject.code]}}</td>-->
+    <!--</tr>-->
+    <!--<tr>-->
+    <!--<td class="code v-middle">最高分</td>-->
+    <!--<td ng-repeat="item in examSubject2.details">{{scoreData.max[item.subject.code]}}</td>-->
+    <!--</tr>-->
+    <!--<tr>-->
+    <!--<td class="code v-middle">最低分</td>-->
+    <!--<td ng-repeat="item in examSubject2.details">{{scoreData.min[item.subject.code]}}</td>-->
+    <!--</tr>-->
+    <!--<tr>-->
+    <!--<td class="code v-middle">优秀人数</td>-->
+    <!--<td ng-repeat="item in examSubject2.details">{{fourRate[item.subject.code].excellent}}</td>-->
+    <!--</tr>-->
+    <!--<tr>-->
+    <!--<td class="code v-middle">优秀率</td>-->
+    <!--<td ng-repeat="item in examSubject2.details">-->
+    <!--{{fourRate[item.subject.code].excellent/fourRate[item.subject.code].total*100 | number:1}}%-->
+    <!--</td>-->
+    <!--</tr>-->
+    <!--<tr>-->
+    <!--<td class="code v-middle">优良人数</td>-->
+    <!--<td ng-repeat="item in examSubject2.details">{{fourRate[item.subject.code].good}}</td>-->
+    <!--</tr>-->
+    <!--<tr>-->
+    <!--<td class="code v-middle">优良率</td>-->
+    <!--<td ng-repeat="item in examSubject2.details">-->
+    <!--{{fourRate[item.subject.code].good/fourRate[item.subject.code].total*100 | number:1}}%-->
+    <!--</td>-->
+    <!--</tr>-->
+    <!--<tr>-->
+    <!--<td class="code v-middle">及格人数</td>-->
+    <!--<td ng-repeat="item in examSubject2.details">{{fourRate[item.subject.code].pass}}</td>-->
+    <!--</tr>-->
+    <!--<tr>-->
+    <!--<td class="code v-middle">及格率</td>-->
+    <!--<td ng-repeat="item in examSubject2.details">-->
+    <!--{{fourRate[item.subject.code].pass/fourRate[item.subject.code].total*100 | number:1}}%-->
+    <!--</td>-->
+    <!--</tr>-->
+    <!--<tr>-->
+    <!--<td class="code v-middle">不及格人数</td>-->
+    <!--<td ng-repeat="item in examSubject2.details">{{fourRate[item.subject.code].unpass}}</td>-->
+    <!--</tr>-->
+    <!--<tr>-->
+    <!--<td class="code v-middle">不及格率</td>-->
+    <!--<td ng-repeat="item in examSubject2.details">-->
+    <!--{{fourRate[item.subject.code].unpass/fourRate[item.subject.code].total*100 | number:1}}%-->
+    <!--</td>-->
+    <!--</tr>-->
+    <!--<tr>-->
+    <!--<td class="code v-middle">全距</td>-->
+    <!--<td ng-repeat="item in examSubject2.details">-->
+    <!--{{scoreData.max[item.subject.code]-scoreData.min[item.subject.code] | number:1}}-->
+    <!--</td>-->
+    <!--</tr>-->
+    <!--<tr>-->
+    <!--<td class="code v-middle">标准差</td>-->
+    <!--<td ng-repeat="item in examSubject2.details">{{devData[item.subject.code]}}</td>-->
+    <!--</tr>-->
+    <!--</tbody>-->
+    <!--</table>-->
+    <!--</div>-->
+</div>
+
+
+<!-- <select class="form-control" style="width:30%;" id="" ng-model="subject" ng-options="item.subject.code as item.subject.name for item in examgradeList.list[0].details" ng-change="getData()">
+</select>
+<div class="box-body no-padding" style="height:600px;">
+    <div class=""  style="height:600px;">
+        <pie-chart config="config" data="data"></pie-chart>
+    </div>
+</div> -->

@@ -1,0 +1,39 @@
+<!--         <form class="form-inline" role="form">
+            <div class="form-group has-success">
+              <label class="control-label " for="inputSuccess4" style="padding-left:15px;"> 请输入布局比</label>
+              <input type="text" class="bin_num" id="inputSuccess4" name="words" size="2"  ng-keyup="checkLength(this,number)" ng-model="$parent.number" style="padding: 6px 12px; border-radius:20px;border:solid #ccc 1px;">
+
+              <button type="button" class="btn btn-default" ng-click="se_style()"  value="" style="border-radius:20px;">重置布局</button>
+               <div style="height:0;overflow:hidden;line-height:0;">
+                <span ng-bind="$parent.number" class="temp_bin_num"></span>
+              </div>
+            </div>
+            
+            <button type="button" class="btn btn-default active pull-right" ng-click="submit()"  value="" style="border-radius:20px;margin-right:15px;">完成调整</button>
+        </form> -->
+        <div class="canvas_lay center-block">
+        
+                <canvas id="mycanvas">您的浏览器不支持canvas,请更换浏览器</canvas>
+                <img >
+        </div>
+
+        <div id="cover">
+          <img src="/res/img/no.jpg" alt="">
+          <div></div>
+          <p></p>
+        </div>
+        <div id="cover1">
+          <img src="" alt="">
+
+          <p></p>
+        </div>
+        <!-- <div id="lr">
+            <a href="" class="icon icon-angle-left" ng-click="leftChange()" style="font-size:30px;"></a>
+
+            <a href="" class="icon icon-angle-right" ng-click="rightChange()" style="font-size:30px;"></a>
+        </div> -->
+
+<!-- toaster directive -->
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+<!-- / toaster directive -->
+       

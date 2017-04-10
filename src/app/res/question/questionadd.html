@@ -1,0 +1,200 @@
+<!-- toaster directive -->
+<toaster-container toaster-options="{'position':'toast-top-right','close-button':'true'}"></toaster-container>
+<!-- / toaster directive -->
+
+<!-- 导航条 -->
+<div class="bg-white bread-crumb">
+	<ul class="breadcrumb b-a m-b-n-xs lter b-b wrapper-md">
+		<li>
+			<a ui-href="main">
+				<i class="fa fa-home"></i>
+				首页
+			</a>
+			<li class="active" ng-bind="title"></li>
+		</li>
+	</ul>
+</div>
+
+<!-- 加载提醒 -->
+<div ng-show="loading" class="text-center m-t-md text-lg"> <i class="fa fa-spin fa-spinner"></i>
+	数据加载中...
+</div>
+
+<!-- 内容区域 -->
+<div class="wrapper-md content">
+	<div class="panel panel-default">
+		<!-- 头部 -->
+		<div class="panel-heading font-bold">
+			{{title}}
+			<a class="btn btn-sm btn-icon btn-rounded btn-default pull-right m-t-n-xs" ui-sref="main.res.question.questionlist({subject_id: param.subjectId, grade_id:param.gradeId, subject_name:param.subjectName, grade_name:param.gradeName})">
+				<i class="text-md fa fa-times text-muted"></i>
+			</a>
+		</div>
+		<!--表单-->
+		<div class="panel-body">
+			<form class="form-horizontal"  name="user_form">
+				<!--用户名-->
+				
+				<div class="form-group">
+					<label class="col-lg-2 col-sm-3 control-label" for="address">
+						<span class="text-danger wrapper-sm">*</span>
+						试题难度
+					</label>
+					<div class="col-sm-6">
+						<select name="rank" id="rank" class="form-control" ng-options="value.id as value.codeText for value in level" ng-model="record.rank">
+							<option value="">--选择--</option>
+						</select></div>
+				</div>
+				<div class="line line-dashed b-b line-lg pull-in"></div>
+
+				<div class="form-group">
+					<label class="col-lg-2 col-sm-3 control-label" for="address">
+						<span class="text-danger wrapper-sm">*</span>
+						章节
+					</label>
+					<div class="col-sm-6" style="position: relative;">
+						<input type="text" class="form-control" style="position: absolute;top: 0; left:0;opacity: 0" name="chapters" id="chapters" ng-model="record.chapters"  >
+						<a class="btn btn-block text-left" ng-click="select_chapter()" style="position: relative;z-index: 1">选择... <span ng-show="record.chapters">【{{record.s_chapter}}】</span></a>
+
+					</div>
+				</div>
+				<div class="line line-dashed b-b line-lg pull-in"></div>
+				<div class="form-group">
+					<label class="col-lg-2 col-sm-3 control-label" for="address">
+						<span class="text-danger wrapper-sm">*</span>
+						知识点
+					</label>
+					<div class="col-sm-6" style="position: relative;">
+						<input type="text" class="form-control" style="position: absolute;top: 0; left:0;opacity: 0" name="knowledgePoints" id="knowledgePoints" ng-model="record.knowledgePoints"  >
+						<a class="btn btn-block text-left" ng-click="select_knowledgePoints()" style="position: relative;z-index: 1">选择... <span ng-show="record.knowledgePoints">【{{record.s_knowledgePoints}}】</span></a>
+
+					</div>
+				</div>
+				<div class="line line-dashed b-b line-lg pull-in"></div>
+
+
+				<div class="form-group">
+					<label class="col-lg-2 col-sm-3 control-label" for="remark">
+						<span class="text-danger wrapper-sm">*</span>
+						试题内容
+					</label>
+					<div class="col-sm-6" style="position: relative;">	
+						<textarea id="hide_content" name="hide_content" style="position: absolute;top: 0; left:0;opacity: 0" ng-model="record_temp.content_temp.c" class="form-control" rows="3"></textarea>
+						<div name="content" class="include_editor"  ng-model="record_temp.content_temp.c" config="_simpleConfig" required></div>
+						<div class="editor-kityformula-js"></div>
+						<br>	
+						<button class="btn btn-xs btn-info" ngf-select="onContentSelect($files)" multiple="multiple">添加图片</button>
+
+						<span ng-repeat="(key, value) in record_temp.content_temp.img" class="content_c">
+							<img ng-src="{{value}}" alt="">
+							<i class="text-md fa fa-times text-white" ng-click="del_content_img($index)"></i>
+						</span>
+
+					</div>
+				</div>
+				<div class="line line-dashed b-b line-lg pull-in"></div>
+				<div class="form-group">
+					<label class="col-lg-2 col-sm-3 control-label" for="name">
+						<span class="text-danger wrapper-sm">*</span>
+						试题类型
+					</label>
+					<div class="col-sm-6">
+						<select name="type" id="type" class="form-control" ng-options="value.id as value.codeText for value in type" ng-model="record.type" ng-change="change_answer()" ng-init="record.type=76">
+							<option value="">--选择--</option>
+						</select>
+					</div>
+				</div>
+			
+				<div class="line line-dashed b-b line-lg pull-in"></div>
+
+
+
+				<div class="form-group">
+					<label class="col-lg-2 col-sm-3 control-label" for="remark">
+						<span class="text-danger wrapper-sm">*</span>
+						试题答案
+					</label>
+					<div class="col-sm-6">
+						
+						<div ng-show="record.type==76">
+							<!-- 单选题 -->
+							<div ng-include="'src/app/res/question/answertemp/singletemp.html'" ng-controller="singletempController" ></div>
+						</div>
+						<div ng-show="record.type==77">
+							<!-- 多选题 -->
+							<div ng-include="'src/app/res/question/answertemp/multipletemp.html'" ng-controller="multipletempController"></div>
+							
+						</div>
+						<div ng-show="record.type==78">
+							<!-- 问答题 -->
+							<div ng-include="'src/app/res/question/answertemp/qatemp.html'" ng-controller="qatempController"></div>
+							
+						</div>
+						<div ng-show="record.type==79">
+							<!-- 判断题 -->
+							<div ng-include="'src/app/res/question/answertemp/judgetemp.html'" ng-controller="judgetempController"></div>
+						</div>
+						<div ng-show="record.type==80">
+							<!-- 填空题 -->
+							<div ng-include="'src/app/res/question/answertemp/completemp.html'" ng-controller="completempController"></div>
+						</div>
+						<div ng-show="record.type==147">
+							<!-- 解答题 -->
+							<div ng-include="'src/app/res/question/answertemp/aqtemp.html'" ng-controller="aqtempController"></div>
+						</div>
+
+							
+					</div>
+				</div>
+				<div class="line line-dashed b-b line-lg pull-in" ></div>
+
+
+
+				<div class="form-group">
+					<label class="col-lg-2 col-sm-3 control-label" for="remark">
+						<span class="text-danger wrapper-sm">*</span>
+						试题解析
+					</label>
+					<div class="col-sm-6">
+						<textarea id="hide_analysis" name="hide_analysis" style="position: absolute;top: 0; left:0;opacity: 0" ng-model="record_temp.analysis_temp.c" class="form-control" rows="3"></textarea>
+						<div class="include_editor" name="content"  ng-model="record_temp.analysis_temp.c" config="_simpleConfig" required></div>
+						<br>	
+						<button class="btn btn-xs btn-info" ngf-select="onAnalysisSelect($files)" multiple="multiple">添加图片</button>
+						<span ng-repeat="(key, value) in record_temp.analysis_temp.img" class="content_c">
+							<img ng-src="{{value}}" alt="">
+							<i class="text-md fa fa-times text-white" ng-click="del_analysis_img($index)"></i>
+						</span>
+					</div>
+				</div>
+				<div class="line line-dashed b-b line-lg pull-in"></div>
+				<div class="form-group">
+					<label class="col-lg-2 col-sm-3 control-label" for="name">
+						<span class="text-danger wrapper-sm">*</span>
+						关键词
+					</label>
+					<div class="col-sm-6">
+						<input type="text" class="form-control" name="keyword" id="keyword" ng-model="record.keyword" placeholder="请输入关键字..."></div>
+				</div>
+				<div class="line line-dashed b-b line-lg pull-in"></div>
+			
+				<div class="form-group">
+					<label class="col-lg-2 col-sm-3 control-label" for="name">
+						<span class="text-danger wrapper-sm">*</span>
+						试题标签
+					</label>
+					<div class="col-sm-6">
+						<input type="text" class="form-control" name="tag" id="tag" ng-model="record.tag" placeholder="请输入试题标签..."></div>
+				</div>
+				<div class="line line-dashed b-b line-lg pull-in"></div>
+				
+				<!--btn-->
+				<div class="form-group">
+					<div class="col-sm-6 col-sm-offset-2">
+						<button type="reset" class="btn btn-default w-xs">重置</button>
+						<button type="submit" class="btn btn-info w-xs m-l-xl" >保存</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

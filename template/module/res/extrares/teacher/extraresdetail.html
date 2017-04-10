@@ -1,0 +1,53 @@
+<style id="kfformula">img.kfformula{vertical-align: middle;}</style>
+<style id="tablesort">table.sortEnabled tr.firstRow th,table.sortEnabled tr.firstRow td{padding-right:20px;background-repeat: no-repeat;background-position: center right;   background-image:url(/template/ueditor-1.4.3.3/themes/default/images/sortable.png);}</style>
+<!-- <style id="table">.selectTdClass{background-color:#edf5fa !important}table.noBorderTable td,table.noBorderTable th,table.noBorderTable caption{border:1px dashed #ddd !important}table{margin-bottom:10px;border-collapse:collapse;display:table;}td,th{padding: 5px 10px;border: 1px solid #DDD;}caption{border:1px dashed #DDD;border-bottom:0;padding:3px;text-align:center;}th{border-top:1px solid #BBB;background-color:#F7F7F7;}table tr.firstRow th{border-top-width:2px;}.ue-table-interlace-color-single{ background-color: #fcfcfc; } .ue-table-interlace-color-double{ background-color: #f7faff; }td p{margin:0;padding:0;}
+</style>
+
+<style id="pagebreak">.pagebreak{display:block;clear:both !important;cursor:default !important;width: 100% !important;margin:0;}</style>
+<style id="pre">pre{margin:.5em 0;padding:.4em .6em;border-radius:8px;background:#f8f8f8;}</style>
+<style id="loading">.loadingclass{display:inline-block;cursor:default;background: url('/template/ueditor-1.4.3.3/themes/default/images/loading.gif') no-repeat center center transparent;border:1px solid #cccccc;margin-left:1px;height: 22px;width: 22px;}
+.loaderrorclass{display:inline-block;cursor:default;background: url('/template/ueditor-1.4.3.3/themes/default/images/loaderror.png') no-repeat center center transparent;border:1px solid #cccccc;margin-right:1px;height: 22px;width: 22px;}</style>
+<style id="anchor">.anchorclass{background: url('/template/ueditor-1.4.3.3/themes/default/images/anchor.gif') no-repeat scroll left center transparent;cursor: auto;display: inline-block;height: 16px;width: 15px;}</style> -->
+<legend>
+	<p>章节列表</p>
+
+</legend>
+
+	<strong><span ng-bind="wholetitle" style="font-size:20px"></span></strong>
+	<br>
+			<!-- <strong>创建时间：</strong><span ng-bind="detail.createTime"></span><br>	
+			<strong>资源类型：</strong><span ng-bind="detail.resTypeNameref"></span> -->
+			<!-- <div ng-if="detail.resType==2 || detail.resType == 3">
+				<div id="mediaplayer"></div>
+				<strong>描述：</strong><span ng-bind-html="detail.description"></span><br>		
+			</div>
+			<div ng-if="detail.resType==1">
+				<strong>内容：</strong><span ng-bind-html="detail.content"></span><br>		
+			</div>	 -->	
+	<div class="result_lay">
+
+	
+		<div class="row">
+			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-3 resitem_lay"  ng-repeat="(key, value) in pageInfo.list">
+				<div class="resitem_placeholder"></div>
+				<div class="resitem">
+					<a ui-sref="main.extrares.detailindex.detail2({id:value.id,mainId:mainId,resType:resType})">
+						<div class="bbs_c img-responsive" ng-if="value.thirdUrl!=null" style="background: url({{value.thirdUrl}}) center center no-repeat;background-size:cover;">
+                		</div>
+                		<div class="bbs_c img-responsive" ng-if="value.thirdUrl==null" style="background: url(/res/img/no.jpg) center center no-repeat;background-size:cover;">
+                		</div>   
+						<!-- <img src="{{value.thirdUrl}}" alt="" class="img-responsive" id="extraImgs1"> -->
+						<div class="extrares_cover">
+							<span>查看章节</span>
+						</div>
+					</a>
+					<div class="resitem_title">
+						<a ui-sref="main.extrares.detailindex.detail2({id:value.id,mainId:mainId,resType:resType})" ng-bind="value.title"></a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		
+		<div ng-include="'template/module/tpl/pageInfo.html'"></div>
+	</div>

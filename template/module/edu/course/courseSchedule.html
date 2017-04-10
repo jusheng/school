@@ -1,0 +1,105 @@
+<style type="text/css">
+    table tr td {
+        text-align: center;
+    }
+    table tr td.morning {
+        background-color: #00A1FB;
+        color:white;
+    }
+    table tr td.afternoon {
+        background-color:#2ed556;
+        color:white;
+    }
+    table tr td.night {
+        background-color: #c12e2a;
+        color:white;
+    }
+    table tr td.dark {
+        background-color: #525252;
+        color:white;
+    }
+    .warpper>label {
+        display:block;
+    }
+</style>
+<link rel="stylesheet" type="text/css" href="../../../../lib/css/magic-input.min.css">
+<div class="news">
+    <div class="row  no-padding">
+        <!-- <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+        <a class="btn btn-block btn-success" ui-sref="main.score.scoreInput({id:item.id})" ng-repeat="item in pageInfo"><i class="fa fa-pencil"></i>{{item.name}}</a>
+        </div> -->
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 news_view_lay">
+            <div class="col-md-3">
+                <div>
+                    <div class="tree"></div>
+                    <!--<div ivh-treeview="treeData"-->
+                         <!--ivh-treeview-expand-to-depth="0"-->
+                         <!--ivh-treeview-use-checkboxes="false"-->
+                         <!--ivh-treeview-on-select="select_this(ivhNode)" >-->
+                    <!--</div>-->
+                </div>
+                <div>
+                    <div class="warpper">
+                        <h4>
+                            课节类型
+                        </h4>
+                        <label ng-repeat="(key,item) in typeDict">
+                            <input type="radio" class="mgr mgr-lg" ng-model="param.typeIndex" name="typeDict" value={{key}} > <span ng-hide="key==0">{{item}}</span>
+                            <input ng-show="key==0" type="text" ng-model="typeDict[key]" placeholder="其他" max="14" min="0">
+                        </label>
+                    </div>
+                    <div class="warpper">
+                        <label>
+                            上课天数
+                            <input type="number" name="roleName" ng-model="courseCycle.cycle" ng-change="updateCourseCycle()"
+                                   placeholder="上午" max="14" min="0">
+                        </label>
+                    </div>
+                    <div class="warpper">
+                        <h4>
+                            每天节数
+                        </h4>
+                        <label>
+                            上午
+                            <input type="number" name="roleName" ng-model="courseDayNum.morning" ng-change="updateCourseDayNum()"
+                                   placeholder="上午" max="10" min="0">
+                        </label>
+                        <label>
+                            下午
+                            <input type="number" name="roleName" ng-model="courseDayNum.afternoon" ng-change="updateCourseDayNum()"
+                                   placeholder="上午" max="10" min="0">
+                        </label>
+                        <label>
+                            晚上
+                            <input type="number" name="roleName" ng-model="courseDayNum.night" ng-change="updateCourseDayNum()"
+                                   placeholder="上午" max="10" min="0">
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <table class="table-bordered table">
+                    <tr>
+                        <td class="dark">节次</td>
+                        <td ng-repeat="key in [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14]|limitTo:courseCycle.cycle" class="dark">{{week[(key+1)%7]}}</td>
+                    </tr>
+                    <tr ng-repeat="index in [0,1,2,3,4,5,6,7,8,9,10]|limitTo:courseDayNum.morning">
+                        <td class="dark">第{{index+1}}节</td>
+                        <td ng-repeat="key in [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14]|limitTo:courseCycle.cycle" class="morning" ng-click="noCourse(key,index)" ng-bind="setting[index].data[key].text"></td>
+                    </tr>
+                    <tr><td colspan="{{courseCycle.cycle+1}}"></td></tr>
+                    <tr ng-repeat="index in [0,1,2,3,4,5,6,7,8,9,10]|limitTo:courseDayNum.afternoon">
+                        <td class="dark">第{{index+courseDayNum.morning+1}}节</td>
+                        <td ng-repeat="key in [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14]|limitTo:courseCycle.cycle" class="afternoon" ng-click="noCourse(key,index+courseDayNum.morning)" ng-bind="setting[index+courseDayNum.morning].data[key].text"></td>
+                    </tr>
+                    <tr><td colspan="{{courseCycle.cycle+1}}"></td></tr>
+                    <tr ng-repeat="index in [0,1,2,3,4,5,6,7,8,9,10]|limitTo:courseDayNum.night">
+                        <td class="dark">第{{index+courseDayNum.morning+courseDayNum.afternoon+1}}节</td>
+                        <td ng-repeat="key in [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14]|limitTo:courseCycle.cycle" class="night" ng-click="noCourse(key,index+courseDayNum.morning+courseDayNum.afternoon)" ng-bind="setting[index+courseDayNum.morning+courseDayNum.afternoon].data[key].text"></td>
+                    </tr>
+                </table>
+                <button class="btn btn-sucess" ng-click="submit()">保存</button>
+            </div>
+        </div>
+    </div>
+</div>

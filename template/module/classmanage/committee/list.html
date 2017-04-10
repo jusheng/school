@@ -1,0 +1,54 @@
+
+<div class="row">	
+		
+		<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4"  ng-repeat="(key, value) in pageInfo"  style="padding-right: 0px;padding-left: 18px; padding-top: 0;position: relative;">
+			<div style="padding: 15px; padding-top: 0;position: relative;">
+				<a  class="delete icon-remove pull-right" ng-click="open_confrim(value)" style="z-index:2;position: absolute;right: 22px;top: 8px;font-size: 22px;color:#DBDBEA;opacity:10;margin:-7px;" title="删除"></a>
+
+<!--                 <a  class="edit  icon-edit pull-right" ng-click="add_module(value)" style="z-index:2;position: absolute;right:40px;top:10px;font-size:24px;color:#AFC3E1;opacity:10;margin:-5px;" title="编辑"></a> -->
+				<div class="lg-placehold1"></div>
+				<div class="row teachersBox_inner" style="background: #fff">
+					<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 text-center " >
+						<img ng-src="{{value.cadreStudentImgUrl}}" src="/res/img/no.jpg" class="img-responsive center-block"/>
+					</div>
+					<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+						<ul class="list-group table1">
+							<li class="list-group-item">
+							姓名：{{value.cadreStudentName}}
+							</li>
+							<li class="list-group-item">
+							职务：{{value.cadreStudentPositionRef}}
+							</li>
+							<li class="list-group-item">
+							性别：
+							<span ng-show="value.cadreStudentSex==1">男</span>
+		              		<span ng-show="value.cadreStudentSex==2">女</span>
+							</li>
+							<li class="list-group-item">学号：{{value.cadreStudentCode}}
+							</li>
+						</ul>
+					</div>
+				</div>
+
+
+			</div>
+			
+
+		</div>
+
+
+		<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+			<div style="padding: 4px; padding-top: 0;position: relative;">
+				<div class="lg-placehold1"></div>
+				<div class="row teachersBox_inner last">
+					<div>
+						<i class="icon-plus" ng-click="add_module(value.eduClassId)"></i>
+					</div>
+				</div>					
+			</div>
+
+		</div>
+		
+
+</div>
+<!-- <div ng-include="'template/module/tpl/pageInfo.html'"></div> -->

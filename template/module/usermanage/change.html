@@ -1,0 +1,31 @@
+<script src="lib/jquery/jquery.validate.min.js"></script>
+<script src="lib/jquery/additional-methods.min.js"></script>
+<div class="ngdialog-title">修改密码</div>
+<br>
+<div class="password">
+    <div class="row">
+       <form id="teacheradd_form" class="form-horizontal">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			<div class="form-group">
+				<label class="col-lg-4 col-sm-5 control-label">新密码</label>
+            	<div class="col-sm-7">
+                	<input type="password" class="form-control" id="password" name="password" placeholder="请输入新密码" ng-model="record.password">
+            	</div>
+			</div>
+			<div class="form-group">
+				<label class="col-lg-4 col-sm-5 control-label">确认密码</label>
+            	<div class="col-sm-7">
+                	<input type="password" class="form-control" id="re_password" name="re_password" placeholder="请再次输入新密码">
+            	</div>
+			</div>
+            <div class="form-group-last">
+                <label class="col-lg-4 col-sm-5 control-label"></label>
+                <div class="col-sm-7">
+                    <button type="submit" class="btn btn-success">提交</button>
+                </div>
+            </div>
+        </div>
+      </form>
+    </div>
+
+</div>

@@ -1,0 +1,58 @@
+<link rel="stylesheet" href="template/module/deptmanage/dept.css">
+<script src="lib/jquery/jquery.validate.min.js"></script>
+<script src="lib/jquery/additional-methods.min.js"></script>
+<div class="row pad">
+    <form id="teacheradd_form" class="form-horizontal">
+        <div class="form-top">
+            <legend ng-bind="app_name"></legend>
+            <a class="btn btn-sm btn-icon btn-rounded btn-default pull-right m-t-n-xs btn-close" ui-sref="main.deptmanage.deptlist"><i class=" icon-remove"></i>
+            </a>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 col-sm-3 control-label">部门名称</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" id="deptName" name="deptName" placeholder="" ng-model="record.deptName"></div>
+            </div>
+        <div class="form-group">
+            <label class="col-lg-2 col-sm-3 control-label">负责人</label>
+            <div class="col-sm-6">
+                <select name="ownerId" id="ownerId" class="form-control" ng-model="record.owner.id" ng-options="value.id as value.name for value in teacher.list" >
+                    <option value="">--选择--</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 col-sm-3 control-label">上级部门</label>
+            <div class="col-sm-6">
+                <select name="parentId" id="parentId" class="form-control" ng-model="record.parentId" ng-options="value.id-0 as value.ico+value.text disable when value.disabled for value in schooldept" >
+                                    <option value="">--顶级部门--</option>
+                </select>
+            </div>
+
+        </div>
+
+     <div class="form-group">
+                        <label class="col-lg-2 col-sm-3 control-label" for="sortNo">排序</label>
+                        <div class="col-sm-6">
+                            <input type="number" class="form-control" name="sortNo" id="sortNo" placeholder="请输入排序(只能输入数字)..." ng-model="record.sortNo">
+                        </div>
+    </div>
+        <div class="form-group">
+            <label class="col-lg-2 col-sm-3 control-label">备注</label>
+            <div class="col-sm-6">
+                <textarea name="remark" id="remark" class="form-control" rows="3" required="required" ng-model="record.remark"></textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 col-sm-3 control-label"></label>
+            <div class="col-sm-6">
+                <button type="submit" class="btn btn-success">提交</button>
+            </div>
+        </div>
+        
+    </form>
+</div>
+
+<!-- toaster directive -->
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+<!-- / toaster directive -->

@@ -1,0 +1,84 @@
+<div id="breadcrumb">
+  <a href="#"><i class="icon-home"></i> 学习云平台</a> 
+  <i class="icon-angle-right"></i><a >{{app_name}}</a>
+</div>
+
+
+<div style="padding: 15px;">
+    <div class="eamil email_view_lay" >
+
+           <!-- <div class="row pad">
+                <div class="col-sm-6">
+                    <label style="margin-right: 10px;" class="">
+                        <div class="icheckbox_minimal-blue" ng-click="select_all()" ng-class="{checked:s_all==true}" style="position: relative;"><input type="checkbox" id="check-all" style="position: absolute; opacity: 0;"></div>
+                    </label>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-default btn-sm btn-flat dropdown-toggle" data-toggle="dropdown">
+                            操作 <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a ng-click="del()">删除</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+                
+            </div> -->
+
+        <div class="table-responsive">
+                                                       
+            <table class="table table-homework">
+                <tbody><tr class="unread">
+                    <!-- <td class="small-col">
+                    </td> -->
+                    <td class="name"><a>作业名称</a></td>
+                    <td class="subject"><a>科目</a></td>
+                    <td class="time">发放时间</td>
+                    <td class="time">要求完成时间</td>
+                    <td class="time">是否提交</td>
+                    <td class="time">提交时间</td>
+                    <td class="time">操作</td>
+                </tr>
+                
+                <tr ng-repeat="item in pageInfo.list">
+                    <!-- <td class="small-col v-middle">
+                    <div class="icheckbox_minimal-blue" ng-class="{checked:$parent.pageInfo.list[$index].selected}" ng-click="select_per($index)"  style="position: relative;">
+                        <input type="checkbox" style="position: absolute; opacity: 0;">
+                    </div>
+                    </td> -->
+                    <td class="name">
+                        <a ui-sref="main.message.detail({id:item.id})" ng-bind-html="item.homework.title"></a>
+                        </td>
+                    <td class="subject">
+                        <a ui-sref="main.message.detail({id:item.id})" ng-bind-html="item.homework.subject.name"></a>
+                        </td>    
+                    <td class="time" ng-bind="item.createTime"></td>
+                    <td class="time" >{{item.endDate}}</td>
+                    <td class="time" >
+                        <span ng-show="item.pic!=null">是</span>
+                        <span ng-hide="item.pic!=null">否</span> 
+                    </td>
+                    <td class="time">
+                        {{item.releaseTime}}
+                    </td>
+                    <td class="time" >
+                        <a class="btn btn-sm btn-primary" ui-sref="main.studenthomework.detail({id:item.homework.id,hid:item.id})">查看</a>
+
+                    </td>
+                </tr>
+
+
+            </tbody>
+            </table>
+            <div ng-include="'template/module/tpl/pageInfo.html'"></div>
+        </div> 
+    </div>    
+</div>
+
+
+
+
+
+<!-- toaster directive -->
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+<!-- / toaster directive -->

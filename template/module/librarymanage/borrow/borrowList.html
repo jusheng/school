@@ -1,0 +1,65 @@
+<link rel="stylesheet" href="template/module/teachermanage/teacher.css">
+<style type="text/css">
+    .row_color td,
+    .row_color td a{
+        color: red;
+    }
+</style>
+<div class="row pad">
+    <div class="col-sm-12">
+        <form class="text-right user-form" ng-submit="search()">
+            <div class="form-group clearfix">
+                <label class="control-label">ISBN</label>
+                <input type="text" class="form-control" id="bookIsbn" name="bookIsbn" ng-model="param.bookIsbn">
+            </div>
+            <div class="form-group clearfix">
+                <label class="control-label">图书名称</label>
+                <input type="text" class="form-control" id="bookName" name="bookName" ng-model="param.bookName">
+            </div>
+            <div class="clear"></div>
+            <div class="form-group clearfix">
+                <label class="control-label">借阅人</label>
+                <input type="text" class="form-control" id="borrowUserName" name="borrowUserName" ng-model="param.borrowUserName">
+            </div>
+            <div class="form-group clearfix">
+                <label class="control-label">图书状态</label>
+                <select name="userType" id="userType" ng-model="param.status"
+                        ng-options="key-0 as value for (key,value) in uType" class="form-control">
+                    <option value="">选择状态</option>
+                </select>
+            </div>
+            <button class="chaxun btn btn-success" type="submit">查询</button>
+        </form>
+    </div>
+</div>
+
+<div class="table-responsive">
+                                               
+    <table class="table table-mailbox">
+        <tbody>
+            <tr class="unread">
+                <td class="bookIsbn">ISBN</td>
+                <td class="bookName">图书名称</td>
+                <td class="borrowUserNameref">借阅人</td>
+                <td class="status">借阅状态</td>
+                <td class="bookNum">借阅数量 </td>
+                <td class="startDate">借阅时间</td>
+                <td class="createByNameref">操作人</td>
+            </tr>
+            <tr ng-repeat="item in pageInfo.list" ng-class="{'row_color':item.status==4}">
+                <td class="bookIsbn v-middle">{{item.bookIsbn}}</td>
+                <td class="bookName v-middle"><a title="{{item.bookName}}">{{item.bookName}}</a></td>
+                <td class="borrowUserNameref v-middle">{{item.borrowUserNameref}}</td>
+                <td class="status v-middle">{{item.statusNameref}}</td>
+                <td class="bookNum v-middle">{{item.bookNum}}</td>
+                <td class="startDate v-middle">{{item.startDate}}~{{item.endDate}}</td>
+                <td class="createByNameref v-middle">{{item.createByNameref}}</td>
+            </tr>
+        </tbody>
+    </table>
+   <div ng-include="'template/module/tpl/pageInfo.html'"></div>
+</div>
+
+<!-- toaster directive -->
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+<!-- / toaster directive -->

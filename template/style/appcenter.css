@@ -1,0 +1,16 @@
+
+.app_lay{
+	padding-right: 290px;
+}
+
+.app_img img{
+	width: 100px;
+	height: 100px;
+	margin-right: 10px;
+	margin-left: 10px;
+}
+
+.app_options{
+	padding-right: 10px;
+	padding-top: 30px;
+}

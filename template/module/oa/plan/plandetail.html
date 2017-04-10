@@ -1,0 +1,32 @@
+<div class="newsdetail">	
+	<div class="panel " ui-view>
+		<div class="panel-heading">
+			<h3 class="panel-title">计划
+			</h3>
+			
+		</div>
+		<div class="panel-body">
+			名称：<a>{{detailForm.title}}</a>
+		</div>
+		<div class="panel-body">
+			内容：<a>{{detailForm.content}}</a>
+		</div>
+		<div class="panel-body">
+			分类：<a>{{detailForm.oaPlanType.planType}}</a>
+		</div>
+		<div class="panel-body">
+			周期：<a>{{detailForm.periodType.codeText}}</a>
+		</div>
+		<div class="panel-body">
+			起止日期：<a>{{detailForm.beginTime}}到{{detailForm.endTime}}</a>
+		</div>
+		<div class="panel-body">
+			评审人：<a>暂无接口</a>
+		</div>
+		<div class="panel-body">
+			状态：<a href="" class="text-info">{{detailForm.status.codeText}}</a> <label class="text-xs">(上报人：{{detailForm.presideUser.name}}，{{detailForm.createTime}})</label>
+			<div class="pull-right"><a>最后更新：{{detailForm.updateTime}}</a></div>
+		</div>
+	</div>
+
+</div>

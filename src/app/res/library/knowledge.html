@@ -1,0 +1,61 @@
+<style>
+	ul.ivh-treeview .ivh-treeview-node-leaf .ivh-treeview-toggle{
+		cursor: pointer;
+	}
+	.ivh-treeview-node-content i{
+		font-style: normal;
+		color: red;
+		cursor: pointer;
+	}
+	/* .ivh-treeview-node-label{
+		    display: inline-block;
+			width: 100px;
+			overflow: hidden;
+			word-break: break-word;
+			white-space: nowrap;
+			line-height: 22px;
+			padding-top: 4px;
+			vertical-align: middle;
+			text-overflow: ellipsis;
+	} */
+</style>
+<div class="ngdialog-title">选择知识点 ({{param.subjectName}} {{param.gradeName}})</div>
+<div class="row ngdialog-title2">
+	<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+		学校类型
+	</div>
+	<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+		知识点
+	</div>
+</div>
+<div class="scroll_lay">
+	<div class="row">
+		<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+			<a ng-repeat="(key, value) in school_type" class="btn-block" ng-click="get_tree(value.id)">
+				<i class="glyphicon glyphicon-ok" ng-show="value.id==record.schoolType"></i> {{value.codeText}}
+			</a>
+		</div>
+		<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+			<div style="height:400px; overflow-y:scroll;">
+			
+				<div ivh-treeview="knowledge_tree"
+								ivh-treeview-use-checkboxes="false" 
+								ivh-treeview-on-cb-change="selectCallback(ivhNode, ivhIsSelected, ivhTree)" 
+								ivh-treeview-on-select="select_this(ivhNode)"
+								>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+	<div class="row" ng-show="record.knowledgeId">
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			<div >
+				已选择  <span>【{{record.s_knowledgePoints}}】</span> 
+			</div>
+			<div class="text-center">
+					<button ng-click="closeThisDialog()" class="btn btn-sm btn-info">确定</button>
+			</div>
+		</div>
+	</div>
+</div>

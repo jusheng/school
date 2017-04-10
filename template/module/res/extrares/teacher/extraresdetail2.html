@@ -1,0 +1,37 @@
+<style id="kfformula">img.kfformula{vertical-align: middle;}</style>
+<style id="tablesort">table.sortEnabled tr.firstRow th,table.sortEnabled tr.firstRow td{padding-right:20px;background-repeat: no-repeat;background-position: center right;   background-image:url(/template/ueditor-1.4.3.3/themes/default/images/sortable.png);}</style>
+<style id="table">.selectTdClass{background-color:#edf5fa !important}table.noBorderTable td,table.noBorderTable th,table.noBorderTable caption{border:1px dashed #ddd !important}table{margin-bottom:10px;border-collapse:collapse;display:table;}td,th{padding: 5px 10px;border: 1px solid #DDD;}caption{border:1px dashed #DDD;border-bottom:0;padding:3px;text-align:center;}th{border-top:1px solid #BBB;background-color:#F7F7F7;}table tr.firstRow th{border-top-width:2px;}.ue-table-interlace-color-single{ background-color: #fcfcfc; } .ue-table-interlace-color-double{ background-color: #f7faff; }td p{margin:0;padding:0;}
+</style>
+
+<style id="pagebreak">.pagebreak{display:block;clear:both !important;cursor:default !important;width: 100% !important;margin:0;}</style>
+<style id="pre">pre{margin:.5em 0;padding:.4em .6em;border-radius:8px;background:#f8f8f8;}</style>
+<style id="loading">.loadingclass{display:inline-block;cursor:default;background: url('/template/ueditor-1.4.3.3/themes/default/images/loading.gif') no-repeat center center transparent;border:1px solid #cccccc;margin-left:1px;height: 22px;width: 22px;}
+.loaderrorclass{display:inline-block;cursor:default;background: url('/template/ueditor-1.4.3.3/themes/default/images/loaderror.png') no-repeat center center transparent;border:1px solid #cccccc;margin-right:1px;height: 22px;width: 22px;}</style>
+<style id="anchor">.anchorclass{background: url('/template/ueditor-1.4.3.3/themes/default/images/anchor.gif') no-repeat scroll left center transparent;cursor: auto;display: inline-block;height: 16px;width: 15px;}</style>
+<legend>章节详情</legend>
+	<strong>章节：</strong><span ng-bind="detail.title"></span><br>
+			<strong>创建时间：</strong><span ng-bind="detail.createTime"></span><br>	
+			<strong>资源类型：</strong>
+			<span ng-show="resType ==1">文字</span>
+			<span ng-show="resType ==2">音频</span>
+			<span ng-show="resType ==3">视频</span>
+			<div ng-if="resType==2 || resType == 3">
+				<div id="mediaplayer"></div>
+					<strong>描述：</strong><span ng-bind-html="detail.description"></span><br>	
+			</div>
+			<div ng-if="resType==1">
+				<strong>内容：</strong><span ng-bind-html="detail.content"></span><br>		
+			</div>		
+			<!-- <div>
+									
+				<h4 ng-bind="detail.title" class="text-bold"></h4>
+				<i class="icon-music text-primary" ng-if="resType==2"></i>
+				<i class="icon-play-circle text-primary" ng-if="resType==3" title="视频类"></i>
+			</div> -->
+			<!-- <div ng-bind-html="value.description"></div> -->
+
+	
+
+		
+		<div ng-include="'template/module/tpl/pageInfo.html'"></div>
+	</div>

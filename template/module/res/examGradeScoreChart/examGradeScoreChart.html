@@ -1,0 +1,47 @@
+<link rel="stylesheet" href="template/module/usermanage/user.css">
+<style>
+    .user-form .form-group {
+        width: auto;
+    }
+</style>
+<div class="row pad">
+    <div class="col-sm-10">
+        <form class="text-right user-form" ng-submit="search()">
+            <div class="form-group clearfix">
+                <label class="control-label">选择科目组</label>
+                <select name="classId" id="subjectGroupId" ng-model="param.subjectGroupId" ng-change="getExam()"
+                        class="form-control"
+                        ng-options="m.id as m.name for m in subjectGroup">
+                    <option value="">请选择</option>
+                </select>
+            </div>
+
+            <div class="form-group clearfix">
+                <label class="control-label">选择考试</label>
+                <select name="examId" id="examId" ng-model="param.examId" class="form-control"
+                        ng-change="getGradeData()" ng-options="m.id as m.name for m in examList">
+                    <option ng-hide="subjectData.length" value="">没有发现考试</option>
+                </select>
+            </div>
+
+            <div class="form-group clearfix">
+                <label class="control-label">选择科目</label>
+                <select name="examId" id="subjectCode" ng-model="subjectIndex" class="form-control"
+                        ng-change="buildChartData(subjectIndex)"
+                        ng-options="index as m.name for (index,m) in subjectData">
+                    <option ng-hide="subjectData.length" value="">请先选择科目组</option>
+                    <!--<option ng-repeat="m in scoreData" value="{{$index}}" ng-selected="$index-studentIndex==0">{{m.student.name}}-{{$index-studentIndex}}</option>-->
+                </select>
+            </div>
+            <button class="chaxun btn btn-success" type="submit">查询</button>
+        </form>
+    </div>
+</div>
+<div class="box-body no-padding" style="height:600px;">
+    <div class="" style="height:600px;">
+        <bar-chart config="config" data="data"></bar-chart>
+    </div>
+</div>
+<!-- toaster directive -->
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+<!-- / toaster directive -->

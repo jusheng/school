@@ -1,0 +1,39 @@
+<link rel="stylesheet" href="template/module/teachermanage/teacher.css">
+<div class="row pad">
+    <div class="col-sm-4">
+    </div>
+    <div class="col-sm-6 search-form">
+
+    </div>
+    <div class="col-sm-2">
+        <a ui-sref="main.examscore.examscorelist({id:classId})" class="btn btn-success pull-right"> <i
+                class="icon-user-follow m-r-sm text-md"></i>返回</a>
+    </div>
+</div>
+<div class="table-responsive">
+    <table class="table table-mailbox">
+        <tbody>
+        <tr class="unread">
+            <td class="code">学号</td>
+            <td class="name">姓名</td>
+            <td class="name" ng-repeat="m in scoresubject">{{sDict[m].name}}</td>
+            <td class="opt">排序</td>
+        </tr>
+        <tr ng-repeat="item in pageInfo.list">
+            <td class="code v-middle">{{item.student.code}}</td>
+            <td class="name v-middle">{{item.student.name}}</td>
+            <td class="name v-middle" ng-repeat="m in scoresubject">
+                <span ng-hide="item.edit">{{item[sDict[m].code]}}</span>
+                <input type="text" ng-model="item[sDict[m].code]" ng-show="item.edit">
+            </td>
+            <td class="opt v-middle">
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <div ng-include="'template/module/tpl/pageInfo.html'"></div>
+</div>
+
+<!-- toaster directive -->
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+<!-- / toaster directive -->

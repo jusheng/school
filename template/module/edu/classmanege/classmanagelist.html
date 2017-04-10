@@ -1,0 +1,32 @@
+<div class="row pad">
+    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 pull-right">
+        <a class="btn btn-block btn-success" ui-sref="main.exam.examadd({gradeId})" ><i class="fa fa-pencil"></i> 添加考试</a>
+    </div>
+</div>
+
+<div class="table-responsive">
+                                               
+    <table class="table table-mailbox">
+        <tbody>
+        <tr class="unread">
+            <td class="name">考试名称</td>
+            <td class="dept">考试类型</td>
+            <td class="dept">开始时间</td>
+            <td class="dept">结束时间</td>
+            <td class="opt">操作</td>
+        </tr>
+        <tr ng-repeat="item in exam.list">
+            <td class="name v-middle">{{item.name}}</a></td>
+            <td class="dept v-middle">{{item.type}}</td>
+            <td class="dept v-middle">{{item.startTime}}</td>
+            <td class="dept v-middle">{{item.endTime}}</td>
+            <td class="opt v-middle"><a ng-click="del(item.id)" class="btn-danger btn btn-sm">删除</a>  <a ui-sref="main.exam.examedit({id:item.id})" class="btn-primary btn btn-sm">编辑</a></td>
+        </tr>
+    </tbody>
+    </table>
+    <!-- <div ng-include="'template/module/tpl/pageInfo.html'"></div> -->
+</div>
+
+<!-- toaster directive -->
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+<!-- / toaster directive -->

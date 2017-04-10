@@ -1,0 +1,126 @@
+<link rel="stylesheet" href="template/module/teachermanage/teacher.css">
+<script src="lib/jquery/jquery.validate.min.js"></script>
+<script src="lib/jquery/additional-methods.min.js"></script>
+<div id="breadcrumb">
+    <a href="#/main"><i class="icon-home"></i> 学习云平台</a>
+    <i class="icon-angle-right"></i><a href="#/main/edudesk">校务管理</a>
+    <i class="icon-angle-right"></i><a>{{app_name}}</a>
+</div>
+<div class="teacheradd">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 school_view_lay">
+        <div class="row pad">
+            <form id="school_detail_form" class="form-horizontal">
+                <div class="form-top">
+                    <legend ng-bind="app_name"></legend>
+                    <a class="btn btn-sm btn-icon btn-rounded btn-default pull-right m-t-n-xs btn-close" ui-sref="main.desk"><i class="icon-remove"></i>
+                    </a>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-2 col-sm-3 control-label" for="name">
+                        <span class="text-danger wrapper-sm">*</span>
+                        学校名称
+                    </label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" name="name" id="name" ng-model="record.name" placeholder="请输入学校名称...">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="col-lg-2 col-sm-3 control-label" for="scope">
+                        <span class="text-danger wrapper-sm">*</span>
+                        规模
+                    </label>
+                    <div class="col-sm-6">
+                        <div class="row">
+                            <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+
+                                <select name="scope" id="scope" class="form-control" ng-model="record.scope"
+                                        ng-options="value.code+'' as value.codeText for value in school.scope">
+                                    <option value="">--选择--</option>
+                                </select>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-2 col-sm-3 control-label" for="type">
+                        <span class="text-danger wrapper-sm">*</span>
+                        类型
+                    </label>
+                    <div class="col-sm-6">
+                        <div class="row">
+                            <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+                                <select name="type" id="type" class="form-control"
+                                        ng-options="value.code-0 as value.codeText for value in school.type"
+                                        ng-model="record.type">
+                                    <option value="">--选择--</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-2 col-sm-3 control-label" for="nature">
+                        <span class="text-danger wrapper-sm">*</span>
+                        性质
+                    </label>
+                    <div class="col-sm-6">
+                        <div class="row">
+                            <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+
+
+                                <select name="nature" id="nature" class="form-control"
+                                        ng-options="value.code+'' as value.codeText for value in school.nature"
+                                        ng-model="record.nature">
+                                    <option value="">--选择--</option>
+                                </select>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-2 col-sm-3 control-label" for="address">
+                        详细地址
+                    </label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" name="address" id="address" ng-model="record.address" placeholder="请输入学校详细地址..."></div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-lg-2 col-sm-3 control-label" for="postalcode">
+                        邮编
+                    </label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" name="postalcode" id="postalcode"
+                               ng-model="record.postalcode" placeholder="请输入邮编..."></div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-lg-2 col-sm-3 control-label" for="remark">
+                        简介
+                    </label>
+                    <div class="col-sm-6">
+                        <textarea name="remark" id="remark" class="form-control" ng-model="record.remark"
+                                  rows="3"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-2 col-sm-3 control-label"></label>
+                    <div class="col-sm-6">
+                        <button type="submit" class="btn btn-success">提交</button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+
+        <!-- toaster directive -->
+        <toaster-container
+                toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+        <!-- / toaster directive -->
+    </div>
+</div>
+

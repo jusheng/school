@@ -1,0 +1,97 @@
+<link rel="stylesheet" href="template/module/myclass/myscore/rules.css">
+<script type="text/javascript" src="lib/jquery/jquery.min.js"></script>
+<div id="breadcrumb">
+  <a href="#/main"><i class="icon-home"></i> 学习云平台</a> 
+  <i class="icon-angle-right"></i><a>{{app_name}}</a> 
+</div>
+
+<div class="news">
+    <div class="row news_view_lay">
+        <div class="search-form row">
+            <ul id="myTab" class="nav nav-tabs">
+               
+                <li  role="presentation"  class="active">
+                    <a role="tab" ng-click="change(1)"  data-toggle="tab" active>奖励</a>
+                </li>
+                 <li role="presentation">
+                    <a role="tab" ng-click="change(2)" data-toggle="tab">惩罚</a>
+                </li>
+               
+            </ul>
+        
+        </div>
+
+                <!-- Tab panes -->
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="home">
+            <br>
+                <div ng-show="type==1">
+                        
+                            <div class="table-responsive">
+                                           
+                                <table class="table table-teacherclass">
+                                    <tbody>
+                                        <tr class="unread">
+                                            <td class="small-col">
+                                            </td>
+                                            <td class="subject">学生姓名</td>
+                                            <td class="subject">奖励名称</td>
+                                            <td class="subject">奖励分数</td>                     
+                                            <td class="subject">创建者</td>
+                                            <td class="subject">创建时间</td>
+                                        </tr>
+                                        <tr ng-repeat="item in pageInfo.reward">
+                                            
+                                            <td class="subject"></td>
+                                            <td class="subject">{{item.sname}}</td>
+                                            <td class="subject">{{item.institution}}</td>
+                                            <td class="subject">{{item.score}}</td>
+                                            <td class="subject">{{item.tname}}</td>
+                                            <td class="subject">{{item.createTime}}</td>
+                                          
+                                        </tr>
+        
+                                    </tbody>
+                                </table>
+                                <!-- <div ng-include="'template/module/tpl/pageInfo.html'"></div> -->
+                            </div>                
+                </div>
+                                
+                <div ng-show="type==2">
+        
+                        
+                            <div class="table-responsive">
+                                 <table class="table table-teacherclass">
+                                    <tbody>
+                                        <tr class="unread">
+                                            <td class="small-col">
+                                            </td>
+                                            <td class="subject">学生姓名</td>
+                                            <td class="subject">惩罚名称</td>
+                                            <td class="subject">惩罚分数</td>
+                                            
+                                            <td class="subject">创建者</td>
+                                            <td class="subject">创建时间</td>
+            
+                                        </tr>
+            
+            
+                                        <tr ng-repeat="item in pageInfo.punishment">
+                                            <td class="subject"></td>
+                                            <td class="subject">{{item.sname}}</td>
+                                            <td class="subject">{{item.institution}}</td>
+                                            <td class="subject">{{item.score}}</td>
+                                            <td class="subject">{{item.tname}}</td>
+                                            <td class="subject">{{item.createTime}}</td>
+                                        </tr>
+        
+                                    </tbody>          
+                                </table>
+                                <!-- <div ng-include="'template/module/tpl/pageInfo.html'"></div> -->
+                            </div>                 
+                </div>
+            </div>
+        </div> 
+
+    </div>
+</div>

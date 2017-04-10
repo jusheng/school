@@ -1,0 +1,111 @@
+<script src="lib/My97DatePicker/WdatePicker.js"></script>
+  <script src="lib/jquery/jquery.validate.min.js"></script>
+  <script src="lib/jquery/additional-methods.min.js"></script>  
+
+<div class="row pad">
+    <form id="planadd" class="form-horizontal" role="form">
+    <legend>添加计划</legend>
+        <div class="form-group">
+          <label for="" class="col-sm-1 control-label">标题</label>
+          <div class="col-sm-11">
+             <input type="text" class="form-control"  id="title" name="title" ng-model="record.title" >
+          </div>
+        </div>
+        <div class="form-group">
+            <label for="" class="col-sm-1 control-label">周期</label>
+            <div class="radio">
+              <div class="col-sm-11">
+                <label ng-repeat="(key, value) in periodType">
+                    <input type="radio" name="zq" id="input" ng-click="set_zq($index+1)" value="{{value.id}}" ng-model="record.periodType.id"  >{{value.codeText}}
+                &nbsp;&nbsp;</label>
+              </div>
+            </div>
+        </div>
+        <div class="form-group" > <!-- 时段的多方法显示框  -->
+            <label for="" class="col-sm-1 control-label">时段</label>
+            <div class="col-sm-11">
+                <div ng-show="zq==1">
+                    <input type="input" class="form-control" id="" placeholder="选择日期" date-picker datefmt="yyyy-MM-dd"  ng-model="record.endTime" value="" name="date" > 
+                </div>
+                <div ng-show="zq==2">
+                    <select name="" type="input" class="form-control" ng-model="s_week" ng-options="key as value[0]+'年第'+value[1]+'周 '+value[2]+'---'+value[3] for (key,value) in week" >
+                      <option value="">选择周</option>
+                    </select>
+                </div>
+                <div ng-show="zq==3">
+                    <select name="" class="form-control" ng-model="s_month"  ng-options="key as value[0]+'年'+value[1]+'月' for (key,value) in month">
+                      <option value="">选择月份</option>
+    
+                    </select>
+                </div>
+                <div ng-show="zq==4">
+                    <select name="" class="form-control" ng-model="s_quarter"  ng-options="key as value[0]+'年'+'第'+value[1]+'季度' for (key,value)  in quarter">
+                  
+                      <option value="">选择季度</option>
+                    </select>
+                </div>
+                <div ng-show="zq==5">
+                    <select name="" class="form-control" ng-model="s_year"  ng-options="key as value[0]+'年度  ' +value[2]+'-'+value[3] for (key,value) in year">
+                      <option value="" >选择年</option>
+                    </select>
+                </div>
+                <div ng-show="zq==6" >
+                  <div class="row" >
+                   <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5" style="position:relative">      
+                      <input id="beginTime" type="text" class="form-control" placeholder="开始日期"  value="" date-picker datefmt='yyyy-MM-dd' ng-model="record.beginTimeStr" >
+        
+                      <!-- <span class="glyphicon glyphicon-calendar" style="position:absolute; right:0; top:50%;"></span> -->
+                   </div>
+                   <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 text-center">
+                   
+                       ---
+                   
+                   </div>
+                   <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 endTime_lay" style="position:relative">
+                       <input id="cycle-day-date" type="text" class="form-control endTime" placeholder="截止日期"  value=""  datefmt='yyyy-MM-dd' ng-model="record.endTimeStr" ng-disabled="!record.beginTimeStr">
+                   </div>
+                  </div> 
+                </div> 
+             </div>
+        </div>
+        <div class="form-group">
+            <label for="" class="col-sm-1 control-label">评审人</label>
+            <div class="col-sm-11">
+                <select name="" class="form-control" ng-model="record.reviewUser.id" ng-options="item.id-0 as item.name for item in record.reviewUser">
+                    <option value="">请选择管理员</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="" class="col-sm-1 control-label">类型</label>
+            <div class="col-sm-11">
+                <select name="" class="form-control"  ng-model="record.oaPlanType.id" ng-options="item.id-0 as item.planType for item in types.list">
+                    <option value="">请选择计划类型</option>
+                </select>
+            </div>
+        </div>
+        
+        <div class="form-group">
+        	<label for="" class="col-sm-1 control-label">内容</label>
+          <div class="col-sm-11">
+        	   <textarea name="" class="form-control" rows="3" ng-model="record.content"></textarea>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="" class="col-sm-1 control-label">可见人</label>
+              <div class="col-sm-11">
+                  <select name="" id="input" class="form-control" ng-model="record.visibleType" ng-options="v.id as v.codeText for (k,v) in visibleType">
+                      <option value="">请选择可见人</option>
+                  </select>
+              </div>
+        </div>
+
+        <button type="submit" class="btn btn-info  center-block" >提交</button>
+    </form>
+</div>
+
+
+<!-- toaster directive -->
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+<!-- / toaster directive -->

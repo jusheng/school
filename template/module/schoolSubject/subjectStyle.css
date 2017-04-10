@@ -1,0 +1,32 @@
+.school_view_lay{
+	padding-top: 15px;
+	padding-left: 15px;
+}
+.school_view_lay table td{
+	line-height: 20px;
+}
+.form-group-last{
+	margin-bottom: 15px;
+	margin-top: 15px;
+	text-align: center;
+}
+.form-group-last button{
+	width: 120px;
+}
+.subject-table{
+	margin:0 auto;
+	width: 70%;
+}
+.subject-table tr td{
+	text-align: center;
+	border:1px solid #ccc;
+	height: 34px;
+}
+.subject-table tr td input{
+	width:15px;
+	height: 15px;
+	margin:0;
+	display: table-cell;
+    vertical-align: middle;
+
+}

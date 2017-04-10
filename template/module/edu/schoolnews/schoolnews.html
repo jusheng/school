@@ -1,0 +1,34 @@
+
+<div id="breadcrumb">
+  <a href="#"><i class="icon-home"></i> 学习云平台</a> 
+  <i class="icon-angle-right"></i><a>{{app_name}}</a>
+</div>
+<div class="row  no-padding news">
+		<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">		
+			<div class="news_left" >
+				<h1 class="text-lg"> 新闻分类</h1>
+				
+					<a class="title2" ng-class="{'changeColor': $index == selectedRow}" ng-repeat="(key, value) in sorts.list"  title="{{value.name}}" ui-sref="main.schoolnews.list({sorts_id:value.id})" ng-click="selectedWhich($index)">· {{value.name}}</a>
+					
+            </div>
+			<div class="news_left" >
+				<h1 class="text-lg"> 最新新闻</h1>
+			
+					
+					<a class="title2" ng-class="{'changeColor': $index == selectedRow}" ng-repeat="(key, value) in lists.list" ui-sref="main.schoolnews.detail({id:value.id})" title="{{value.title}}" ng-click="selectedWhich($index)">
+						<span class="">{{$index+1}} {{value.title}}</span>
+						<!-- <span class="pull-right">{{value.updateTime}}</span> -->
+					</a>
+					
+			</div>
+            
+		</div>
+		<div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
+			<div ui-view>	
+			</div>
+		</div>
+</div>
+
+	
+
+

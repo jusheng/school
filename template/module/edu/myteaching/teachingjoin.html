@@ -1,0 +1,74 @@
+
+<!-- <div class="row pad">
+	<div class="col-sm-4">
+        <label style="margin-right: 10px;" class="">
+            <div class="icheckbox_minimal-blue" ng-click="select_all()" ng-class="{checked:s_all==true}" style="position: relative;"><input type="checkbox" id="check-all" style="position: absolute; opacity: 0;"></div>
+        </label>
+        <div class="btn-group">
+            <button type="button" class="btn btn-default btn-sm btn-flat dropdown-toggle" data-toggle="dropdown">
+                操作 <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+                <li><a ng-click="remove_trash()">移动到垃圾箱</a></li>
+                <li class="divider"></li>
+                <li><a ng-click="del()">删除</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-sm-6 search-form">
+        <form action="/main/email/list" class="text-right">
+            <div class="input-group">                                                            
+                <input type="text" class="form-control input-sm" ng-model="search_in" placeholder="搜索">
+                <div class="input-group-btn">
+                    <button type="submit" name="q" class="btn btn-sm btn-success"><i class="fa icon-search"></i></button>
+                </div>
+            </div>                                                     
+        </form>
+    </div>
+    <div class="col-sm-2 search-form ">
+        <div class="btn-group pull-right">
+            <a ui-sref="main.scl_bbs.threadadd({id:states.params.id})" class="btn btn-block btn-success btn-sm">版块内发帖</a>
+        </div>
+    </div>
+</div> -->
+
+<div class="table-responsive">                                    
+    <table class="table table-mailbox">
+        <tbody>
+        <tr class="unread">
+        
+            <td class="subject">课题</td>
+            <td class="subject">作课人</td>
+            <td class="subject">作课时间</td>
+            <td class="subject">评课地点</td>
+            <td class="subject">参评人员</td>
+            <td class="subject">状态</td>
+            <td class="opt">操作</td>
+        </tr>
+        <tr ng-repeat="item in pageInfo.list">
+            <!-- <td class="small-col v-middle"><div class="icheckbox_minimal-blue" ng-class="{checked:$parent.pageInfo.list[$index].selected}" ng-click="select_per($index)" style="position: relative;"><input type="checkbox" style="position: absolute; opacity: 0;"></div>
+            </td> -->
+            <td class="subject v-middle"><a ui-sref="main.myteaching.teachinglist({id:item.id})">{{item.classTitle}}</a></td>
+            <td class="subject v-middle"><a ui-sref="main.myteaching.teachinglist({id:item.id})">{{item.teacherName}}</a></td>
+            <td class="subject v-middle">{{item.classTime}}</td>
+            <td class="subject v-middle">{{item.lessionPlace}}</td>
+            <td class="subject v-middle">{{item.attendeePlanNames}}</td>
+            <!-- <td class="subject v-middle">{{item.attendeeStr}}</td> -->
+            <td>
+                <span ng-show="item.status==1" style="line-height:50px;">已结束</span>
+                <span ng-show="item.status==0" style="line-height:50px;">未开始</span>
+            </td>
+            <td class="opt v-middle"> 
+                <button class="btn btn-success" ui-sref="main.myteaching.teachinglist({id:item.id})">查看</button>
+                <!-- <button class="btn btn btn-info" ui-sref="main.scl_bbs.worksadd({activityId:item.id})">跟贴</button> -->
+            </td>
+        </tr>
+    	</tbody>
+    </table>
+
+</div>
+  <div ng-include="'template/module/tpl/pageInfo.html'"></div>
+
+<!-- toaster directive -->
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+<!-- / toaster directive -->

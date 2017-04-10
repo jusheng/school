@@ -1,0 +1,21 @@
+
+            <legend >作业完成情况 </legend>
+
+            <br><br>
+         <div class="editor-kityformula-js"></div>  <!--加载编辑器js文件-->
+         <div ng-repeat="(key, value) in pageInfo.list">
+             
+
+                <!-- 填空题 问答题 解答题-->
+                    <div ng-if="value.resQuestion.type==80 || value.resQuestion.type==78 || value.resQuestion.type==147" ng-include="'template/module/onlinehomework/teacher/showquestion/temp80.html'" ></div>
+                    
+                    <!-- 单选题  多选题 判断题-->
+                    <div ng-if="value.resQuestion.type==76 || value.resQuestion.type==77 || value.resQuestion.type==79" ng-include="'template/module/onlinehomework/teacher/showquestion/temp76.html'" ></div>
+
+
+        </div>
+
+        <div ng-include="'template/module/tpl/pageInfo.html'"></div>
+<!-- toaster directive -->
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+<!-- / toaster directive -->

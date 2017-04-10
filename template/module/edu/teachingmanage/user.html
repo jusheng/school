@@ -1,0 +1,55 @@
+
+<div class="ngdialog-title">{{title1}}</div>
+<br>
+<div class="scroll_lay">
+
+	<div id="wrapper" ng-iscroll='wrapper' ng-iscroll-delay='50'>
+		<div id="scroller">
+			<!-- <form id="newsadd_form" class="newsadd_form form-horizontal"> -->
+				<!-- 讲课人 -->
+				<div ng-show="curr==1">
+					<div ng-repeat="v in schoolMailList" style="width:50%; float:left">
+						<input type="radio" name="zbr"  id="" ng-checked="v.id==$parent.record.presideUser.id" ng-click="s_zbr(this,v)"> {{v.name}}
+						
+					</div>
+					<!-- <div ng-include="'template/module/tpl/pageInfo.html'"></div> -->
+				</div>
+
+				<!-- 记录人 -->
+				<div ng-show="curr==2">
+					<div ng-repeat="v in schoolMailList" style="width:50%; float:left">
+						<input type="radio" name="xbr"  ng-checked="v.id==$parent.record.recorderList.id" ng-click="s_xbr(this,v)"> {{v.name}}
+						<!-- <input type="checkbox" name="xbr"  data-checklist-model="record.recorderList" data-checklist-value="v"> {{v.name}} -->
+					</div>
+				</div>
+
+
+				<!-- 邀请参评 -->
+				<div ng-show="curr==3">
+					<div ng-repeat="v in schoolMailList" style="width:50%; float:left">
+						<input type="checkbox" name="zhr"  data-checklist-model="record.attendeePlanList" data-checklist-value="v"> {{v.name}}
+					</div>
+				</div>
+				<!-- 实际参评 -->
+				<div ng-show="curr==4">
+					<div ng-repeat="v in record.attendeePlanList1" style="width:50%; float:left">
+						<input type="checkbox" name="aaa"  data-checklist-model="record.attendeeList" data-checklist-value="v"> {{v.name}}
+					</div>
+				</div>
+				<!-- 实际缺席 -->
+				<div ng-show="curr==5">
+					<div ng-repeat="v in record.attendeePlanList1" style="width:50%; float:left">
+						<input type="checkbox" name="aab"  data-checklist-model="record.defaulterList" data-checklist-value="v"> {{v.name}}
+					</div>
+				</div>
+			<!-- </form> -->
+		</div>
+
+	</div>
+
+</div>
+
+<div class="text-center">
+	<button class="btn btn-success" ng-click="closeThisDialog()">确定</button>
+</div>
+

@@ -1,0 +1,33 @@
+<link rel="stylesheet" href="template/module/teachermanage/teacher.css">
+<div class="row pad">
+    <div class="col-sm-2 pull-right">
+        <a ui-sref="main.instock.instockList" class="btn btn-success pull-right">返回</a>
+    </div>
+</div>
+<div class="row pad">
+<div class="table-responsive">
+    <table class="table table-mailbox">
+        <tbody>
+        <tr class="unread">
+            <td class="bookIsbn">ISBN</td>
+            <td class="bookName">图书名称</td>
+            <td class="typeCodeNameref">图书分类</td>
+            <td class="pubUnit">出版社</td>
+            <td class="pubDate">出版时间</td>
+            <td class="inNum">入库数量</td>
+        </tr>
+        <tr ng-repeat="item in pageInfo.dataList">
+            <td class="bookIsbn v-middle">{{item.isbn}}</td>
+            <td class="bookName v-middle">{{item.name}}</td>
+            <td class="typeCodeNameref v-middle">{{item.typeCodeNameref}}</td>
+            <td class="pubUnit v-middle">{{item.pubUnit}}</td>
+            <td class="pubDate v-middle">{{item.pubDate}}</td>
+            <td class="inNum v-middle">{{item.inNum}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</div>
+<!-- toaster directive -->
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+<!-- / toaster directive -->

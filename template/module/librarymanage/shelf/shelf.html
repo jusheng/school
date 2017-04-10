@@ -1,0 +1,17 @@
+<link rel="stylesheet" href="template/module/teachermanage/teacher.css">
+<div id="breadcrumb">
+  <a href="#/main"><i class="icon-home"></i> 学习云平台</a>
+  <i class="icon-angle-right"></i><a href="#/main/librarydesk">图书管理</a>
+  <i class="icon-angle-right"></i><a ui-sref="main.library.libraryList">图书室管理</a>
+  <i class="icon-angle-right"></i><a ui-sref="main.shelf.shelfList">{{app_name}}</a>
+</div>
+
+
+<div class="teacher">
+    <div class="row  no-padding teacher-padding">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 school_view_lay">
+            <div ui-view></div>
+        </div>
+    </div>
+
+</div>

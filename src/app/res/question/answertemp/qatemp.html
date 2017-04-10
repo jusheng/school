@@ -1,0 +1,7 @@
+<div class="include_editor" name="content"  ng-model="record_temp.qa_temp.c" config="_simpleConfig" required></div>
+<br>
+<button class="btn btn-xs btn-info" ngf-select="onContentSelect($files)" multiple="multiple">添加图片</button>
+<span ng-repeat="(key, value) in record_temp.qa_temp.img" class="content_c">
+							<img src="{{value}}" alt="">
+							<i class="text-md fa fa-times text-white" ng-click="del_content_img($index)"></i>
+						</span>

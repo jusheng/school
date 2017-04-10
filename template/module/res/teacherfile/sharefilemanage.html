@@ -1,0 +1,24 @@
+<legend class="ng-binding">共享资源</legend>
+
+
+<div class="text-center" ng-if="file.length==0">
+	<br>
+	<i class="icon-info-sign text-warning-dker"></i> 暂无文件
+</div>
+
+<a class="item" ng-repeat="(key, value) in file"  title="{{value.filename}}" >
+	
+	<!-- 文件夹 -->
+	<div  ng-dblclick="go_next(value.id)">
+		<img src="template/img/teacherfile/s_folder.png" alt="" >
+		<span ng-bind="value.name"></span>	
+	</div>
+
+</a>
+
+<style type="text/css">
+        .position-fixed {
+          position: fixed;
+          color:Red;
+        }
+</style>

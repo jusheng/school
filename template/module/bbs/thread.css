@@ -1,0 +1,559 @@
+.bbs {
+    padding-top: 15px;
+}
+
+.bbs_left{
+    background: #fff;
+    border-top: solid #79c447 2px;
+    border-radius: 3px;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    padding-top: 0;
+    margin-bottom: 15px;
+}
+
+/*.news_view_lay{
+    background: #fff;
+    padding: 15px;
+}*/
+.bbsdetail h2{
+    text-align: center;
+    margin-top: 0;
+}
+.bbsdetail{
+    background-color: #E5EDF2;
+}
+.bbsdetail h2 span{
+    display: block;
+}
+
+.pad {
+    padding: 10px;
+}
+.curr_ico{
+    position: absolute;
+    top: 50%;
+    margin-top: -3px;
+    left: -15px;
+}
+
+/* 列表样式 */
+.table-mailbox {
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+}
+.table-mailbox tr > td {
+    white-space: nowrap;
+}
+.table-mailbox tr.unread > td {
+    background-color: rgba(0, 0, 0, 0.05);
+    color: #000;
+    font-weight: 600;
+}
+.table-mailbox tr > td.small-col {
+    width: 30px;
+    color: #f39c12;
+}
+.table-mailbox tr > td.name {
+    width: 150px;
+    font-weight: 600;
+}
+.pad{
+    padding:10px;
+}
+.table-mailbox tr > td.time {
+    text-align: right;
+    width: 100px;
+}
+.table-mailbox tr > td.opt {
+    text-align: right;
+    width: 100px;
+}
+.table-mailbox tr > td.activity {
+    text-align: right;
+    width: 100px;
+}
+.bbs_left a{
+    display: block;
+    line-height: 36px;
+    border-bottom: solid #ddd 1px;
+    position: relative;
+}
+.bbs_left a i{
+    position: absolute;
+    top: 50%;
+    margin-top: -3px;
+    right: 0;
+}
+.wid{
+    width: 14px;
+    height: 14px;
+    display: inline-block;
+}
+.acc{
+    position: relative;
+}
+.curr_ico{
+    position: absolute;
+    top: 50%;
+    margin-top: -7px;
+    left: 178px;
+}
+/* iCheck plugin Minimal skin, blue
+----------------------------------- */
+.icheckbox_minimal-blue,
+.iradio_minimal-blue {
+    display: inline-block;
+    *display: inline;
+    vertical-align: middle;
+    margin: 0;
+    padding: 0;
+    width: 18px;
+    height: 18px;
+    background: url(../../../img/blue.png) no-repeat;
+    border: none;
+    cursor: pointer;
+}
+
+.icheckbox_minimal-blue {
+    background-position: 0 0;
+}
+    .icheckbox_minimal-blue.hover {
+        background-position: -20px 0;
+    }
+    .icheckbox_minimal-blue.checked {
+        background-position: -40px 0;
+    }
+    .icheckbox_minimal-blue.disabled {
+        background-position: -60px 0;
+        cursor: default;
+    }
+    .icheckbox_minimal-blue.checked.disabled {
+        background-position: -80px 0;
+    }
+
+.iradio_minimal-blue {
+    background-position: -100px 0;
+}
+    .iradio_minimal-blue.hover {
+        background-position: -120px 0;
+    }
+    .iradio_minimal-blue.checked {
+        background-position: -140px 0;
+    }
+    .iradio_minimal-blue.disabled {
+        background-position: -160px 0;
+        cursor: default;
+    }
+    .iradio_minimal-blue.checked.disabled {
+        background-position: -180px 0;
+    }
+
+/* Retina support */
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+       only screen and (-moz-min-device-pixel-ratio: 1.5),
+       only screen and (-o-min-device-pixel-ratio: 3/2),
+       only screen and (min-device-pixel-ratio: 1.5) {
+    .icheckbox_minimal-blue,
+    .iradio_minimal-blue {
+        background-image: url(../../../img/blue@2x.png);
+        -webkit-background-size: 200px 20px;
+        background-size: 200px 20px;
+    }
+}
+
+
+.upload{
+    display: inline-block;
+    border:solid #ccc 1px;
+    position: relative;
+    padding: 3px;
+    overflow: hidden;
+
+}
+
+.bbs_left{
+        background: #fff;
+        border-top: solid #79c447 2px;
+        border-radius: 3px;
+        box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+        padding: 10px;
+        padding-top: 0;
+        margin-bottom: 15px;
+}
+.title2{
+    text-overflow: ellipsis;
+    height: 36px;
+    line-height: 36px;
+    white-space:nowrap;
+    overflow: hidden;
+    border-top: solid #fff 2px;
+
+}
+.news_view_lay{
+    background: #fff;
+    padding: 15px 15px 0px;
+}
+.bbs_left .title2{
+    display: block;
+    line-height: 36px;
+    height: 36px;
+    border-bottom: solid #ddd 1px;
+    height: 36px;
+    text-overflow: ellipsis;
+}
+.bbs_left .title2:hover{
+    border-bottom: 1px #79c447 solid; 
+}
+.bbsdetail h2{
+    text-align: center;
+    margin-top: 0;
+}
+
+.bbsdetail h2 span{
+    /*display: inline-block;*/
+}
+
+.pad {
+    padding: 10px;
+}
+/*浏览模式*/
+/*.title0{
+    text-align: center;
+}*/
+.title3{
+    margin-top: 0;
+    width:100%;
+    padding-left: 0px;
+    padding-right: 0px;
+
+    /*background-color: #D2FF4D;*/
+}
+.title1 h1{
+    text-align: center;
+}
+
+.bbsBox_lay{
+    margin-top: -10px;
+}
+.bbsBox_lay:after{
+    content:"";
+    display: block;
+    clear: both;
+}
+.bbsBox{
+   padding: 9px;   
+}
+.bbsBox_inner:hover{
+    border:1px #0099CC solid;
+}
+.bbsBox_inner{
+    border:1px #cacbcd solid;
+    background-color: #fff;
+   /*   height: 300px;  */
+    position: relative;
+     padding: 0 10px 10px 10px ; 
+  overflow: hidden;
+  box-shadow:2px 5px 8px #bbc9d5;
+  /*padding: 10px;*/
+}
+
+.bbsBox_inner .delete{
+    position: absolute;
+    right:10px;
+    top:10px;
+    color: #fff;
+}
+.bbsBox_inner .sort_no{
+    position: absolute;
+    left:10px;
+    top:10px;
+}
+
+
+.bbsBox_inner .activity_img{
+    width: 40%;
+    margin-left: -15px;
+}
+
+.bbsBox_inner .activity_img_lay{
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+.bbsBox_inner .activity_intro{
+    position: relative;
+    z-index: 1;
+    margin-top: 4px;
+    background: #fff;
+    padding: 10px;
+}
+
+.bbsBox_inner .add_ico{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 200px;
+    width: 158px;
+    height: 200px;
+    display: inline-block;
+    margin-left: -79px;
+    margin-top: -100px;
+    z-index: 3;
+    color:#cdcdcd;
+}
+.bbsBox_inner .titlebox{
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    right: 0;
+    padding: 10px;
+    height: 84px;
+    background: #fff;
+    border-bottom: solid #fff 10px;
+    overflow: hidden;
+}
+.bbsBox_inner .titlebox a{
+    font-weight:bold;
+    font-size: 14px;
+    /*line-height: 25px;*/
+    font-family: "微软雅黑";
+    color:#444;
+}
+.bbsBox_inner .contentbox{
+    height:40px;
+    overflow: hidden; 
+    line-height: 20px;
+    font-size: 14px;
+    font-family: "微软雅黑";
+    color: #666;
+    padding:0 10px 10px;
+    text-overflow: ellipsis;
+}
+
+.pic1{
+    height: 200px;
+    overflow: hidden;
+}
+
+
+.bbsBox_inner ul li{
+    list-style: none;
+}
+
+.bbsBox_inner .timebox{
+    height:24px;
+    overflow: hidden; 
+    line-height: 26px;
+    font-size: 14px;
+    font-family: "微软雅黑";
+    color: #666;
+    padding: 0px 12px 12px 10px;
+    text-overflow: ellipsis;
+}
+.pic1 a img{    
+    width:50%;
+    /* height:206px; */
+}
+
+.pic1{
+    height: 150px;
+    overflow: hidden;
+}
+
+
+.bbsBox_inner ul li{
+    list-style: none;
+}
+.foot_time{
+    position: absolute;
+    right:10px;
+    bottom: 10px;
+}
+
+/*.news .row .acc:link{}
+.news .row .acc:visited{}
+.news .row .acc:hover{background-color:blue;}
+.news .row .acc:active{}*/
+.bbs_c{
+    position: absolute;
+    width: 100%;
+    top:0;
+    left:0;
+    bottom: 79px;
+    overflow: hidden;
+}
+
+.bbs_c a{
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+}
+
+
+
+.foot ul li a{
+    position: absolute;
+    top:290px;
+    left:10px;
+    /*float: left;*/
+    /*display: inline-block;*/
+    /*text-align: left;*/
+}
+.foot ul li a i{
+    font-size: 14px;
+}
+/*deitail页面*/
+.bbsdetail .panel {
+    /*padding: 15px;*/
+    /*float: left;*/
+}
+.panel{
+    margin-bottom: 0px;
+}
+.bbsdetail .panel img{
+    max-width:100%;
+}
+.panel-heading h1{
+    text-align: center;
+}
+.activity_img_lay .last div{
+    font-size: 200px;
+    text-align: left;
+    line-height: 100%;
+    color: #cdcdcd;
+    height: 120px;
+
+}
+.activity_img_lay .last i{
+    position:absolute;
+    top:50%;
+    left:25%;
+    background-color: #cdcdcd;
+}
+.delete{
+    height:20px;
+}
+.row1{
+    margin-bottom: 0px;
+}
+
+.act-xq{
+    position: absolute;
+    bottom: 15px;
+    right:15px;
+}
+.panel-content{
+    width: 100%;
+    float:left;
+}
+.ngdialog-title{
+    text-align: center;
+}
+.left_author{
+    background-color: #E5EDF2;
+    overflow: hidden;
+   /* border-right: 1px solid #C2D5E3;*/
+    vertical-align: top;
+
+}
+
+.left_author img{
+    margin-left: 10%;
+    /*margin-top: 10%;*/
+    width: 80%;
+    /*height: 160px;*/
+}
+.row_left{
+    margin-bottom: 0px;
+    padding-left: 0px;
+}
+.row_comment{
+    width: 100%;
+    margin: 0;
+}
+.pic a img{    
+    width:100%;
+    /*max-height:340px; */
+    /*height:68%;*/
+}
+.pic1 a img{    
+    width:100%;
+    /*max-height:340px; */
+    /*height:70%;*/
+}
+
+.pic1{
+    /*height: 208px;*/
+    overflow: hidden;
+}
+.pic{
+    /*height:350px;*/
+    overflow: hidden;
+}
+
+.bbsBox_inner ul li{
+    list-style: none;
+}
+.foot_time{
+    position: absolute;
+    right:10px;
+    bottom: 10px;
+}
+
+.bbscol-lg-top{
+    margin-top:110%;
+    height: 0;
+}
+
+.bbscol-lg-top1{
+    margin-top:100%;
+    height: 0;
+}
+
+.time1{
+    background-color: #fff;
+}
+
+.foot ul li a{
+    position: absolute;
+    top:290px;
+    left:10px;
+    /*float: left;*/
+    /*display: inline-block;*/
+    /*text-align: left;*/
+}
+.foot ul li a i{
+    font-size: 14px;
+}
+/*deitail页面*/
+.bbsdetail .panel {
+    /*padding: 15px ;*/
+}
+.bbsdetail .panel img{
+ /*   width:100%;
+    height:100%;*/
+}
+.panel-heading h3{
+    text-align: center;
+}
+
+.box-success .box-body .desk_bbs tr td{
+    padding:2px;
+}
+
+/*桌面table*/
+.bbstable_desk{   
+    table-layout:fixed;
+    /* 只有定义了表格的布局算法为fixed，下面td的定义才能起作用。 */  
+}  
+.bbstd_desk a,.bbstable_desk .subject,.sectionbox .title3{  
+    width:100%;  
+    word-break:keep-all;
+    white-space:nowrap;/* 不换行 */  
+    overflow:hidden;/* 内容超出宽度时隐藏超出部分的内容 */  
+    text-overflow:ellipsis;/* 当对象内文本溢出时显示省略标记(...) ；需与overflow:hidden;一起使用*/  
+}

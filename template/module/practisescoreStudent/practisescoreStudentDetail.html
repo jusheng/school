@@ -1,0 +1,28 @@
+<link rel="stylesheet" href="template/module/teachermanage/teacher.css">
+<div class="row pad">
+    <div class="table-responsive">
+        <table class="table table-mailbox">
+            <tbody>
+            <tr class="unread">
+                <td class="code">学号</td>
+                <td class="name">姓名</td>
+                <td ng-repeat="(key,value) in subjects">{{sDict[value.subject.id].name}}</td>
+                <td class="opt">排名</td>
+            </tr>
+            <tr ng-repeat="item in pageInfo.list">
+                <td class="code v-middle">{{item.student.code}}</td>
+                <td class="name v-middle">{{item.student.name}}</td>
+                <td ng-repeat="(key,value) in subjects">
+                    {{item[sDict[value.subject.id].code]>=0?item[sDict[value.subject.id].code]:"未录入"}}
+                </td>
+                <td class="opt v-middle">{{item.classRanking}}</td>
+            </tr>
+            </tbody>
+        </table>
+        <div ng-include="'template/module/tpl/pageInfo.html'"></div>
+    </div>
+</div>
+
+<!-- toaster directive -->
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+<!-- / toaster directive -->

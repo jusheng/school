@@ -1,0 +1,61 @@
+<script src="lib/My97DatePicker/WdatePicker.js"></script>
+  <script src="lib/jquery/jquery.validate.min.js"></script>
+  <script src="lib/jquery/additional-methods.min.js"></script>  
+<div class="row pad add_new">
+    <form id="newsadd_form" class="form-horizontal">
+        <legend ng-bind="title" class="title0"></legend>
+    
+        <div class="form-group">
+            <label for="title" class="col-lg-2 col-sm-3 control-label">标题</label>
+            <div  class="col-sm-7">
+            <input type="text" class="form-control" id="title" name="title" maxlength="32" placeholder="" required="required" ng-model="record.title">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="sortsId" class="col-lg-2 col-sm-3 control-label">所属版块</label>
+            <div  class="col-sm-7">
+           
+            <select name="sortsId" id="sortsId" class="form-control" required="required" ng-options="value.id+'' as value.title for value in activityclass.list" ng-model="record.sectorId" >
+               <option value="">选择</option>
+            </select>
+            </div>
+            
+        </div>
+
+        
+        <div class="form-group list-group">
+        	<label for="content"  class="col-lg-2 col-sm-3 control-label">内容</label>
+        	<!-- <textarea name="" id="input" class="form-control" rows="3" required="required" ng-model="record.content"></textarea> -->
+            <div  class="col-sm-7">
+                <div name="content" class="include_editor"  ng-model="record.content" config="_simpleConfig" required></div>
+            </div>
+            <div class="editor-js"></div>
+        </div>
+        
+         <div class="form-group">
+            <label for="remark"  class="col-lg-2 col-sm-3 control-label">附件</label>
+            <div  class="col-xs-9 col-sm-9 col-md-9 col-lg-9 col-xs-push-0 col-sm-push-0 col-md-push-0 col-lg-push-0">
+
+                <button class="btn btn-xs btn-info" ngf-select="onFileSelect($files)" multiple="multiple">
+                    <i class="icon-cloud-upload"></i> 添加图片
+                </button>
+                <div ng-show="record.pic">
+                <br>
+                    <img src="{{record.imgurl}}" width="100" alt="">
+                </div>
+                
+            </div>
+            
+        </div>
+        <div class="form-group">
+            <label for="content"  class="col-lg-2 col-sm-3 control-label"></label>
+            <div  class="col-sm-7">
+                <!-- <button type="submit" ng-click="set_sign(false)" class="btn btn-info">保存草稿</button> -->
+                <button type="submit" ng-click="set_sign(true)" class="btn btn-success">发布新帖</button>
+            </div>
+        </div>
+    </form>
+</div>
+<!-- toaster directive -->
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+<!-- / toaster directive -->

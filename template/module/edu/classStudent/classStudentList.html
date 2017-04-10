@@ -1,0 +1,88 @@
+<script src="lib/jquery/jquery.validate.min.js"></script>
+<script src="lib/jquery/additional-methods.min.js"></script>
+<div class="row pad">
+    <div class="col-sm-2">
+        <label style="margin-right: 10px;" class="">
+            <div class="icheckbox_minimal-blue" ng-click="select_all()" ng-class="{checked:s_all==true}"
+                 style="position: relative;"><input type="checkbox" id="check-all"
+                                                    style="position: absolute; opacity: 0;"></div>
+        </label>
+        <!-- Action button -->
+        <div class="btn-group">
+            <button type="button" class="btn btn-default btn-sm btn-flat dropdown-toggle" data-toggle="dropdown">
+                操作 <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+                <li><a ng-click="del(null,classId)">删除</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-sm-3 search-form">
+        <form ng-submit="search()" class="text-right">
+            <div class="input-group">
+                <input type="text" class="form-control input-sm" ng-model="param.keyword" placeholder="Search">
+                <div class="input-group-btn">
+                    <button type="submit" name="q" class="btn btn-sm btn-success"><i class="fa icon-search"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="col-sm-7">
+        <a ng-click="addClassStudent(classId)" class="btn btn-success pull-right m-l-sm"> <i
+                class="icon-user-follow text-md"></i>分配学生</a>
+		<a href="/edu/student/downloadClassStudentTemplate" class="btn btn-success pull-right m-l-sm"> <i class="icon-user-follow m-r-sm text-md"></i>下载模板</a>
+		<div class="btn btn-success pull-right m-l-sm" ngf-select="onFileSelect($files,classId)" multiple="multiple">Excel导入信息</div>
+        <a ui-sref="main.class.classList({grade_id:gradeId})" class="btn btn-success pull-right m-l-sm">
+            <i class="icon-user-follow text-md"></i>返回</a>
+    </div>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-mailbox">
+        <tbody>
+        <tr class="unread">
+            <td class="small-col">
+                <div></div>
+            </td>
+            <td class="code">学号</td>
+            <td class="name">姓名</td>
+            <td class="sex">性别</td>
+            <td class="nationNameref">民族</td>
+            <td class="politics">政治面貌</td>
+            <td class="idCard">身份证号码</td>
+            <td class="tel">电话</td>
+            <td class="parentName">家长姓名</td>
+            <td class="parentTel">家长电话</td>
+            <td class="address">家庭地址</td>
+            <td class="opt">操作</td>
+        </tr>
+        <tr ng-repeat="item in pageInfo.list">
+            <td class=" v-middle">
+                <div class="icheckbox_minimal-blue" ng-class="{checked:$parent.pageInfo.list[$index].selected}"
+                     ng-click="select_per($index)" style="position: relative;"><input type="checkbox" style="position: absolute; opacity: 0;">
+                </div>
+            </td>
+            <td class="code v-middle">{{item.code}}</td>
+            <td class="name v-middle">{{item.name}}</td>
+            <td class="sexNameref v-middle">{{item.sexNameref}}</td>
+            <td class="nationNameref v-middle">{{item.nationNameref}}</td>
+            <td class="politics v-middle">{{item.politicsNameref}}</td>
+            <td class="idCard v-middle">{{item.idCard}}</td>
+            <td class="tel v-middle">{{item.tel}}</td>
+            <td class="parentName v-middle">{{item.parentName}}</td>
+            <td class="parentTel v-middle">{{item.parentTel}}</td>
+            <td class="adress v-middle">{{item.address}}</td>
+            <td class="opt v-middle">
+                <a ui-sref="main.classManage.editStudent({gradeId:gradeId,classId:classId,id:item.id,teacherId:teacherId})" class="btn btn-sm btn-primary">编辑</a>
+                <a ng-click="open_confirm(item.id,classId)" class="btn btn-sm btn-danger">删除</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <div ng-include="'template/module/tpl/pageInfo.html'"></div>
+</div>
+
+<!-- toaster directive -->
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+<!-- / toaster directive -->

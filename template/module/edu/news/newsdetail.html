@@ -1,0 +1,17 @@
+<div class="newsdetail">	
+	<div class="panel ">
+		<a ui-sref="main.news.newslist"><i class="pull-right icon-reply"></i></a>
+		<div class="panel-heading">
+			<h3 class="panel-title" style="font-size:18px;">{{record.title}}</h3>
+			 <span class="block text-xs text-left">发布日期：{{record.updateTime | date:'yyyy-MM-dd HH:mm:ss'}} </span>
+			
+			
+		</div>
+		<!-- <img ng-src="{{record.imgUrl}}" src="/res/img/no.jpg"/> -->
+		<div class="panel-body" ng-bind-html="record.content">
+			
+		</div>
+	</div>
+
+
+</div>

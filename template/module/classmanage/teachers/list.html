@@ -1,0 +1,47 @@
+
+
+
+<div class="row">	
+	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4"  ng-repeat="(key, value) in pageInfo"  >
+		<div style="padding: 15px; padding-top: 0;position:relative">
+			<div class="lg-placehold"></div>
+			<div class="row teachersBox_inner" style="background: #fff">
+				<div class="col-xs-6 col-sm-6 col-md-4 col-lg-4 text-center ">
+					<img ng-src="{{value.teacherInfo.imgUrl}}" src="/res/img/no.jpg" class="img-responsive center-block"/>
+				</div>
+				<div class="col-xs-6 col-sm-6 col-md-8 col-lg-8">
+					<ul class="list-group">
+						<li class="list-group-item">
+						姓名：{{value.teacherInfo.name}} <span ng-show="value.isClassTeacher"> (班主任)</span>
+						</li>
+						<li class="list-group-item">科目：
+						<span ng-repeat="(k, v) in value.teacherInfo.sList">{{v.name}}</span>
+							
+						</li>
+						<li class="list-group-item">
+						性别：
+						<span ng-show="value.teacherInfo.sex==1">男</span>
+						<span ng-show="value.teacherInfo.sex==2">女</span>
+						</li>
+						<li class="list-group-item">电话：{{value.teacherInfo.tel}}
+						</li>
+					</ul>
+				</div>
+
+			
+		  </div>
+
+		</div>
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="height: 40px;top:-60px;overflow:hidden;padding-left:0px;padding-right:26px;">
+					<a title="{{value.teacherInfo.remark}}">简介：{{value.teacherInfo.remark }}</a>
+					
+				
+		</div>
+
+	</div>
+
+
+</div>
+
+
+<!-- <div ng-include="'template/module/tpl/pageInfo.html'"></div> -->

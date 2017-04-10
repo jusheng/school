@@ -1,0 +1,50 @@
+<div class="tdetail row" style="margin-top:12px;">
+    <a ui-sref="main.teachingmanage.teachinglist" title="返回列表">
+        <span class="icon-reply pull-right"  style="position: absolute;top: 2px;right: 10px;font-size:20px;color:#AFC3E1;opacity:10;"></span>
+    </a>
+    
+    <!-- <div class="row"></div> -->
+    <table class="table table-bordered" style="width: 80%;margin:0 auto;">
+        <caption style="text-align:center;font-size:22px;font-family:'宋体'">评课记录</caption>
+        <tbody>
+            <tr>
+                <td class="titles">讲课教师</td>
+                <td>{{record.teacherName}}</td>
+                <td class="titles">课题</td>
+                <td colspan="2.5">{{record.classTitle}}</td>
+                <td class="titles">讲课时间</td>
+                <td colspan="1.5">{{record.classTime}}</td>
+            </tr>
+            <tr>
+                <td class="titles">作课地点</td>
+                <td colspan="4.5"><span>{{record.lessionPlace}}</span></td>
+                <td class="titles">记录人</td>
+                <td colspan="1.5">{{record.recorderName}}</td>
+            </tr>
+            <tr>
+                <td class="titles">邀请评课人</td>
+                <td colspan="6">{{record.attendeePlanNames}}</td>
+            </tr> 
+            <tr>
+                <td class="titles">实际出席人</td>
+                <td colspan="4.5">{{record.attendeeNames}}</td>
+                <td class="titles">缺席人</td>
+                <td colspan="1.5">{{record.defaulterNames}}</td> 
+            </tr>
+            <tr >
+                <td class="titles" style="height:150px;">说课</td>
+                <td colspan="7" ng-bind-html="record.speakingContent">说课：</td>
+                
+            </tr>
+            <tr >
+                <td class="titles" style="height:300px;">评课人发言</td>
+                <td colspan="7" ng-bind-html="record.comment">评课人发言</td>       
+            </tr>
+        </tbody>
+    </table>
+</div>
+</div>
+       
+<!-- toaster directive -->
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+<!-- / toaster directive -->

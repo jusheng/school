@@ -1,0 +1,69 @@
+
+
+.pad {
+    padding: 10px;
+}
+
+.width-20 {
+  width: 20px !important;
+}
+.width-30 {
+  width: 30px !important;
+}
+.width-40 {
+  width: 40px !important;
+}
+.width-50 {
+  width: 50px !important;
+}
+.width-60 {
+  width: 60px !important;
+}
+.width-70 {
+  width: 70px !important;
+}
+.width-80 {
+  width: 80px !important;
+}
+
+.ico-30{
+    font-size: 30px;
+}
+
+.ico-gray{
+    color: #ccc;
+}
+
+.memeber_left{
+  background: #fff;
+      margin-bottom: 15px;
+}
+
+.nav.nav-stacked > li.active > a, 
+.nav.nav-stacked > li.active > a:hover {
+  display: block;
+    background-color: #f6f6f6;
+    border-left: 3px solid #98D1A6;
+    color: #444;
+}
+
+.pwd_lay{
+  background: #fff;
+  padding:15px;
+}
+
+.info_view_lay {
+   background: #fff;
+  padding:15px;
+}
+
+
+#fileInput,
+.fileInput {
+    width: 116px;
+    height: 34px;
+    margin-top: -34px;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+

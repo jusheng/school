@@ -1,0 +1,56 @@
+<script src="lib/jquery/jquery.min.js"></script>
+<script src="lib/jquery/jquery.validate.min.js"></script>
+
+<script src="lib/jquery/additional-methods.min.js"></script>
+
+<div class="row bbsBox_lay">
+    
+    <div class="bbsBox col-xs-12 col-sm-6 col-md-6 col-lg-4" ng-repeat="(key, value) in pageInfo.list" style="position: relative;">
+            <div class="bbsBox_inner">
+                <div class="bbscol-lg-top hidden-md show-lg "></div>
+                <div class="bbscol-lg-top1 show-md hidden-lg"></div>
+               
+                <div class="bbs_c" ng-if="value.imgurl!=null" style="background: url({{value.imgurl}}) center center no-repeat;background-size:cover;">
+                        <a ui-sref="main.bbs.threadlist({id:value.id})">
+                            <!-- <img ng-src="{{value.imgurl}}" src="/res/img/no.jpg"/> -->
+                        </a>
+                </div>
+                <div class="bbs_c" ng-if="value.imgurl==null" style="background: url(/res/img/no.jpg) center center no-repeat;background-size:cover;">
+                        <a ui-sref="main.bbs.threadlist({id:value.id})">
+                            <!-- <img ng-src="{{value.imgurl}}" src="/res/img/no.jpg"/> -->
+                        </a>
+                </div>
+
+
+                 <div class="titlebox sectionbox">
+                        <a class="title3 col-sm-12" ui-sref="main.bbs.threadlist({id:value.id})" title="{{value.title}}">
+                            {{value.title}}
+                        </a><br>
+                        <a  style="font-size:14px;font-weight:normal;line-height: 20px;" ui-sref="main.bbs.threadlist({id:value.id})"> 
+                                版主：<span ng-repeat="(k, v) in value.moderatorList">{{v.name}}&nbsp;</span>
+                        </a>
+                        <div ng-bind-html="removeHTMLTag(value.content)">
+                            
+                        </div>    
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+</div>
+
+<div ng-include="'template/module/tpl/pageInfo.html'"></div>
+
+
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+<script>
+    // var height1;
+    // height1 = $(".pic a img").width() * 0.72;
+    // height2 = $(".pic1 a img").width() * 0.72;
+    // console.log(height1);
+    // $('.pic a img').css('height', height1 + 'px');
+    // $('.pic1 a img').css('height', height2 + 'px');
+</script>

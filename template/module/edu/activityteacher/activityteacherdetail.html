@@ -1,0 +1,31 @@
+<div class="newsdetail">
+	<a ui-sref="main.activityteacher.activityteacherlist({sorts_id:catalogId})"><span class="icon-reply pull-right"></span></a>
+	<div class="row actdetail">
+		<div class="col-md-5 col-sm-5 pull-left">
+        <span><img ng-src="{{record.imgUrl}}" src="/res/img/no.jpg"/></span>
+    </div> 
+    <div class="col-md-7 col-sm-7">
+        <span class="act-title">{{record.name}}</span>
+        <p><span>时间：</span> {{record.starttime | date:'yyyy-MM-dd '}} 至 {{record.endtime | date:'yyyy-MM-dd '}} </p>
+        <p><span>活动简介：</span>  {{record.remark}}</p>
+
+    </div>
+	</div>
+</div>
+<div class="act-work">活动作品(<span style="color:#79c447;font-weight:bold;">{{pageInfo.list.length}}</span>)</div>
+<div class="row newsBox_lay">
+		<div class="newsBox col-xs-12 col-sm-6 col-md-6 col-lg-4" ng-repeat="(key, value) in pageInfo.list">
+			<div class="newsBox_inner" >
+				<div class="col-lg-top hidden-md show-lg"></div>
+				<div class="col-lg-top1 show-md hidden-lg"></div>
+					<div class="activity_img_lay">
+							<img ng-src="{{value.imgurl}}" class="activity_img" alt="">
+					</div>	
+					<div class="activity_intro">
+						作品名称：{{value.name}}<br>
+						作者：{{value.author}}<br>
+						奖项：{{value.prize}}<br>
+					</div>
+			</div>
+		</div>
+</div>

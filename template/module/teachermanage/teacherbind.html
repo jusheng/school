@@ -1,0 +1,35 @@
+<script src="lib/jquery/jquery.validate.min.js"></script>
+<script src="lib/jquery/additional-methods.min.js"></script>
+<div class="ngdialog-title">未绑定账户列表</div>
+<br>
+<div class="password">
+    <div class="row">
+       <form id="roleadd_form" class="form-horizontal">
+       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+       </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			<div class="">
+                    <table class="user-table table">
+                                <tr class="table-title">
+                                    <td></td>
+                                    <td>账号名称</td>
+                                </tr>
+                                <tr ng-repeat="item in role">
+                                    <td>
+                                    <input type="radio" id="isDefault" name="isDefault" ng-click="select_t($index)" ng-checked="value.isDefault" name="isDefault">
+                                    </td> 
+                                    <td>{{item.name}}</td>
+                                </tr>
+
+                            </table>
+			</div>
+            <div class="form-group-last">
+                <div class="col-sm-12 text-center">
+                    <button type="submit" class="btn btn-success" ng-click="submit()">提交</button>
+                </div>
+            </div>
+        </div>
+      </form>
+    </div>
+
+</div>

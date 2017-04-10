@@ -1,0 +1,181 @@
+
+
+.extrares_lay{
+	margin: 15px;
+	background: #fff;
+	    padding: 0 15px 0 15px;
+}
+
+
+
+.condition_row{
+	position: relative;
+	line-height: 50px;
+	padding-left: 145px;
+	border-bottom: solid #ddd 1px;
+}
+
+.condition_row a,
+.condition_row a:hover
+{
+    color: #333;
+    
+}
+.img-responsive{
+    width:100%;
+}
+.condition_title{
+	width: 120px;
+    background: #f3f3f3;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    padding-left: 25px;
+}
+
+.result_lay{
+	margin-top:15px;
+	padding-bottom: 15px;
+}
+
+.result_lay .table > tbody > tr > td, .table > tfoot > tr > td {
+    border-top: none;
+    border-bottom: 1px solid #edf1f2;
+}
+
+.result_lay h4{
+	display: inline-block;
+}
+
+.resdetail_lay{
+	margin: 0 auto;
+	line-height: 30px;
+	padding-bottom: 15px;
+	font-size: 15px;
+}
+.resitem{
+    position: absolute;
+    left: 15px;
+    right: 15px;
+    bottom: 15px;
+    top: 15px;
+    box-shadow: 0px 3px 10px #ddd;
+    overflow: hidden;
+}
+
+
+.resitem_lay{
+    position: relative;
+}
+
+.resitem_placeholder{
+    margin-top:80%;
+}
+
+.resitem_title{
+    position: absolute;
+    width: 100%;
+    line-height: 50px;
+    left: 0;
+    bottom: 0;
+    background: #fff;
+    font-size: 16px;
+    text-indent: 5px;
+
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.resitem_title a{
+	display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.extrares_cover{
+	position: absolute;
+    width: 100%;
+    bottom: 50px;
+    top:0;
+    left: 0;
+    text-align: center;
+    background: rgba(0,0,0,0.5);
+    display: none;
+
+
+	transition: all 2s;
+	-moz-transition: all 2s; /* Firefox 4 */
+	-webkit-transition: all 2s; /* Safari 和 Chrome */
+	-o-transition: all 2s; /* Opera */
+}
+
+.extrares_cover span{
+    position: absolute;
+    display: block;
+    left: 50%;
+    top: 50%;
+    margin-left: -63px;
+    margin-top: -16px;
+    color: #fff;
+    padding: 5px 30px;
+    border: solid #fff 1px;
+    border-radius: 18px;
+    font-size: 16px;
+}
+.resitem > a{
+	display: block;
+	position: relative;
+    height: 100%;
+}
+.resitem > a:hover .extrares_cover{
+	transition: all 2s;
+	-moz-transition: all 2s; /* Firefox 4 */
+	-webkit-transition: all 2s; /* Safari 和 Chrome */
+	-o-transition: all 2s; /* Opera */
+	display: inline-block;
+
+}
+
+.box_lay {
+    display: -webkit-box;
+    display: -moz-box;
+    display: box;
+}
+
+.res_detail_left{
+    width: 230px;
+    overflow-x: auto;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    min-height: 500px;
+}
+
+.res_detail_right {
+    -webkit-box-flex: 1;
+    -moz-box-flex: 1;
+    padding-left: 20px;
+}
+
+.res_detail_left .relate_a{
+    display: inline-block;
+    width: 100%;
+    border-bottom: solid #ddd 1px;
+    line-height: 40px;
+    text-indent: 5px;
+}
+.extra_more{
+    margin-top: 10px;
+}
+.bbs_c{
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    bottom: 46px;
+    overflow: hidden
+}
+    

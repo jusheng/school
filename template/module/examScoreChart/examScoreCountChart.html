@@ -1,0 +1,104 @@
+<link rel="stylesheet" href="template/module/teachermanage/teacher.css">
+<div class="row pad">
+    <div class="col-sm-12">
+        <div class="allsubject pull-right">
+            <select name="code" id="code" ng-model="select" class="pull-left form-control" ng-change="getData(select)">
+                <option value=0 ng-selected="select==1">查看年级</option>
+                <option value=1 ng-selected="select==1"> 查看班级</option>
+            </select>
+        </div>
+    </div>
+
+</div>
+<div class="row pad">
+    <div class="table-responsive">
+
+        <table class="table table-mailbox">
+            <tbody>
+            <tr class="unread">
+                <td class="name">考试科目</td>
+                <td ng-repeat="item in examSubject2.details">{{item.subject.name}}</td>
+            </tr>
+            <tr>
+                <td class="attendedCount v-middle">应考人数</td>
+                <td ng-repeat="item in examSubject2.details">{{fourRate[item.subject.code].total}}</td>
+            </tr>
+            <tr>
+                <td class="total v-middle">参考人数</td>
+                <td ng-repeat="item in examSubject2.details">{{fourRate[item.subject.code].attendedCount}}</td>
+            </tr>
+            <tr>
+                <td class="code v-middle">平均分</td>
+                <td ng-repeat="item in examSubject2.details">{{avgData[item.subject.code]}}</td>
+            </tr>
+            <tr>
+                <td class="code v-middle">最高分</td>
+                <td ng-repeat="item in examSubject2.details">{{scoreData.max[item.subject.code]}}</td>
+            </tr>
+            <tr>
+                <td class="code v-middle">最低分</td>
+                <td ng-repeat="item in examSubject2.details">{{scoreData.min[item.subject.code]}}</td>
+            </tr>
+            <tr>
+                <td class="code v-middle">优秀人数</td>
+                <td ng-repeat="item in examSubject2.details">{{fourRate[item.subject.code].excellent}}</td>
+            </tr>
+            <tr>
+                <td class="code v-middle">优秀率</td>
+                <td ng-repeat="item in examSubject2.details">
+                    {{fourRate[item.subject.code].excellent/fourRate[item.subject.code].total*100 | number:1}}%
+                </td>
+            </tr>
+            <tr>
+                <td class="code v-middle">优良人数</td>
+                <td ng-repeat="item in examSubject2.details">{{fourRate[item.subject.code].good}}</td>
+            </tr>
+            <tr>
+                <td class="code v-middle">优良率</td>
+                <td ng-repeat="item in examSubject2.details">
+                    {{fourRate[item.subject.code].good/fourRate[item.subject.code].total*100 | number:1}}%
+                </td>
+            </tr>
+            <tr>
+                <td class="code v-middle">及格人数</td>
+                <td ng-repeat="item in examSubject2.details">{{fourRate[item.subject.code].pass}}</td>
+            </tr>
+            <tr>
+                <td class="code v-middle">及格率</td>
+                <td ng-repeat="item in examSubject2.details">
+                    {{fourRate[item.subject.code].pass/fourRate[item.subject.code].total*100 | number:1}}%
+                </td>
+            </tr>
+            <tr>
+                <td class="code v-middle">不及格人数</td>
+                <td ng-repeat="item in examSubject2.details">{{fourRate[item.subject.code].unpass}}</td>
+            </tr>
+            <tr>
+                <td class="code v-middle">不及格率</td>
+                <td ng-repeat="item in examSubject2.details">
+                    {{fourRate[item.subject.code].unpass/fourRate[item.subject.code].total*100 | number:1}}%
+                </td>
+            </tr>
+            <tr>
+                <td class="code v-middle">全距</td>
+                <td ng-repeat="item in examSubject2.details">
+                    {{scoreData.max[item.subject.code]-scoreData.min[item.subject.code] | number:1}}
+                </td>
+            </tr>
+            <tr>
+                <td class="code v-middle">标准差</td>
+                <td ng-repeat="item in examSubject2.details">{{devData[item.subject.code]}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<!-- <select class="form-control" style="width:30%;" id="" ng-model="subject" ng-options="item.subject.code as item.subject.name for item in examgradeList.list[0].details" ng-change="getData()">
+</select>
+<div class="box-body no-padding" style="height:600px;">
+    <div class=""  style="height:600px;">
+        <pie-chart config="config" data="data"></pie-chart>
+    </div>
+</div> -->

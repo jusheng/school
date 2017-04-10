@@ -1,0 +1,69 @@
+<script src="lib/jquery/jquery.validate.min.js"></script>
+<script src="lib/jquery/additional-methods.min.js"></script>
+<div class="row newsBox_lay">
+	
+		<div class="newsBox col-xs-12 col-sm-6 col-md-6 col-lg-4" ng-repeat="(key, value) in pageInfo.list">
+
+
+			<div class="newsBox_inner" >
+				<div class="col-lg-top hidden-md show-lg"></div>
+				<div class="col-lg-top1 show-md hidden-lg"></div>
+					
+					<div class="activity_img_lay">
+						<a  class="delete icon-remove pull-right" ng-click="del(value)" style="font-size:24px;color:#AFC3E1;opacity:10;margin:-5px;" title="删除"></a>
+						<a ui-sref="main.activity.worksedit({id:value.id})" >
+							<img ng-src="{{value.imgurl}}" src="/res/img/no.jpg" class="activity_img" alt="点击图片进入活动编辑">
+						</a>
+					</div>	
+					
+					<!-- <span class="sort_no">
+						编号：	{{value.sortNo}}
+					</span> -->
+
+					<div class="activity_intro">
+						编号：	{{value.sortNo}}<br>
+						作品名称：{{value.name}}<br>
+						简介：{{value.remark}}<br>
+						作者：{{value.author}}<br>
+						奖项：{{value.prize}}<br>
+					</div>
+					
+
+
+					
+
+							
+			</div>
+
+		</div>
+
+
+		<div class="newsBox col-xs-12 col-sm-6 col-md-6 col-lg-4">
+	
+				<div class="newsBox_inner" >
+					<div class="col-lg-top hidden-md show-lg"></div>
+					<div class="col-lg-top1 show-md hidden-lg" ></div>
+					
+					
+					<!-- <i class="icon-plus activity_img" ng-click="add_work()"></i> -->
+
+					<div class="activity_intro" >
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+					</div>
+					
+					<i class="icon-plus add_ico" ng-click="add_work()"></i>
+
+			</div>
+		</div>
+
+
+</div>
+<div ng-include="'template/module/tpl/pageInfo.html'"></div>
+
+<!-- toaster directive -->
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+<!-- / toaster directive -->

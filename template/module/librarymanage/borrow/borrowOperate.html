@@ -1,0 +1,78 @@
+<link rel="stylesheet" href="template/module/teachermanage/teacher.css">
+
+<div class="row pad">
+    <div class="col-sm-12" style="padding:0">
+        <form class="text-right user-form">
+            <div class="form-group clearfix">
+                <label class="control-label">ISBN</label>
+                <input type="text" class="form-control" id="bookIsbn" name="bookIsbn" ng-model="param.bookIsbn">
+            </div>
+            <div class="form-group clearfix">
+                <label class="control-label">图书名称</label>
+                <input type="text" class="form-control" id="bookName" name="bookName" ng-model="param.bookName">
+            </div>
+            
+            <div class="clear"></div>
+            <div class="form-group clearfix">
+                <label class="control-label">借阅人</label>
+                <input type="text" class="form-control" id="borrowUserName" name="borrowUserName" ng-model="param.borrowUserName">
+            </div>
+            <div class="form-group clearfix">
+                <label class="control-label">图书状态</label>
+                <select name="userType" id="userType" ng-model="param.status"
+                        ng-options="key-0 as value for (key,value) in uType" class="form-control">
+                    <option value="">选择状态</option>
+                </select>
+            </div>
+            <button class="chaxun btn btn-success" ng-click="search()" style="margin-right:10px">查询记录</button>
+            <button class="chaxun btn btn-success" ng-click="returnbook()" ng-if="select_id>0">批量归还</button>
+            <button class="chaxun btn btn-default" ng-if="select_id==0">批量归还</button>
+        </form>
+    </div>
+    
+</div>
+
+<div class="table-responsive">
+                                               
+    <table class="table table-mailbox">
+        <tbody>
+            <tr class="unread">
+                <td class="small-col">
+                    <div class="icheckbox_minimal-blue" ng-click="select_all()" ng-class="{checked:s_all==true}"
+                 style="position: relative;"><input type="checkbox" id="check-all" style="position: absolute; opacity: 0;"></div>
+                </td>
+                <td class="bookIsbn">ISBN</td>
+                <td class="bookName">图书名称</td>
+                <td class="borrowUserNameref">借阅人</td>
+                <td class="status">借阅状态</td>
+                <td class="bookNum">借阅数量</td>
+                <td class="startDate">借阅时间</td>
+                <td class="createByNameref">操作人</td>
+                <td class="opt">操作</td>
+            </tr>
+            <tr ng-repeat="item in pageInfo.list">
+                <td class=" v-middle">
+                    <div class="icheckbox_minimal-blue" ng-class="{checked:$parent.pageInfo.list[$index].selected}"
+                         ng-click="select_per($index)" style="position: relative;"><input type="checkbox" style="position: absolute; opacity: 0;">
+                    </div>
+                </td>
+                <td class="bookIsbn v-middle">{{item.bookIsbn}}</td>
+                <td class="bookName v-middle"><a title="{{item.bookName}}">{{item.bookName}}</a></td>
+                <td class="borrowUserNameref v-middle">{{item.borrowUserNameref}}</td>
+                <td class="status v-middle">{{item.statusNameref}}</td>
+                <td class="bookNum v-middle">{{item.bookNum}}</td>
+                <td class="startDate v-middle">{{item.startDate}}~{{item.endDate}}</td>
+                <td class="createByNameref v-middle">{{item.createByNameref}}</td>
+                <td class="opt v-middle">  
+                    <a ng-click="renewTime(item.id,item.bookName,item.bookIsbn,item.endDate)" class="btn btn-default btn-sm">续借</a>  
+                    <a ng-click="returnbook(item.id)" class="btn btn-default btn-sm">归还</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+   <div ng-include="'template/module/tpl/pageInfo.html'"></div>
+</div>
+
+<!-- toaster directive -->
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+<!-- / toaster directive -->

@@ -1,0 +1,26 @@
+<link rel="stylesheet" href="template/module/classmanage/teachers/teachers.css">
+<div id="breadcrumb">
+  <a href="#/main"><i class="icon-home"></i> 学习云平台</a> 
+  <i class="icon-angle-right"></i><a>{{app_name}}</a> 
+</div>
+<div class="row  no-padding teachers">
+<!-- 		<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+			<a class="btn btn-block btn-success" ui-sref="main.coursebook.teacherbooklist" ><i class="fa fa-pencil"></i>老师</a>
+			<a class="btn btn-block btn-success" ui-sref="main.coursebook.studentbooklist({id:item.id})" ng-repeat="(key, value) in lists"><i class="fa fa-pencil"></i>{{item.name}}</a>
+		</div> -->
+
+		<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">		
+					<a class="btn btn-block btn-success" ng-repeat="(key, value) in lists" ui-sref="main.teachers.list({classId:value.id})">
+						
+						<span style="position:relative">
+						<i class="fa icon-ok curr_teachers" style="position:absolute;left:-16px;top:2px" ng-show="value.id==curr"></i> 
+						{{value.name}}
+						</span>
+					
+					</a>       
+		</div>
+		<div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
+			<div ui-view>	
+			</div>
+		</div>
+</div>

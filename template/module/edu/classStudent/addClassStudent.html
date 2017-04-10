@@ -1,0 +1,37 @@
+<link rel="stylesheet" href="template/module/teachermanage/teacher.css">
+<script src="lib/jquery/jquery.validate.min.js"></script>
+<script src="lib/jquery/additional-methods.min.js"></script>
+<div class="teacheradd">
+    <div class="ngdialog-title">添加班级学生</div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="row pad">
+                <form id="class_form" class="form-horizontal">
+                    <!--<div class="form-top">-->
+                        <!--<legend ng-bind="app_name"></legend>-->
+                    <!--</div>-->
+
+                    <div class="form-group">
+                        <label class="col-lg-2 col-sm-3 control-label">学号</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="code" name="code" placeholder="" ng-model="record.code">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-lg-2 col-sm-3 control-label"></label>
+                        <div class="col-sm-6">
+                            <button type="submit" class="btn btn-success">提交</button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+
+            <!-- toaster directive -->
+            <toaster-container
+                    toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+            <!-- / toaster directive -->
+        </div>
+    </div>
+</div>

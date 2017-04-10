@@ -1,0 +1,23 @@
+<div class="box box-danger" id="loading-example" style="position: relative;">
+    <div class="box-header" style="cursor: move;">
+        <i class="fa {{appicon}}"></i>
+        <h3 class="box-title"><a href="{{appurl}}">{{appname}}</a></h3>
+        <i class="fa pull-right  icon-remove" ng-click="delapp(appidentify)"></i>
+    </div>
+    <div class="nav-tabs-custom pull-right" style="z-index: 999;position: relative;">
+        <ul class="nav nav-tabs" role="">
+            <li role="presentation" ng-repeat="item in examclassInfograde" ng-class="{'active':$index==0}"
+                ng-click="getexamlist2(item.id)">
+                <a href="main/desk/book#c{{item.id}}" aria-controls="tab" role="{{item.id}}" data-toggle="tab">{{item.name}}</a>
+            </li>
+        </ul>
+    </div>
+
+    <select class="form-control" style="width:30%;margin-left:13px;" name="" id="" ng-model="subject" ng-options="item.subject.code as item.subject.name for item in examgradeList.list[0].details" ng-change="getData()">
+    </select>
+    <div class="box-body no-padding" style="height:450px;">
+        <div class=""  style="height:400px;">
+            <pie-chart config="config" data="data"></pie-chart>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+
+<div id="breadcrumb">
+  <a href="#"><i class="icon-home"></i> 学习云平台</a> 
+  <i class="icon-angle-right"></i><a>{{app_name}}</a>
+</div>
+	<div class="row  no-padding news">
+		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">		
+			<div class="news_left" >
+				<h1 class="text-lg"> 学校公告</h1>
+			
+					
+					<a class="title2" ng-repeat="(key, value) in pageInfo.list" ui-sref="main.schoolnotice.detail({id:value.id})" title="{{value.title}}" >
+						<span class="" style="max-width:400px;display:inline-block;height:36px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">{{$index+1}} {{value.title}}</span>
+						<span class="pull-right">{{value.updateTime}}</span>
+					</a>
+
+					<div ng-include="'template/module/tpl/pageInfo.html'"></div>
+					
+			</div>
+            
+		</div>
+		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+			<div ui-view>	
+			</div>
+		</div>
+</div>
+
+	
+
+

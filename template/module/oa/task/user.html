@@ -1,0 +1,35 @@
+<div class="ngdialog-title">{{title}}</div>
+<br>
+<div class="scroll_lay">
+	<div id="wrapper" ng-iscroll='wrapper' ng-iscroll-delay='50'>
+		<div id="scroller">
+				<!-- 主办人 -->
+				<div ng-show="curr==1">
+					<div ng-repeat="v in schoolMailList">
+						<input type="radio" name="zbr" ng-checked="v.id==$parent.record.presideUser.id" ng-click="s_zbr(this,v)"> {{v.name}}
+					</div>
+					
+				</div>
+
+				<!-- 协办人 -->
+				<div ng-show="curr==2">
+					<div ng-repeat="v in schoolMailList">
+						<input type="checkbox" name="xbr"  data-checklist-model="record.withUsers" data-checklist-value="v"> {{v.name}}
+					</div>
+				</div>
+
+
+				<!-- 知会人 -->
+				<div ng-show="curr==3">
+					<div ng-repeat="v in schoolMailList">
+						<input type="checkbox" name="zhr"  data-checklist-model="record.notifyUsers" data-checklist-value="v"  > {{v.name}}
+					</div>
+				</div>
+		</div>
+	</div>
+</div>
+<div class="text-center">
+	<button class="btn btn-success" ng-click="closeThisDialog()">确定</button>
+</div>
+
+

@@ -1,0 +1,77 @@
+
+<div class="row pad">
+	<div class="col-sm-4">
+        <label style="margin-right: 10px;" class="">
+            <div class="icheckbox_minimal-blue" ng-click="select_all()" ng-class="{checked:s_all==true}" style="position: relative;"><input type="checkbox" id="check-all" style="position: absolute; opacity: 0;"></div>
+        </label>
+        <!-- Action button -->
+        <div class="btn-group">
+            <button type="button" class="btn btn-default btn-sm btn-flat dropdown-toggle" data-toggle="dropdown">
+                操作 <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+                <!-- <li><a ng-click="remove_trash()">移动到垃圾箱</a></li>
+                <li class="divider"></li> -->
+                <li><a ng-click="open_confrim()">删除</a></li>
+            </ul>
+        </div>
+    </div>
+     <div class="col-xs-10 col-sm-6 col-md-6 col-lg-6 search-form">
+        
+        
+        <form ng-submit="search1()" role="form" class="text-right">
+            <div class="input-group col-xs-10 col-sm-10 col-md-10 col-lg-10">                                                              
+                <input type="text" class="form-control " ng-model="param.keyword" placeholder="搜索活动">
+                <div class="input-group-btn">
+
+                    <button type="submit" name="q" class="btn btn-success" ><i class="fa icon-search"></i></button>
+                    <!-- <button class="chaxun btn btn-success" type="submit">查询</button> -->
+                </div>
+            </div> 
+            
+        </form>
+    </div>
+
+    <div class="col-sm-2 search-form ">
+        <div class="btn-group pull-right">
+            <a href="#/main/activity/activityclassadd" class="btn btn-block btn-success btn-sm">添加</a>
+        </div>
+    </div>
+</div>
+
+<div class="table-responsive">                                    
+    <table class="table table-activity">
+        <tbody>
+        <tr class="unread">
+            <td class="small-col">
+            </td>
+            <td class="subject">活动主题</td>
+            <td class="subject">开始时间</td>
+            <td class="subject">结束时间</td>
+            <td class="subject">创建时间</td>
+            <td class="opt">操作</td>
+        </tr>
+        <tr ng-repeat="item in pageInfo.list">
+            <td class="small-col v-middle">
+            <div class="icheckbox_minimal-blue" ng-class="{checked:$parent.pageInfo.list[$index].selected}" ng-click="select_per($index)" style="position: relative;"><input type="checkbox" style="position: absolute; opacity: 0;"></div>
+            </td>
+            <td class="subject v-middle"><a ui-sref="main.activity.activitydetail({id:item.id})">{{item.name}}</a></td>
+
+            <td class="subject v-middle">{{item.starttime}}</td>
+            <td class="subject v-middle">{{item.endtime}}</td>
+            <td class="subject v-middle">{{item.createTime}}</td>
+            <td class="opt v-middle"> 
+            	<button class="btn btn-default btn-sm" ui-sref="main.activity.works({id:item.id})">查看作品</button>
+            	<button class="btn btn-default btn-sm" ui-sref="main.activity.worksadd({activityId:item.id})" >上传作品</button>
+            	<button class="btn btn-primary btn-sm" ui-sref="main.activity.activityedit({id:item.id})">编辑</button> 
+            	<button class="btn btn-danger btn-sm" ng-click="open_confrim(item.id)">删除</button>
+            </td>
+        </tr>
+    	</tbody>
+    </table>
+</div>
+  <div ng-include="'template/module/tpl/pageInfo.html'"></div>
+
+<!-- toaster directive -->
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+<!-- / toaster directive -->

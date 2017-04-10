@@ -1,0 +1,24 @@
+<link rel="stylesheet" href="template/module/oa/task/task.css">
+<div id="breadcrumb">
+  <a href="#"><i class="icon-home"></i> 学习云平台</a> 
+  <i class="icon-angle-right"></i><a >{{app_name}}</a>
+</div>
+
+<div class="news">
+	<div class="row  no-padding">
+		<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+		<a class="btn btn-block btn-success" ui-sref="main.task.taskadd" ><i class="fa fa-pencil"></i> 新建任务</a>
+		<a class="btn btn-block btn-success" ui-sref="main.task.mycharge" ><i class="fa fa-pencil"></i> 我负责的</a>
+		<a class="btn btn-block btn-success" ui-sref="main.task.mytask" ><i class="fa fa-pencil"></i> 我安排的</a>
+		<a class="btn btn-block btn-success" ui-sref="main.task.withnotifytask({utType:1})" ><i class="fa fa-pencil"></i> 我协办的</a>
+		<a class="btn btn-block btn-success" ui-sref="main.task.withnotifytask({utType:2})" ><i class="fa fa-pencil"></i> 知会我的</a>
+		<a class="btn btn-block btn-success" ui-sref="main.task.alltask" ><i class="fa fa-pencil"></i> 任务总览</a>
+		
+
+		</div>
+		<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 news_view_lay">
+			<div ui-view></div>
+		</div>
+	</div>
+
+</div>

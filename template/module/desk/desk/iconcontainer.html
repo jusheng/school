@@ -1,0 +1,24 @@
+<div class="box box-danger" id="loading-example" style="position: relative;">
+    <div class="box-header" style="cursor: move;">
+                      <i class="fa {{appicon}}"></i>
+                      <h3 class="box-title"><a>{{appname}}</a></h3>
+                      <!-- <i class="fa pull-right  icon-remove" ng-click="delapp(appidentify)"></i> -->
+     </div>
+    <div class="box-body no-padding">
+    <div class="text-center" ng-show="$parent.DATA[1].length==0">
+        暂无图标应用数据！
+    </div>
+    <br>
+        <ul class="list-inline">
+
+         <li class="success {{value.identify}}" ng-repeat="(key, value) in $parent.DATA[1] track by $index" >
+           <a href="{{value.url}}" title="{{value.name}}">
+           <img ng-src="{{value.imgUrl}}" width="50" height="50" alt="">
+           <!-- <i class="icon-cog"></i> -->
+           <h5>{{value.name}}</h5></a>
+         </li>
+         <div class="clearfix"></div>
+      </ul>
+
+    </div>
+</div>

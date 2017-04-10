@@ -1,0 +1,77 @@
+
+<div class="question_item">
+	<div>
+	{{$parent.pageInfo.startRow + $index}}、
+		<a class="btn btn-xs btn-primary">{{answertype[value.resQuestion.type]}}</a>
+		<a class="btn btn-xs btn-primary">{{level[value.resQuestion.rank]}}</a>
+	</div>
+
+	<div class="question_content">
+		<div ng-bind-html="value.resQuestion.content.c">
+		</div>
+		<div>
+			<span ng-repeat="(k, v) in value.resQuestion.content.img">
+				<img src="{{v}}" alt="">
+			</span>
+			
+		</div>
+
+		<div class="answer_content">
+			<!-- <div class="include_editor" name="content"  ng-model="value.answerSheet" config="_simpleConfig" required></div> -->
+			
+
+			<div ng-bind-html="value.resQuestion.answer.c">
+				
+			</div>
+			<div>
+				<span ng-repeat="(k, v) in value.resQuestion.answer.img">
+					<img src="{{v}}" alt="">
+				</span>
+			</div>
+		</div>
+		试题解析：
+		<div class="analysis_content">
+			
+			<div ng-bind-html="value.resQuestion.analysis.c">
+				
+			</div>
+			<div>
+				<span ng-repeat="(k, v) in value.resQuestion.analysis.img">
+					<img src="{{v}}" alt="">
+				</span>
+			</div>
+		</div>
+
+		<br>
+		学生答案：<span ng-bind-html="show_myanwser($index)"></span>
+		<!-- <button ng-click="answerSheet(value.resQuestion.id,$index,value.id)" ng-show="show_answerBtn($index)">
+			<span ng-hide="!value.status">提交答案</span>
+            <span ng-show="!value.status">修改答案</span>
+		</button> -->
+
+		<!-- 没有批阅 -->
+		<div class="analysis_content" ng-if="value.isMarking==1">
+			<input type="radio" name="r_{{value.id}}" value="1" ng-model="value.isTrue"> 正确 &nbsp;&nbsp;&nbsp;&nbsp;
+			<input type="radio" name="r_{{value.id}}" value="0" ng-model="value.isTrue"> 错误 <br>
+			批改：<br>
+			<div class="include_editor" name="content"  ng-model="value.remark" config="_simpleConfig" required></div>
+			<br>
+			<button class="btn btn-sm btn-success" ng-if="value.isTrue!=null" ng-click="marking($index)">提交</button>
+		</div>
+
+		<!-- 已经批阅 -->
+		<div class="analysis_content" ng-if="value.isMarking==0">
+			批改：<br>
+			<span ng-bind-html="value.remark"></span>
+		</div>
+
+
+	</div>
+	
+
+
+	<img src="template/img/c.png" class="ico" ng-if="!value.isTrue && value.isMarking==0" alt="">
+    <img src="template/img/d.png" class="ico" ng-if="value.isTrue  && value.isMarking==0" alt="">
+	<!-- <div class="ico" ng-if="value.isMarking==1">等待老师阅卷</div> -->
+
+</div>

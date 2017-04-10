@@ -1,0 +1,53 @@
+<script src="lib/My97DatePicker/WdatePicker.js"></script>
+  <script src="lib/jquery/jquery.validate.min.js"></script>
+  <script src="lib/jquery/additional-methods.min.js"></script>  
+<div class="row pad add_new">
+    <form id="newsadd_form" class="form-horizontal">
+        <legend ng-bind="title">添加宿舍制度</legend>
+        <div class="form-group">
+            <label for="title" class="col-lg-2 col-sm-3 control-label"><span class="text-danger wrapper-sm">*</span>制度名称</label>
+            <div  class="col-sm-9">
+            <input type="text" class="form-control" id="title" name="title" placeholder="" required="required" ng-model="record.institution">
+            </div>
+        </div>
+<!--         <div class="form-group">
+            <label for="sortsId" class="col-lg-2 col-sm-3 control-label"><span class="text-danger wrapper-sm">*</span>适用群体类型</label>
+            <div  class="col-sm-9">
+                
+                <label ><input name="one" type="radio" class="icheckbox_minimal-blue"  checked ng-click="change1(true)"/> <a href="" >宿舍</a> </label>
+                <label><input name="one" type="radio" class="icheckbox_minimal-blue"  ng-click="change1(false)"/>个人 </label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="sortsId" class="col-lg-2 col-sm-3 control-label"><span class="text-danger wrapper-sm">*</span>奖惩类型</label>
+            <div  class="col-sm-9">
+                
+                 <label ><input name="t" type="radio" class="icheckbox_minimal-blue"  checked ng-click="change(true)"/> <a href="" >奖励</a> </label>
+                <label><input name="t" type="radio" class="icheckbox_minimal-blue"  ng-click="change(false)"/>惩罚 </label>
+            </div>
+        </div> -->
+        
+        <div class="form-group">
+            <label for="remark"  class="col-lg-2 col-sm-3 control-label"><span class="text-danger wrapper-sm">*</span>扣除分数</label>
+            <div  class="col-sm-5">
+            <input type="number" class="form-control" ng-model="record.score">
+            <!-- <textarea name="remark" id="remark" class="form-control" rows="3" required="required" ng-model="record.remark"></textarea> -->
+            </div>
+        </div>
+        <div class="form-group list-group">
+        	<label for="content"  class="col-lg-2 col-sm-3 control-label">备注</label>
+            <div  class="col-sm-9">
+                <textarea  class="form-control" rows="3" ng-model="record.remark"></textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="content"  class="col-lg-2 col-sm-3 control-label"></label>
+            <div  class="col-sm-9">
+                <button type="submit" class="btn btn-success">提交</button>
+            </div>
+        </div>
+    </form>
+</div>
+<!-- toaster directive -->
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+<!-- / toaster directive -->

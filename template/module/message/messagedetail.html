@@ -1,0 +1,87 @@
+
+<div class="row pad mailbox-env">
+	<div class="mail-single">
+							
+		<!-- Email Title and Button Options -->
+		<div class="mail-single-header">
+		
+			
+			<div class="mail-single-header-options">
+				<a href="#/main/message/list" class="go-back">
+					<i class="icon-reply"></i>
+				</a>
+			</div>
+			<div class="clearfix"></div> 
+		</div>
+
+			<!-- Email Body -->
+		<div class="mail-single-body" ng-bind-html="record.content">
+			<!-- 内容 -->
+		</div>
+
+
+		<!-- Email Info From/Reply -->
+		<div class="mail-single-info">
+			
+			<div class="mail-single-info-user dropdown">
+				<a data-toggle="dropdown">
+					<!-- <img src="template/img/a0.jpg" class="img-circle" width="38"> -->
+					来自 <span>{{record.repNames}}({{'ID:'+record.repIds}})</span>
+					<em class="time">{{record.sendTime | date:'yyyy-MM-dd HH:mm:ss'}}</em>
+				</a>
+			</div>
+			<div class="clearfix"></div> 
+		</div>
+		
+	
+		
+		<!-- Email Attachments -->
+		<div class="mail-single-attachments" ng-show="record.inboxAffix!=null">
+			<h3>
+				<i class="linecons-attach"></i>
+				附件
+			</h3>
+			
+			<ul class="list-unstyled list-inline">
+				<li>
+					<a href="#" class="thumb">
+						<img src="assets/images/attach-1.png" class="img-thumbnail">
+					</a>
+					
+					<a href="#" class="name">
+						IMG_007.jpg
+						<span>14KB</span>
+					</a>
+					
+					<div class="links">
+						<a href="#">View</a> - 
+						<a href="#">Download</a>
+					</div>
+				</li>
+				
+				<li>
+					<a href="#" class="thumb download">
+						<img src="assets/images/attach-2.png" class="img-thumbnail">
+					</a>
+					
+					<a href="#" class="name">
+						IMG_008.jpg
+						<span>12KB</span>
+					</a>
+					
+					<div class="links">
+						<a href="#">View</a> - 
+						<a href="#">Download</a>
+					</div>
+				</li>
+			</ul>
+		</div>
+		
+		
+	</div>
+
+</div>
+
+<!-- toaster directive -->
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+<!-- / toaster directive -->

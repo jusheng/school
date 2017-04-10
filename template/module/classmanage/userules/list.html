@@ -1,0 +1,70 @@
+<script type="text/javascript" src="lib/jquery/jquery.min.js"></script>
+
+<div class="search-form row">
+    <ul id="myTab" class="nav nav-tabs">
+   
+        <li  role="presentation"  class="active">
+            <a role="tab" ng-click="change(1)"  data-toggle="tab">学生列表</a>
+        </li>
+    </ul>
+</div>
+<div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="home">
+    <br>
+        <div ng-show="type==1">
+                
+                    <div class="table-responsive">
+                                   
+                        <table class="table table-teacherclass">
+                            <tbody>
+                            <tr class="unread">
+                                <td class="small-col">
+                                </td>
+                                <td class="subject">学号</td>
+                                <td class="subject">姓名</td>
+                               <!--  <td class="subject">民族</td>
+                                <td class="subject">性别</td> -->
+                                <td class="subject">综合总分</td>
+                                <td class="subject">总奖励分</td>
+                                <td class="subject">总惩罚分</td>
+                                <td class="subject">基础分</td>
+                                
+                                <!-- <td class="subject">家庭住址</td> -->
+                                <td class="opt">操作</td>
+                            </tr>
+
+
+                            <tr ng-repeat="item in pageInfo.list">
+                                <td class="small-col">
+                                <!-- <div class="icheckbox_minimal-blue" ng-class="{checked:$parent.pageInfo.list[$index].selected}" ng-click="select_per($index)" style="position: relative;"><input type="checkbox" style="position: absolute; opacity: 0;"></div> -->
+                                </td>
+                                <td class="subject">{{item.code}}</td>
+                                <td class="subject">{{item.name}}</td>
+                                <td class="subject">{{item.rewardScore - item.punishScore + item.baseScore}}</td>
+                                <td class="subject">{{item.rewardScore}}</td>
+                                
+                                <td class="subject">{{item.punishScore}}</td>
+                                <td class="subject">{{item.baseScore}}</td>
+                               
+                                <!-- <td class="subject">{{item.address}}</td> -->
+                                <td class="opt">
+                                    <a ng-click="add_module(item)" class="btn btn-sm btn-primary">录入</a>  
+                                    <a ui-sref="main.userules.detail({id:item.id})" class="btn btn-sm btn-success">详情</a>  
+                                    <!-- <a ng-click="del(item.id)" class="btn btn-sm btn-danger">删除</a>  -->
+                                </td>
+                            </tr>
+
+                        </tbody>
+                        </table>
+                        <div ng-include="'template/module/tpl/pageInfo.html'"></div>
+                    </div>
+
+            <!-- toaster directive -->
+            <toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+            <!-- / toaster directive -->                   
+        </div>
+                        
+    </div>
+</div>        
+
+

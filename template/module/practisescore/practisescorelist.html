@@ -1,0 +1,28 @@
+<link rel="stylesheet" href="template/module/teachermanage/teacher.css">
+<div class="row pad">
+<div class="table-responsive">                                    
+    <table class="table table-mailbox">
+        <tbody>
+        <tr class="unread">
+            <td class="name">测验名称</td>
+            <td class="time">开始时间</td>
+            <td class="time">结束时间</td>
+            <td class="status">状态</td>
+            <td class="opt">操作</td>
+        </tr>
+        <tr ng-repeat="item in pageInfo.list">
+            <td class="name v-middle">{{item.name}}</td>
+            <td class="time v-middle">{{item.startTime}}</td>
+            <td class="time v-middle">{{item.endTime}}</td>
+            <td class="status v-middle">{{examStatus[item.status]}}</td>
+            <td class="opt v-middle"> <a ng-click="examSubject(item.id)" class="btn btn-sm btn-primary">成绩录入</a></td>
+        </tr>
+    </tbody>
+    </table>
+    <div ng-include="'template/module/tpl/pageInfo.html'"></div>
+</div>
+</div>
+
+<!-- toaster directive -->
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+<!-- / toaster directive -->

@@ -1,0 +1,71 @@
+
+<legend class="ng-binding">我的文件 
+<a class="btn btn-xs btn-success pull-right"  ng-click="create()">
+			<i class="icon-plus"></i> 新建文件夹
+		</a>
+</legend>
+
+<div class="file_lay">
+      <a class="add" ngf-select="onFileSelect($files)">
+      <i class="icon-plus"></i>
+    </a>
+
+    <div class="text-center" ng-if="file.length==0">
+      <br>
+      <i class="icon-info-sign text-warning-dker"></i> 暂无文件
+    </div>
+
+    <a class="item" ng-repeat="(key, value) in file"  title="{{value.filename}}" ng-class="{'s_item':value.id==curr_res.id}" >
+      
+      <!-- 文件夹 -->
+      <div ng-if="value.filetype==0" context-menu="onShow($index)" ng-click="select($index)" context-menu-close="onClose($index)"  data-target="menu" ng-dblclick="go_next(value.id)">
+        <img src="template/img/teacherfile/folder.png" alt="" ng-if="value.status==0">
+        <img src="template/img/teacherfile/s_folder.png" alt="" ng-if="value.status==1">
+        <span ng-bind="value.filename"></span>  
+      </div>
+
+      <!-- 文件 -->
+      <div ng-if="value.filetype==1" context-menu="onShow($index)" context-menu-close="onClose($index)"  data-target="menu1">
+        <img ng-src="{{return_url(value)}}" alt="">
+        <span ng-bind="value.filename"></span>
+        <button class="download_{{value.id}}" down-file="/download/fileById?id={{value.id}}" down-file-type="{{return_ext(value)}}" down-file-name="{{value.filename}}">下载</button>
+      </div>
+
+
+    </a>
+    <div class="clearfix"></div>
+</div>
+
+
+<div>
+  <span class="filemanage_info"><i class="icon-info-sign text-warning-dker"></i> 只允许上传jpg、png、gif、txt、doc、docx、ppt、pptx、xls、xlsx、mp4、pdf、zip类文件</span>
+</div>
+
+<style type="text/css">
+        .position-fixed {
+          position: fixed;
+          color:Red;
+        }
+    </style>
+
+
+<!--右键出现的菜单区域-->
+    <div class="dropdown position-fixed" id="menu">
+      <ul class="dropdown-menu" role="menu">
+        <li><a class="pointer" role="menuitem" >重命名</a></li>
+        <li><a class="pointer" role="menuitem" ng-click="del()">删除</a></li>
+        <li class="divider"></li>
+        <li><a class="pointer" role="menuitem" ng-if="curr_res.status==0" ng-click="share()">分享</a></li>
+        <li><a class="pointer" role="menuitem" ng-if="curr_res.status==1" ng-click="cancel_share()">取消分享</a></li>
+      </ul>
+    </div>
+
+<!--右键出现的菜单区域-->
+    <div class="dropdown position-fixed" id="menu1">
+      <ul class="dropdown-menu" role="menu">
+        <li><a class="pointer" role="menuitem" >重命名</a></li>
+        <li><a class="pointer" role="menuitem" ng-click="del()">删除</a></li>
+        <li><a class="pointer" role="menuitem" ng-click="move()">移动到</a></li>
+        <li><a class="pointer" role="menuitem" ng-click="download()">下载</a></li>
+      </ul>
+    </div>

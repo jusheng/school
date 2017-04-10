@@ -1,0 +1,25 @@
+<div class="newsdetail">
+	<a ui-sref="main.activity.activitylist({sorts_id:record.catalogId})" title="返回活动列表"><span class="icon-reply pull-right"></span></a>
+	<div class="panel ">
+		<div class="panel-heading">
+			<h1 class="panel-title">{{record.name}}
+			 
+			 </h1>
+			 <span class="block text-left">开始时间：{{record.starttime | date:'yyyy-MM-dd '}}-- 结束时间：{{record.endtime | date:'yyyy-MM-dd '}} </span>
+			
+			
+			<img class="img" ng-src="{{record.imgUrl}}" src="/res/img/no.jpg"/>
+			<!-- <p>{{record.remark}}</p> -->
+		</div><br>
+		<div class="panel-content">
+			活动简介：<div class="panel-body" ng-bind-html="record.remark"></div>
+			活动详情：<div class="panel-body" ng-bind-html="record.content"></div>
+			
+		
+		  	<a ui-sref="main.activity.works({id:record.id})" class="btn btn-success btn-sm act-xq" title="查看活动作品列表">查看活动作品</a>
+		</div>
+		
+	</div>
+
+
+</div>

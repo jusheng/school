@@ -1,0 +1,101 @@
+.teachers {
+    padding-top: 15px;
+}
+.teachers_view_lay{
+	background: #fff;
+	padding: 15px;
+}
+
+/*浏览模式*/
+.teachersBox_lay:after{
+    content:"";
+    display: block;
+    clear: both;
+}
+.teachersBox{
+   padding: 9px;  
+}
+.teachersBox_inner:hover{
+    border:1px #26C9FF solid;
+}
+.teachersBox_inner{
+    border:1px #cacbcd solid;
+    background-color: #fff;
+   /* height: 300px;
+    position: relative;
+    padding: 10px;
+    float: left;*/
+    padding-top:15px;
+    position: absolute;
+    width: 100%;
+    top:0;
+    left:0;
+    bottom:10px;
+    overflow: hidden;
+
+}
+.curr_tea{
+    /*position: absolute;*/
+}
+.teachersBox_inner .allClass{
+    padding-top: 12px;
+    width: 60%;
+    height: 50%;
+    margin: 0;
+    overflow: hidden; 
+    /*background-color: #D2FF4D;*/
+    text-overflow: ellipsis;
+    float: left;
+}
+
+.teachersBox_inner .allClass a{
+    /*font-weight:bold;*/
+    font-size: 14px;
+    line-height: 24px;
+    font-family: "微软雅黑";
+    color:#444;
+    display: inline-block;
+     white-space:nowrap;
+}
+.teachersBox_inner .contentbox{
+    height:35%;
+    width: 100%;
+    /*border:1px #000 solid;*/
+    overflow: hidden; 
+    line-height: 20px;
+    font-size: 14px;
+    font-family: "微软雅黑";
+    color: #666;
+    padding: 10px;
+    text-overflow: ellipsis;
+    float: left;
+
+}
+.pic a img{
+    width:100%;
+    height: 100%;
+
+    /*margin: 20px;*/
+}
+.pic{
+    width:40%;
+    height: 50%;
+    float: left;
+    padding: 0;
+    overflow: hidden;
+
+}
+
+.lg-placehold{
+    font-size: 0;
+    line-height: 0;
+    height: 0;
+    padding-top: 270px;
+}
+
+.lg-placehold1{
+    font-size: 0;
+    line-height: 0;
+    height: 0;
+    padding-top: 100%;
+}

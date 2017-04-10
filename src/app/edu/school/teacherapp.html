@@ -1,0 +1,51 @@
+
+
+
+<div class="panel panel-default row">
+        	<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+        	
+				
+				<div ivh-treeview="applist"
+						ivh-treeview-use-checkboxes="true" 
+						ivh-treeview-on-cb-change="selectCallback(ivhNode, ivhIsSelected, ivhTree)"
+						>
+			    </div>
+
+        	</div>
+			<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+	        		<!-- 头部 -->
+	            <div class="panel-heading clearfix">
+	            </div>
+
+	            <!-- 数据表格 -->
+	            <div class="table-responsive teacher">
+	              
+
+	              <a class="btn btn-info" ng-click="authorization()">
+	                    <i class="icon-user-follow m-r-sm text-md"></i>确定授权</a>
+	              <div>
+					<br>
+
+	              	<div class="panel panel-info " ng-repeat="(key, value) in applist | filter:myFilter">
+
+	              		<div class="panel-heading ">
+	              			<h3 class="panel-title">{{value.label}}<input type="hidden" ng-if="isexit_children(value.children)"  class="select_id" value="{{value.id}}"></h3>
+	              		</div>
+	              		<div class="panel-body">
+	              			<span ng-repeat="(k, v) in value.children | filter:{selected:true}">{{v.label}}
+	              			<input type="hidden" class="select_id" value="{{v.id}}">
+	              			</span>
+	              		</div>
+	              	</div>
+
+	              	
+	              </div>
+	            </div>
+
+        	</div>
+
+            
+
+			
+
+        </div>

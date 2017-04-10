@@ -1,0 +1,164 @@
+ <script src="lib/jquery/jquery.validate.min.js"></script>
+  <script src="lib/jquery/additional-methods.min.js"></script>  
+<div>
+<a ui-sref="main.teacherclass.list({id:classId})" class="pull-right icon-remove"></a>
+	<legend>学生信息</legend>
+	<form class="mini_form" id="student_form">
+	
+
+		<table>
+			<tr>
+				<td width="80">姓名</td>
+				<td><input type="text" class="form-control" id="name" name="name" ng-model="record.name"></td>
+			</tr>
+			<tr>
+				<td valign="top">头像</td>
+				<td>
+					<div class="row">
+		                        	<div class="col-sm-12">
+			                            <div class="m-b upload-pic-box">
+			                                <a href="javascript:;" class="btn btn-default btn-addon">
+			                                    <i class="fa icon-cloud-upload"></i>上传头像
+			                                </a>
+			                                <input type="file" id="fileInput" />
+			                            </div>
+		                            <div class="hbox hbox-auto-xs">
+		                                <div class="col">
+		                                    <div class="wrapper-sm b-a bg-white m-r-xs m-b-xs">
+		                                        <div class="bg-light" style="height:320px">
+		                                            <img-crop
+		                                                    image="myImage"
+		                                                    result-image="myCroppedImage"
+		                                                    result-image-size="160"
+		                                                    area-type="square" 
+		                                                    result-image-format="image/png"
+		                                                    ></img-crop>
+		                                        </div>
+		                                    </div>
+		                                </div>
+		                                <div class="col">
+		                                    <div class="inline bg-white wrapper-sm b-a">
+		                                        <div class="bg-light">
+		                                            <img ng-src="{{myCroppedImage}}" />
+		                                        </div>
+
+		                                    </div>
+		                                    <div>
+			                                    <br>
+			                                    <a class="btn btn-info" ng-disabled="myImage==''" ng-click="uploadImg()">上传头像</a>	
+		                                    </div>
+		                                    
+		                                </div>
+		                            </div>
+		                            <span class="help-block m-b-none">logo尺寸要求宽度*高度为150px*150px。图片格式支持gif,jpg,png</span>
+		                        </div>
+	                        </div>
+				</td>
+			</tr>
+
+			<tr>
+				<td>民族</td>
+				<td>
+					<div class="row">
+							<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+								<select name="sex" id="sex" class="form-control" ng-options="value.code as value.codeText for value in nation" ng-model="record.nation">
+									<option value="">选择</option>
+								</select>
+							</div>
+						</div>
+				</td>
+			</tr>
+			<tr>
+				<td>性别</td>
+				<td>
+					<div class="row">
+							<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+								<select name="sex" id="sex" class="form-control" ng-options="value.code as value.codeText for value in sexData"  ng-model="record.sex">
+									<option value="">选择</option>
+								</select>
+							</div>
+						</div>
+				</td>
+			</tr>
+			<tr>
+				<td><span class="text-danger">*</span>学号</td>
+				<td>
+					<input type="text" class="form-control" id="code" name="code" ng-model="record.code">
+				</td>
+			</tr>
+
+			<tr>
+				<td>身份证号码</td>
+				<td>
+					<input type="text" class="form-control" id="idCard" name="idCard" ng-model="record.idCard">
+				</td>
+			</tr>
+
+			
+			<tr>
+				<td>电话</td>
+				<td>
+					<input type="text" class="form-control" id="tel" name="tel" ng-model="record.tel">
+				</td>
+			</tr>
+			<tr>
+				<td>政治面貌</td>
+				<td>
+					
+					
+					<div class="row">
+							<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+								<select name="sex" id="sex" class="form-control" ng-options="value.code as value.codeText for value in politics" ng-model="record.politics">
+									<option value="">选择</option>
+								</select>
+							</div>
+						</div>
+
+				</td>
+			</tr>
+
+			<tr>
+				<td>家庭住址</td>
+				<td>
+					<input type="text" class="form-control" id="address" name="address" ng-model="record.address">
+				</td>
+			</tr>
+			<tr>
+				<td><span class="text-danger">*</span>家长姓名</td>
+				<td>
+					<input type="text" class="form-control" id="parentName" name="parentName" ng-model="record.parentName">
+				</td>
+			</tr>
+			<tr>
+				<td><span class="text-danger">*</span>家长电话</td>
+				<td>
+					<input type="text" class="form-control" id="parentTel" name="parentTel" ng-model="record.parentTel">
+				</td>
+			</tr>
+			<tr>
+				<td>家长工作</td>
+				<td>
+					<input type="text" class="form-control" id="parentWork" name="parentWork" ng-model="record.parentWork">
+				</td>
+			</tr>
+
+			<tr>
+				<td colspan="2">
+					
+					<button type="submit" class="btn btn-success">提交</button>
+				</td>
+			</tr>
+
+
+
+		</table>
+
+	
+		
+	</form>
+
+</div>
+
+<!-- toaster directive -->
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+<!-- / toaster directive -->

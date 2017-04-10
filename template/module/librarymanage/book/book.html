@@ -1,0 +1,37 @@
+<link rel="stylesheet" href="template/module/librarymanage/book/book.css">
+
+<div id="breadcrumb">
+  <a ui-sref="main.desk"><i class="icon-home"></i> 学习云平台</a> 
+  <i class="icon-angle-right"></i><a>{{app_name}}</a>
+</div>
+<div class="news">
+	<div class="row  no-padding">
+		<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+		<a class="btn btn-block btn-success" ui-sref="main.book.bookList({sorts_id:paramsobj.sorts_id,code:paramsobj.code,name:paramsobj.name})" >
+			<i ng-class="{'fa icon-ok': selected == 1}" style=" width: 14px;height: 14px;display: inline-block;"></i> 图书管理
+		</a>
+		<a class="btn btn-block btn-success" ui-sref="main.book.bookclassList({sorts_id:paramsobj.sorts_id,code:paramsobj.code,name:paramsobj.name})" >
+			<i ng-class="{'fa icon-ok': selected == 2}" style=" width: 14px;height: 14px;display: inline-block;"></i> 图书分类管理
+		</a><br>
+
+
+			<div class="book_left" >
+				<h1 class="text-lg">图书分类</h1>
+				<div class="bookclasstree">
+					
+				</div>
+					<!-- <a ui-sref="main.book.bookList({sorts_id:''})" ng-click="selectedWhich($index)">
+						<i ng-class="{'fa icon-ok text-success': $index == selectedRow}" ></i>全部图书
+					</a>
+					<a ng-repeat="(key, value) in sorts" ui-sref="main.book.bookList({sorts_id:value.id})"  ng-click="selectedWhich($index)">
+						{{value.name}}<i ng-class="{'fa icon-ok text-success': $index == selectedRow}" title="{{value.name}}"></i>
+					</a> -->
+            </div>
+            
+		</div>
+		<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 news_view_lay">
+			<div ui-view></div>
+		</div>
+	</div>
+
+</div>

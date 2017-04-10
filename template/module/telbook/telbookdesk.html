@@ -1,0 +1,65 @@
+<div class="box box-danger" id="loading-example" style="position: relative;">
+                <div class="box-header" style="cursor: move;">
+                      <i class="fa {{appicon}}"></i>
+                      <h3 class="box-title"><a href="{{appurl}}">{{appname}}</a></h3>
+                      <i class="fa pull-right  icon-remove" ng-click="delapp(appidentify)"></i>
+                    <div class="nav-tabs-custom pull-right">
+                        <ul class="nav nav-tabs" role="">
+                          <li role="presentation" class="active" ng-click="search()">
+                            <a href="main/desk/book#teacher" aria-controls="teacher" role="tab" data-toggle="tab">老师</a>
+                          </li>
+                          <li role="presentation" ng-repeat="item in classInfo" ng-click="searchStudent(item.id)">
+                            <a href="main/desk/book#{{item.id}}" aria-controls="tab" role="{{item.id}}" data-toggle="tab">{{item.name}}</a>
+                          </li>
+
+                        </ul>
+                    </div>
+                      
+                </div>
+                    <div class="box-body no-padding">
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                          <div role="tabpanel" class="tab-pane active" id="teacher">
+		                          	<div class="table-responsive">                                          
+            									    <table class="table table-mailbox">
+            									        <tbody>
+            									       <!--  <tr class="unread">
+            									            <td class="name">姓名</td>
+            									            <td class="dept">所属部门</td>
+            									            <td class="tel">电话</td>
+            									            <td class="email">邮箱</td>
+            									        </tr> -->
+            									        <tr ng-repeat="item in teacher.list">
+            									            <td class="names v-middle">姓名：{{item.name}}<br/>电话：{{item.tel}}</td>
+            									            <td class="dept v-middle">部门：{{item.dept.deptName}}<br/>邮箱：{{item.email}}</td>
+            									        </tr>
+            									    </tbody>
+            									    </table>
+									             </div>
+                          </div>
+                          <div role="tabpanel" class="tab-pane" id="{{item.id}}" ng-repeat="item in classInfo">
+                            		<div class="table-responsive">                                          
+              									    <table class="table table-mailbox">
+              									        <tbody>
+              									       <!--  <tr class="unread">
+              									            <td class="name">姓名</td>
+                                                              <td class="dept">家长姓名</td>
+                                                              <td class="tel">家长电话</td>
+              									        
+              									        </tr> -->
+              									        <tr ng-repeat="item in student.list">
+                                            <!-- <td class="dept v-middle">{{item.parentName}}</td>
+                                            <td class="tel v-middle">{{item.parentTel}}</td> -->
+                                            <td class="names v-middle">姓名：{{item.name}}<br/>家长姓名：{{item.parentName}}</td>
+              									            <td class="dept v-middle">电话：{{item.tel}}<br/>家长电话：{{item.parentTel}}</td>
+              									        </tr>
+              									    </tbody>
+              									    </table>
+									               </div>          
+                          </div>
+
+                        </div>
+
+
+                    </div>
+</div>

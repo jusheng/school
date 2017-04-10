@@ -1,0 +1,39 @@
+<link rel="stylesheet" href="template/module/deptmanage/dept.css">
+
+<div class="row pad">
+	<div class="col-sm-6">    
+    </div>
+    <div class="col-sm-4 search-form">
+        
+    </div>
+    <div class="col-sm-2">
+        <a ui-sref="main.deptmanage.deptadd" class="btn btn-success pull-right"> <i class="icon-user-follow m-r-sm text-md"></i>添加部门</a>
+    </div>
+</div>
+
+<div class="table-responsive">
+                                               
+    <table class="table table-mailbox">
+        <tbody>
+        <tr class="unread">
+            <td class="deptName">部门名称</td>
+            <td class="ownerId">负责人</td>
+            <td class="parentId">上级部门</td>
+            <td class="remark">备注</td>
+            <td class="opt">操作</td>
+        </tr>
+        <tr ng-repeat="item in pageInfo.list">
+            <td class="deptName v-middle">{{item.deptName}}</td>
+            <td class="ownerId v-middle">{{item.owner.name}}</td>
+            <td class="parentId v-middle">{{item.parent.deptName}}</td>
+            <td class="remark v-middle">{{item.remark}}</td>
+            <td class="opt v-middle">  <a ui-sref="main.deptmanage.deptedit({id:item.id})" class="btn btn-sm btn-primary">编辑</a>   <a ng-click="del(item.id)" class="btn btn-sm btn-danger">删除</a></td>
+        </tr>
+    </tbody>
+    </table>
+    <div ng-include="'template/module/tpl/pageInfo.html'"></div>
+</div>
+
+<!-- toaster directive -->
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+<!-- / toaster directive -->

@@ -1,0 +1,16 @@
+<div class="ngdialog-title">{{title1}}</div>
+<br>
+<div class="scroll_lay">
+	<div id="wrapper" ng-iscroll='wrapper' ng-iscroll-delay='50'>
+		<div id="scroller">
+			<div ng-repeat="v in schoolMailList" style="width:50%; float:left">
+					<input type="checkbox" name="xbr"  data-checklist-model="moderatorList" data-checklist-value="v" ng-click="select_user()"> {{v.name}}
+			</div>		
+		</div>	
+	</div>
+</div>
+<div class="text-center">
+	<button class="btn btn-success" ng-click="closeThisDialog()">确定</button>
+</div>
+
+

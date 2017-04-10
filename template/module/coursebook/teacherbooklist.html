@@ -1,0 +1,36 @@
+<div class="row pad">
+
+</div>
+
+<div class="table-responsive">                                          
+    <table class="table table-mailbox">
+        <tbody>
+        <tr class="unread">
+            <td>时间</td>
+            <td class="lesson">节次</td>
+            <td class="mon">周一</td>
+            <td class="tue">周二</td>
+            <td class="wed">周三</td>
+            <td class="thu">周四</td>
+            <td class="fri">周五</td>
+           <!--  <td class="sat">周六</td>
+            <td class="sun">周日</td> -->
+        </tr>
+        <tr ng-repeat="item in [1,2,3,4,5,6,7,8]">
+            <td>上午</td>
+            <td class="lesson v-middle">{{item}}</td>
+            <td class="mon v-middle">{{teachercourse[item].mon.name}}<br>{{teachercourse[item].mon.eduClass.name}}</td>
+            <td class="tue v-middle">{{teachercourse[item].tue.name}}<br>{{teachercourse[item].tue.eduClass.name}}</td>
+            <td class="wed v-middle">{{teachercourse[item].wed.name}}<br>{{teachercourse[item].wed.eduClass.name}}</td>
+            <td class="thu v-middle">{{teachercourse[item].thu.name}}<br>{{teachercourse[item].thu.eduClass.name}}</td>
+            <td class="fri v-middle">{{teachercourse[item].fri.name}}<br>{{teachercourse[item].fri.eduClass.name}}</td>
+            <!-- <td class="sat v-middle">{{teachercourse[item].sat.name}}<br>{{teachercourse[item].sat.eduClass.name}}</td>
+            <td class="sun v-middle">{{teachercourse[item].sun.name}}<br>{{teachercourse[item].sun.eduClass.name}}</td> -->
+        </tr>
+    </tbody>
+    </table>
+</div>
+
+<!-- toaster directive -->
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+<!-- / toaster directive -->

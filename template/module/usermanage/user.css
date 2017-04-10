@@ -1,0 +1,144 @@
+.teacher{
+    padding: 15px;
+}
+.school_view_lay{
+	background-color: #fff;
+}
+.teacher-padding{
+    padding-right: 15px;
+}
+.user-form .control-label{
+    line-height:34px;
+    padding-right: 0;
+}
+.user-form .form-group{
+    float: left;
+    margin-bottom: 0;
+    margin-right: 0px;
+    height: 34px;
+    width: 240px;
+}
+.user-form .form-group:nth-of-type(3){
+    margin-right: 30px;
+}
+.user-form .control-label{
+    float: left;
+    margin-right: 15px;
+}
+.user-form .form-control{
+    width:110px;
+    float: left;
+}
+.allsubject{
+    width: 120px;
+}
+.chaxun{
+    float: left;
+}
+/* 列表样式 */
+.table-mailbox {
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+}
+.table-mailbox tr > td {
+    white-space: nowrap;
+}
+.table-mailbox tr.unread > td {
+    background-color: rgba(0, 0, 0, 0.05);
+    color: #000;
+    font-weight: 600;
+}
+.table-mailbox tr > td.small-col {
+    width: 30px;
+    color: #f39c12;
+}
+.table-mailbox tr > td.name {
+    max-width: 150px;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.table-mailbox tr > td.remark {
+    max-width: 150px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.pad{
+	padding:10px;
+}
+.table-mailbox tr > td.time {
+    text-align: right;
+    width: 100px;
+}
+.table-mailbox tr > td.opt {
+    text-align: right;
+    width: 100px;
+}
+
+
+/* iCheck plugin Minimal skin, blue
+----------------------------------- */
+.icheckbox_minimal-blue,
+.iradio_minimal-blue {
+    display: inline-block;
+    *display: inline;
+    vertical-align: middle;
+    margin: 0;
+    padding: 0;
+    width: 18px;
+    height: 18px;
+    background: url(../../img/blue.png) no-repeat;
+    border: none;
+    cursor: pointer;
+}
+
+.icheckbox_minimal-blue {
+    background-position: 0 0;
+}
+    .icheckbox_minimal-blue.hover {
+        background-position: -20px 0;
+    }
+    .icheckbox_minimal-blue.checked {
+        background-position: -40px 0;
+    }
+    .icheckbox_minimal-blue.disabled {
+        background-position: -60px 0;
+        cursor: default;
+    }
+    .icheckbox_minimal-blue.checked.disabled {
+        background-position: -80px 0;
+    }
+
+.iradio_minimal-blue {
+    background-position: -100px 0;
+}
+    .iradio_minimal-blue.hover {
+        background-position: -120px 0;
+    }
+    .iradio_minimal-blue.checked {
+        background-position: -140px 0;
+    }
+    .iradio_minimal-blue.disabled {
+        background-position: -160px 0;
+        cursor: default;
+    }
+    .iradio_minimal-blue.checked.disabled {
+        background-position: -180px 0;
+    }
+
+/* Retina support */
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+       only screen and (-moz-min-device-pixel-ratio: 1.5),
+       only screen and (-o-min-device-pixel-ratio: 3/2),
+       only screen and (min-device-pixel-ratio: 1.5) {
+    .icheckbox_minimal-blue,
+    .iradio_minimal-blue {
+        background-image: url(../../img/blue@2x.png);
+        -webkit-background-size: 200px 20px;
+        background-size: 200px 20px;
+    }
+}

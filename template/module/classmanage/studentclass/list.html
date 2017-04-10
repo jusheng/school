@@ -1,0 +1,85 @@
+<link rel="stylesheet" href="template/module/classmanage/studentclass/rules.css">
+<script type="text/javascript" src="lib/jquery/jquery.min.js"></script>
+<div id="breadcrumb">
+  <a href="#/main"><i class="icon-home"></i> 学习云平台</a> 
+  <i class="icon-angle-right"></i><a>{{app_name}}</a> 
+</div>
+<div class="news">
+    <div class="row news_view_lay">
+        <div class="search-form row">
+            <ul id="myTab" class="nav nav-tabs">
+                <li  role="presentation"  class="active">
+                    <a role="tab" ng-click="change(1)"  data-toggle="tab"  active>学生列表</a>
+                </li>
+                <li role="presentation">
+                    <a role="tab" ng-click="change(2)" data-toggle="tab">班级座次</a>
+                </li>
+               
+                
+                 
+               
+            </ul>
+        
+        </div>
+
+                <!-- Tab panes -->
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="home">
+            <br>
+                <div ng-show="type==1">
+                        
+                            <div class="table-responsive">
+                                           
+                                <table class="table table-mailbox">
+                                    <tbody>
+                                      <tr class="unread">
+                                        <!-- <td class="small-col">
+                                        </td> -->
+<!--                                         <td class="subject">学号</td>
+ -->                                        <td class="subject">姓名</td>
+                                        
+                                        <td class="subject">民族</td>
+                                        <td class="subject">性别</td>                                        
+<!--                                         <td class="subject">年龄</td>                                        
+ -->                                        <td class="subject">政治面貌</td>                                       
+                                      </tr>
+
+
+                                      <tr ng-repeat="item in pageInfo.list">
+                                       <!--  <td class="small-col"><div class="icheckbox_minimal-blue" ng-class="{checked:$parent.pageInfo.list[$index].selected}" ng-click="select_per($index)" style="position: relative;"><input type="checkbox" style="position: absolute; opacity: 0;"></div>
+                                        </td> -->
+<!--                                         <td class="subject">{{item.code}}</td>
+ -->                                        <td class="subject"><a ui-sref="main.plan.detail({id:item.id})">{{item.name}}</a></td>
+                                        <td>{{re_nationName(item.nation)}}</td>
+                                        <td >
+                                           <span ng-show="item.sex==1">男</span>
+                                           <span ng-show="item.sex==2">女</span>
+                                        </td>
+<!--                                         <td class="subject">{{item.age}}</td>
+ -->                                        <td class="subject">{{re_politicsName(item.politics)}}</td>
+                                      </tr>
+
+                                    </tbody>
+                                </table>
+                                <div ng-include="'template/module/tpl/pageInfo.html'"></div>
+                            </div>                
+                </div>
+                                <!-- 试题 -->
+                <div class="row" ng-show="type==2">
+                                               
+                     <div id="container" ng-include="'template/module/classmanage/studentclass/studentgrid.html'" ng-controller="studentgridController">
+
+                    </div>
+                </div> 
+<!--                 <div class="row" ng-show="type==2">
+                                       
+                    <div id="container" ng-include="'template/module/classmanage/teacherclass/studentgrid.html'" ng-controller="studentgridController">
+
+                    </div>
+                </div>  -->           
+
+            </div>
+        </div> 
+        
+    </div>
+</div>

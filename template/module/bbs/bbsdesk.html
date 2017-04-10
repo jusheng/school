@@ -1,0 +1,49 @@
+<link href="template/module/bbs/thread.css" rel="stylesheet" type="text/css" />
+<div class="box box-success" id="loading-example" style="position: relative;">
+                    <div class="box-header" style="cursor: move;">
+                      <i class="fa {{appicon}}"></i>
+                      <h3 class="box-title"><a href="{{appurl}}">{{appname}}</a></h3>
+                      <i class="fa pull-right  icon-remove" ng-click="delapp(appidentify)"></i>
+                    </div>
+                    <div class="box-body no-padding">
+                        <div class="news_desk " style="position:relative">
+                          <span style="line-height:36px;"><a href="{{appurl}}">最新帖子：（欢迎顶帖！）</a></span>
+                                <div class="swiper-container desk_bbs" style="min-height:120px; overflow:hidden">
+                                    <table class="table table-mailbox bbstable_desk">
+                                        <tbody>
+                                            <tr class="unread">
+                                                <td class="small-col">
+                                                </td>
+                                                <td class="subject">主题</td>
+                                                <td class="subject">最后回复时间</td>
+                                                <td class="subject">作者</td>
+
+                                                </tr>
+                                                <tr ng-repeat="item in pageInfo.list">
+                                                <td class="small-col v-middle">
+                                                </td>
+                                                <td class="subject v-middle bbstd_desk">
+                                                      <a style="border-bottom:none;" title="{{item.title}}" ui-sref="main.bbs.threaddetail({id:item.id})">{{item.title}}</a>
+                                                </td>
+                                                <td class="subject v-middle bbstd_desk">
+                                                    <a style="border-bottom:none;"  ng-show="item.lastAnswerTime" title="{{item.lastAnswerTime}}" ui-sref="main.bbs.threaddetail({id:item.id})">
+                                                    {{item.lastAnswerTime}}</a>
+                                                    <a style="border-bottom:none;"  ng-show="!item.lastAnswerTime" title="暂无回复，来抢沙发！" ui-sref="main.bbs.threaddetail({id:item.id})">
+                                                        暂无回复，来抢沙发！
+                                                    </a>
+                                                </td>
+                                                <td class="subject v-middle bbstd_desk">
+                                                    <a style="border-bottom:none;" title="{{item.playerName}}" ui-sref="main.bbs.threaddetail({id:item.id})">{{item.playerName}}
+                                                    </a>
+                                                </td>
+
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                     
+
+                        </div>
+                  </div>
+</div>

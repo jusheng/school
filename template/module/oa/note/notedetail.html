@@ -1,0 +1,17 @@
+<div class="newsdetail">	
+	<div class="panel ">
+		<div class="panel-heading">
+			<h3 class="panel-title">{{record.title}}
+			</h3>
+			
+		</div>
+		<div class="panel-body">
+			{{record.remindTime | date:'yyyy-MM-dd HH:mm:ss'}}
+		</div>
+		<div class="panel-body" ng-bind-html="record.content">
+		
+		</div>
+	</div>
+
+
+</div>

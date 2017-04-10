@@ -1,0 +1,95 @@
+
+/*编辑器*/
+.editcontainer { width: 624px; overflow: hidden; margin: 20px auto; }
+.thandle { cursor: move; width: 100%; height: 22px; line-height: 22px; clear: both; overflow: hidden; text-indent: 10px; background: #B2D3F5; }
+#jye_toolbar { position: absolute; overflow: hidden; text-align: left; }
+.edittoolbar { padding: 5px; background: #F3FAFF; border: 1px solid #BFD1EB; position: absolute; z-index: 10002; overflow: hidden; display: none; }
+.edittoolbar em { font-style: italic; }
+.edittoolbar a.pushon { background: #FFFFF7; border: 1px solid #fc0; }
+.edittoolbar h2 { font-size: 12px; height: 19px; padding: 2px; }
+.edittoolbar h2 li { height: 20px; line-height: 20px; }
+.edittoolbar h2 li.onact { height: 20px; line-height: 20px; }
+#ecmdh ul li { width: 24px; height: 22px; padding: 3px 1px 0 1px; }
+ul.symbols { font-size: 15px; zoom: 1; overflow: hidden; clear: both; }
+ul.symbols li, ul.symbols2 li { font-family: "宋体",sans-serif; width: 20px; height: 16px; float: left; padding: 0 0 4px 0; margin: 0 1px 1px 0; text-align: center; cursor: pointer; border: 1px solid #F3FAFF; background: #fff; }
+ul.symbols li:hover, ul.symbols2 li:hover { background: #EEF7FF; border: 1px solid #71C3F2; }
+ul.symbols2 { font-size: 15px; zoom: 1; overflow: hidden; }
+.editsend { border: 1px solid #BFD1EB; border-width: 0 1px; }
+.editsend textarea { width: 610px; height: 100px; margin: 3px; }
+.editsubmit { padding: 0 3px; color: #ccc; border: 1px solid #BFD1EB; zoom: 1; overflow: hidden; }
+.math02 { border: 2px solid #BFD1EB; overflow: hidden; }
+.math02 dl { width: 100%; float: left; height: auto; zoom: 1; }
+dl.oddstoolbar { border-bottom: 1px solid #BFD1EB; padding-bottom: 3px; }
+dl.oddstoolbar a { display: inline-block; padding: 2px; border: 1px solid #F3FAFF; overflow: hidden; }
+dl.oddstoolbar a input { margin: 2px; }
+dl.oddstoolbar a:hover { border: 1px solid #BFD1EB; background: #E8F5FE; }
+.math02 dl dt { font-size: 14px; font-weight: 700; color: #233394; background: #E8F5FE; height: 24px; line-height: 24px; text-indent: 10px; }
+.math02 dl dt.f1 { color: #f00; }
+.math02 dl dt a { padding: 0 5px; float: left; font-weight: normal; }
+.math02 dl dt a:hover { background: #fc0; zoom: 1; overflow: hidden; }
+.math02 dl dd { padding: 5px; border: 1px solid #BFD1EB; border-width: 1px 0; }
+.math02 dl dd a { display: inline-block; border: 1px solid #ccc; overflow: hidden; text-align: center; }
+.math02 dl dd a:hover { border: 1px solid #f60; text-decoration: none; }
+dl.odds { background: #ffd; overflow: hidden; border-bottom: 1px solid #BFD1EB; }
+dl.odds dd { padding: 0 0 2px 0; }
+dl.odds dd a { width: 28px; height: 28px; margin: 2px 0 0 2px; }
+a.masymbo { display: inline-block; width: 26px; height: 26px; text-indent: 0; *text-indent: 0; line-height: 24px; margin: 0 2px 2px 0; font-size: 20px; overflow: hidden; }
+a.masymbob { width: 28px; height: 28px; margin: 0 2px 2px 0; background: url(images/tables.png) no-repeat; }
+a.masymboa { width: 105px; height: 36px; margin: 4px auto; background: url(images/tables.png) no-repeat; }
+a.fen01 { background-position: 0 -1772px; }
+a.scos01 { background-position: -10px -1673px; }
+a.scos02 { background-position: -70px -1673px; }
+a.scos03 { background-position: -130px -1673px; }
+a.scos04 { background-position: -10px -1706px; }
+a.scos05 { background-position: -70px -1706px; }
+a.scos06 { background-position: -130px -1706px; }
+a.scos07 { background-position: -10px -1739px; }
+a.scos08 { background-position: -70px -1739px; }
+a.scos09 { background-position: -130px -1739px; }
+a.scos10 { background-position: -10px -1772px; }
+a.scos11 { background-position: -70px -1772px; }
+a.scos12 { background-position: -130px -1772px; }
+a.updw01 { background-position: 0 -1805px; }
+a.updw02 { background-position: -60px -1805px; }
+a.updw03 { background-position: -120px -1805px; }
+a.updw09 { background-position: -105px -1937px; }
+a.updw10 { background-position: -105px -1970px; }
+a.updw11 { background-position: 0 -2042px; }
+a.updw12 { background-position: -60px -2042px; }
+a.updw13 { background-position: -120px -2042px; }
+a.updw14 { background-position: 0 -2141px; }
+a.updw15 { background-position: -60px -2141px; }
+a.updw16 { background-position: -120px -2141px; }
+a.updw17 { background-position: 0 -2174px; }
+a.updw18 { background-position: -60px -2174px; }
+a.updw19p { background: url(images/tables.png) no-repeat; background-position: -16px -1940px; }
+a.rad01 { background-position: -120px -1871px; }
+a.rad02 { background-position: 0 -1904px; }
+a.rad04 { background-position: -120px -1904px; }
+a.brack01 { background-position: 0 -2009px; }
+a.matemp01 { background-position: -60px -2009px; }
+a.matemp02 { background-position: -120px -2009px; }
+a.matemp03 { background-position: 0 -2075px; }
+a.matemp04 { background-position: -60px -2075px; }
+a.matemp05 { background-position: -120px -2075px; }
+a.matemp06 { background-position: 0 -2108px; }
+a.matemp07 { background-position: -60px -2108px; }
+a.matemp08 { background-position: -120px -2108px; }
+.noplugin { border-bottom: 8px solid #C6C8CA; height: 200px; position: relative; }
+.nopic { width: 157px; height: 212px; position: absolute; left: 40px; bottom: 0; background: url(images/tables.png) bottom left no-repeat; }
+.plugindload { position: absolute; left: 5px; top: 300px; }
+.nowarn { width: 490px; position: absolute; right: 40px; top: 100px; }
+.noplugin dl dt { background: #fff; color: #0F5B56; font-size: 18px; font-weight: 700; padding: 10px 5px; }
+.noplugin dl dt strong { color: #f00; }
+.noplugin dl dd span { padding-right: 20px; }
+.noplugin dl dd span a:link, .noplugin dl dd span a:visited { color: #759F1D; }
+.noplugin dl dd.plugwran { border: 8px solid #C6C8CA; background: #ffd; text-indent: 24px; font-size: 13.4px; padding: 5px; }
+div.quizPutTag { display: inline-block; padding: 3px 10px 1px 10px; margin: 0 3px; font-size: 14px; min-width: 1em; min-height: 16px; line-height: 18px; height: auto; border-bottom: 1px solid #0033FF; text-decoration: none; zoom: 1; background: #fff; color: #127176; word-break: break-all; }
+div.quizPutTag:hover { color: #f60; }
+
+h2.cmenubox { margin: 5px 0; height: 20px; line-height: 20px; overflow: hidden; font-size: 14px; padding: 0 5px; border-bottom: 1px solid #5580B3; }
+h2.cmenubox span { float: right; font-size: 14px; margin-right: 5px; font-weight: normal; }
+h2.cmenubox ul { position: absolute; }
+h2.cmenubox li { float: left; /* height: 27px; */ display: block; cursor: pointer; padding: 0 8px; text-align: center; font-weight: normal; margin: 0 2px; border: 1px solid #ccc; border-bottom: none; min-width: 40px; color: #5C6672; }
+h2.cmenubox li em { width: 16px; height: 16px; position: absolute; font-style: normal; top: -5px; background: url(images/tables.png) -64px -144px no-repeat; }
+h2.cmenubox li.onact { font-weight: 700; height: 20px; line-height: 20px; background: #fff; border: 1px solid #5580B3; border-bottom: 1px solid #fff; color: #5580B3; }

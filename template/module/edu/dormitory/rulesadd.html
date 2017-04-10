@@ -1,0 +1,70 @@
+<script src="lib/My97DatePicker/WdatePicker.js"></script>
+  <script src="lib/jquery/jquery.validate.min.js"></script>
+  <script src="lib/jquery/additional-methods.min.js"></script>  
+<div class="row pad add_new">
+    <form id="newsadd_form" class="form-horizontal" >
+        <legend ng-bind="title">添加宿舍</legend>
+        <div class="form-group">
+            <label for="title" class="col-lg-2 col-sm-3 control-label">
+                <span class="text-danger wrapper-sm">*</span>选择宿舍楼
+            </label>
+            <div  class="col-sm-5">
+                    <select name="title" id="title" class="form-control" ng-model="houseId"  ng-change="getfloors()" ng-options="x.id as x.houseName for x in record.list">>
+                        <option value="">选择宿舍楼</option>
+                    </select>
+            </div>
+        </div>
+
+       
+
+        <div class="form-group">
+            <label for="floor"  class="col-lg-2 col-sm-3 control-label"><span class="text-danger wrapper-sm">*</span>楼层</label>
+            <div  class="col-sm-5">
+                    <select class="form-control" name="floor" id="floor" ng-model="floor" ng-show="floors.length > 1" ng-options="item as item for item in floors">>
+                        <option value="">选择楼层</option>
+                    </select>
+                    <label for="remark"  ng-show="floors.length <= 1" class="col-lg-2 col-sm-3 control-label" style="text-align: left">
+                        1层
+                    </label>
+            <!-- <input type="number" class="form-control" ng-model="floor"> -->
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="remark"  class="col-lg-2 col-sm-3 control-label"><span class="text-danger wrapper-sm">*</span>寝室名</label>
+            <div  class="col-sm-5">
+            <input type="text" name="remark" id="remark" class="form-control" ng-model="roomName">
+            </div>
+        </div>
+        <div class="form-group">
+                <label for="remark"  class="col-lg-2 col-sm-3 control-label"><span class="text-danger wrapper-sm">*</span>住宿生性别</label>
+                <div  class="col-sm-5">
+                    <label class="radio2">
+                        <input name="one" type="radio" class="iradio_minimal-blue"  checked ng-click="sex(1)"/>男生
+                    </label>
+                    <label class="radio2">
+                        <input name="one" type="radio" class="iradio_minimal-blue"  ng-click="sex(0)"/>女生
+                    </label>
+                </div>
+                
+        </div>
+        <div class="form-group">
+            <label for="num"  class="col-lg-2 col-sm-3 control-label" >
+                <span class="text-danger wrapper-sm">*</span>宿舍床位数
+            </label>
+            <div  class="col-sm-5">
+                <input type="number" name="num" id="num" class="form-control" value="30" ng-model="roomNum">
+
+            </div>
+        </div> 
+        <div class="form-group">
+            <label for="content"  class="col-lg-2 col-sm-3 control-label"></label>
+            <div  class="col-sm-9">
+                <button type="submit" class="btn btn-success">提交</button>
+            </div>
+        </div>
+    </form>
+</div>
+<!-- toaster directive -->
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+<!-- / toaster directive -->

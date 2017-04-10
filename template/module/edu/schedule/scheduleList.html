@@ -1,0 +1,174 @@
+<link rel="stylesheet" href="template/module/edu/schedule/teacher.css">
+<div class="row pad">
+    <!-- <div class="col-sm-2">
+        <span class="btn btn-success">班级名称：{{classId}}班</span>
+    </div> -->
+
+    <div class="col-sm-10">
+        <form class="text-right user-form" ng-submit="search()">
+            <div class="form-group clearfix" >
+                <label class="control-label">选择年级</label>
+                <select name="gradeId" id="gradeId" ng-model="param.gradeId" ng-change="getclasslist2()"class="form-control" >
+                    <option value="">选择</option>
+                    <option ng-repeat="(key,value) in gradelist.list" value="{{value.id}}" ng-selected="value.id==param.gradeId-0">{{value.name}}</option>
+                    
+                </select>
+        </div> 
+ 
+        <div class="form-group clearfix">
+                <label class="control-label">选择班级</label>
+                <select name="classId" id="classId" ng-model="param.classId" ng-change="search()" class="form-control">
+                    <option value="">选择</option>
+                    <option ng-repeat="(key,value) in classlist.list" value="{{value.id}}" ng-selected="value.id==param.classId-0">{{value.name}}</option>
+                </select>
+        </div>
+        </form>
+    </div>
+    <div class="col-sm-2">
+        <a ui-sref="main.class.classList({grade_id:gradeId})" class="btn btn-success pull-right m-l-sm"> <i
+                class="icon-user-follow text-md"></i>返回</a>
+    </div>
+    
+</div>
+
+<div class="table-responsive">
+                                               
+    <table class="table table-mailbox">
+        <tbody>
+        <tr class="unread">
+            <td style="border-right:1px solid #ddd;">时间</td>
+            <td class="lesson">节次</td>
+            <td class="mon">周一</td>
+            <td class="tue">周二</td>
+            <td class="wed">周三</td>
+            <td class="thu">周四</td>
+            <td class="fri">周五</td>
+            <!-- <td class="sat">周六</td> -->
+            <!-- <td class="sun">周日</td> -->
+            <td class="opt">操作</td>
+        </tr>
+        <tr ng-repeat="item in pageInfo">
+            <td class="type v-middle" style="border-right:1px solid #ddd;" rowspan=""> 
+                <span ng-hide="item.edit">{{sDict[item.type]}}</span> 
+                <select ng-model="$parent.pageInfo[$index].type" ng-show="item.edit" ng-options="key as value for (key,value) in sDict">
+                    <option value="">选择时间</option>
+                </select>
+            </td>
+            <td class="lesson v-middle"> 
+                <span ng-model="$parent.pageInfo[$index].lesson">{{item.lesson}}</span> 
+                <!-- <select ng-model="$parent.pageInfo[$index].lesson" ng-show="item.edit" ng-options="txt for txt in jType">
+                    <option value="">选择节次</option>
+                </select> -->
+            </td>
+            <td class="mon v-middle"> 
+                <span ng-hide="item.edit">{{item.mon.name}}</span> 
+                <select ng-model="$parent.pageInfo[$index].mon.id" ng-show="item.edit" ng-options="m.id as m.name for m in sType">
+                <option value="">选择科目</option>
+                </select>
+            </td>
+            <td class="tue v-middle"> 
+                <span ng-hide="item.edit">{{item.tue.name}}</span>
+                <select ng-model="$parent.pageInfo[$index].tue.id" ng-show="item.edit" ng-options="m.id as m.name for m in sType">
+                <option value="">选择科目</option>
+                </select>
+            </td>
+
+            <td class="wed v-middle"> 
+                <span ng-hide="item.edit">{{item.wed.name}}</span>
+                <select ng-model="$parent.pageInfo[$index].wed.id" ng-show="item.edit" ng-options="m.id as m.name for m in sType">
+                <option value="">选择科目</option>
+                </select>
+            </td>
+            <td class="thu v-middle"> 
+                <span ng-hide="item.edit">{{item.thu.name}}</span>
+                <select ng-model="$parent.pageInfo[$index].thu.id" ng-show="item.edit" ng-options="m.id as m.name for m in sType"> 
+                <option value="">选择科目</option>
+                </select>
+            </td>
+            <td class="fri v-middle"> 
+                <span ng-hide="item.edit">{{item.fri.name}}</span>
+                <select ng-model="$parent.pageInfo[$index].fri.id" ng-show="item.edit" ng-options="m.id as m.name for m in sType">
+                <option value="">选择科目</option>
+                </select>
+            </td>
+            <!-- <td class="sat v-middle"> 
+                <span ng-hide="item.edit">{{item.sat.name}}</span>
+                <select ng-model="$parent.pageInfo[$index].sat.id" ng-show="item.edit" ng-options="m.id as m.name for m in sType"> 
+                <option value="">选择科目</option> 
+                </select>
+            </td>
+            <td class="sun v-middle"> 
+                <span ng-hide="item.edit">{{item.sun.name}}</span>
+                <select ng-model="$parent.pageInfo[$index].sun.id" ng-show="item.edit" ng-options="m.id as m.name for m in sType">
+                <option value="">选择科目</option>
+                </select>
+            </td> -->
+            <td class="opt v-middle">
+            <a ng-click="edit($index)" ng-hide="item.edit" class="btn btn-primary btn-sm">编辑</a>
+            <a ng-click="update($index)" ng-show="item.edit" class="btn btn-success btn-sm">保存</a>
+            <a ng-click="del(item.id)" class="btn btn-danger btn-sm">删除</a>
+            
+            </td>
+        </tr>
+        <tr>
+            <td style="border-right:1px solid #ddd;"> 
+                <select ng-model="param.type" ng-show="param.edit">
+                <option value="">选择时间</option>
+                    <option ng-repeat="(key,value) in sDict" value="{{key}}" ng-selected="key==param.type">{{value}}</option>
+                </select>
+            </td>
+            <td class="v-middle">
+                <span ng-model="$parent.pageInfo[$index].lesson" ng-show="param.edit">{{param.lesson}}</span>
+                <!-- <select ng-model="param.lesson" ng-show="param.edit" ng-options="txt for txt in jType">
+                    <option value="">{{param.lesson}}</option>
+                </select> -->
+                <!-- <span ng-model="param.lesson">{{param.lesson}}</span> -->
+            </td>
+            <td class="v-middle">
+                <select ng-model="param.mon.id" ng-show="param.edit" ng-options="m.id as m.name for m in sType">
+                <option value="">选择科目</option>
+                </select>
+            </td>
+            <td class="v-middle">
+                <select ng-model="param.tue.id" ng-show="param.edit" ng-options="m.id as m.name for m in sType">
+                <option value="">选择科目</option>
+                </select>
+            </td>
+            <td class="v-middle">
+                <select ng-model="param.wed.id" ng-show="param.edit" ng-options="m.id as m.name for m in sType">
+                <option value="">选择科目</option>
+                </select>
+            </td>
+            <td class="v-middle">
+                <select ng-model="param.thu.id" ng-show="param.edit" ng-options="m.id as m.name for m in sType">
+                <option value="">选择科目</option>
+                </select>
+            </td>
+            <td class="v-middle">
+                <select ng-model="param.fri.id" ng-show="param.edit" ng-options="m.id as m.name for m in sType">
+                <option value="">选择科目</option>
+                </select>
+            </td>
+            <!-- <td class="v-middle">
+                <select ng-model="param.sta.id" ng-show="param.edit" ng-options="m.id as m.name for m in sType">
+                <option value="">选择科目</option>
+                </select>
+            </td>
+            <td class="v-middle">
+                <select ng-model="param.sun.id" ng-show="param.edit" ng-options="m.id as m.name for m in sType">
+                <option value="">选择科目</option>
+                </select>
+            </td> -->
+            <td class="v-middle opt">
+                <a ng-click="add()" ng-hide="param.edit" class="btn btn-success btn-sm">添加</a>
+                <a ng-click="save()" ui-sref="main.classManage.scheduleList({gradeId:gradeId,classId:classId})" ng-show="param.edit" class="btn btn-success btn-sm">保存</a>
+            </td>
+        </tr>
+    </tbody>
+    </table>
+
+</div>
+
+<!-- toaster directive -->
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+<!-- / toaster directive -->

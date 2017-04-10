@@ -1,0 +1,116 @@
+
+
+<!-- 导航条 -->
+<div class="bg-white bread-crumb">
+    <ul class="breadcrumb b-a m-b-n-xs lter b-b wrapper-md">
+        <li><a ui-href="main"><i class="fa fa-home"></i> 首页</a></li>
+        <li class="active" ng-bind="title"></li>
+    </ul>
+</div>
+
+<!-- 加载提醒 -->
+<div ng-show="loading" class="text-center m-t-md text-lg"><i class="fa fa-spin fa-spinner"></i> 数据加载中...</div>
+
+<!-- 内容区域 -->
+<div ng-hide="loading" class="wrapper-md content">
+    <!-- 数据显示 -->
+    <div class="wrapper-data">
+        <div class="panel panel-default row">
+        	<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+        		<a href="">地区</a>
+
+				<div class="widget-content nopadding fix_hgt">
+				
+					     <div treecontrol class="tree-dark" tree-model="treedata" on-selection="showSelected(node)">
+					         <span ng-switch="" on="node.type">
+					            <!--  <span ng-switch-when="folder" class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>
+					            <span ng-switch-when="pic" class="glyphicon glyphicon-picture" aria-hidden="true"></span>
+					            <span ng-switch-when="doc" class="glyphicon glyphicon-file" aria-hidden="true"></span>
+					            <span ng-switch-when="file" class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>
+					            <span ng-switch-when="movie" class="glyphicon glyphicon-film" aria-hidden="true"></span>
+					            <span ng-switch-when="email" class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+					            <span ng-switch-when="home" class="glyphicon glyphicon-home" aria-hidden="true"></span>
+					            <span ng-switch-when="trash" class="glyphicon glyphicon-trash" aria-hidden="true"></span> -->
+					         {{node.dept_name}}</span>
+					     </div>
+				</div>
+
+        	</div>
+			<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+	        		<!-- 头部 -->
+	            <div class="panel-heading clearfix">
+	               <!--  <a ui-sref="main.edu.school.add" class="btn btn-info pull-right">
+	                   <i class="icon-user-follow m-r-sm text-md"></i>添加学校</a> -->
+	                <div class="w-lg">
+	                    <form ng-submit="search()" class="ng-pristine ng-valid">
+	                        <div class="input-group search-box">
+	                            <input type="text" class="form-control" ng-model="param.keyword" placeholder="学校名称">
+	                            <i ng-show="user.keyword" ng-click="clearSearch()" class="fa fa-times-circle text-muted search-clear"></i>
+	                            <span class="input-group-btn">
+	                                <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+	                            </span>
+	                        </div>
+	                    </form>
+	                </div>
+	            </div>
+
+	            <!-- 数据表格 -->
+	            <div ng-show="pageInfo.size" class="table-responsive">
+	                <table class="table table-striped b-t b-light text-center">
+	                    <thead>
+	                    <tr>
+	                        <th>学校名称</th>
+	                        <th>地区</th>
+	                        <th>地址</th>
+	                       <!--  <th>状态</th> -->
+	                        <th>&nbsp;</th>
+	                    </tr>
+	                    </thead>
+	                    <tbody>
+	                    <tr ng-repeat="item in pageInfo.list">
+	                        <td class="v-middle">{{item.name}}</td>
+	                        <td class="v-middle">{{item.region.regionName}}</td>
+	                        <td class="v-middle">{{item.address}}</td>
+	                        <!-- <td class="v-middle">
+	                            <span ng-hide="item.enable==1" class="text-danger">禁用</span>
+	                            <span ng-show="item.enable==1" class="text-success">启用</span>
+	                        </td> -->
+	                        <td class="v-middle">
+	                            <!-- <a ui-sref="main.edu.school.edit({id: item.id})" class="btn btn-sm btn-default">
+	                                <i class="fa fa-edit m-r-xs text-sm"></i>编辑</a> -->
+
+								<!-- <a ui-sref="main.edu.schoolDept.deptlist({school_id: item.id, name: item.name})" class="btn btn-sm btn-default">
+									                                <i class="fa fa-edit m-r-xs text-sm"></i>部门管理</a> -->
+
+	                                <a ui-sref="main.edu.user.userlist({school_id: item.id, name: item.name})" class="btn btn-sm btn-default">
+	                                <i class="fa fa-edit m-r-xs text-sm"></i>教务人员管理</a>
+
+	                            <!-- <button type="button" ng-show="item.enable==1"  ng-click="disableItem(item.id,0)" class="btn btn-sm btn-default m-l-xs">
+	                                <i class="fa fa-ban m-r-xs text-sm"></i>禁用</button>
+	                            <button type="button" ng-hide="item.enable==1"  ng-click="disableItem(item.id,1)" class="btn btn-sm btn-default m-l-xs">
+	                                <i class="fa fa-check m-r-xs text-sm"></i>启用</button>
+	                            
+	                            								<a ui-sref="main.edu.school.schoolapp({id: item.id})" class="btn btn-sm btn-default m-l-xs">
+	                                <i class="fa fa-check m-r-xs text-sm"></i>应用授权</a>
+	                            
+	                            								<a class="btn btn-sm btn-default m-l-xs">
+	                                <i class="fa fa-check m-r-xs text-sm"></i>资源授权</a>	 -->
+
+	                        </td>
+	                    </tr>
+	                    </tbody>
+	                </table>
+	            </div><!-- /.table-responsive -->
+
+	            <!-- 底部分页 -->
+				<span data-ng-include=" 'src/tpl/pageInfo.html' "></span>
+        	</div>
+
+            
+
+
+
+        </div><!-- /.panel -->
+    </div><!-- /.wrapper-data -->
+
+</div><!-- /.wrapper-md -->

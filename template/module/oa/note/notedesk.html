@@ -1,0 +1,18 @@
+<div class="box box-danger" id="loading-example" style="position: relative;">
+                    <div class="box-header" style="cursor: move;">
+                      <i class="fa {{appicon}}"></i>
+                      <h3 class="box-title"><a  href="{{appurl}}">{{appname}}</a></h3>
+                      <i class="fa pull-right  icon-remove" ng-click="delapp(appidentify)"></i>
+                    </div>
+                    <div class="box-body no-padding">
+                      <div class="news_desk">
+                      
+                          <a ui-sref="main.note.notedetail({id:item.id})" ng-repeat="item in pageInfo.list">
+                            <span class="pull-right">{{item.remindTime |  date:'yyyy-MM-dd HH:mm:ss'}}</span>
+                             · {{item.title | limitTo:15}} 
+                           </a>
+
+
+                        </div>
+                    </div>
+                  </div>

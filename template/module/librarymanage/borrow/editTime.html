@@ -1,0 +1,55 @@
+<script src="lib/jquery/jquery.validate.min.js"></script>
+<script src="lib/jquery/additional-methods.min.js"></script>
+<script src="lib/My97DatePicker/WdatePicker.js"></script>
+<div class="ngdialog-title">{{app_name}}</div>
+<br>
+<div class="password">
+    <div class="row">
+       <form id="teacheradd_form" class="form-horizontal">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="form-group">
+                <label class="col-lg-4 col-sm-5 control-label">图书名称</label>
+                <div class="col-sm-7">
+                    <div class="row" >
+                   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                       <input id="cycle-day-date" type="text" class="form-control" placeholder=""  value="" disabled ng-model="record.bookName">
+                   </div>
+                </div>
+                </div>
+            </div>
+        <div class="form-group">
+                <label class="col-lg-4 col-sm-5 control-label">ISBN</label>
+                <div class="col-sm-7">
+                    <div class="row" >
+                   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                       <input id="cycle-day-date" type="text" class="form-control" placeholder=""  value="" disabled  ng-model="record.bookIsbn">
+                   </div>
+                </div>
+                </div>
+        </div>
+
+        <div class="form-group">
+                <label class="col-lg-4 col-sm-5 control-label">修改续借时间</label>
+                <div class="col-sm-7">
+                    <div class="row" >
+                   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                       <input id="cycle-day-date" type="text" class="form-control" placeholder=""  value="" date-picker datefmt='yyyy-MM-dd' ng-model="record.endDate">
+                   </div>
+                </div>
+                </div>
+            </div>
+            <div class="form-group-last">
+                <label class="col-lg-4 col-sm-5 control-label"></label>
+                <div class="col-sm-7">
+                    <button class="btn btn-success" ng-click="closeThisDialog();submit()">提交</button>
+                </div>
+            </div>
+        </div>
+      </form>
+    </div>
+
+</div>
+
+<!-- toaster directive -->
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+<!-- / toaster directive -->

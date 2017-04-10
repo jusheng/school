@@ -1,0 +1,134 @@
+<script src="lib/My97DatePicker/WdatePicker.js"></script>
+  <script src="lib/jquery/jquery.validate.min.js"></script>
+  <script src="lib/jquery/additional-methods.min.js"></script>  
+
+<div class="row pad">
+    <form id="planadd">
+        <legend>新建任务</legend>
+    
+        <div class="form-group">
+            <label for="">标题</label>
+            <div class="row">
+              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                <select name="" id="input" class="form-control" ng-options="v.id as v.codeText for (k,v) in tasktype" ng-model="record.taskType.id">
+                  
+                </select>
+              </div>
+              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+                  <input type="text" class="form-control"  id="title" name="title" ng-model="record.title" >
+              </div>
+            </div>
+            
+        </div>
+
+        <div class="form-group" > 
+            <label for="">起止时间</label>
+            <div >
+               <div class="row" >
+                   <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5" style="position:relative">      
+                      <input id="cycle-day-date" type="text" class="form-control" placeholder="开始日期"  value="" date-picker datefmt='yyyy-MM-dd' ng-model="record.beginTime" >
+        
+                      <!-- <span class="glyphicon glyphicon-calendar" style="position:absolute; right:0; top:50%;"></span> -->
+                   </div>
+                   <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 text-center">
+                   
+                       ---
+                   
+                   </div>
+                   <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5" style="position:relative">
+                       <input id="cycle-day-date" type="text" class="form-control" placeholder="截止日期"  value="" date-picker datefmt='yyyy-MM-dd' ng-model="record.endTime">
+                       <!-- <span class="glyphicon glyphicon-calendar" style="position:absolute; right:0; top:50%;"></span> -->
+                   </div>
+                </div> 
+            </div> 
+        </div>
+       <div class="form-group" style="position: relative;">
+          <label for="">主办人</label>
+              <div style="position: absolute; width: 100%; top:25px;bottom:0;z-index: 0">
+                <input type="text" class="form-control"  id="sendnames"  name="sendnames" value="{{record.sendnames}}">
+              </div>
+              <div class="user_lay" >
+                
+                  <span class="s_name" ng-show="record.presideUser.id">{{record.presideUser.name}} <i class="icon-remove" ng-click="del(k,'1')"></i></span>
+
+
+
+                  <span style="position: relative;display: inline-block;">
+                    <a href="" ng-click="open_pp(1)">+选择主办人</a>
+                  </span>
+                
+                
+                <div class="clearfix"></div>
+              </div>
+
+        </div>
+        <div class="form-group" style="position: relative;">
+          <label for="">协办人</label>
+              <div style="position: absolute; width: 100%; top:25px;bottom:0;z-index: 0">
+                <input type="text" class="form-control"  id="sendnames"  name="sendnames" value="{{record.sendnames}}">
+              </div>
+              <div class="user_lay" >
+                
+                  <span class="s_name" ng-repeat="(k,v) in record.withUsers">{{v.name}} <i class="icon-remove" ng-click="del(k,'1')"></i></span>
+
+
+
+                  <span style="position: relative;display: inline-block;">
+                    <a href="" ng-click="open_pp(2)">+添加协办人</a>
+                  </span>
+                
+                
+                <div class="clearfix"></div>
+              </div>
+        </div>
+        <div class="form-group" style="position: relative;">
+          <label for="">知会人</label>
+          <div style="position: absolute; width: 100%; top:25px;bottom:0;z-index: 0">
+                <input type="text" class="form-control"  id="sendnames"  name="sendnames" value="{{record.sendnames}}">
+              </div>
+              <div class="user_lay" >
+                
+                  <span class="s_name" ng-repeat="(k,v) in record.notifyUsers">{{v.name}} <i class="icon-remove" ng-click="del(k,'1')"></i></span>
+
+
+
+                  <span style="position: relative;display: inline-block;">
+                    <a href="" ng-click="open_pp(3)">+添加协办人</a>
+                  </span>
+                
+                
+                <div class="clearfix"></div>
+              </div>
+        </div>
+  
+        <div class="form-group">
+          <label for="">重要程度</label>
+          <select name="" id="input" class="form-control" ng-options="v.id as v.codeText for (k,v) in tasklevel" ng-model="record.emphasisGrade.id">
+          </select>
+        </div>
+
+        
+        <div class="form-group">
+        	<label for="">内容</label>
+        	<textarea name="" class="form-control" rows="3" ng-model="record.content"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="">可见人</label>
+          <select name="" id="input" class="form-control" ng-model="record.visibleType" ng-options="v.id as v.codeText for (k,v) in visibleType">
+            <option value="">请选择可见人</option>
+          </select>
+        </div>
+
+
+    
+        
+    
+        <button type="submit" class="btn btn-success" >提交</button>
+    </form>
+</div>
+
+
+<!-- toaster directive -->
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+<!-- / toaster directive -->

@@ -1,0 +1,54 @@
+<link rel="stylesheet" href="template/module/teachermanage/teacher.css">
+<div class="ngdialog-title borrowuser-title">{{app_name}}</div>
+
+<div class="row pad">
+    <div class="col-sm-8 search-form">
+        <form  class="text-right" ng-submit="search()" >
+            <div class="input-group" role="form">                                                            
+                <input type="text" class="form-control" placeholder="按ISBN、名称搜索图书" ng-model="param.keyword">
+                <div class="input-group-btn">
+                    <button type="submit" name="q" class="btn btn-sm btn-success"><i class="fa icon-search"></i></button>
+                </div>
+            </div>                                                     
+        </form>
+    </div>
+</div>
+
+<div class="table-responsive">
+                                               
+    <table class="table table-mailbox">
+        <tbody>
+            <tr class="unread">
+                <td class="small-col">
+                </td>
+                <td class="subject">ISBN编码</td>
+                <td class="subject">图书名称</td>
+                <td class="subject">图书分类</td>
+                <td class="subject">作者</td>
+                <td class="subject">出版社</td>
+            </tr>
+            <tr ng-repeat="item in pageInfo.list" ng-click="select_per($index)">
+                <td class="small-col v-middle">
+                    <div class="icheckbox_minimal-blue" ng-class="{checked:$parent.pageInfo.list[$index].selected}"  style="position: relative;">
+                        <input type="checkbox" style="position: absolute; opacity: 0;">
+                    </div>
+                </td>
+                <td class="subject v-middle">{{item.isbn}}</td>
+                <td class="subject v-middle"><a title="{{item.name}}">{{item.name}}</a></td>
+                <td class="subject v-middle"><a title="{{item.typeCodeNameref}}">{{item.typeCodeNameref}}</a></td>
+                <td class="subject v-middle"><a title="{{item.author}}">{{item.author}}</a></td>
+                <td class="subject v-middle"><a title="{{item.pubUnit}}">{{item.pubUnit}}</a></td>
+            </tr>
+        </tbody>
+    </table>
+   <div ng-include="'template/module/tpl/pageInfo.html'"></div>
+   <div class="form-group" style="margin-top:10px;text-align:right">
+            <a style="color:#fff" class="btn btn-success" ng-click="choose_book();closeThisDialog()">确定</a>  <a ng-click="closeThisDialog()" style="color:#fff" class="btn btn-success">取消</a>
+        </div>
+</div>
+
+
+
+<!-- toaster directive -->
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+<!-- / toaster directive -->

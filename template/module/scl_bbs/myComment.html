@@ -1,0 +1,61 @@
+<div class="newsdetail row" style="margin-top:12px;">
+    <a ui-sref="main.bbs.threadlist({id:value.sectorId})" title="返回列表">
+        <span class="icon-reply pull-right"  style="position: absolute;top: 2px;right: 10px;font-size:20px;color:#AFC3E1;opacity:10;"></span>
+    </a>
+    
+    <!-- <div class="row"></div> -->
+        <div class="form-group list-group row row_comment" ng-repeat="(key, value) in pageInfo.list" style="border-top:2px solid #C2D5E3">
+
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 col-xs-push-0 col-sm-push-0 col-md-push-0 col-lg-push-0 left_author" style="height:200px">
+                <div class="row">
+                    <a ui-sref="main.bbs.threadlist({id:0})" title="作者">
+                        <span style="margin-left:12%;line-height:30px;">{{user_data.name}}</span>
+                    </a>
+                </div>
+                <img class="img" ng-src="{{value.bbs_follower.imgurl}}" src="/res/img/no.jpg"/>
+            </div>
+             
+
+            <div  class="col-xs-10 col-sm-10 col-md-10 col-lg-10 col-xs-push-0 col-sm-push-0 col-md-push-0 col-lg-push-0" style="background-color:#fff">
+                <a  class="delete icon-remove pull-right" ng-click="op_confrim(value.id)" style="z-index:2;position: absolute;right:10px;top:8px;font-size:24px;color:#AFC3E1;opacity:10;margin:-7px;" title="删除"></a>
+                <a  class="edit  icon-edit pull-right" ng-click="op_edit(value.id)"   style="z-index:2;position: absolute;right:30px;top:8px;font-size:24px;color:#AFC3E1;opacity:10;margin:-5px;" title="编辑"></a>
+                <div class="row" style="border-bottom:1px dashed #CDCDCD">
+                    <span style="margin-left:12%;line-height:30px;margin-left:10px;">发表于:{{value.createTime}}</span>
+
+                    <span style="margin-left:14%;line-height:30px;margin-left:10px;" ng-show="value.lastAnswerTime">最后回复时间:{{value.lastAnswerTime}}</span>
+                    <!-- <span style="margin-left:12%;line-height:30px;margin-left:10px;">修改于:{{value.follow_content.updateTime}}</span> -->
+                </div>
+<!--                <div class="panel-body" ng-bind-html="value.follow_content.title"></div> -->
+               <div class="panel-body" ng-bind-html="value.content"></div>
+            </div>
+
+        </div>
+</div>
+        <div class="form-group list-group row row_comment" ng-repeat="(key, value) in record[1]" style="border-top:2px solid #C2D5E3">
+
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 col-xs-push-0 col-sm-push-0 col-md-push-0 col-lg-push-0 left_author" style="height:200px">
+                <div class="row" style="border-bottom:1px dashed #CDCDCD">
+                    <a ui-sref="main.bbs.commentDetail({id:0})" title="帖子详情">
+                        <span style="margin-left:12%;line-height:30px;">{{user_data.name}}</span>
+                    </a>
+                </div>
+                <img class="img" ng-src="{{value.bbs_follower.imgurl}}" src="/res/img/no.jpg"/>
+            </div>
+             
+
+            <div  class="col-xs-10 col-sm-10 col-md-10 col-lg-10 col-xs-push-0 col-sm-push-0 col-md-push-0 col-lg-push-0" style="background-color:#fff">
+                <a  class="delete icon-remove pull-right" ng-click="op_confrim(value.follow_content.id)" style="z-index:2;position: absolute;right:10px;top:8px;font-size:24px;color:#AFC3E1;opacity:10;margin:-7px;" title="删除"></a>
+                <a  class="edit  icon-edit pull-right" ng-click="op_edit(value.follow_content.id)"   style="z-index:2;position: absolute;right:30px;top:8px;font-size:24px;color:#AFC3E1;opacity:10;margin:-5px;" title="编辑"></a>
+                <div class="row" style="border-bottom:1px dashed #CDCDCD">
+                    <span style="margin-left:12%;line-height:30px;margin-left:10px;">发表于:{{value.follow_content.createTime}}</span>
+                    <!-- <span style="margin-left:12%;line-height:30px;margin-left:10px;">修改于:{{value.follow_content.updateTime}}</span> -->
+                </div>
+<!--                <div class="panel-body" ng-bind-html="value.follow_content.title"></div> -->
+               <div class="panel-body" ng-bind-html="value.follow_content.content"></div>
+            </div>
+
+        </div>
+<div ng-include="'template/module/tpl/pageInfo.html'" style="padding:0"></div>
+<!-- toaster directive -->
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+<!-- / toaster directive -->

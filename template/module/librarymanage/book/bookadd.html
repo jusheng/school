@@ -1,0 +1,125 @@
+<script src="lib/jquery/jquery.validate.min.js"></script>
+<script src="lib/jquery/additional-methods.min.js"></script>
+<div class="row pad add_new">
+    <form id="bookadd_form" class="form-horizontal">
+        <div class="form-top">
+            <legend ng-bind="app_name"></legend>
+            <a class="btn btn-sm btn-icon btn-rounded btn-default pull-right m-t-n-xs btn-close" ui-sref="main.book.bookList({sorts_id:record.typeCode,code:code,name:record.typeCodeNameref})"><i class="icon-remove"></i>
+            </a>
+        </div>
+        <div class="form-group">
+            <label for="title" class="col-lg-2 col-sm-3 control-label"><span class="text-danger wrapper-sm">*</span>ISBN</label>
+            <div  class="col-sm-9">
+            <input type="text" class="form-control" id="isbn" name="isbn"  ng-model="record.isbn" ng-keyup="enterEvent($event)">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="title" class="col-lg-2 col-sm-3 control-label"><span class="text-danger wrapper-sm">*</span>名称</label>
+            <div  class="col-sm-9">
+            <input type="text" class="form-control" id="name" name="name"   ng-model="record.name">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="sortsId" class="col-lg-2 col-sm-3 control-label"><span class="text-danger wrapper-sm">*</span>所属分类</label>
+            <div  class="col-sm-9" style="position: relative;">
+
+           <!--  <select name="typeCode" id="typeCode" ng-model="record.typeCode" class="form-control" ng-options="m.id as m.name for m in sorts">
+                    <option value="">请选择分类</option>
+            </select> -->
+            
+            <input type="text" class="form-control" name="typeCode" id="typeCode" ng-model="record.typeCode" style="position: relative; z-index: -1">
+            
+
+
+            <button type="button" class="btn btn-sm btn-success" ng-click="select_class()" style="position: absolute;top: 2px;left: 14px;">选择...<span ng-show="record.typeCodeNameref" ng-bind="'【'+record.typeCodeNameref+'】'"</span></button>
+            </div>
+        </div>
+       <!--  <div class="form-group">
+                <label class="col-lg-2 col-sm-3 control-label">所属图书室</label>
+                <div class="col-sm-9">
+                    <select name="library" id="library" ng-model="record.library" class="form-control" ng-options="m.id as m.name for m in pageInfo.list">
+                        <option value="">请选择图书室</option>
+                    </select>
+                </div>
+            </div> -->
+        <div class="form-group">
+            <label for="title" class="col-lg-2 col-sm-3 control-label"><span class="text-danger wrapper-sm">*</span>总数量</label>
+            <div  class="col-sm-9">
+            <input type="text" class="form-control" id="totalNum" name="totalNum"  ng-model="record.totalNum" max="99999999" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="title" class="col-lg-2 col-sm-3 control-label">简称</label>
+            <div  class="col-sm-9">
+            <input type="text" class="form-control" id="inputCode" name="inputCode" ng-model="record.inputCode">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="title" class="col-lg-2 col-sm-3 control-label">售价</label>
+            <div  class="col-sm-9">
+            <input type="text" class="form-control" id="salePrice" name="salePrice"  ng-model="record.salePrice" onkeyup="if(isNaN(value))execCommand('undo')" onafterpaste="if(isNaN(value))execCommand('undo')">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="title" class="col-lg-2 col-sm-3 control-label">作者</label>
+            <div  class="col-sm-9">
+            <input type="text" class="form-control" id="author" name="author" ng-model="record.author">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="title" class="col-lg-2 col-sm-3 control-label">出版社</label>
+            <div  class="col-sm-9">
+            <input type="text" class="form-control" id="pubUnit" name="pubUnit" placeholder=""  ng-model="record.pubUnit">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="title" class="col-lg-2 col-sm-3 control-label">出版日期</label>
+            <div  class="col-sm-9">
+            <input type="text" class="form-control" id="pubDate" name="pubDate" placeholder="" ng-model="record.pubDate">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="title" class="col-lg-2 col-sm-3 control-label">出版地点</label>
+            <div  class="col-sm-9">
+            <input type="text" class="form-control" id="pubPlace" name="pubPlace" placeholder="" ng-model="record.pubPlace">
+            </div>
+        </div>
+        <!-- <div class="form-group">
+            <label for="title" class="col-lg-2 col-sm-3 control-label">封面图</label>
+            <div  class="col-sm-9">
+            <input type="text" class="form-control" id="cover" name="cover" placeholder="" ng-model="record.cover">
+            </div>
+        </div> -->
+        <div class="form-group">
+            <label for="remark"  class="col-lg-2 col-sm-3 control-label">封面图</label>
+            <div  class="col-xs-9 col-sm-9 col-md-9 col-lg-9 col-xs-push-0 col-sm-push-0 col-md-push-0 col-lg-push-0">
+                <button type="button" class="btn btn-xs btn-info" ngf-select="onFileSelect($files)" multiple="multiple" style="margin-top:7px;">
+                   <i class="icon-cloud-upload"></i> 上传封面
+                </button>
+                <div ng-show="record.cover">
+                    <br>
+                    <img src="{{record.cover}}" width="100" alt="">
+                </div>
+                
+            </div>
+            
+        </div>
+
+        <div class="form-group">
+            <label for="remark"  class="col-lg-2 col-sm-3 control-label">简介</label>
+            <div  class="col-sm-9">
+            <textarea name="desc" id="desc" class="form-control" rows="7" ng-model="record.desc"></textarea>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="content"  class="col-lg-2 col-sm-3 control-label"></label>
+            <div  class="col-sm-9">
+                <button type="button" class="btn btn-success" ng-click="submit_form()">提交</button>
+            </div>
+        </div>
+    </form>
+</div>
+<!-- toaster directive -->
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+<!-- / toaster directive -->

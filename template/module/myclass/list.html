@@ -1,0 +1,43 @@
+<link rel="stylesheet" href="template/module/myclass/myteacher.css">
+<div id="breadcrumb">
+  <a href="#/main"><i class="icon-home"></i> 学习云平台</a> 
+  <i class="icon-angle-right"></i><a>{{app_name}}</a> 
+</div>
+
+<div class="row no-padding">	
+	<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4"  ng-repeat="(key, value) in pageInfo" style="padding-right: 0;padding-left:8px">
+		<div style="padding: 15px;">
+			<div class="row teachersBox_inner" style="background: #fff">
+				<div class="col-xs-6 col-sm-4 col-md-4 col-lg-6 text-center" style="padding-right: 5px;padding-left: 12px;">
+					<img ng-src="{{value.imgUrl}}" src="/res/img/no.jpg" class="img-responsive center-block" />
+				</div>
+				<div class="col-xs-6 col-sm-8 col-md-8 col-lg-6" style="padding-left: 5px;padding-right: 12px">
+					<ul class="list-group">
+						<li class="list-group-item">姓名：{{value.name}} <span ng-show="value.isClassTeacher"> (班主任)</span></li>
+						<li class="list-group-item">科目：{{value.subjectName}}</li>
+						<li class="list-group-item">
+						性别：
+						<span ng-show="value.sex==1">男</span>
+						<span ng-show="value.sex==2">女</span>
+						</li>
+						<li class="list-group-item">电话：{{value.tel}}
+						</li>
+					</ul>
+					
+				</div>
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="height: 40px;overflow: hidden;">
+					<span>简介：{{value.remark}}</span>
+				</div>
+			</div>	
+		</div>
+
+	</div>
+
+</div>
+
+	
+
+
+
+
+<!-- <div ng-include="'template/module/tpl/pageInfo.html'"></div> -->

@@ -1,0 +1,41 @@
+<link rel="stylesheet" href="template/module/usermanage/user.css">
+<div class="row pad">
+    <div class="col-sm-10">
+        <form class="text-right user-form" ng-submit="search()">
+            <div class="form-group clearfix">
+                <label class="control-label">选择班级</label>
+                <select name="classId" id="classId" ng-model="param.classId" ng-change="getexam()" class="form-control"
+                        ng-options="m.id as m.name for m in classNameList">
+                    <option value="">请选择</option>
+                </select>
+            </div>
+
+            <div class="form-group clearfix">
+                <label class="control-label">选择考试</label>
+                <select name="examId" id="examId" ng-model="param.examId" class="form-control"
+                        ng-options="m.id as m.name for m  in examList">
+                    <option ng-hide="examList">没有发现考试</option>
+                </select>
+            </div>
+
+            <div class="form-group clearfix">
+                <label class="control-label">选择学生</label>
+                <select name="examId" id="studentId" ng-model="studentIndex" class="form-control"
+                        ng-change="buildChartData()"
+                        ng-options="index as m.student.name for (index,m) in scoreData">
+                    <option ng-hide="scoreData">没有发现考试</option>
+                    <!--<option ng-repeat="m in scoreData" value="{{$index}}" ng-selected="$index-studentIndex==0">{{m.student.name}}-{{$index-studentIndex}}</option>-->
+                </select>
+            </div>
+            <button class="chaxun btn btn-success" type="submit">查询</button>
+        </form>
+    </div>
+</div>
+<div class="box-body no-padding" style="height:600px;">
+    <div class="" style="height:600px;">
+        <radar-chart config="config" data="data"></radar-chart>
+    </div>
+</div>
+<!-- toaster directive -->
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+<!-- / toaster directive -->

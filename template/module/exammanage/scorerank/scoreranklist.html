@@ -1,0 +1,87 @@
+<link rel="stylesheet" href="template/module/usermanage/user.css">
+<div class="row pad">
+    <div class="col-sm-10">
+        <form class="text-right user-form" ng-submit="search()">
+            <div class="form-group clearfix">
+                <label class="control-label">选择班级</label>
+                <select name="classId" id="classId" ng-model="param.classId" ng-change="getexam()" class="form-control"
+                        ng-options="m.id as m.name for m  in classNameList">
+                </select>
+            </div>
+
+            <div class="form-group clearfix">
+                <label class="control-label">选择考试</label>
+                <select name="examId" id="examId" ng-model="param.examId" class="form-control"
+                        ng-options="m.id as m.name for m  in examList">
+                    <option ng-hide="examList">没有发现考试</option>
+                </select>
+            </div>
+            <button class="chaxun btn btn-success" type="submit">查询</button>
+            <div class="form-group allsubject pull-right">
+                <label class="control-label">科目</label>
+                <select name="code" id="code" ng-model="record.code" class="form-control"
+                        ng-options="m.code as m.name for m  in record" ng-change="onlysubject()">
+                    <option value="">全部</option>
+                </select>
+            </div>
+        </form>
+    </div>
+    <div class="col-sm-2" style="text-align:right;">
+        <a ui-sref="" class="btn btn-success"> <i class="icon-user-follow m-r-sm text-md"></i>打印</a>
+        <a href="/res/exam/score/read/export?classId={{param.classId}}&examId={{param.examId}}" class="btn btn-success">
+            <i class="icon-user-follow m-r-sm text-md"></i>导出</a>
+    </div>
+</div>
+<div class="table-responsive" ng-hide="record.code">
+
+    <table class="table table-mailbox">
+        <tbody>
+        <tr class="unread">
+            <td class="code">学号</td>
+            <td class="name">姓名</td>
+            <td class="subject" ng-repeat="item in record">{{item.name}}</td>
+            <td class="total">总分</td>
+            <td class="class">班级排名</td>
+            <td class="school">学校排名</td>
+            <td class="total"></td>
+        </tr>
+        <tr ng-repeat="item in pageInfo.list">
+            <td class="code v-middle">{{item.student.code}}</a></td>
+            <td class="name v-middle">{{item.student.name}}</td>
+            <td class="subject v-middle" ng-repeat="i in record">
+                {{item[i.code]>=0?item[i.code]:"未录入"}}
+            </td>
+            <td class="total v-middle">{{item.totalScore}}</td>
+            <td class="class v-middle">{{item.classRanking}}</td>
+            <td class="school v-middle">{{item.gradeRanking}}</td>
+            <td class="total v-middle"><a class="btn btn-primary" ui-sref="main.scorerank.radarChart({examId:param.examId,classId:param.classId,studentId:item.student.id})">查看雷达图</a></td>
+        </tr>
+        </tbody>
+    </table>
+    <div ng-include="'template/module/tpl/pageInfo.html'"></div>
+</div>
+<div class="table-responsive" ng-show="record.code">
+
+    <table class="table table-mailbox">
+        <tbody>
+        <tr class="unread">
+            <td class="code">学号</td>
+            <td class="name">姓名</td>
+            <td class="subject">{{subjects[record.code]}}</td>
+            <td class="class">班级排名</td>
+            <td class="school">学校排名</td>
+        </tr>
+        <tr ng-repeat="m in subjectrank">
+            <td class="code v-middle">{{m.student.code}}</a></td>
+            <td class="name v-middle">{{m.student.name}}</td>
+            <td class="subject v-middle">{{m[record.code]>=0?m[record.code]:"未录入"}}</td>
+            <td class="class v-middle">{{m.classRanking}}</td>
+            <td class="school v-middle">{{m.gradeRanking}}</td>
+        </tr>
+        </tbody>
+    </table>
+    <div ng-include="'template/module/tpl/pageInfo.html'"></div>
+</div>
+<!-- toaster directive -->
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+<!-- / toaster directive -->

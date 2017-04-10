@@ -1,0 +1,19 @@
+<div class="box box-danger" id="loading-example" style="position: relative;">
+                <div class="box-header" style="cursor: move;">
+                      <i class="fa {{appicon}}"></i>
+                      <h3 class="box-title"><a href="{{appurl}}">{{appname}}</a></h3>
+                      <i class="fa pull-right  icon-remove" ng-click="delapp(appidentify)"></i>
+
+                </div>
+                    <div class="box-body no-padding">
+                        <!-- Tab panes -->
+                        <div class="news_desk ">
+                        	<a ui-sref="main.schoolnotice.detail({id:item.id})" ng-repeat="item in pageInfo.list">
+                             <span class="pull-right">{{item.createTime}}</span>
+                            <span style="max-width:200px;display:inline-block;height:36px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="{{item.title}}"> · {{item.title | limitTo:15}} </span>
+                           </a>
+                        </div>
+                       
+
+                    </div>
+</div>

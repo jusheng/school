@@ -1,0 +1,38 @@
+<div id="breadcrumb">
+  <a href="#"><i class="icon-home"></i> {{app.name}}</a> 
+  <i class="icon-angle-right"></i><a>{{app_name}}</a>
+</div>
+
+<div class="teacherresindex_lay1">
+	
+	<div class="row">
+			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-3 item_lay" ng-repeat="v in pageInfo.list" >
+				<div class="item_placeholder"></div>
+				<div class="res_item1" >
+						<div class="res_title1">{{v.textbook.name}}</div>
+						<a href="#/main/res/teacherrestree/{{v.textbook.id}}/list/{{v.textbook.id}}" title="{{v.textbook.name}}">
+							<img src="{{v.textbook.imgUrl}}">
+						
+						</a>
+						<i class="conner1"></i>
+						<i class="conner2"></i>
+				</div>
+			</div>
+			
+		</div>	
+
+	<!-- <div class="res_item1" ng-repeat="v in pageInfo.list">
+			<a href="#/main/res/teacherrestree/{{v.textbook.id}}/list/{{v.textbook.id}}" title="{{v.textbook.name}}">
+				<img src="{{v.textbook.imgUrl}}" width="150" height="180">
+			
+			</a>
+			<div class="res_title">{{v.textbook.name}}</div>
+	</div> -->
+		
+		
+		
+
+
+	<div class="clearfix"></div>
+	<div ng-include="'template/module/tpl/pageInfo.html'"></div>
+</div>

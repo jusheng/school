@@ -1,0 +1,239 @@
+
+
+<!-- 导航条 -->
+<div class="bg-white bread-crumb">
+    <ul class="breadcrumb b-a m-b-n-xs lter b-b wrapper-md">
+        <li>
+            <a ui-href="main"> <i class="fa fa-home"></i>
+                首页
+            </a>
+        </li>
+        <li class="active" ng-bind="title"></li>
+    </ul>
+</div>
+
+<!-- 加载提醒 -->
+<div ng-show="loading" class="text-center m-t-md text-lg"><i class="fa fa-spin fa-spinner"></i>
+    数据加载中...
+</div>
+
+<!-- 内容区域 -->
+<div class="wrapper-md content">
+    <div class="panel panel-default">
+        <!-- 头部 -->
+        <div class="panel-heading font-bold">
+            {{title}}
+            <a class="btn btn-sm btn-icon btn-rounded btn-default pull-right m-t-n-xs" ui-sref="main.edu.school.list">
+                <i class="text-md fa fa-times text-muted"></i>
+            </a>
+        </div>
+        <!--表单-->
+        <div class="panel-body">
+            <form class="form-horizontal" name="user_form">
+                <!--用户名-->
+                <div class="form-group">
+                    <label class="col-lg-2 col-sm-3 control-label" for="name">
+                        <span class="text-danger wrapper-sm">*</span>
+                        学校名称
+                    </label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" name="name" id="name" ng-model="record.name" placeholder="请输入学校名称...">
+                    </div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                    <label class="col-lg-2 col-sm-3 control-label" for="account">
+                        <span class="text-danger wrapper-sm">*</span>
+                        地区
+                    </label>
+                    <div class="col-sm-6">
+                        <div class="row">
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                <div class="row">
+                                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+
+
+                                        <select name="province" id="province" class="form-control"
+                                                ng-model="record.province_id" ng-change="change_province()"
+                                                ng-options="value.id as value.regionName for value in region.province">
+                                            <option value="" selected="selected">--选择--</option>
+
+                                        </select>
+                                    </div>
+                                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+
+                                        <select name="city" id="city" class="form-control" ng-model="record.city_id"
+                                                ng-change="change_city()"
+                                                ng-options="value.id as value.regionName for value in region.city">
+                                            <option value="" selected="selected">--选择--</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+
+
+                                        <select name="region" id="region" class="form-control"
+                                                ng-model="record.region.id"
+                                                ng-options="value.id as value.regionName for value in region.area">
+                                            <option value="" selected="selected">--选择--</option>
+                                        </select>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                    <label class="col-lg-2 col-sm-3 control-label" for="address">
+                        <span class="text-danger wrapper-sm">*</span>
+                        详细地址
+                    </label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" name="address" id="address" ng-model="record.address"
+                               placeholder="请输入学校详细地址..."></div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                    <label class="col-lg-2 col-sm-3 control-label" for="scope">
+                        <span class="text-danger wrapper-sm">*</span>
+                        规模
+                    </label>
+                    <div class="col-sm-6">
+                        <div class="row">
+                            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+
+                                <select name="scope" id="scope" class="form-control" ng-model="record.scope"
+                                        ng-options="value.code+'' as value.codeText for value in school.scope">
+                                    <option value="">--选择--</option>
+                                </select>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                    <label class="col-lg-2 col-sm-3 control-label" for="type">
+                        <span class="text-danger wrapper-sm">*</span>
+                        类型
+                    </label>
+                    <div class="col-sm-6">
+                        <div class="row">
+                            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+
+
+                                <select name="type" id="type" class="form-control"
+                                        ng-options="value.code-0 as value.codeText for value in school.type"
+                                        ng-model="record.type">
+                                    <option value="">--选择--</option>
+                                </select>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                    <label class="col-lg-2 col-sm-3 control-label" for="nature">
+                        <span class="text-danger wrapper-sm">*</span>
+                        性质
+                    </label>
+                    <div class="col-sm-6">
+                        <div class="row">
+                            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+
+
+                                <select name="nature" id="nature" class="form-control"
+                                        ng-options="value.code+'' as value.codeText for value in school.nature"
+                                        ng-model="record.nature">
+                                    <option value="">--选择--</option>
+                                </select>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                    <label class="col-lg-2 col-sm-3 control-label" for="postalcode">
+                        <span class="text-danger wrapper-sm">*</span>
+                        邮编
+                    </label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" name="postalcode" id="postalcode"
+                               ng-model="record.postalcode" placeholder="请输入邮编..."></div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                    <label class="col-lg-2 col-sm-3 control-label" for="user.name">
+                        <span class="text-danger wrapper-sm">*</span>
+                        管理员
+                    </label>
+                    <div class="col-sm-6">
+                        <div class="row">
+                            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                <input type="text" name="user.name" id="user.name" ng-model="record.user.name"
+                                       class="form-control" value="" title="">
+                            </div>
+                        </div>
+                    </div>
+                </div>`
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                    <label class="col-lg-2 col-sm-3 control-label" for="loginName">
+                        <span class="text-danger wrapper-sm">*</span>
+                        管理员登录名
+                    </label>
+                    <div class="col-sm-6">
+                        <div class="row">
+                            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                <input type="text" name="loginName" id="loginName" ng-model="record.loginName"
+                                       class="form-control" value="" title="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                    <label class="col-lg-2 col-sm-3 control-label" for="password">
+                        <span class="text-danger wrapper-sm">*</span>
+                        密码
+                    </label>
+                    <div class="col-sm-6">
+                        <div class="row">
+                            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                <input type="text" name="password" id="password" ng-model="record.password"
+                                       class="form-control" value="" title="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                    <label class="col-lg-2 col-sm-3 control-label" for="remark">
+                        <span class="text-danger wrapper-sm">*</span>
+                        简介
+                    </label>
+                    <div class="col-sm-6">
+                        <textarea name="remark" id="remark" class="form-control" ng-model="record.remark"
+                                  rows="3"></textarea>
+                    </div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <!--btn-->
+                <div class="form-group">
+                    <div class="col-sm-6 col-sm-offset-2">
+                        <button type="reset" class="btn btn-default w-xs">重置</button>
+                        <button type="submit" class="btn btn-info w-xs m-l-xl">保存</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

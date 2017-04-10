@@ -1,0 +1,42 @@
+
+<legend class="ng-binding">共享资源</legend>
+
+
+<div class="text-center" ng-if="file.length==0">
+	<br>
+	<i class="icon-info-sign text-warning-dker"></i> 暂无文件
+</div>
+
+<a class="item" ng-repeat="(key, value) in file"  title="{{value.filename}}" ng-class="{'s_item':value.id==curr_res.id}">
+	
+	<!-- 文件夹 -->
+	<div ng-if="value.filetype==0"  ng-dblclick="go_next(value.id)">
+		<img src="template/img/teacherfile/folder.png" alt="" ng-if="value.status==0">
+		<img src="template/img/teacherfile/s_folder.png" alt="" ng-if="value.status==1">
+		<span ng-bind="value.filename"></span>	
+	</div>
+
+	<!-- 文件 -->
+<div ng-if="value.filetype==1" context-menu="onShow($index)" context-menu-close="onClose($index)"  data-target="menu1">
+    <img ng-src="{{return_url(value)}}" alt="">
+    <span ng-bind="value.filename"></span>
+    <button class="download_{{value.id}}" down-file="/download/fileById?id={{value.id}}" down-file-type="{{return_ext(value)}}" down-file-name="{{value.filename}}">下载</button>
+  </div>
+
+	
+</a>
+
+<style type="text/css">
+        .position-fixed {
+          position: fixed;
+          color:Red;
+        }
+    </style>
+
+
+<!--右键出现的菜单区域-->
+    <div class="dropdown position-fixed" id="menu1">
+      <ul class="dropdown-menu" role="menu">
+       <li><a class="pointer" role="menuitem" ng-click="download()">下载</a></li>
+      </ul>
+    </div>

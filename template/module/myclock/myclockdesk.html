@@ -1,0 +1,61 @@
+<link rel="stylesheet" href="template/module/myclock/Calendar.css">
+<script src="template/module/myclock/Calendar.js"></script>
+<div class="box box-danger" id="loading-example" style="position: relative;">
+                    <div class="box-header" style="cursor: move;">
+                      <i class="fa {{appicon}}"></i>
+                      <h3 class="box-title"><a href="{{appurl}}">{{appname}}</a> </h3>
+                      <i class="fa pull-right  icon-remove" ng-click="delapp(appidentify)"></i>
+                    </div>
+                    <div class="box-body no-padding"  >
+
+		<div class="Calendar"> 
+			<button ng-click="work(0,1)" class="btn btn-danger pull-right">签到</button>
+			<div class="t_lay">
+
+				<div id="idCalendarPre"><<</div> 
+				<div id="idCalendarNext">>></div> 
+				<span id="idCalendarYear">
+			
+				<select class="year"></select>
+
+				</span> 年 <span id="idCalendarMonth">
+				<select class="month">
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+					<option value="6">6</option>
+					<option value="7">7</option>
+					<option value="8">8</option>
+					<option value="9">9</option>
+					<option value="10">10</option>
+					<option value="11">11</option>
+					<option value="12">12</option>
+				</select>
+			</span>月 
+
+			</div>
+			
+
+
+				<table cellpadding="0" cellspacing="1" class="grid"> 
+					<thead> 
+					<tr> 
+					<td>周日</td> 
+					<td>周一</td> 
+					<td>周二</td> 
+					<td>周三</td> 
+					<td>周四</td> 
+					<td>周五</td> 
+					<td>周六</td> 
+					</tr> 
+					</thead> 
+					<tbody id="idCalendar"> 
+					</tbody> 
+				</table> 
+		</div>
+	</div>
+
+</div>
+</div>

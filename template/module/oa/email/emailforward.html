@@ -1,0 +1,163 @@
+
+
+ <script src="lib/jquery/jquery.validate.min.js"></script>
+  <script src="lib/jquery/additional-methods.min.js"></script>  
+<div class="row pad mailbox-env">
+	<div class="mail-compose">
+		<div class="row">
+			<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+					<form id="emailwrite">
+						<div class="mail-header">
+							<div class="row">
+								<div class="col-sm-6">							
+									<h3>
+										<i class="linecons-pencil"></i>
+										{{title}}
+									</h3>
+								</div>
+								
+							</div>
+						</div>	
+
+					
+						<div class="form-group" style="position: relative;">
+							<label for="to">收件人:</label>
+							
+							<div style="position: absolute;  top:25px;bottom:0;z-index: 0">
+								<input type="text" class="form-control"  id="sendnames"  name="sendnames" value="{{record.sendnames}}">
+							</div>
+							<div class="user_lay" onclick="$('#key1').focus()" style="padding-right: 156px;">
+								
+									<span class="s_name" ng-repeat="(k,v) in record.sendnames">{{v}} <i class="icon-remove" ng-click="del(k,'1')"></i></span>
+
+									<span style="position: relative;display: inline-block;">
+										<input type="text" ng-focus="change_active('1')" id="key1" name="key1" ng-model="key1" autocomplete="off" class="s_key">
+										<div ng-class="{'slide_lay':key1!=''}" ng-show="key1!=''">
+											<div ng-repeat="(key, value) in schoolMailList | filter:myFilter1" ng-click="set_empName(value)">{{value.name}}</div>
+										</div>
+									</span>
+								
+								
+								<div class="clearfix"></div>
+							</div>
+
+							<div class="field-options">
+								<a href="javascript:;" onclick="jQuery(this).hide(); jQuery('#sendcsnames').parents('.form-group').removeClass('hidden'); jQuery('#key2').focus();">添加抄送</a>
+								<a href="javascript:;" onclick="jQuery(this).hide(); jQuery('#sendmsnames').parents('.form-group').removeClass('hidden'); jQuery('#key3').focus();">添加密送</a>
+							</div>
+						</div>
+
+						
+						<div class="form-group hidden" style="position: relative;">
+							<label for="sendEmpcsnames">抄送:</label>
+							<div style="position: absolute;  top:25px;bottom:0;z-index: 0">
+								<input type="text" class="form-control"  id="sendcsnames"  name="sendcsnames" value="{{record.sendcsnames}}">
+							</div>
+
+
+							<div class="user_lay" onclick="$('#key2').focus()">
+								
+									<span class="s_name" ng-repeat="(k,v) in record.sendcsnames">{{v}} <i class="icon-remove" ng-click="del(k,'2')"></i></span>
+
+									<span style="position: relative;display: inline-block;">
+										<input type="text" ng-focus="change_active('2')" id="key2" name="key2" ng-model="key2" autocomplete="off" class="s_key">
+										<div ng-class="{'slide_lay':key2!=''}" ng-show="key2!=''">
+											<div ng-repeat="(key, value) in schoolMailList | filter:myFilter2" ng-click="set_empName(value)">{{value.name}}</div>
+										</div>
+									</span>
+								
+								
+								<div class="clearfix"></div>
+							</div>
+
+						</div>
+						
+						<div class="form-group hidden" style="position: relative;">
+							<label for="bcc">密送:</label>
+							<div style="position: absolute;  top:25px;bottom:0;z-index: 0">
+								<input type="text" class="form-control"  id="sendmsnames"  name="sendmsnames" value="{{record.sendmsnames}}">
+							</div>
+
+
+							<div class="user_lay" onclick="$('#key3').focus()">
+								
+									<span class="s_name" ng-repeat="(k,v) in record.sendmsnames">{{v}} <i class="icon-remove" ng-click="del(k,'3')"></i></span>
+
+									<span style="position: relative;display: inline-block;">
+										<input type="text" ng-focus="change_active('3')" id="key3" name="key3" ng-model="key3" autocomplete="off" class="s_key">
+										<div ng-class="{'slide_lay':key3!=''}" ng-show="key3!=''">
+											<div ng-repeat="(key, value) in schoolMailList | filter:myFilter3" ng-click="set_empName(value)">{{value.name}}</div>
+										</div>
+									</span>
+								
+								
+								<div class="clearfix"></div>
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label for="subject">主题:</label>
+							<input type="text" class="form-control" id="sendTitle" name="sendTitle" ng-model="record.sendTitle">
+						</div>
+						
+						
+						<div class="compose-message-editor">
+						<label for="subject">正文:</label>
+						<!-- <textarea class="form-control wysihtml5" data-html="false" data-color="false"  name="sendContent" id="sendContent" ng-model="record.sendContent"></textarea> -->
+						<div class="include_editor" name="content"  ng-model="record.sendContent" config="_simpleConfig" required></div>
+						<div class="editor-js"></div>
+						</div>
+
+						<div class="form-group">
+							<input type="checkbox" ng-model="record.isSaveSendBox" ng-checked="record.isSaveSendBox==1">保存到已发送
+							<input type="checkbox" ng-model="record.sendIsurgent" ng-checked="record.sendIsurgent==1">紧急
+							<input type="checkbox" ng-model="record.receipt" ng-checked="record.receipt==1">需要回执
+						</div>
+
+
+						<div class="row">
+							<div class="col-sm-3">
+								
+								<!-- <span ng-file-select="onFileSelect($files)">文件上传</span> -->
+								<div class="btn btn-gray btn-single btn-block" ngf-select="onFileSelect($files)" multiple="multiple">添加附件</div>
+							</div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-sm-3">
+								<button type="submit" class="btn btn-primary btn-block">
+									<i class="linecons-mail"></i>
+									<span>发送</span>
+								</button>
+
+							</div>
+							<div class="col-sm-3">
+								<button type="submit" class="btn btn-primary btn-block" ng-click="save()">
+									<i class="linecons-mail"></i>
+									<span>存草稿</span>
+								</button>
+								
+							</div>
+							
+						</div>
+						
+					</form>			
+			</div>
+			<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+				<div ui-view>
+					<!-- 通讯录 -->
+				</div>
+			</div>
+		</div>
+		
+		
+
+	</div>
+	
+</div>
+
+
+
+    <!-- toaster directive -->
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+<!-- / toaster directive -->

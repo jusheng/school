@@ -1,0 +1,75 @@
+
+<div class="row pad">
+    <div class="col-sm-6">
+        <label style="margin-right: 10px;" class="">
+            <div class="icheckbox_minimal-blue" ng-click="select_all()" ng-class="{checked:s_all==true}" style="position: relative;"><input type="checkbox" id="check-all" style="position: absolute; opacity: 0;"></div>
+        </label>
+        <!-- Action button -->
+        <div class="btn-group">
+            <button type="button" class="btn btn-default btn-sm btn-flat dropdown-toggle" data-toggle="dropdown">
+                操作 <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+                  <!--<li><a ng-click="set_readed()">标记为已读</a></li>
+               <li><a ng-click="set_unread()">标记为未读</a></li> 
+                <li class="divider"></li>-->
+                <li><a ng-click="del()">删除</a></li>
+            </ul>
+        </div>
+
+    </div>
+    <div class="col-sm-6 search-form">
+        <div class="input-group">                                                            
+                <input type="text" class="form-control input-sm" placeholder="Search" ng-model="param.sendtitle">
+                <div class="input-group-btn">
+
+                    <button type="button" name="q" class="btn btn-sm btn-primary" ng-show="param.sendtitle" ng-click="search()"><i class="fa icon-search"></i></button>
+                    <button type="button" name="q" class="btn btn-sm btn-default" disabled="" ng-show="!param.sendtitle" ><i class="fa icon-search"></i></button>
+
+                </div>
+            </div>  
+    </div>
+    
+</div>
+
+<div class="table-responsive">
+                                               
+    <table class="table table-mailbox">
+        <tbody><tr class="unread">
+            <td class="small-col">
+            </td>
+            <td class="small-col"><i class="fa icon-star"></i></td>
+            <td class="name"><a>收件人</a></td>
+            <td class="subject"><a >主题</a></td>
+            <td class="time">时间</td>
+        </tr>
+
+        <tr ng-repeat="item in pageInfo.list">
+            <td class="small-col v-middle">
+            <div class="icheckbox_minimal-blue" ng-class="{checked:$parent.pageInfo.list[$index].selected}" ng-click="select_per($index)"  style="position: relative;">
+                <input type="checkbox" style="position: absolute; opacity: 0;">
+            </div>
+            </td>
+            <td class="small-col">
+                <i class="fa " ng-click="set_star(item.id,item.iscollection)" ng-class="{'icon-star':item.iscollection==1,'icon-star-empty':item.iscollection==0}"></i>
+                    <a ng-show="item.sendIsurgent==1" title="邮件投状态：紧急"><i class="icon-bolt text-danger"></i></a>
+
+                </td>
+            <td class="name">
+                <a ui-sref="main.email.sendeddetail({eid:item.id})" ng-class="{'font-bold':item.empIsread==2}" ng-bind="item.sendEmpnames" title="{{item.sendEmpnames}}"></a>
+                </td>
+            <td class="subject">
+                <a ui-sref="main.email.sendeddetail({eid:item.id})" ng-class="{'font-bold':item.empIsread==2}"  ng-bind="item.sendTitle" title="{{item.sendTitle}}"></a>
+                </td>
+            <td class="time" ng-bind="item.sendTime"></td>
+        </tr>
+
+
+    </tbody>
+    </table>
+    <div ng-include="'template/module/tpl/pageInfo.html'"></div>
+</div>
+
+<!-- toaster directive -->
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+<!-- / toaster directive -->

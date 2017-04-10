@@ -1,0 +1,59 @@
+<script src="lib/My97DatePicker/WdatePicker.js"></script>
+<script src="lib/jquery/jquery.validate.min.js"></script>
+<script src="lib/jquery/additional-methods.min.js"></script>
+<style>
+    .duration.error{
+            border: 1px solid red;
+    }
+</style>
+<div class="row pad">
+    <form id="examadd" class="form-horizontal">
+        <div class="form-top">
+            <legend ng-bind="title"></legend>
+            <a class="btn btn-sm btn-icon btn-rounded btn-default pull-right m-t-n-xs btn-close"
+               ui-sref="main.examTeacher.examTeacherlist({id:id})"><i class="icon-remove"></i>
+            </a>
+        </div>
+
+        <div class="form-group">
+            <label for="name" class="col-lg-2 col-sm-3 control-label">考试名称</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" id="name" name="name" placeholder="" ng-model="record.name">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-lg-2 col-sm-3 control-label">考试科目</label>
+            <div class="col-sm-9">
+                <table class="table table-mailbox" ng-model="record.details">
+                    <tbody>
+                    <tr class="unread">
+                        <td class="subject">科目</td>
+                        <td class="totalPoint">总分</td>
+                        <td class="beginTime">开始时间</td>
+                        <td class="duration">时长</td>
+                        <td class="endTime">结束时间</td>
+                    </tr>
+                    <tr ng-repeat="item in record.details">
+                        <td class="subject v-middle"><span>{{item.subjectName}}</span></td>
+                        <td class="totalPoint v-middle">{{item.totalPoint}}</td>
+                        <td class="beginTime v-middle">{{item.beginTime}}</td>
+                        <td class="duration v-middle">{{item.duration}}分钟</td>
+                        <td class="endTime v-middle">{{item.endTime}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="intro" class="col-lg-2 col-sm-3 control-label">考试简介</label>
+            <div class="col-sm-9">
+                <textarea name="intro" id="intro" rows="3" class="form-control" ng-model="record.intro"> </textarea>
+            </div>
+        </div>
+    </form>
+</div>
+<!-- toaster directive -->
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+<!-- / toaster directive -->

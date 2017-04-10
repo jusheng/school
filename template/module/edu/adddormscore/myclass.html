@@ -1,0 +1,30 @@
+<link rel="stylesheet" href="template/module/classmanage/dormitories/rules.css">
+
+
+<div id="breadcrumb">
+  <a href="#"><i class="icon-home"></i> 学习云平台</a> 
+  <i class="icon-angle-right"></i><a >{{app_name}}</a>
+</div>
+<div class="news">
+	<div class="row  no-padding">
+		<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+		  <a class="btn btn-block btn-success" ng-repeat="(key, value) in lists" ui-sref="main.dormitories.ourdormlist({id:value.id})">
+			   <span style="position:relative;">
+				  <i style="position:absolute;left:-17px;top:2px;" class="fa icon-ok" ng-show="value.id==curr"></i>
+				  {{value.name}}
+			   </span>
+		  </a>
+
+		  <div ng-show="lists.length==0">
+			 暂无班级	
+		  </div>
+		  
+      
+
+		</div>
+		<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 news_view_lay">
+		<div ui-view></div>
+		</div>
+	</div>
+
+</div>

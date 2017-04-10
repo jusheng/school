@@ -1,0 +1,5 @@
+.table-bordered>tbody>tr>td,
+.table-bordered>thead>tr>th,
+.table-bordered {
+    border-color: #333;
+}

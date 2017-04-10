@@ -1,0 +1,94 @@
+<div id="breadcrumb">
+  <a href="#"><i class="icon-home"></i> {{app.name}}</a> 
+  <i class="icon-angle-right"></i><a>{{app_name}}</a>
+</div>
+<div role="tabpanel" style="margin:10px;">
+	<!-- Nav tabs -->
+	<ul class="nav nav-tabs" role="tablist" >
+		<li role="presentation" ng-class="{'active':desk_name=='desk'}"  style="padding:0 30px;">
+			<a href="#/main/appcenter/desk#home" ng-click="select_curr(0,0)" aria-controls="home" role="tab" data-toggle="tab">全部应用</a>
+		</li>
+
+		<li role="presentation" ng-class="{'active':desk_name==item.identify+'desk'}" style="padding:0 30px;" ng-repeat="item in appmodule">
+			<a href="#/main/appcenter/{{item.identify}}desk#{{item.identify}}" ng-click="select_curr($index+1,item)" aria-controls="home" role="tab" data-toggle="tab">{{item.name}}</a>
+			
+		</li>
+
+	</ul>
+	<!-- Tab panes -->
+	<div class="tab-content">
+		<div role="tabpanel" class="tab-pane" ng-class="{'active':curr==0}">
+			<ul class="list-group">
+            	
+
+				<li class="list-group-item" ng-repeat="(key, value) in all_app">
+
+
+					<div class="pull-right app_options">
+
+	            			<button type="button" class="btn btn-success" ng-hide="value.deskFlag" ng-click="add_desk_p(value,'')">添加到桌面</button>
+	            			
+	            			<button type="button" class="btn btn-success" ng-show="value.deskFlag" ng-click="del_desk_p(value,'')">从桌面删除</button>
+	            			
+	            			<button type="button" class="btn btn-danger" ng-hide="value.moduleFlag" ng-click="add_desk_p(value,value.pidIdentify)">添加到【{{value.pidNameref}}】</button>
+	            										
+	            			<button type="button" class="btn btn-danger" ng-show="value.moduleFlag" ng-click="del_desk_p(value,value.pidIdentify)">从【{{value.pidNameref}}】删除</button> 							
+
+	            	</div>
+	            	<div class="row app_lay">
+	            		<div class="pull-left app_img">
+	            			<img ng-src="{{value.imgUrl}}" alt="">
+	            		</div>
+	            		
+	            		<b>{{value.name}}</b><br>
+	            			{{value.remark}}
+	            		
+	            		
+
+	            	</div>
+            		
+				</li>
+        	</ul>
+        </div>
+		<div role="tabpanel" class="tab-pane"  ng-repeat="item in appmodule" ng-class="{'active':curr==$index+1}">
+			<ul class="list-group">
+				<div ng-show="!item.children">正在加载...</div>
+				<li class="list-group-item" ng-repeat="(key, value) in item.children">
+	            	
+
+
+						<div class="pull-right app_options">
+	
+
+	            			<button type="button" class="btn btn-success" ng-hide="value.deskFlag" ng-click="add_desk_p(value,'')">添加到桌面</button>
+	            			
+	            			<button type="button" class="btn btn-success" ng-show="value.deskFlag" ng-click="del_desk_p(value,'')">从桌面删除</button>
+	            			 
+	            			<button type="button" class="btn btn-danger" ng-hide="value.moduleFlag" ng-click="add_desk_p(value,value.pidIdentify)">添加到【{{value.pidNameref}}】</button>
+	            										
+	            			<button type="button" class="btn btn-danger" ng-show="value.moduleFlag" ng-click="del_desk_p(value,value.pidIdentify)">从【{{value.pidNameref}}】删除</button> 							
+
+
+	            		</div>
+
+
+	            		<div class="row app_lay">
+		            		<div class="pull-left app_img">
+		            			<img ng-src="{{value.imgUrl}}" alt="">
+		            		</div>
+		            		
+		            		<b>{{value.name}}</b><br>
+		            			{{value.remark}}
+		            	</div>		
+	            		
+            		
+				</li>
+	
+        	</ul>
+        </div>
+	</div>
+</div>
+
+<!-- toaster directive -->
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+<!-- / toaster directive -->

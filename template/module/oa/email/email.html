@@ -1,0 +1,27 @@
+<link rel="stylesheet" href="template/module/oa/email/email.css">
+<div id="breadcrumb">
+  <a href="#"><i class="icon-home"></i> 学习云平台</a> 
+  <i class="icon-angle-right"></i><a >{{app_name}}</a>
+</div>
+
+<div class="email">
+	<div class="row no-padding">
+		<div class="col-xs-1 col-sm-1 col-md-2 col-lg-2">
+			<a class="btn btn-block btn-primary" ui-sref="main.email.write.emailbook"><i class="fa fa-pencil"></i> 写信</a>
+			<div class="email_menu">
+            
+            
+                <ul class="nav nav-stacked">
+                    <li ng-class={active:menu.curr==1}><a ui-sref="main.email.list"><i class="fa icon-inbox"></i> 收件箱 ({{num}})</a></li>
+                    <li ng-class={active:menu.curr==2}><a ui-sref="main.email.edit"><i class="fa icon-edit"></i> 草稿箱</a></li>
+                    <li ng-class={active:menu.curr==3}><a ui-sref="main.email.sended"><i class="fa icon-mail-forward"></i> 已发送</a></li>
+                    <li ng-class={active:menu.curr==4}><a ui-sref="main.email.star"><i class="fa icon-star"></i> 星标邮件</a></li>
+                    <li ng-class={active:menu.curr==5}><a ui-sref="main.email.trash"><i class="fa icon-trash"></i> 垃圾箱</a></li>
+                </ul>
+            </div>
+		</div>
+		<div class="col-xs-11 col-sm-11 col-md-10 col-lg-10 email_view_lay">
+			<div ui-view>子页</div>
+		</div>
+	</div>
+</div>

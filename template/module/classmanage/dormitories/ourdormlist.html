@@ -1,0 +1,78 @@
+<!-- <script type="text/javascript" src="lib/jquery/jquery.min.js"></script> -->
+
+<div class="search-form row">
+    <ul id="myTab" class="nav nav-tabs">
+   
+        <li  role="presentation"  class="active">
+            <a role="tab"  data-toggle="tab">本班宿舍列表</a>
+        </li>
+    </ul>
+</div>
+<div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="home">
+    <br>
+                    <div class="row pad1">
+                        <div class="col-sm-2 search-form pull-left">
+                            <div class="btn-group pull-left">
+                                <a ui-sref="main.dormitories.alllist({id:params1,ids:ids})" class="btn btn-block btn-success btn-sm">添加宿舍</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                                   
+                        <table class="table table-mailbox">
+                            <tbody>
+                                <tr class="unread">
+                                    <td class="small-col">
+                                    </td>
+                                    <td class="subject">宿舍名</td>
+                                    <td class="subject">住宿生类别</td>
+                                    
+                                    <!-- <td class="subject">平房/楼房</td> -->
+                                    <td class="subject">所在楼层</td>
+                                    <td class="subject">宿舍床数</td>
+                                    <td class="subject">实住人数</td>
+                                    <td class="subject">宿舍楼名称</td>
+                                    <!-- <td class="subject">创建时间</td> -->
+                                    
+                                    
+                                    <td class="opt">操作</td>
+                                </tr>
+                                <tr ng-repeat="item in pageInfo.list">
+                                    <td class="small-col v-middle">
+                                    </td>
+                                    <td class="subject v-middle">{{item.roomName}}</td>
+                                    <td class="subject v-middle">
+                                        <span ng-show="item.dormType">男生</span>
+                                        <span ng-show="item.dormType == false">女生</span>
+                                    </td>
+                                    <!-- <td class="subject v-middle">
+                                        <span ng-show="item.dormType == true">楼房</span>
+                                        <span ng-show="item.dormType == false">平房</span>
+                                    </td> -->
+                                    <td class="subject v-middle">{{item.floor}}层</td>
+                                    <td class="subject v-middle">{{item.roomNum}}个</td>
+                                    <td class="subject v-middle">{{item.currentNum}}人</td>
+                                    <td class="subject v-middle">{{item.houseName}}</td>
+                                    <!-- <td class="subject v-middle">{{item.createTime}}</td> -->
+                                    
+                                   
+                                    <td class="opt v-middle">
+                                       <!-- <button class="btn btn-danger" ng-click="open_confrim(item.id)" >添加学生</button> -->
+                                       <button class="btn btn-success" ui-sref="main.dormitories.manage({id:item.id,classId:params1,dorm:item.roomName,sex:item.dormType})" >管理成员</button>
+                                       <button class="btn btn-danger" ng-click="is_authorzie(open_confrim,item)" >删除宿舍</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div ng-include="'template/module/tpl/pageInfo.html'"></div>
+                    </div>
+
+            <!-- toaster directive -->
+            <toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+            <!-- / toaster directive -->                   
+                        
+    </div>
+</div>        
+
+

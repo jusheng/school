@@ -1,0 +1,42 @@
+<div class="box box-primary" id="loading-example" style="position: relative;">
+                    <div class="box-header" style="cursor: move;">
+                      <i class="fa {{appicon}}"></i>
+                      <h3 class="box-title"><a href="{{appurl}}">{{appname}}</a></h3>
+                      <i class="fa pull-right  icon-remove" ng-click="delapp(appidentify)"></i>
+                      <div class="pull-right"> 
+
+                        <select name="" id="input" class="input-sm desk_select" ng-change="change()" ng-model="curr" ng-options="value.id as value.name for value in select_options">
+                          <!-- <option value="0">待办 1 (今天 1 )</option>
+                          <option value="1">已发 6 (未结4)</option>
+                          <option value="2">已办 35</option> -->
+                        </select>
+
+                      </div>
+                    </div> 
+                   
+                    <div class="box-body no-padding">
+
+                        <table class="table table-striped" ng-repeat="(key, value) in select_options" ng-show="curr==value.id"> 
+                          <thead> 
+                              <tr> 
+                                  <th>标题</th> 
+                                  <th>接收时间</th> 
+                                  <th>来自</th> 
+                              </tr> 
+                          </thead>
+
+                          <tbody> 
+                              <tr ng-repeat="(k, v) in value.list"> 
+                                  <td>{{v.title}}</td> 
+                                  <td> {{v.time}}</td> 
+                                  <td>{{v.from}}</td> 
+                              </tr> 
+                          </tbody> 
+                      </table>
+
+                      
+
+                      
+
+                    </div>
+                  </div>

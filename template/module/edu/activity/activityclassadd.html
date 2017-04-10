@@ -1,0 +1,17 @@
+
+<div class="row pad">
+    <form id="news_form">
+        <legend ng-bind="title">分类添加</legend>
+    
+        <div class="form-group">
+            <label for="">名称</label>
+            <input type="text" class="form-control" id="title" name="title" ng-model="record.name">
+        </div>
+    
+        <button type="submit" class="btn btn-success">提交</button>
+    </form>
+</div>
+
+<!-- toaster directive -->
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+<!-- / toaster directive -->

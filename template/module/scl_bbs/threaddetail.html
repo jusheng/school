@@ -1,0 +1,126 @@
+<script src="lib/jquery/jquery.validate.min.js"></script>
+<script src="lib/jquery/additional-methods.min.js"></script> 
+
+
+
+<div class="bbs_manage_detail row"  style="margin-top:-17px">
+    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 text-center" style="line-height: 38px">
+            <a  class="btn btn-sm btn-primary"  ui-sref="main.bbs.threadadd({id:states.params.id})" >发帖</a> 
+              <a  class="btn btn-sm btn-primary" ng-click="tiaozhuan()" >回复</a>
+    </div>
+    <div class="panel col-xs-10 col-sm-10 col-md-10 col-lg-10 ">
+         <a ui-sref="main.bbs.threadlist({id:record[0].bbs_Info.sectorId})" class="pull-right" title="返回列表"><span class="icon-reply " style="line-height:38px;font-size:22px;color:#AFC3E1;"></span>
+         </a>
+        <div class="panel-heading">
+            <h1 class="panel-title">{{record[0].bbs_Info.title}}</h1>
+        </div> 
+    </div>
+</div>
+<div class="bbs_manage_detail row" style="border-bottom:1px dashed #CDCDCD;border-top:2px solid #C2D5E3;" >
+    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 left_author text-center">
+           
+               
+                    <span style="line-height:30px;">{{record[0].bbs_poster.name}}</span>
+                
+    </div> 
+    <div class="panel col-xs-10 col-sm-10 col-md-10 col-lg-10 ">
+        <span style="margin-left:12%;line-height:30px;margin-left:10px;">发表于:{{record[0].bbs_Info.publishTime}}</span>
+    </div>
+</div>
+
+<div class="bbs_manage_detail row"  style="border-bottom:2px solid #C2D5E3;">
+   
+     <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 left_author" style="min-height:250px">
+                <br>
+                <img class="img" ng-src="{{record[0].bbs_Info.playerImgurl}}" src="/res/img/no.jpg"/>
+     </div>
+
+    <div class="panel col-xs-10 col-sm-10 col-md-10 col-lg-10 "  style="min-height:250px">
+        
+        <div class="panel-heading">
+        
+            <img class="img" ng-hide="record[0].bbs_Info.imgurl==null" ng-src="{{record[0].bbs_Info.imgurl}}"/>
+            <!-- <p>{{record.remark}}</p> -->
+        </div><br>
+        <div class="panel-content">
+            <!-- 简介：<div class="panel-body" ng-bind-html="record[0].bbs_Info.remark"></div> -->
+            内容：<div class="panel-body" ng-bind-html="record[0].bbs_Info.content"></div>
+            
+        </div>
+        
+    </div>
+</div>
+    <div ng-repeat="(key, value) in pageInfo.list">
+       <div class="row row_left" style="border-bottom:1px dashed #CDCDCD">
+                      <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2  left_author text-center">
+                        <div class="row" >
+                                <span style="line-height:30px;">{{value.bbs_follower.name}}</span>
+                        </div>
+                    </div>
+                     
+
+                    <div  class="col-xs-10 col-sm-10 col-md-10 col-lg-10 ">
+                        <a  ng-show="value.bbs_follower.name==user_data.name" class="delete icon-remove pull-right" ng-click="op_confrim(value.follow_content.id)" style="z-index:2;position: absolute;right:10px;top:8px;font-size:24px;color:#AFC3E1;opacity:10;margin:-7px;" title="删除"></a>
+                        <a  ng-show="value.bbs_follower.name==user_data.name" class="edit  icon-edit pull-right" ng-click="op_edit(value.follow_content.id)"   style="z-index:2;position: absolute;right:30px;top:8px;font-size:24px;color:#AFC3E1;opacity:10;margin:-5px;" title="编辑"></a>
+                        <div class="row" >
+                            <span style="margin-left:12%;line-height:30px;margin-left:10px;">发表于:{{value.follow_content.createTime}}</span>
+                            <!-- <span style="margin-left:12%;line-height:30px;margin-left:10px;">修改于:{{value.follow_content.updateTime}}</span> -->
+                        </div>
+                    </div>  
+        </div>
+        <div class="row row_left"  style="border-bottom:2px solid #C2D5E3">
+                <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2  left_author" style="height:250px">
+                   <br>
+                    <img class="img" ng-src="{{value.follow_content.playerImgurl}}" src="/res/img/no.jpg"/>
+                </div>
+                 
+
+                <div  class="col-xs-10 col-sm-10 col-md-10 col-lg-10 ">
+                  
+    <!--                <div class="panel-body" ng-bind-html="value.follow_content.title"></div> -->
+                   <div class="panel-body" ng-bind-html="value.follow_content.content"></div>
+                </div>
+       </div>
+            
+    </div>
+        <div ng-include="'template/module/tpl/pageInfo.html'" style="padding:0"></div> 
+        
+        <div class="form-group list-group row row_left" style="border-top:2px solid #C2D5E3">
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 left_author text-center" style="min-height:260px">
+                <div class="row">
+                    <a ui-sref="main.bbs.threadlist({id:0})" title="我的帖子">
+                        <span style="line-height:30px;">{{user_data.name}}</span>
+                    </a>
+                </div><br>
+                <img class="img" ng-src="{{user_data.imgUrl}}" src="/res/img/no.jpg"/>
+            </div>
+            <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                <form id="add_comment" class="form-horizontal">
+                    
+                        <div style="position:relative;">
+                            
+                            <div style="width:100%; position:relative;z-index:1;padding-top:20px;" id="ue_lay">
+                                <div  name="content" type="text" class="include_editor" title="content" ng-model="record.content" config="_simpleConfig" required></div>
+                                <div class="editor-js"></div>
+                            </div>
+                            <div style="position:absolute;top:0;bottom:0;z-index:0;">
+                                <textarea name="content_temp" id="content_temp"  ng-bind-html="record.content" style="height:200px;width:100%;visibility: hidden;"></textarea>
+                            </div>
+                            
+                        </div>
+                        
+                        <div style="position:relative;z-index:1;padding-top:20px;" >
+                            <button type="submit"  id="divId" class="btn btn-success" style="margin-top:15px">发表回复</button>
+                            <button ui-sref="main.bbs.myComment" class="btn btn-primary" style="margin-top:15px">全部评论</button>
+                        </div>
+                        
+
+                </form>
+            </div>
+
+            
+    
+        </div>
+<!-- toaster directive -->
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+<!-- / toaster directive -->

@@ -1,0 +1,100 @@
+<div class="box box-danger" id="loading-example" style="position: relative;">
+                <div class="box-header" style="cursor: move;">
+                      <i class="fa {{appicon}}"></i>
+                      <h3 class="box-title"><a href="{{appurl}}">{{appname}}</a></h3>
+                      <i class="fa pull-right  icon-remove" ng-click="delapp(appidentify)"></i>
+                    <div class="nav-tabs-custom pull-right">
+                        <ul class="nav nav-tabs" role="">
+                         
+                          <li role="presentation" ng-repeat="item in classInfo" ng-class="{'active':$index==0}">
+                            <a href="main/desk/#committee{{item.id}}" aria-controls="tab"  role="{{item.id}}" data-toggle="tab">{{item.name}}</a>
+                          </li>
+
+                        </ul>
+                    </div>
+                      
+                </div>
+                    <div class="box-body no-padding">
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                         
+                          <div role="tabpanel" class="tab-pane" id="committee{{item.id}}" ng-repeat="item in classInfo" ng-class="{'active':$index==0}">
+                          <br>{{$parent.$index}}
+                              <div ng-repeat="(key, value) in item.student">
+                                <div class="row">
+                                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-center">
+                                      <img ng-src="{{value.cadreStudentImgUrl}}" src="/res/img/no.jpg" class="img-responsive center-block" />
+                                    </div>
+                                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                      <ul class="list-group">
+                                        <li class="list-group-item">姓名：{{value.cadreStudentName}}</li>
+                                        <li class="list-group-item">职务：{{value.cadreStudentPositionRef}}</li>
+                                        <li class="list-group-item">
+                                        性别：
+                                        <span ng-show="value.cadreStudentSex==1">男</span>
+                                        <span ng-show="value.cadreStudentSex==0">女</span>
+                                        </li>
+                                        <li class="list-group-item">学号：{{value.cadreStudentCode}}
+                                        </li>
+                                      </ul>
+                                    </div>
+                                  </div>  
+
+                              </div> 
+
+                          </div>
+
+                        </div>
+
+
+                    </div>
+</div>
+<link href="template/module/bbs/thread.css" rel="stylesheet" type="text/css" />
+<div class="box box-success" id="loading-example" style="position: relative;">
+                    <div class="box-header" style="cursor: move;">
+                      <i class="fa {{appicon}}"></i>
+                      <h3 class="box-title"><a href="{{appurl}}">{{appname}}</a></h3>
+                      <i class="fa pull-right  icon-remove" ng-click="delapp(appidentify)"></i>
+                    </div>
+                    <div class="box-body no-padding">
+                        <div class="news_desk " style="position:relative">
+                          <span style="line-height:36px;"><a href="{{appurl}}">宿舍得分：</a></span>
+                                <div class="swiper-container desk_bbs" style="min-height:120px; overflow:hidden">
+                                    <table class="table table-mailbox bbstable_desk">
+                                        <tbody>
+                                            <tr class="unread">
+                                                <td class="small-col">
+                                                </td>
+                                                <td class="subject">主题</td>
+                                                <td class="subject">最后大分事件</td>
+                                                <td class="subject">作者</td>
+
+                                                </tr>
+                                                <tr ng-repeat="item in pageInfo.list">
+                                                <td class="small-col v-middle">
+                                                </td>
+                                                <td class="subject v-middle bbstd_desk">
+                                                      <a style="border-bottom:none;" title="{{item.title}}" ui-sref="main.bbs.threaddetail({id:item.id})">{{item.title}}</a>
+                                                </td>
+                                                <td class="subject v-middle bbstd_desk">
+                                                    <a style="border-bottom:none;"  ng-show="item.lastAnswerTime" title="{{item.lastAnswerTime}}" ui-sref="main.bbs.threaddetail({id:item.id})">
+                                                    {{item.lastAnswerTime}}</a>
+                                                    <a style="border-bottom:none;"  ng-show="!item.lastAnswerTime" title="暂无回复，来抢沙发！" ui-sref="main.bbs.threaddetail({id:item.id})">
+                                                        暂无回复，来抢沙发！
+                                                    </a>
+                                                </td>
+                                                <td class="subject v-middle bbstd_desk">
+                                                    <a style="border-bottom:none;" title="{{item.playerName}}" ui-sref="main.bbs.threaddetail({id:item.id})">{{item.playerName}}
+                                                    </a>
+                                                </td>
+
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                     
+
+                        </div>
+                  </div>
+</div>

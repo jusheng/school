@@ -1,0 +1,47 @@
+<link rel="stylesheet" href="template/module/oa/plan/plan.css">
+<div id="breadcrumb">
+  <a href="#"><i class="icon-home"></i> 学习云平台</a> 
+  <i class="icon-angle-right"></i><a >{{app_name}}</a>
+</div>
+
+<div class="news">
+	<div class="row  no-padding">
+		<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+		<a class="btn btn-block btn-info acc" ui-sref="main.plan.planadd" ng-click="selected = 1">
+			<i ng-class="{'fa icon-ok': selected == 1}" class="wid"></i> 添加计划
+		</a>
+		<a class="btn btn-block btn-info acc" ui-sref="main.plan.planlist" ng-click="selected = 2">
+			<i ng-class="{'fa icon-ok': selected == 2}" class="wid"></i> 我的计划
+		</a>
+		<a class="btn btn-block btn-info acc" ui-sref="main.plan.planreview" ng-click="selected = 3">
+			<i ng-class="{'fa icon-ok': selected == 3}" class="wid"></i> 计划评审
+		</a>
+		<a class="btn btn-block btn-info acc" ui-sref="main.plan.planclass" ng-click="selected = 4">
+			<i ng-class="{'fa icon-ok': selected== 4}" class="wid"></i> 分类管理
+		</a>
+		<br>
+
+			<div class="news_left" >
+				<h1 class="text-lg"> 计划分类</h1>
+				
+					<a href="#/main/plan/planlist/{{value.id}}" ng-repeat="(key, value) in class_list.list" >{{value.planType}}</a>
+
+            </div>
+
+			<div class="news_left" >
+				<h1 class="text-lg"> 计划统计</h1>
+				
+				<div style="height: 300px;">
+					<pie-chart  config="config" data="data"></pie-chart>
+				</div>
+
+            </div>
+
+
+		</div>
+		<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 news_view_lay">
+			<div ui-view></div>
+		</div>
+	</div>
+
+</div>

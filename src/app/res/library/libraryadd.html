@@ -1,0 +1,157 @@
+<!-- toaster directive -->
+<toaster-container toaster-options="{'position':'toast-top-right','close-button':'true'}"></toaster-container>
+<!-- / toaster directive -->
+
+<!-- 导航条 -->
+<div class="bg-white bread-crumb">
+	<ul class="breadcrumb b-a m-b-n-xs lter b-b wrapper-md">
+		<li>
+			<a ui-href="main">
+				<i class="fa fa-home"></i>
+				首页
+			</a>
+			<li class="active" ng-bind="title"></li>
+		</li>
+	</ul>
+</div>
+
+<!-- 加载提醒 -->
+<div ng-show="loading" class="text-center m-t-md text-lg"> <i class="fa fa-spin fa-spinner"></i>
+	数据加载中...
+</div>
+
+<!-- 内容区域 -->
+<div class="wrapper-md content">
+	<div class="panel panel-default">
+		<!-- 头部 -->
+		<div class="panel-heading font-bold">
+			{{title}}
+			<a class="btn btn-sm btn-icon btn-rounded btn-default pull-right m-t-n-xs" ui-sref="main.res.library.librarylist({subject_id: param.subjectId, grade_id:param.gradeId, subject_name:param.subjectName, grade_name:param.gradeName})">
+				<i class="text-md fa fa-times text-muted"></i>
+			</a>
+		</div>
+		<!--表单-->
+		<div class="panel-body">
+			<form class="form-horizontal"  name="user_form">
+				<!--用户名-->
+				
+				<div class="form-group">
+					<label class="col-lg-2 col-sm-3 control-label" for="address">
+						<span class="text-danger wrapper-sm">*</span>
+						资源类型
+					</label>
+					<div class="col-sm-6">
+						<select name="type" id="type" class="form-control" ng-options="value.id as value.name for value in type"  ng-model="record.type">
+							<option value="">--选择--</option>
+						</select>
+						</div>
+				</div>
+				<div class="line line-dashed b-b line-lg pull-in"></div>
+
+				<div class="form-group">
+					<label class="col-lg-2 col-sm-3 control-label" for="address">
+						<span class="text-danger wrapper-sm">*</span>
+						文件名称
+					</label>
+					<div class="col-sm-6">
+					<input type="text" name="name" id="name" class="form-control" ng-model="record.name">
+						</div>
+				</div>
+				<div class="line line-dashed b-b line-lg pull-in"></div>
+
+	<div ng-show="record.type==1 || record.type==2">
+				<div class="form-group">
+					<label class="col-lg-2 col-sm-3 control-label" for="address">
+						<span class="text-danger wrapper-sm">*</span>
+						上传文件
+					</label>
+					<div class="col-sm-6" style="position: relative;">
+						<input type="text" name="originalName" id="originalName" style="position: absolute;left:0;top:0;width: 100px;z-index: -1" class="form-control" ng-model="record.originalName">
+						<button class="btn btn-gray btn-single" ngf-select="onFileSelect($files)">添加文件</button>
+						<span ng-show="record.originalName">
+							{{record.originalName}}
+						</span>
+						<span ng-bind="tip1"></span>
+						
+					</div>
+				</div>
+				<div class="line line-dashed b-b line-lg pull-in"></div>		
+	</div>
+
+
+	<div ng-show="record.type==3">
+
+				<div class="form-group">
+					<label class="col-lg-2 col-sm-3 control-label" for="address">
+						<span class="text-danger wrapper-sm">*</span>
+						上传视频
+					</label>
+					<div class="col-sm-6" style="position: relative;">
+						<input type="text" name="originalName1" id="originalName1" style="position: absolute;left:0;top:0;width: 100px;z-index: -1" class="form-control" ng-model="record.originalName1">
+					<button class="btn btn-gray btn-single" ngf-select="onFileSelect1($files)" >添加文件</button>
+					<span ng-show="record.originalName1">{{record.originalName1}}</span>
+					<span ng-show="upload2_progress && !record.originalName1" ng-bind="upload2_progress+'%'"></span>
+					</div>
+				</div>
+				<div class="line line-dashed b-b line-lg pull-in"></div>	
+</div>
+
+				<div class="form-group">
+					<label class="col-lg-2 col-sm-3 control-label" for="address">
+						<span class="text-danger wrapper-sm">*</span>
+						章节
+					</label>
+					<div class="col-sm-6" style="position: relative;">
+						<input type="text" class="form-control" style="position: absolute;top: 0; left:0;opacity: 0" name="chapters" id="chapters" ng-model="record.chapterId"  >
+						<a class="btn btn-block text-left" ng-click="select_chapter()" style="position: relative;z-index: 1">选择... <span ng-show="record.chapterId">【{{record.s_chapter}}】</span></a>
+
+					</div>
+				</div>
+				<div class="line line-dashed b-b line-lg pull-in"></div>
+
+<div ng-show="record.type==3">
+				<div class="form-group">
+					<label class="col-lg-2 col-sm-3 control-label" for="address">
+						<span class="text-danger wrapper-sm">*</span>
+						知识点
+					</label>
+					<div class="col-sm-6" style="position: relative;">
+						<input type="text" class="form-control" style="position: absolute;top: 0; left:0;opacity: 0" name="knowledgePoints" id="knowledgePoints" ng-model="record.knowledgeId"  >
+						<a class="btn btn-block text-left" ng-click="select_knowledgePoints()" style="position: relative;z-index: 1">选择... <span ng-show="record.knowledgeId">【{{record.s_knowledgePoints}}】</span></a>
+
+					</div>
+				</div>
+				<div class="line line-dashed b-b line-lg pull-in"></div>					
+	</div>
+
+
+
+
+
+				<div class="form-group">
+					<label class="col-lg-2 col-sm-3 control-label" for="remark">
+						<span class="text-danger wrapper-sm">*</span>
+						备注
+					</label>
+					<div class="col-sm-6">
+						<textarea id="remark" name="remark" style="position: absolute;top: 0; left:0;opacity: 0" ng-model="record.remark" class="form-control" rows="3"></textarea>
+						<div class="include_editor" name="content"  ng-model="record.remark" config="_simpleConfig" required></div>
+						
+						<div class="editor-kityformula-js"></div>
+						
+					</div>
+				</div>
+				<div class="line line-dashed b-b line-lg pull-in"></div>
+				
+			
+				<!--btn-->
+				<div class="form-group">
+					<div class="col-sm-6 col-sm-offset-2">
+						<button type="reset" class="btn btn-default w-xs">重置</button>
+						<button type="submit" class="btn btn-info w-xs m-l-xl" >保存</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

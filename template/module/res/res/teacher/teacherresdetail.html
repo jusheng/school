@@ -1,0 +1,21 @@
+
+<a href="#/main/res/teacherrestree/{{textbookId}}/list/{{textbookId}}" class="pull-right icon-remove"></a>
+
+<div class="res_view_lay">
+	<div>
+		名称：{{detail.name}}<br>
+		时间：{{detail.createTime}}
+		<br>
+		<br>
+	</div>
+	<div id="documentViewer" ng-if="type==1 || type==2" class="flexpaper_viewer" style="height:600px"></div>
+
+	<div id="mediaplayer"></div>
+	
+	<div class="text-right">
+	<br>
+			<a down-file="{{download_url}}" down-file-type="{{download_extension}}" down-file-name="{{detail.name}}" class="btn btn-success"><i class="icon-download-alt"></i> 下载</a>
+			<a class="btn btn-success"><i class="icon-star-empty"></i> 收藏</a>
+	</div>
+</div>
+

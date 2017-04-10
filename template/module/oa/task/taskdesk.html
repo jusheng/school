@@ -1,0 +1,19 @@
+<div class="box box-success" id="loading-example" style="position: relative;">
+                    <div class="box-header" style="cursor: move;">
+                      <i class="fa {{appicon}}"></i>
+                      <h3 class="box-title"><a href="{{appurl}}">{{appname}}</a></h3>
+                      <i class="fa pull-right  icon-remove" ng-click="delapp(appidentify)"></i>
+                    </div>
+                    <div class="box-body no-padding">
+                        <div class="news_desk" style="position:relative">
+                        
+                         <a ui-sref="main.task.mytask({id:item.id})" ng-repeat="item in pageInfo.list">
+                            <span class="pull-right">{{item.updateTime |  date:'yyyy-MM-dd'}}</span>
+                             · {{item.title | limitTo:15}} 
+                           </a>
+
+                        </div>
+                     
+
+                    </div>
+                  </div>

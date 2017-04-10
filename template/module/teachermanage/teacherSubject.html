@@ -1,0 +1,25 @@
+<link rel="stylesheet" href="template/module/schoolSubject/subjectStyle.css">
+<div class="ngdialog-title">所授课目</div>
+<br>
+<div class="row">
+    <form id="roleadd_form" class="form-horizontal">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="">
+                <table class="subject-table table">
+                    <tr ng-repeat="item in subjectList">
+                        <td align="right">
+                            <input type="checkbox" id="id" name="id" ng-checked="item.checked"
+                                   ng-model="$parent.subjectList[$index].checked"
+                                   ng-change="checkSubjectTeacher($index)">
+                        </td>
+                        <td ng-bind="item.name">
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="form-group-last text-center">
+                <button type="submit" class="btn btn-success" ng-click="submit()">提交</button>
+            </div>
+        </div>
+    </form>
+</div>

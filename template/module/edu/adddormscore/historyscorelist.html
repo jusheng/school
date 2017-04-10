@@ -1,0 +1,87 @@
+<div class="search-form row">
+    <ul id="myTab" class="nav nav-tabs">
+        <a ui-sref="main.adddormscore.scorelist"><i class="pull-right icon-reply"></i></a>
+        <li  role="presentation"  class="active">
+            <a role="tab"  data-toggle="tab">历史分数</a>
+        </li>
+    </ul>
+</div>
+<div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="home">
+    <br>
+        <div>
+                    <!-- <div class="row pad1">
+                        <div class="col-sm-2 search-form pull-left">
+                            <div class="btn-group pull-left">
+                                <a ui-sref="main.dormitory.rulesadd" class="btn btn-block btn-success btn-sm">添加宿舍</a>
+                            </div>
+                        </div>
+                    </div> -->
+                    <div class="table-responsive">
+                                   
+                        <table class="table table-mailbox">
+                            <tbody>
+                                <tr class="unread">
+                                    <td class="small-col">
+                                    </td>
+                                    <td class="subject">宿舍名</td>
+                                    <td class="subject">楼层</td>
+                                    <td class="subject">公寓名</td>
+                                    
+                                    <td class="subject">最近打分</td>
+                                    <td class="subject">是否违纪</td>
+                                    
+                                    <td class="subject">违纪人员</td>
+                                    <td class="subject">备注</td>
+                                    <td class="subject">创建时间</td>
+                                    <td class="subject">最后录入时间</td>
+                                    
+                                    
+                                    
+                                    <td class="opt">操作</td>
+                                </tr>
+                                <tr ng-repeat="item in pageInfo.list" class="">
+                                    <td class="small-col v-middle">
+                                    </td>
+                                    <td class="subject v-middle">{{item.dormName}}</td>
+                                    <td class="subject v-middle">{{item.floor}}</td>
+                                    <td class="subject v-middle">{{item.houseName}}</td>
+                                    <td class="subject v-middle">{{item.score}}</td>
+                                    <td class="subject v-middle">
+                                        <span ng-show="item.statue">是</span>
+                                        <span ng-show="item.statue == false">否</span>
+                                    </td>
+
+                                    
+                                    
+                                    <td class="subject v-middle">{{item.sidName}}</td>
+                                    <td class="subject v-middle">{{item.note}}</td>
+                                    <td class="subject v-middle">{{item.createTime}}</td>
+                                    <td class="subject v-middle">{{item.updateTime}}</td>
+                                   
+
+                                    
+                                    <td class="opt v-middle">
+                                       
+                                        <a class="btn btn-primary" ui-sref="main.adddormscore.addscore({dormId:item.dormId,dorm:item.dormName,id:item.id})" >管理分数</a>
+                                        <!-- <a class="btn btn-success" ng-click="add_module1(item.dormId)">查看得分</a> -->
+                                       
+                                        <button class="btn btn-danger" ng-click="open_confrim(item.id)">删除</button>
+                                        
+                                    </td>
+                              
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div ng-include="'template/module/tpl/pageInfo.html'"></div>
+                    </div>
+
+            <!-- toaster directive -->
+            <toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+            <!-- / toaster directive -->                   
+        </div>
+                        
+    </div>
+</div>        
+
+

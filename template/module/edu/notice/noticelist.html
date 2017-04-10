@@ -1,0 +1,66 @@
+
+<div class="row pad">
+    <div class="col-sm-4">
+        <label style="margin-right: 10px;" class="">
+            <div class="icheckbox_minimal-blue" ng-click="select_all()" ng-class="{checked:s_all==true}" style="position: relative;"><input type="checkbox" id="check-all" style="position: absolute; opacity: 0;"></div>
+        </label>
+        <!-- Action button -->
+        <div class="btn-group">
+            <button type="button" class="btn btn-default btn-sm btn-flat dropdown-toggle" data-toggle="dropdown">
+                操作 <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+                <li><a ng-click="del()">删除</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-sm-6 search-form">
+        <form  class="text-right">
+            <div class="input-group">                                                            
+                <input type="text" class="form-control input-sm" placeholder="Search" ng-model="param.title">
+                <div class="input-group-btn">
+                    <button type="submit" name="q" class="btn btn-sm btn-success" ng-click="search()"><i class="fa icon-search"></i></button>
+                </div>
+            </div>                                                     
+        </form>
+    </div>
+    <div class="col-sm-2">
+        <a ui-sref="main.notice.noticeadd" class="btn btn-success pull-right"> <i class="icon-user-follow m-r-sm text-md"></i>添加公告</a>
+    </div>
+</div>
+
+<div class="table-responsive">
+                                               
+    <table class="table table-mailbox">
+        <tbody>
+        <tr class="unread">
+            <td class="small-col"><input type="checkbox" style="position: absolute; opacity: 0;">
+            </td>
+            <td class="title">公告标题</td>
+            <td class="type">发布类型</td>
+            <td class="status">发布状态</td>
+            <td class="publishName">发布人</td>
+            <td class="publishTime">发布时间</td>
+            <td class="opt">操作</td>
+        </tr>
+        <tr ng-repeat="item in pageInfo.list">
+            <td class="small-col v-middle">
+            <div class="icheckbox_minimal-blue" ng-class="{checked:$parent.pageInfo.list[$index].selected}" ng-click="select_per($index)"  style="position: relative;"><input type="checkbox" style="position: absolute; opacity: 0;"></div>
+            </td>
+            <td class="subject v-middle"><a ui-sref="main.notice.detail({id:item.id})" ng-click="notice_detail(item.id)">{{item.title}}</a></td>
+            <td class="type v-middle">{{item.type==0?'全部':item.type==1?'学生':'老师'}}</td>
+            <td class="status v-middle">{{item.status==0?'未发布 ':'已发布'}}</td>
+            <td class="publishName v-middle">{{item.publishName}}</td>
+            <td class="publishTime v-middle">{{item.publishTime |  date:'yyyy-MM-dd HH:mm:ss'}}</td>
+            <td class="opt v-middle">
+            <a ng-click="sendNotice(item.id)" ng-disabled="item.status==1" class="btn btn-sm btn-default">发布</a> 
+            <a ui-sref="main.notice.noticeedit({id:item.id})" ng-hide="item.status==1" class="btn btn-primary btn-sm">编辑</a>  <a ng-click="del(item.id)" class="btn btn-danger btn-sm">删除</a>  </td>
+        </tr>
+    </tbody>
+    </table>
+    <div ng-include="'template/module/tpl/pageInfo.html'"></div>
+</div>
+
+<!-- toaster directive -->
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+<!-- / toaster directive -->

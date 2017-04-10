@@ -1,0 +1,159 @@
+<link rel="stylesheet" href="template/module/teachermanage/teacher.css">
+<script src="lib/jquery/jquery.validate.min.js"></script>
+<script src="lib/jquery/additional-methods.min.js"></script>
+<div class="teacheradd">
+<div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 school_view_lay">
+<div class="row pad">
+    <form id="teacheradd_form" class="form-horizontal">
+        <div class="form-top">
+            <legend ng-bind="app_name"></legend>
+            <a class="btn btn-sm btn-icon btn-rounded btn-default pull-right m-t-n-xs btn-close" ui-sref="main.classManage.classStudentList({gradeId:gradeId,classId:classId,teacherId:teacherId})"><i class="icon-remove"></i>
+            </a>
+        </div>
+   
+        <div class="form-group">
+            <label  class="col-lg-2 col-sm-3 control-label"><span class="text-danger wrapper-sm"> </span>头像</label>
+            <div class="col-sm-6">
+                    <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="m-b upload-pic-box">
+                                            <a href="javascript:;" class="btn btn-default btn-addon">
+                                                <i class="fa icon-cloud-upload"></i>上传头像
+                                            </a>
+                                            <input type="file" id="fileInput" />
+                                        </div>
+                                    <div class="hbox hbox-auto-xs">
+                                        <div class="col">
+                                            <div class="wrapper-sm b-a bg-white m-r-xs m-b-xs">
+                                                <div class="bg-light" style="height:320px">
+                                                    <img-crop
+                                                            image="myImage"
+                                                            result-image="myCroppedImage"
+                                                            result-image-size="160"
+                                                            area-type="square" 
+                                                            result-image-format="image/png"
+                                                            ></img-crop>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="inline bg-white wrapper-sm b-a">
+                                                <div class="bg-light">
+                                                    <img ng-src="{{myCroppedImage}}" />
+                                                </div>
+
+                                            </div>
+                                            <div>
+                                                <br>
+                                                <a class="btn btn-info" ng-disabled="myImage==''" ng-click="uploadImg()">上传头像</a>   
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                    <span class="help-block m-b-none">logo尺寸要求宽度*高度为150px*150px。图片格式支持gif,jpg,png</span>
+                                </div>
+                            </div>    
+            </div>
+        </div>
+        <div class="form-group">
+            <label  class="col-lg-2 col-sm-3 control-label">学号</label>
+            <div  class="col-sm-6">
+                <input type="text" class="form-control" id="code" name="code" placeholder=""  ng-model="record.code" autocomplete="off">
+            </div>
+        </div>
+        <div class="form-group">
+            <label  class="col-lg-2 col-sm-3 control-label"><span class="text-danger wrapper-sm">*</span>姓名</label>
+            <div  class="col-sm-6">
+                <input type="text" class="form-control" id="name" name="name" placeholder="" ng-model="record.name">
+            </div>
+        </div>
+        <div class="form-group">
+            <label  class="col-lg-2 col-sm-3 control-label"><span class="text-danger wrapper-sm">*</span>性别</label>
+            <div class="col-sm-6">
+                <select name="sex" id="sex" ng-model="record.sex" class="form-control">
+                    <option ng-repeat="(key,value) in sexType" value="{{key}}" ng-selected="key==record.sex">{{value}}</option>
+                </select>
+            </div>
+        </div>
+         <div class="form-group">
+            <label  class="col-lg-2 col-sm-3 control-label"><span class="text-danger wrapper-sm">*</span>民族</label>
+            <div  class="col-sm-6">
+                <select name="nation" id="nation" ng-model="record.nation" class="form-control">
+                    <option ng-repeat="(key,value) in nationType" value="{{key}}" ng-selected="key==record.nation">{{value}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label  class="col-lg-2 col-sm-3 control-label">政治面貌</label>
+            <div  class="col-sm-6">
+                <select name="politics" id="politics" ng-model="record.politics" class="form-control">
+                    <option ng-repeat="(key,value) in statusType" value="{{key}}" ng-selected="key==record.politics">{{value}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label  class="col-lg-2 col-sm-3 control-label">身份证号码</label>
+            <div  class="col-sm-6">
+                <input type="text" class="form-control" id="idCard" name="idCard" placeholder=""  ng-model="record.idCard" autocomplete="off">
+            </div>
+        </div>
+        <div class="form-group">
+            <label  class="col-lg-2 col-sm-3 control-label"><span class="text-danger wrapper-sm">*</span>家长姓名</label>
+            <div  class="col-sm-6">
+                <input type="text" class="form-control" id="parentName" name="parentName" placeholder=""  ng-model="record.parentName" autocomplete="off">
+            </div>
+        </div>
+        <div class="form-group">
+            <label  class="col-lg-2 col-sm-3 control-label"><span class="text-danger wrapper-sm">*</span>家长电话</label>
+            <div  class="col-sm-6">
+                <input type="text" class="form-control" id="parentTel" name="parentTel" placeholder=""  ng-model="record.parentTel" autocomplete="off">
+            </div>
+        </div>
+        <div class="form-group">
+            <label  class="col-lg-2 col-sm-3 control-label">备用电话</label>
+            <div  class="col-sm-6">
+                <input type="text" class="form-control" id="tel" name="tel" placeholder=""  ng-model="record.tel" autocomplete="off">
+            </div>
+        </div>
+        <div class="form-group">
+            <label  class="col-lg-2 col-sm-3 control-label">家庭地址</label>
+            <div  class="col-sm-6">
+                <input type="text" class="form-control" id="address" name="address" placeholder=""  ng-model="record.address" autocomplete="off">
+            </div>
+        </div>
+        <div class="line line-dashed b-b line-lg pull-in" ng-hide="record.id"></div>
+        <div class="form-group" ng-hide="record.id">
+            <label  class="col-lg-2 col-sm-3 control-label">创建用户</label>
+            <div class="col-sm-6">
+                <input type="checkbox" class="form-control teacher-checkbox" ng-checked="chk.selected" ng-click="check()">
+            </div>
+        </div>
+        <div class="form-group" ng-hide="record.id">
+            <label  class="col-lg-2 col-sm-3 control-label">用户名</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" id="" placeholder=""  ng-model="record.user.loginName" autocomplete="off" ng-disabled="!chk.selected" value="record.parentId">
+            </div>
+        </div>
+        <div class="form-group" ng-hide="record.id">
+            <label  class="col-lg-2 col-sm-3 control-label">密码</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" id="" placeholder=""  ng-model="record.user.password" autocomplete="off" ng-disabled="!chk.selected">
+            </div>
+        </div>
+        <div class="form-group">
+            <label  class="col-lg-2 col-sm-3 control-label"></label>
+            <div  class="col-sm-6">
+                <button type="submit" class="btn btn-success">提交</button>
+            </div>
+        </div>
+        
+    </form>
+</div>
+
+<!-- toaster directive -->
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+<!-- / toaster directive -->
+</div>
+</div>
+</div>

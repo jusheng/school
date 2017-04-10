@@ -1,0 +1,19 @@
+<script src="lib/jquery/jquery.validate.min.js"></script>
+<script src="lib/jquery/additional-methods.min.js"></script>
+<div class="row pad">
+    <form id="classadd">
+        <legend>{{title}}</legend>
+    
+        <div class="form-group">
+            <label for="">名称</label>
+            <input type="text" class="form-control" id="planType" name="planType" ng-model="record.planType">
+        </div>
+        
+        
+        <button type="submit" class="btn btn-info">提交</button>
+    </form>
+</div>
+
+<!-- toaster directive -->
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+<!-- / toaster directive -->

@@ -1,0 +1,24 @@
+.content_c{
+	position: relative;
+	display: inline-block;
+}
+
+.content_c img{
+	width: 50px;
+	height: 50px;
+}
+
+.content_c {
+	display: inline-block;
+}
+
+.content_c i{
+	position: absolute;
+	top:0;
+	right:0;
+	cursor: pointer;
+}
+
+.answer_table tr td{
+	line-height: 30px;
+}

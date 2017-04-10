@@ -1,0 +1,142 @@
+<script src="lib/jquery/jquery.validate.min.js"></script>
+  <script src="lib/jquery/additional-methods.min.js"></script>  
+
+<div class="page-body login-page login-light">
+	<div class="login-container">
+	
+		<div class="row">
+		
+			<div class="col-sm-6 col-sm-offset-6">
+			
+				<script type="text/javascript">
+					jQuery(document).ready(function($)
+					{
+						$("form#login .form-group:has(.form-control):first .form-control").focus();
+					});
+				</script>
+				
+				<!-- Errors container -->
+				<div class="errors-container">
+
+				</div>
+				
+				<!-- Add class "fade-in-effect" for login form effect -->
+				<form method="post" role="form" id="login" class="login-form fade-in-effect in">
+					
+					<div class="login-header">
+						<h1>学习云平台</h1>
+					</div>
+	
+					<div class="form-group">
+						<label class="control-label" for="username">用户名</label>
+						<input type="text" class="form-control" name="username" ng-model="user.account" id="username" autocomplete="off">
+					</div>
+					
+					<div class="form-group">
+						<label class="control-label" for="passwd">密码</label>
+						<input type="password" class="form-control" name="passwd" ng-model="user.password" id="passwd" autocomplete="off">
+					</div>
+					<div class="form-group" ng-show="isValidateCodeLogin">
+						<label class="control-label" for="captcha">验证码</label>
+
+						<div class="row">
+							<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+								<input type="captcha" class="form-control" name="captcha" ng-model="user.captcha" id="captcha" autocomplete="off">
+							</div>
+							<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 captcha_lay">
+								<img src="{{captchaUrl}}"/> <a  ng-click="changeCaptcha()">看不清,换一张</a>
+							</div>
+						</div>
+						
+						
+					</div>
+					
+					<div class="form-group">
+						<button type="submit" class="btn btn-primary  btn-block text-left" >
+							<i class="icon-lock"></i>
+							登录
+						</button>
+					</div>
+					
+					<div class="login-footer">
+						<!-- <a href="#">忘记密码</a> -->
+						
+						
+					</div>
+					
+				</form>
+				
+				<!-- External login -->
+				<!--<div class="external-login">
+					<a href="#" class="facebook">
+						<i class="fa-facebook"></i>
+						Facebook Login
+					</a>
+					
+					 
+					<a href="#" class="twitter">
+						<i class="fa-twitter"></i>
+						Login with Twitter
+					</a>
+					
+					<a href="#" class="gplus">
+						<i class="fa-google-plus"></i>
+						Login with Google Plus
+					</a>
+					 
+				</div>-->
+				
+			</div>
+			
+		</div>
+		
+</div>
+</div>
+
+<script>
+	var $scope = angular.element('.login-container').scope();
+
+	$(function(){
+		$(".login-form .form-group:has(label)").each(function(i, el)
+		{
+			var $this = $(el),
+				$label = $this.find('label'),
+				$input = $this.find('.form-control');
+			
+			$input.on('focus', function()
+			{
+				$this.addClass('is-focused');
+			});
+
+			
+			$input.on('keydown', function()
+			{
+				$this.addClass('is-focused');
+			});
+				
+			$input.on('blur', function()
+			{
+				$this.removeClass('is-focused');
+				
+				if($input.val().trim().length > 0)
+				{
+					$this.addClass('is-focused');
+				}
+			});
+			
+			$label.on('click', function()
+			{
+				$input.focus();
+			});
+			
+			if($input.val().trim().length > 0)
+			{
+				$this.addClass('is-focused');
+			}
+		});
+	})
+
+</script>
+
+
+<toaster-container toaster-options="{'time-out': { 'toast-error': 1000, 'toast-wait': 0, 'toast-success': 1000 }, 'position-class':'toast-center'}"></toaster-container>

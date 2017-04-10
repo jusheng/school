@@ -1,0 +1,43 @@
+<table class="answer_table">
+	<tr>
+		<td width="20">选项</td>
+		<td>文字选项</td>
+		<td></td>
+		<td>正确答案</td>
+		<td></td>
+	</tr>
+
+	<tr ng-repeat="(key, value) in record_temp.multi_answer_temp">
+		<td valign="top">
+		<input type="text" class="form-control" style="width: 50px;" ng-model="$parent.record_temp.multi_answer_temp[$index].select"></td>
+		
+		<td valign="top">
+			<!-- <input type="text" class="form-control" ng-model="$parent.record_temp.multi_answer_temp[$index].text"> -->
+	
+			<div style="width: 200px">
+			<div class="include_editor" name="m_text"  ng-model="$parent.record_temp.multi_answer_temp[$index].text" config="_simpleConfig" required></div><br>
+				
+			</div>
+			
+
+		</td>
+		<td valign="top">
+			<i class="glyphicon glyphicon-picture" title="添加图片选项" ngf-select="onContentSelect($files,$index)"></i>
+				<span ng-repeat="(k, v) in value.img" class="content_c">
+					<img ng-src="{{v}}" alt="">
+					<i class="text-md fa fa-times text-white" ng-click="del_img($parent.$index,$index)"></i>
+				</span>
+		</td>
+		
+		<td align="center" valign="top">
+			<input type="checkbox" value="1" name="single_select" ng-model="$parent.record_temp.multi_answer_temp[$index].is_correct">
+		</td>
+		<td valign="top">
+				<a  ng-if="record_temp.multi_answer_temp.length>1 && $index==record_temp.multi_answer_temp.length-1" ng-click="del($index)"><i class="text-md fa fa-times text-muted"></i></a>
+
+		</td>
+	</tr>
+
+</table>
+<br>
+<a class="btn btn-xs btn-danger" ng-click="add()">+增加</a>

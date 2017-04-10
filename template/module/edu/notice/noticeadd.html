@@ -1,0 +1,94 @@
+<script src="http://www.my97.net/dp/My97DatePicker/WdatePicker.js"></script>
+<script src="lib/jquery/jquery.validate.min.js"></script>
+<script src="lib/jquery/additional-methods.min.js"></script>  
+<div class="row pad">
+    <form id="noticeadd_form" class="form-horizontal">
+        <div class="form-top">
+            <legend ng-bind="title"></legend>
+            <a class="btn btn-sm btn-icon btn-rounded btn-default pull-right m-t-n-xs btn-close" ui-sref="main.notice.noticelist"><i class=" icon-remove"></i>
+            </a>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 col-sm-3 control-label">标题</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" id="title" name="title" placeholder="" required="required" ng-model="record.title">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 col-sm-3 control-label">发布状态</label>
+            <div class="col-sm-6" >
+                <input type="radio" id="status" name="status" ng-checked="record.status==0" ng-model="record.status" value="0"><span>未发布</span>
+                <input type="radio" id="status" name="status" ng-checked="record.status==1" ng-model="record.status" value="1"><span>立即发布</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 col-sm-3 control-label">发布类型</label>
+            <div class="col-sm-6" >
+                <!-- <select name="status" id="status" class="form-control" required="required" required="required" ng-model="record.type" ng-options="m.id as m.name for m in fType">
+                </select> -->
+                <select name="type" id="type" ng-model="record.type" class="form-control"
+                                ng-options="m.id as m.name for (key,m) in fType">
+                <option value="">--选择--</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 col-sm-3 control-label">简介</label>
+            <div class="col-sm-6" >
+                <textarea name="remark" id="remark" class="form-control" rows="3" required="required" ng-model="record.remark"></textarea>
+            </div>
+        </div>
+       <!--  <script>
+            var up_face = function(base64){
+                $('.upload_img').attr("src",base64);
+                $('.img_base').val(base64);
+
+                //var appElement = document.querySelector('[ng-controller=newaddController]');
+                  //获取$scope变量
+                  var $scope = angular.element('#noticeadd_form').scope();
+                  
+                  $scope.record.imgs = base64;
+                  $scope.upload_img(base64);
+                  $scope.$apply();
+            }
+        </script>
+        <div class="form-group list-group">
+            <label class="col-lg-2 col-sm-3 control-label">略缩图</label>
+            <div  class="col-sm-6">
+                <span class="upload"><i class="icon-cloud-upload"></i>上传图片 
+                <iframe src="template/js/cut_img/upload6.html" style=" position: absolute; top:0; left:0; opacity: 0" frameborder="0" border="0" height="50" width="100" ></iframe>
+                </span>
+                <br>(图片尺寸:290*200)
+                
+            </div>
+            <div ng-show="record.imgs" class="col-lg-push-2 col-sm-push-3 col-sm-9">
+                <img class="upload_img" src="{{record.imgs}}" alt="">
+            </div>
+
+
+            <div ng-show="!record.imgs" class="col-lg-push-2 col-sm-push-3 col-sm-9">
+                <img class="upload_img" src="{{record.imgUrl}}" alt="">
+            </div>
+        </div> -->
+        <div class="form-group list-group">
+        	<label class="col-lg-2 col-sm-3 control-label">内容</label>
+            <div class="col-sm-6">
+               <div  name="content" class="include_editor"  ng-model="record.context" config="_simpleConfig" required></div>
+                <!-- <textarea name="content" id="content" class="form-control" rows="3" required="required" ng-model="record.context"></textarea> -->
+            </div>
+            <div class="editor-js"></div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-lg-2 col-sm-3 control-label"></label>
+            <div class="col-sm-6">
+                <button type="submit" class="btn btn-success">提交</button>
+            </div>
+        </div>
+    </form>
+</div>
+<!-- toaster directive -->
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+<!-- / toaster directive -->
+
+

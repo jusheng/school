@@ -1,0 +1,95 @@
+<link rel="stylesheet" href="template/module/teachermanage/teacher.css">
+<script src="lib/My97DatePicker/WdatePicker.js"></script>
+<div class="password">
+    <div class="row">
+       <form id="teacheradd_form" class="form-horizontal">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="position:relative">
+            <div class="form-top">
+                <legend ng-bind="app_name"></legend>
+            </div>
+            <!-- <div class="form-group">
+                <label class="col-lg-2 col-sm-3 control-label">ISBN</label>
+                <div class="col-sm-7">                                                 
+                    <input type="text" class="form-control" placeholder="搜索图书" ng-model="record.isbn" ng-keyup="enterEvent($event)">            
+                </div>
+            </div> -->
+            <div class="form-group">
+                    <label class="col-lg-2 col-sm-3 control-label">ISBN</label>
+                    <div class="input-group col-sm-7 pull-left" style="position:relative">                                                            
+                         <input type="text" class="form-control" placeholder="搜索图书" ng-model="record.isbn" ng-keyup="enterEvent($event)" id="isbn">
+                        <div class="input-group-btn">
+                            <button type="button" name="q" class="btn btn-sm btn-success" ng-click="open_books()"><i>...</i></button>
+                        </div>
+                    </div>                                                    
+            </div>
+            <div class="form-group">
+            <label class="col-lg-2 col-sm-3 control-label">借阅人</label>
+                    <div class="input-group col-sm-7" style="position:relative">                                                            
+                        <input type="text" class="form-control" placeholder="请选择借阅人" ng-model="record.borrowUser" readonly style="opacity:0">
+                        <input type="text" class="form-control" placeholder="请选择借阅人" ng-model="record.borrowUsername" readonly style="margin-top:-34px;">
+                        <div class="input-group-btn">
+                            <button type="button" name="q" class="btn btn-sm btn-success" ng-click="open_search()"><i>...</i></button>
+                        </div>
+                    </div>                                                     
+            </div>    
+            <div class="form-group">
+                <label class="col-lg-2 col-sm-3 control-label">借阅时间</label>
+                <div class="col-sm-7">
+                    <div class="row" >
+                   <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5" style="position:relative">      
+                      <input id="cycle-day-date" type="text" class="form-control" placeholder="开始日期"  value="" date-picker datefmt='yyyy-MM-dd' ng-model="record.startDate" >
+                   </div>
+                   <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 text-center">
+                       ---
+                   </div>
+                   <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5" style="position:relative">
+                       <input id="cycle-day-date" type="text" class="form-control" placeholder="截止日期"  value="" date-picker datefmt='yyyy-MM-dd' ng-model="record.endDate">
+                   </div>
+                </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <a ng-click="submit()" style="color:#fff" class="borrow">借出此书</a>
+            </div>
+        </div>
+      </form>
+    </div>
+
+<div class="table-responsive" style="margin-top:20px">                                    
+    <table class="table table-mailbox">
+        <tbody>
+            <tr class="unread">
+                <td class="small-col">
+                </td>
+                <td class="subject">ISBN</td>
+                <td class="subject">图书名称</td>
+                <td class="subject">图书分类</td>
+                <td class="subject">作者</td>
+                <td class="subject">出版社</td>
+                <td class="subject">可借数量</td>
+                <td class="subject">借阅数量</td>
+            </tr>
+            <tr ng-repeat="item in list" >
+                <td class="small-col v-middle">
+                    <div class="icheckbox_minimal-blue selected" ng-class="{checked:!$parent.list[$index].selected}" ng-click="select_per($index)"  style="position: relative;" ng-model="record.bookId">
+                        <input type="checkbox" style="position: absolute; opacity: 0;">
+                    </div>
+                </td>
+                <td class="subject v-middle">{{item.isbn}}</td>
+                <td class="subject v-middle">{{item.name}}</td>
+                <td class="subject v-middle">{{item.typeCodeNameref}}</td>
+                <td class="subject v-middle">{{item.author}}</td>
+                <td class="subject v-middle">{{item.pubUnit}}</td>
+                <td class="subject v-middle">{{item.divNum}}</td>
+                <td class="subject v-middle"><button class="reduce" ng-click="reduce($index)" ng-disabled="list[$index].iteminNum">-</button>  <span>{{item.inNum}}</span>  <button class="add" ng-click="add($index)" ng-disabled="list[$index].disabled">+</button></td>
+                <!-- <td class="subject v-middle">{{item.location}}</td> -->
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+</div>
+
+<!-- toaster directive -->
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+<!-- / toaster directive -->

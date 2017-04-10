@@ -1,0 +1,41 @@
+<script src="lib/jquery/jquery.validate.min.js"></script>
+<script src="lib/jquery/additional-methods.min.js"></script>
+<div class="row pad">
+
+    <div class="col-sm-2 pull-right">
+        <a ui-sref="main.class.classList({grade_id:gradeId})" class="btn btn-success pull-right m-l-sm"> <i
+                class="icon-user-follow text-md"></i>返回</a>
+    </div>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-mailbox">
+        <tbody>
+        <tr class="unread">
+            <td class="subjectId">科目</td>
+            <td class="teacherId">授课老师</td>
+            <td class="opt">操作</td>
+        </tr>
+        <tr ng-repeat="item in pageInfo">
+            <td class="subjectId v-middle">{{item.subject.name}}</td>
+            <td class="teacherId v-middle">
+                <span ng-hide="item.edit">{{item.teacher.name}}</span>
+                <select ng-model="item.teacher.id" ng-show="item.edit" ng-options="m.id as m.name for m in teacherList">
+                    <option value="">选择老师</option>
+                </select>
+            </td>
+            <td class="opt v-middle">
+                <!-- <a ng-click="addClassTeacher(classId,item.subject.id)">分配</a> -->
+                <!-- <a ng-click="addClassTeacher(classId,item.subject.id)">分配</a> -->
+                <a ng-click="edit($index,item.subject.id)" ng-hide="item.edit">分配</a>
+                <a ng-click="update($index)" ng-show="item.edit">保存</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <!-- <div ng-include="'template/module/tpl/pageInfo.html'"></div> -->
+</div>
+
+<!-- toaster directive -->
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+<!-- / toaster directive -->

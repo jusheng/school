@@ -1,0 +1,42 @@
+<style>
+	.dtree a i {
+	    padding-left: 3px;
+	    color: #7266BA;
+	}
+</style>
+<div class="ngdialog-title">选择章节 </div>
+
+<div class="row ngdialog-title2">
+	<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+		教材
+	</div>
+	<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
+		章节
+	</div>
+</div>
+
+	<div class="row">
+		<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5" style="padding-right:0">
+			<div class="scroll_lay" ng-iscroll='wrapper' ng-iscroll-delay='0'>
+				<div>
+					<ul class="list-group onlinehomework_textbook">
+						<li ng-repeat="(key, value) in textbook" ng-click="get_tree(value.id,value.name)">
+							<a ng-bind="value.name"></a><i ng-show="value.id==record.textbookId" class="icon-ok ng-hide"></i>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
+			<div class="scroll_lay" ng-iscroll='wrapper' ng-iscroll-delay='0'>
+				<div class="onlinehomework_chapter">
+					正在加载...
+				</div>
+			</div>
+			
+		</div>
+	</div>
+	<div class="text-center" style="padding-top: 10px;">
+		<button class="btn btn-primary" ng-click="closeThisDialog()">确定</button>
+	</div>
+	

@@ -1,0 +1,46 @@
+<script src="lib/My97DatePicker/WdatePicker.js"></script>
+  <script src="lib/jquery/jquery.validate.min.js"></script>
+  <script src="lib/jquery/additional-methods.min.js"></script>  
+<div class="row pad">
+
+    <form id="noteadd" class="form-horizontal">
+        <legend ng-bind="title"></legend>
+        <div class="form-group">
+            <label for="title" class="col-lg-2 col-sm-3 control-label"><span class="text-danger wrapper-sm">*</span>标题</label>
+            <div  class="col-sm-9">
+            <input type="text" class="form-control" id="title" name="title" placeholder="" ng-model="record.title">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="select_time" class="col-lg-2 col-sm-3 control-label"><span class="text-danger wrapper-sm">*</span>时间</label>
+            <div  class="col-sm-9">
+            <input type="text" class="form-control" id="select_time" date-picker placeholder=""  ng-model="record.remindTime" autocomplete="off" readonly="">
+            </div>
+        </div>
+        <div class="list-group form-group">
+        	<label for="content" class="col-lg-2 col-sm-3 control-label">内容</label>
+            <div  class="col-sm-9">
+        	<div  name="content" class="include_editor"  ng-model="record.content" config="_simpleConfig" required></div>
+            </div>
+            <div class="editor-js"></div>
+        </div>
+
+        <div class="list-group form-group">
+            <label for="isRemind" class="col-lg-2 col-sm-3 control-label">到时间提醒</label>
+            <div  class="col-sm-9" style="margin-top:7px;">
+                <input type="radio" name="remind" value="true" ng-checked="record.isRemind==true" ng-model="record.isRemind">是 
+                <input type="radio" name="remind" value="false" ng-checked="record.isRemind==false" ng-model="record.isRemind">否 
+            </div>
+        </div>
+        <div class="form-group">
+        <label class="col-lg-2 col-sm-3 control-label"></label>
+        <div  class="col-sm-9">
+            <button type="submit" class="btn btn-danger">提交</button>
+        </div>
+        </div>
+    </form>
+</div>
+
+<!-- toaster directive -->
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+<!-- / toaster directive -->

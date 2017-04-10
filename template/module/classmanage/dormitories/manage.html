@@ -1,0 +1,65 @@
+<script type="text/javascript" src="lib/jquery/jquery.min.js"></script>
+<a ui-sref="main.dormitories.ourdormlist({id:classId})"><i class="pull-right icon-reply"></i></a>
+<div class="search-form row">
+    <ul id="myTab" class="nav nav-tabs">
+   
+        <li  role="presentation"  class="active">
+            <a role="tab" ng-click="change(1)"  data-toggle="tab">{{dorm}}宿舍成员列表</a>
+        </li>
+    </ul>
+</div>
+<div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="home">
+    <br>
+        <div ng-show="type==1">
+                    <div class="row pad1">
+                        <div class="col-sm-2 search-form pull-left">
+                            <div class="btn-group pull-left">
+                                <a  ng-show="sex=='true'" ng-click="open_te(1)" class="btn btn-block btn-success btn-sm">添加成员</a>
+                                <a  ng-show="sex=='false'" ng-click="open_te(2)" class="btn btn-block btn-success btn-sm">添加成员</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                                   
+                        <table class="table table-mailbox">
+                            <tbody>
+                                <tr class="unread">
+                                    <td class="small-col">
+                                    </td>
+                                    <td class="subject">姓名</td>
+                                    <td class="subject">性别</td>
+                                    <td class="subject">民族</td>
+                                    <!-- <td class="subject">年龄</td> -->
+                                    <!-- <td class="subject">创建时间</td> -->
+                                    
+                                    
+                                    <td class="opt">操作</td>
+                                </tr>
+                                <tr ng-repeat="item in pageInfo.studentInfo">
+                                    <td class="small-col v-middle">
+                                    </td>
+                                    <td class="subject v-middle">{{item.name}}</td>
+                                    <td class="subject v-middle">{{item.sexNameref}}</td>
+                                    <td class="subject v-middle">{{item.nationNameref}}</td>
+                                    <!-- <td class="subject v-middle">{{item.age}}</td> -->
+                                    <!-- <td class="subject v-middle">{{item.createTime}}</td> -->
+                                    
+                                   
+                                    <td class="opt v-middle">
+                                      
+                                       <button class="btn btn-danger" ng-click="open_confrim(item)" >删除成员</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div ng-include="'template/module/tpl/pageInfo.html'"></div>
+                    </div>
+
+            <!-- toaster directive -->
+            <toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+            <!-- / toaster directive -->                   
+        </div>
+                        
+    </div>
+</div>        

@@ -1,0 +1,48 @@
+<script src="lib/jquery/jquery.validate.min.js"></script>
+<script src="lib/jquery/additional-methods.min.js"></script>
+<div class="row pad add_new">
+    <form id="bookclassadd_form" class="form-horizontal">
+        <div class="form-top">
+            <legend ng-bind="app_name"></legend>
+            <a class="btn btn-sm btn-icon btn-rounded btn-default pull-right m-t-n-xs btn-close" ui-sref="main.book.bookclassList({sorts_id:record.parentId,code:typeCode,name:record.parentIdNameref})"><i class="icon-remove"></i>
+            </a>
+        </div>
+        <div class="form-group">
+            <label for="title" class="col-lg-2 col-sm-3 control-label"><span class="text-danger wrapper-sm">*</span>名称</label>
+            <div  class="col-sm-9">
+            <input type="text" class="form-control" id="name" name="name" placeholder="" ng-model="record.name">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="title" class="col-lg-2 col-sm-3 control-label"><span class="text-danger wrapper-sm">*</span>编号</label>
+            <div  class="col-sm-9">
+            <input type="text" class="form-control" id="code" name="code" placeholder="" ng-model="record.code" onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^0-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^0-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="title" class="col-lg-2 col-sm-3 control-label"><span class="text-danger wrapper-sm">*</span>上级分类</label>
+            <div  class="col-sm-9" style="position: relative;">
+            <input type="text" class="form-control" id="parentId" name="parentId" placeholder="" ng-model="record.parentId" style="position: relative; z-index: -1">
+            <button type="button" class="btn btn-sm btn-success" ng-click="select_class()" style="position: absolute;top: 2px;left: 14px;">选择... <span ng-show="record.parentIdNameref" ng-bind="'【'+record.parentIdNameref+'】'"></span></button>
+
+            
+
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="title" class="col-lg-2 col-sm-3 control-label"><span class="text-danger wrapper-sm">*</span>排序</label>
+            <div  class="col-sm-9">
+            <input type="text" class="form-control" id="sort" name="sort" placeholder="" ng-model="record.sort"  onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^0-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^0-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="content"  class="col-lg-2 col-sm-3 control-label"></label>
+            <div  class="col-sm-9">
+                <button type="submit" class="btn btn-success">提交</button>
+            </div>
+        </div>
+    </form>
+</div>
+<!-- toaster directive -->
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+<!-- / toaster directive -->

@@ -1,0 +1,44 @@
+<link rel="stylesheet" href="template/module/teachermanage/teacher.css">
+<div class="row pad">
+    
+    <div class="col-sm-6 pull-right">
+        <a ui-sref="main.examTeacher.examTeacherlist({id:classId})" class="btn btn-success pull-right" ><i class=" icon-reply"></i> 返回</a>
+        <a href="/res/practise/score/downloadExcelTemplate?classId={{classId}}&ids={{ids}}&practiseId={{practiseId}}" class="btn btn-success pull-right" style="margin-right:10px;"> <i class="icon-download-alt" ></i> 下载模板</a>
+        <div class="btn btn-success pull-right" ngf-select="onFileSelect($files)" style="margin-right:10px;"><i class="icon-upload-alt"></i> Excel导入成绩</div>
+    </div>
+</div>
+<div >
+    <table class="table table-mailbox">
+        <tbody>
+        <tr class="unread">
+            <td class="code" width="200">学号</td>
+            <td class="name" width="200">姓名</td>
+            <td class="subject" width="200" ng-repeat="m in scoresubject">{{sDict[m].name}}</td>
+            <!-- <td class="opt">操作</td> -->
+        </tr>
+        <tr ng-repeat="item in pageInfo.list">
+            <td class="code v-middle" height="50">{{item.student.code}}</td>
+            <td class="name v-middle">{{item.student.name}}</td>
+            <td class="subject v-middle" ng-repeat="m in scoresubject">
+
+                <span style="padding: 0 5px;" ng-hide="item.editSign[sDict[m].code]=='1'" ng-click="edit1($parent.$index,m)" >
+                    {{item[sDict[m].code]==""?"未录入":item[sDict[m].code]}} 
+                    <i class="text-success icon-edit"></i>
+                </span>
+                <input type="text" class="input{{$parent.$index}}_{{m}} form-control" ng-model="item[sDict[m].code]" ng-show="item.editSign[sDict[m].code]=='1'" ng-blur="update($parent.$index,m)">
+            </td> 
+            <!-- <td class="opt v-middle">
+                <a ng-click="edit($index)" class="btn btn-sm btn-primary"
+                   ng-hide="item.edit">编辑</a>
+                <a ng-click="update($index)" class="btn btn-sm btn-primary"
+                   ng-show="item.edit">保存</a>
+            </td> -->
+        </tr>
+        </tbody>
+    </table>
+    <div ng-include="'template/module/tpl/pageInfo.html'"></div>
+</div>
+
+<!-- toaster directive -->
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+<!-- / toaster directive -->

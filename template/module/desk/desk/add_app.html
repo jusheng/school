@@ -1,0 +1,38 @@
+<div class="ngdialog-title">桌面应用管理</div>
+<div class="row ngdialog-title2">
+	<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+		我的应用
+	</div>
+	<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+		已添加应用
+	</div>
+</div>
+<div class="scroll_lay">
+	<div id="wrapper" ng-iscroll='wrapper' ng-iscroll-delay='50'>
+      <div id="scroller">
+	      <div class="row">
+			<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+				
+				
+				<div ivh-treeview="treedata"
+								ivh-treeview-use-checkboxes="true" 
+								ivh-treeview-on-cb-change="selectCallback(ivhNode, ivhIsSelected, ivhTree)"
+								>
+					    </div>
+			</div>
+			<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+			
+			<div ng-repeat="(key, value) in treedata">
+				<span class="btn" ng-repeat="(k, v) in value.children | filter:{selected:true}">{{v.label}}</span>
+			</div>
+			
+			</div>
+
+		</div>
+
+      </div>
+    </div>
+</div>
+
+
+

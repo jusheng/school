@@ -1,0 +1,92 @@
+
+<link rel="stylesheet" href="template/module/teachermanage/teacher.css">
+<script src="lib/jquery/jquery.validate.min.js"></script>
+<script src="lib/jquery/additional-methods.min.js"></script>
+<div id="breadcrumb">
+    <a href="#/main"><i class="icon-home"></i> 学习云平台</a>
+    <i class="icon-angle-right"></i><a href="#/main/edudesk">校务管理</a>
+    <i class="icon-angle-right"></i><a>{{app_name}}</a>
+</div>
+<div class="teacheradd">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 school_view_lay">
+        <div class="row pad">
+            <form id="school_silv_form" class="form-horizontal">
+                <div class="form-top">
+                    <legend ng-bind="app_name"></legend>
+                    <a class="btn btn-sm btn-icon btn-rounded btn-default pull-right m-t-n-xs btn-close" ui-sref="main.desk"><i class="icon-remove"></i>
+                    </a>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-2 col-sm-3 control-label" for="name">
+                        优秀分数线
+                    </label>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" name="excellent" id="excellent" ng-model="record.excellent" placeholder="">
+                    </div><span class="silv">%</span>
+                    <label class="col-lg-2 col-sm-3 control-label" for="nature">
+                        优秀率
+                    </label>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" name="excellent2" id="excellent2" ng-model="record.excellent2" placeholder="">
+                    </div><span class="silv">%</span>
+                </div>
+                
+                <div class="form-group">
+                    <label class="col-lg-2 col-sm-3 control-label" for="scope">
+                        良好分数线
+                    </label>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" name="good" id="good" ng-model="record.good" placeholder="">
+                    </div><span class="silv">%</span>
+                     <label class="col-lg-2 col-sm-3 control-label" for="address">
+                        良好率
+                    </label>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" name="good2" id="good2" ng-model="record.good2" placeholder=""></div><span class="silv">%</span>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-2 col-sm-3 control-label" for="type">
+                        及格分数线
+                    </label>
+                    <div class="col-sm-2">
+                       <input type="text" class="form-control" name="pass" id="pass" ng-model="record.pass" placeholder="">
+                    </div><span class="silv">%</span>
+                    <label class="col-lg-2 col-sm-3 control-label" for="postalcode">
+                        及格率 
+                    </label>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" name="pass2" id="pass2" ng-model="record.pass2" placeholder=""></div><span class="silv">%</span>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-2 col-sm-3 control-label" for="type">
+                        
+                    </label>
+                    <div class="col-sm-2">
+                       
+                    </div><span class="silv" style="visibility: hidden;">%</span>
+                     <label class="col-lg-2 col-sm-3 control-label" for="postalcode">
+                        低分率 
+                    </label>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" name="unpass2" id="unpass2"
+                               ng-model="record.unpass2" placeholder="">
+                               </div><span class="silv">%</span>
+                </div>
+                
+                <div class="form-group">
+                    <label class="col-lg-2 col-sm-3 control-label"></label>
+                    <div class="col-sm-6">
+                        <button type="submit" class="btn btn-success">提交</button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+
+        <!-- toaster directive -->
+        <toaster-container
+                toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+        <!-- / toaster directive -->
+    </div>
+</div>
+

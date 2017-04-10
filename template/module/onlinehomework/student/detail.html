@@ -1,0 +1,63 @@
+<div id="breadcrumb">
+  <a href="#"><i class="icon-home"></i> 学习云平台</a> 
+  <i class="icon-angle-right"></i><a >{{app_name}}</a>
+</div>
+
+<div style="padding: 15px">
+    <div class="email_view_lay" >
+        
+        <a ui-sref="main.studentonlinehomework.list" class="pull-right icon-remove"></a>
+
+            
+
+            <legend >作业详情 </legend>
+
+            <button class="btn btn-sm btn-success" ng-show="!overTime && (status==1)" ng-click="homework_submit()">提交作业</button>
+            <button class="btn btn-sm btn-default" ng-show="overTime && (status==1)">已逾期</button>
+
+            <button class="btn btn-sm btn-default" ng-show="status==0">作业已提交</button>
+
+            要求完成时间：<span ng-bind="endDate"></span>
+
+            <br><br>
+         <div class="editor-kityformula-js"></div>  <!--加载编辑器js文件-->
+         <div ng-repeat="(key, value) in pageInfo.list">
+             
+
+            <!-- 在线做作业的界面 -->
+            <div ng-if="status==1"> 
+
+                    <!-- 填空题 问答题 解答题-->
+                    <div ng-if="value.resQuestion.type==80 || value.resQuestion.type==78 || value.resQuestion.type==147" ng-include="'template/module/onlinehomework/student/question/temp80.html'" ></div>
+                    
+                    <!-- 单选题  多选题 判断题-->
+                    <div ng-if="value.resQuestion.type==76 || value.resQuestion.type==77 || value.resQuestion.type==79" ng-include="'template/module/onlinehomework/student/question/temp76.html'" ></div>
+
+            </div>
+    
+            <!-- 作业已经提交 展示客观题正确答案及主观题 老师阅卷信息  -->
+            <div ng-if="status==0">
+                    <!-- 填空题 问答题 解答题-->
+                    <div ng-if="value.resQuestion.type==80 || value.resQuestion.type==78 || value.resQuestion.type==147" ng-include="'template/module/onlinehomework/student/showquestion/temp80.html'" ></div>
+                    
+                    <!-- 单选题  多选题 判断题-->
+                    <div ng-if="value.resQuestion.type==76 || value.resQuestion.type==77 || value.resQuestion.type==79" ng-include="'template/module/onlinehomework/student/showquestion/temp76.html'" ></div>
+
+
+            </div>
+
+        </div>
+
+        <div ng-include="'template/module/tpl/pageInfo.html'"></div>
+   
+    </div>        
+</div>
+
+
+
+
+
+
+<!-- toaster directive -->
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+<!-- / toaster directive -->

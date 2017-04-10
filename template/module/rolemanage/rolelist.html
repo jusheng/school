@@ -1,0 +1,45 @@
+<link rel="stylesheet" href="template/module/rolemanage/role.css">
+
+<div class="row pad">
+	<div class="col-sm-6">
+    </div>
+    <div class="col-sm-4 search-form">
+    </div>
+    <div class="col-sm-2">
+        <a ui-sref="main.rolemanage.roleadd" class="btn btn-success pull-right"> <i class="icon-user-follow m-r-sm text-md"></i>添加角色</a>
+    </div>
+</div>
+
+<div class="table-responsive">
+                                               
+    <table class="table table-mailbox">
+        <tbody>
+        <tr class="unread">
+            <td class="roleName">角色名称</td>
+            <td class="roleType">角色类型</td>
+            <td class="remark">备注</td>
+            <td class="opt">操作</td>
+        </tr>
+        <tr ng-repeat="item in pageInfo.list">
+            <td class="roleName v-middle">{{item.roleName}}</td>
+            <td class="roleType v-middle">
+                <span ng-show="item.roleType==3">管理员</span>
+                <span ng-show="item.roleType==2">老师</span>
+                <span ng-show="item.roleType==1">学生</span>  
+            </td>
+            <td class="remark v-middle">{{item.remark}}</td>
+            <td class="opt v-middle">
+            <a ui-sref="main.rolemanage.roleapp({role_id: item.id,role_type:item.roleType})" class="btn btn-sm btn-default m-l-xs">
+            <i class="fa fa-check m-r-xs text-sm"></i>应用授权</a>
+            <a ui-sref="main.rolemanage.roleedit({id:item.id})" class="btn btn-primary btn-sm">编辑</a>   <a ng-click="del(item.id)" class="btn btn-sm btn-danger">删除</a>  
+            
+            </td>
+        </tr>
+    </tbody>
+    </table>
+    <div ng-include="'template/module/tpl/pageInfo.html'"></div>
+</div>
+
+<!-- toaster directive -->
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+<!-- / toaster directive -->

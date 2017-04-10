@@ -1,0 +1,110 @@
+
+<div class="row pad mailbox-env">
+	<div class="mail-single">
+							
+		<!-- Email Title and Button Options -->
+		<div class="mail-single-header">
+			<h2>
+				{{record.sendTitle}}
+				<a href="#/main/email/sended" class="go-back">
+					<i class="icon-angle-left"></i>
+					返回
+				</a>
+			</h2>
+			
+			<div class="mail-single-header-options">
+				<a href="#/main/email/reply/{{eid}}/{{record.inboxSendname}}/{{record.inboxSendid}}/emailbook" class="btn btn-gray">
+					<span>回复</span>
+					<i class="icon-reply"></i>
+				</a>
+				<a  href="#/main/email/forward/{{eid}}/emailbook" class="btn btn-gray">
+					<span>转发</span>
+					<i class="icon-arrow-right"></i>
+				</a>
+				
+				<a class="btn btn-gray">
+					<i class="icon-trash" ng-click="del(record.id)"></i>
+				</a>
+			</div>
+			<div class="clearfix"></div> 
+		</div>
+		
+		<!-- Email Info From/Reply -->
+		<div class="mail-single-info">
+			
+			<div class="mail-single-info-user dropdown">
+				<a data-toggle="dropdown">
+					<!-- <img src="template/img/a0.jpg" class="img-circle" width="38"> -->
+					发给<span>{{record.sendEmpnames}}({{'ID:'+record.sendEmpids}})</span>
+					<em class="time">{{record.sendTime}}</em>
+				</a>
+				
+				
+			</div>
+			
+			<div class="mail-single-info-options">
+				<a href="#" class="star starred">
+					<i class="fa-star-empty"></i>
+				</a>
+				<a href="#">
+					<i class="linecons-attach"></i>
+				</a>
+			</div>
+			<div class="clearfix"></div> 
+		</div>
+		
+		<!-- Email Body -->
+		<div class="mail-single-body" ng-bind-html="'内容：<br>'+record.sendContent">
+			<!-- 内容 -->
+		</div>
+		
+		<!-- Email Attachments -->
+		<div class="mail-single-attachments" ng-show="record.inboxAffix!=null">
+			<h3>
+				<i class="linecons-attach"></i>
+				附件
+			</h3>
+			
+			<ul class="list-unstyled list-inline">
+				<li>
+					<a href="#" class="thumb">
+						<img src="assets/images/attach-1.png" class="img-thumbnail">
+					</a>
+					
+					<a href="#" class="name">
+						IMG_007.jpg
+						<span>14KB</span>
+					</a>
+					
+					<div class="links">
+						<a href="#">View</a> - 
+						<a href="#">Download</a>
+					</div>
+				</li>
+				
+				<li>
+					<a href="#" class="thumb download">
+						<img src="assets/images/attach-2.png" class="img-thumbnail">
+					</a>
+					
+					<a href="#" class="name">
+						IMG_008.jpg
+						<span>12KB</span>
+					</a>
+					
+					<div class="links">
+						<a href="#">View</a> - 
+						<a href="#">Download</a>
+					</div>
+				</li>
+			</ul>
+		</div>
+		
+		
+	</div>
+
+</div>
+
+<!-- toaster directive -->
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+<!-- / toaster directive -->

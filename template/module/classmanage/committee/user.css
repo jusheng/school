@@ -1,0 +1,73 @@
+.teacher{
+    padding: 15px;
+}
+.school_view_lay{
+	background-color: #fff;
+}
+.teacher-padding{
+    padding-right: 15px;
+}
+.user-form .control-label{
+    line-height:34px;
+    padding-right: 0;
+}
+.user-form .form-group{
+    float: left;
+    margin-top: 0;
+    margin-right: 50px;
+    height: 34px;
+    width: 191px;
+}
+.user-form .form-group:nth-of-type(3){
+    margin-right: 30px;
+}
+.user-form .control-label{
+    float: left;
+    margin-right: 15px;
+    margin-top: 0;
+}
+.user-form .form-control{
+    width:70%;
+    float: left;
+}
+.chaxun{
+    float: left;
+}
+/* 列表样式 */
+.table-mailbox {
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+}
+.table-mailbox tr > td {
+    white-space: nowrap;
+}
+.table-mailbox tr.unread > td {
+    background-color: rgba(0, 0, 0, 0.05);
+    color: #000;
+    font-weight: 600;
+}
+.table-mailbox tr > td.small-col {
+    width: 30px;
+    color: #f39c12;
+}
+.table-mailbox tr > td.name {
+    width: 150px;
+    font-weight: 600;
+}
+.pad{
+	padding:10px;
+}
+.table-mailbox tr > td.time {
+    text-align: right;
+    width: 100px;
+}
+.table-mailbox tr > td.opt {
+    text-align: right;
+    width: 100px;
+}
+.row {
+  margin-top: 8px;
+  margin-bottom: 18px;
+}
+

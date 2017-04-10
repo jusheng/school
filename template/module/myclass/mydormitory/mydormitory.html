@@ -1,0 +1,111 @@
+<link rel="stylesheet" href="template/module/myclass/myscore/rules.css">
+<script type="text/javascript" src="lib/jquery/jquery.min.js"></script>
+<div id="breadcrumb">
+  <a href="#/main"><i class="icon-home"></i> 学习云平台</a> 
+  <i class="icon-angle-right"></i><a>{{app_name}}</a> 
+</div>
+
+<div class="news">
+    <div class="row news_view_lay">
+
+        <div class="search-form col-xs-12 col-sm-3 col-md-3 col-lg-3">
+            <ul id="myTab" class="nav nav-tabs">
+               
+                <li  role="presentation"  class="active">
+                    <a role="tab"   data-toggle="tab" active>我的宿舍</a>
+                </li>
+            </ul>
+            <div class="table-responsive">
+                <table class="table table-teacherclass" style="margin-top: 40px;">
+                    <tbody>
+                        <tr >
+                            <td class="small-col">
+                            </td>
+                            <td class="subject">宿舍名称</td>
+                            <td class="subject">{{dorm.dormInfo.roomName}}</td>
+                            
+ 
+                        </tr>
+                        <tr >
+                            <td class="small-col">
+                            </td>
+                            <td class="subject">公寓名称</td>
+                            <td class="subject">{{dorm.dormInfo.houseName}}</td>
+
+                        </tr>
+                        <tr >
+                            <td class="small-col">
+                            </td>
+                            <td class="subject">楼层</td>
+                            <td class="subject">{{dorm.dormInfo.floor}}</td>
+    
+                        </tr>
+                        <tr >
+                            <td class="small-col">
+                            </td>
+                            <td class="subject">实住人数</td>
+                            <td class="subject">{{dorm.dormInfo.currentNum}}</td>
+
+                        </tr>
+                        <tr>
+                                                    
+                           <td class="small-col">
+                            </td>
+                            <td class="subject">宿舍床数</td>
+                            <td class="subject">{{dorm.dormInfo.roomNum}}</td>
+                            
+    
+                                                  
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+       
+
+                                <!-- Tab panes -->
+        <div class="tab-content col-xs-12 col-sm-9 col-md-9 col-lg-9">
+            <div role="tabpanel" class="tab-pane active" id="home">
+            <br>
+                        
+                            <div class="table-responsive">
+                                           
+                                <table class="table table-teacherclass" style="margin-top: 65px;">
+                                    <tbody>
+                                        <tr class="unread">
+                                            <td class="small-col">
+                                            </td>
+                                            <td class="subject">学生姓名</td>
+                                            <td class="subject">学号</td>
+                                            <td class="subject">性别</td>
+                                            <td class="subject">民族</td>                     
+                                            <td class="subject">年龄</td>
+                                            
+                                        </tr>
+                                        <tr ng-repeat="item in pageInfo">
+                                            <td class="small-col v-middle">
+            <div class="icheckbox_minimal-blue" ng-class="{checked:$parent.pageInfo.list[$index].selected}" ng-click="select_per($index)"  style="position: relative;"><input type="checkbox" style="position: absolute; opacity: 0;"></div>
+            </td>
+                                            <td class="subject"></td>
+                                            <td class="subject">{{item.studentInfo.name}}</td>
+                                            <td class="subject">{{item.studentInfo.code}}</td>
+                                            <td class="subject">{{item.studentInfo.sexNameref}}</td>
+                                            <td class="subject">{{item.studentInfo.nationNameref}}</td>
+                                            <td class="subject">{{item.studentInfo.age}}</td>
+                                            
+                                          
+                                        </tr>
+        
+                                    </tbody>
+                                </table>
+                                <!-- <div ng-include="'template/module/tpl/pageInfo.html'"></div> -->
+                            </div>                
+
+                                
+                </div>
+            </div> 
+        </div>
+        
+
+ 
+</div>

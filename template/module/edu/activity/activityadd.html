@@ -1,0 +1,82 @@
+<script src="lib/My97DatePicker/WdatePicker.js"></script>
+  <script src="lib/jquery/jquery.validate.min.js"></script>
+  <script src="lib/jquery/additional-methods.min.js"></script>  
+<div class="row pad add_new">
+    <form id="newsadd_form" class="form-horizontal">
+        <legend ng-bind="title" class="title0"></legend>
+    
+        <div class="form-group">
+            <label for="title" class="col-lg-2 col-sm-3 control-label">活动名称</label>
+            <div  class="col-sm-7">
+            <input type="text" class="form-control" id="title" name="title" placeholder="" required="required" ng-model="record.name">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="sortsId" class="col-lg-2 col-sm-3 control-label">所属分类</label>
+            <div  class="col-sm-7">
+            <select name="sortsId" id="sortsId" class="form-control" required="required" ng-options="value.id as value.name for value in activityclass.list" ng-model="record.catalogId">
+               <option value="">选择</option>
+            </select>
+            </div>
+        </div>
+        <div class="form-group" >
+            <label for="title" class="col-lg-2 col-sm-3 control-label">活动时间</label>
+                   <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 col-xs-push-0 col-sm-push-0 col-md-push-0 col-lg-push-0" style="position:relative">  
+                       <span class="glyphicon glyphicon-calendar" style="position:absolute; right:-5px; top:30%;"></span> 
+                      <input id="cycle-day-date" type="text" class="form-control glyphicon glyphicon-calendar" placeholder="开始日期"  value="" date-picker datefmt='yyyy/MM/dd' ng-model="record.starttime" >
+        
+                   </div>
+                   <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 col-xs-push-0 col-sm-push-0 col-md-push-0 col-lg-push-0
+                   text-center">     
+                       ---
+                   </div>
+                   <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 col-xs-push-0 col-sm-push-0 col-md-push-0 col-lg-push-0 endtime_lay" style="position:relative">
+                   <span class="glyphicon glyphicon-calendar" style="position:absolute; right:-5px; top:30%;"></span>
+                       <input id="cycle-day-date" type="text" class="form-control glyphicon glyphicon-calendar endtime" placeholder="截止日期"  value="" datefmt='yyyy/MM/dd' ng-model="record.endtime" ng-disabled="!record.starttime">
+                   </div>
+<!--                    <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 endTime_lay" style="position:relative">
+                       <input id="cycle-day-date" type="text" class="form-control endTime" placeholder="截止日期"  value=""  datefmt='yyyy-MM-dd' ng-model="record.endTime" ng-disabled="!record.beginTime">
+                   </div> -->
+            
+        </div> 
+        <div class="form-group">
+            <label for="remark"  class="col-lg-2 col-sm-3 control-label">简介</label>
+            <div  class="col-xs-7 col-sm-7 col-md-7 col-lg-7 col-xs-push-0 col-sm-push-0 col-md-push-0 col-lg-push-0">
+            <textarea name="remark" id="remark" class="form-control" rows="3" required="required" ng-model="record.remark"></textarea>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="remark"  class="col-lg-2 col-sm-3 control-label">活动海报</label>
+            <div  class="col-xs-9 col-sm-9 col-md-9 col-lg-9 col-xs-push-0 col-sm-push-0 col-md-push-0 col-lg-push-0">
+
+                <button class="btn btn-xs btn-info" ngf-select="onFileSelect($files)" multiple="multiple">
+                   <i class="icon-cloud-upload"></i> 添加图片
+                </button>
+                <div ng-show="record.pic">
+                    <br>
+                    <img src="{{record.imgUrl}}" width="100" alt="">
+                </div>
+                
+            </div>
+            
+        </div>
+        <div class="form-group list-group">
+        	<label for="content"  class="col-lg-2 col-sm-3 control-label">内容</label>
+        	<!-- <textarea name="" id="input" class="form-control" rows="3" required="required" ng-model="record.content"></textarea> -->
+            <div  class="col-sm-7">
+                <div class="include_editor" name="content"   ng-model="record.content" config="_simpleConfig" required></div>
+            </div>
+            <div class="editor-js"></div>
+        </div>
+        <div class="form-group">
+            <label for="content"  class="col-lg-2 col-sm-3 control-label"></label>
+            <div  class="col-sm-7">
+                <button type="submit" class="btn btn-success">提交</button>
+            </div>
+        </div>
+    </form>
+</div>
+<!-- toaster directive -->
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+<!-- / toaster directive -->

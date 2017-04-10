@@ -1,0 +1,46 @@
+<div class="question_item">
+	<div>
+	{{$parent.pageInfo.startRow + $index}}、
+		<a class="btn btn-xs btn-primary">{{answertype[value.type]}}</a>
+		<a class="btn btn-xs btn-primary">{{level[value.rank]}}</a>
+	</div>
+	<div class="question_content">
+		<div ng-bind-html="value.content.c">
+		</div>
+		<div>
+			<span ng-repeat="(k, v) in value.content.img">
+				<img src="{{v}}" alt="">
+			</span>
+			
+		</div>
+		<div class="answer_content">
+			<p ng-repeat="(k, v) in value.answer">
+				
+				<span ng-bind-html="v.select +' '+ v.text"></span>
+				<i ng-show="v.is_correct==1" class="icon-ok text-success"></i>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+		</div>
+
+	</div>
+
+	试题解析：
+	<div class="analysis_content">
+		
+		<div ng-bind-html="value.analysis.c">
+			
+		</div>
+		<div>
+			<span ng-repeat="(k, v) in value.analysis.img">
+				<img src="{{v}}" alt="">
+			</span>
+		</div>
+	</div>
+
+	<div>
+		关键词：{{value.keyword}}
+	</div>
+	<div>
+		试题标签：{{value.tag}}
+	</div>		
+</div>
+

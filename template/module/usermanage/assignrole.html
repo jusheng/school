@@ -1,0 +1,39 @@
+<script src="lib/jquery/jquery.validate.min.js"></script>
+<script src="lib/jquery/additional-methods.min.js"></script>
+<div class="ngdialog-title">分配角色</div>
+<br>
+<div class="password">
+    <div class="row">
+       <form id="roleadd_form" class="form-horizontal">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			<div class="">
+                    <table class="user-table table">
+                                <tr class="table-title">
+                                    <td></td>
+                                    <td>角色名称</td>
+                                    <td>默认角色</td>
+                                </tr>
+                                <tr ng-repeat="(key, value) in role">
+                                    <td>
+                                    <input type="checkbox" id="role_name" name="role_name" ng-model="value.checked" >
+                                    </td>
+                                    <td ng-bind="value.role.roleName">
+                                        
+                                    </td>
+                                    <td>
+                                    <input type="radio" id="isDefault" name="isDefault" ng-click="select_t($index)" ng-checked="value.isDefault" name="isDefault">
+                                    </td>
+                                </tr>
+
+                            </table>
+			</div>
+            <div class="form-group-last">
+                <div class="col-sm-12 text-center">
+                    <button type="submit" class="btn btn-success" ng-click="submit()">提交</button>
+                </div>
+            </div>
+        </div>
+      </form>
+    </div>
+
+</div>

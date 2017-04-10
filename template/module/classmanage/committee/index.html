@@ -1,0 +1,27 @@
+<link rel="stylesheet" href="template/module/classmanage/committee/committee.css">
+
+<link rel="stylesheet" href="template/module/classmanage/teachers/teachers.css">
+<div id="breadcrumb">
+  <a href="#/main"><i class="icon-home"></i> 学习云平台</a> 
+  <i class="icon-angle-right"></i><a>{{app_name}}</a> 
+</div>
+<div class="row  no-padding teachers">
+<!-- 		<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+			<a class="btn btn-block btn-success" ui-sref="main.coursebook.teacherbooklist" ><i class="fa fa-pencil"></i>老师</a>
+			<a class="btn btn-block btn-success" ui-sref="main.coursebook.studentbooklist({id:item.id})" ng-repeat="(key, value) in lists"><i class="fa fa-pencil"></i>{{item.name}}</a>
+		</div> -->
+
+		<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">		
+					<a class="btn btn-block btn-success" ng-repeat="(key, value) in lists" ui-sref="main.committee.list({classId:value.id})">
+						
+						<span class=""><i class="fa icon-ok curr_stu" ng-show="value.id==curr"></i> {{value.name}}</span><!-- <span ng-show="$index==0"></span> -->
+					</a>       
+					<div ng-show="lists.length==0">
+					暂无班级	
+					</div>
+		</div>
+		<div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
+			<div ui-view>
+			</div>
+		</div>
+</div>

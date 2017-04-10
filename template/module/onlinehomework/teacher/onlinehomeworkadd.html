@@ -1,0 +1,94 @@
+ <script src="lib/My97DatePicker/WdatePicker.js"></script>
+  <script src="lib/jquery/jquery.validate.min.js"></script>
+  <script src="lib/jquery/additional-methods.min.js"></script>  
+<div class="row pad add_new">
+    <form id="homewordadd_form" class="form-horizontal">
+        <legend ng-bind="title"></legend>
+    
+        <div class="form-group">
+            <label for="title" class="col-lg-2 col-sm-3 control-label">作业名称</label>
+            <div  class="col-sm-9">
+            <input type="text" class="form-control" id="title" name="title" placeholder="" required="required" ng-model="record.title">
+            </div>
+        </div>
+        
+       
+
+       <div class="form-group">
+            <label for="title" class="col-lg-2 col-sm-3 control-label">年级</label>
+            <div  class="col-sm-9">
+                <div ng-if="grade.length==0">
+                     <div>没有教授的年级！</div>
+                </div>
+                <span ng-repeat="(key, value) in grade">
+                    <input type="radio" name="grade" ng-checked="$parent.record.grade.base_id==value.basegrade.id" ng-click="get_subjects()" ng-disabled="id"> {{value.name}} 
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="title" class="col-lg-2 col-sm-3 control-label">科目</label>
+            <div  class="col-sm-9">
+                <div ng-if="subjects.length==0" >
+                     <div>没有教授的科目！</div>
+                </div>
+                <span ng-repeat="(key, value) in subjects">
+                    <input type="radio" name="km" ng-checked="$parent.record.subject.id==value.id" value="{{value.id}}" ng-model="$parent.record.subject.id" ng-disabled="id"> {{value.name}} &nbsp;&nbsp;&nbsp;&nbsp; 
+                </span>
+            </div>
+        </div>
+        
+        
+
+
+
+        <div class="form-group">
+            <label for="title" class="col-lg-2 col-sm-3 control-label">章节</label>
+            <div  class="col-sm-9">
+                <a class="btn btn-sm btn-default" ng-class="{'btn-primary':record.grade.id!=0 && record.subject.id !=0,'disabled':record.grade.id==0 || record.subject.id ==0}" ng-click="select_chapter()" ng-hide="id">选择...</a>
+                <span ng-show="record.chapter">{{record.chapter.name}}</span>
+                <input type="text" id="chapter" style="width: 0;position: relative;z-index: -1" name="chapter" ng-model="record.chapter.Id">
+                
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="title" class="col-lg-2 col-sm-3 control-label">知识点</label>
+            <div  class="col-sm-9">
+                <a class="btn btn-sm btn-primary" ng-click="select_knowledge()" ng-hide="id">选择...</a>
+                <span ng-show="record.knowledgePoint">{{record.knowledgePoint.name}}</span>
+                <input type="text" id="knowledge" style="width: 0;position: relative;z-index: -1" name="knowledge" ng-model="record.knowledgePoint.Id">
+            </div>
+        </div>
+      <!--   <div class="form-group">
+            <label for="title" class="col-lg-2 col-sm-3 control-label">要求完成时间</label>
+            <div  class="col-sm-9">
+                <input type="text" name="" date-picker id="input" class="form-control" value="" ng-model="record.endDate" readonly="">
+            </div>
+        </div> -->
+
+        <div class="form-group">
+            <label for="title" class="col-lg-2 col-sm-3 control-label">是否显示答案</label>
+            <div  class="col-sm-9">
+                <input type="radio" name="isShowAnswer" ng-model="record.isShowAnswer" value="1"> 是
+                <input type="radio"  name="isShowAnswer" ng-model="record.isShowAnswer"  value="0"> 否
+            </div>
+        </div>
+
+        
+       <!--  <div class="form-group">
+            <label for="remark"  class="col-lg-2 col-sm-3 control-label">内容</label>
+            <div  class="col-sm-9">
+                <div name="content" class="include_editor"  ng-model="record.content" config="_simpleConfig" required></div>
+            </div>
+            <div class="editor-js"></div>
+        </div> -->
+        <div class="form-group">
+            <label for="content"  class="col-lg-2 col-sm-3 control-label"></label>
+            <div  class="col-sm-9">
+                <button type="submit" class="btn btn-primary" ng-show="subjects.length>0">提交</button>
+            </div>
+        </div>
+    </form>
+</div>
+<!-- toaster directive -->
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+<!-- / toaster directive -->

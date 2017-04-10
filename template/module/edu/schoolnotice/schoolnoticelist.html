@@ -1,0 +1,46 @@
+<div class="row newsBox_lay">
+	
+		<div class="newsBox col-xs-12 col-sm-6 col-md-6 col-lg-4" ng-repeat="(key, value) in pageInfo.list">
+			<div class="newsBox_inner">
+				<div class="col-lg-top hidden-md show-lg "></div>
+				<div class="col-lg-top1 show-md hidden-lg"></div>
+				
+				<div class="news_c">
+
+
+					<div class="pic hidden-md show-lg">
+						<a ui-sref="main.schoolnotice.detail({id:value.id})">
+							<img ng-src="{{value.imgUrl}}" src="/res/img/no.jpg"/>
+						</a>
+					</div>
+
+					<div class="pic1 show-md hidden-lg">
+						<a ui-sref="main.schoolnotice.detail({id:value.id})">
+							<img ng-src="{{value.imgUrl}}" src="/res/img/no.jpg"/>
+						</a>
+					</div>
+
+
+
+
+					<div class="titlebox">
+							<a ui-sref="main.schoolnotice.detail({id:value.id})" 
+								ng-bind-html="value.title">
+							</a>
+					</div>
+					<div class="contentbox" ui-sref="main.schoolnotice.detail({id:value.id})" ng-bind-html="value.content">
+						
+					</div>
+						
+					
+				</div>
+				
+			<div class="foot_time">{{value.createTime}}</div>
+				
+			</div>
+
+		</div>
+
+
+</div>
+<div ng-include="'template/module/tpl/pageInfo.html'"></div>

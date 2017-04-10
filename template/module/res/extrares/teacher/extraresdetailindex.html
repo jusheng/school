@@ -1,0 +1,60 @@
+<div id="breadcrumb">
+  <a href="#"><i class="icon-home"></i> {{app.name}}</a> 
+  <i class="icon-angle-right"></i><a>{{app_name}}</a>
+</div>
+
+<div class="extrares_lay">
+<br>	<a ui-sref="main.extrares.reslist" class="pull-right icon-remove"></a>
+
+
+
+	<div class="resdetail_lay box_lay">
+		
+		<div class="res_detail_left" ng-show="show == 1">
+
+			<legend>相关资源</legend>
+				
+			<a class="relate_a" ui-sref="main.extrares.detailindex.detail({id:value.id})" title="{{value.title}}" ng-repeat="(key, value) in relate_list"> {{value.title}}</a>
+			<br>
+			<div class="text-center extra_more"><a class="btn btn-sm btn-primary" ng-click="more()" ng-show="param.pageNum != pages">更多...</a></div>
+			<div class="text-center extra_more"><a class="btn btn-sm btn-default" ng-show="param.pageNum == pages">没有了...</a></div>
+		</div>
+		<div class="res_detail_left" ng-show="show == 2">
+
+			<legend>章节目录</legend>
+				
+			<a class="relate_a" ui-sref="main.extrares.detailindex.detail2({id:value.id})" title="{{value.title}}" ng-repeat="(key, value) in pageInfo.list"> {{value.title}}
+				<i class="fa icon-ok text-success" ng-show="value.id==curr"></i>
+			</a>
+			<br>
+			<div class="text-center extra_more"><a class="btn btn-sm btn-primary" ng-click="more()" ng-show="param.pageNum != pages">更多...</a></div>
+			<div class="text-center extra_more"><a class="btn btn-sm btn-default" ng-show="param.pageNum == pages">没有了...</a></div>
+		</div>
+		<!-- <div class="table-responsive res_detail_left">
+			<table class="table table-hover">
+			
+				<tbody>
+					<tr ng-repeat="(key, value) in pageInfo.list">
+						<td>
+							<a ui-sref="main.extrares.detail({id:value.id})">
+								<div>
+									
+									<h4 ng-bind="value.title" class="text-bold"></h4>
+									<i class="icon-music text-primary" ng-if="value.resType==2"></i>
+									<i class="icon-play-circle text-primary" ng-if="value.resType==3" title="视频类"></i>
+								</div>
+								<div ng-bind-html="value.description"></div>
+							</a>
+						</td>
+						
+					</tr>
+				</tbody>
+			</table>
+		</div> -->
+		<div class="res_detail_right" ui-view>
+			
+		</div>
+
+	</div>
+
+</div>

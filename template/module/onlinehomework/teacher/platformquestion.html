@@ -1,0 +1,11 @@
+<div ng-repeat="(key, value) in pageInfo.list">
+	<!-- 填空题 问答题 解答题-->
+	<div ng-if="value.type==80 || value.type==78 || value.type==147" ng-include="'template/module/onlinehomework/teacher/question/temp80.html'" ></div>
+	
+	<!-- 单选题  多选题 判断题-->
+	<div ng-if="value.type==76 || value.type==77 || value.type==79" ng-include="'template/module/onlinehomework/teacher/question/temp76.html'" ></div>
+</div>
+
+
+
+<div ng-include="'template/module/tpl/pageInfo.html'"></div>

@@ -1,0 +1,108 @@
+<script src="lib/My97DatePicker/WdatePicker.js"></script>
+  <script src="lib/jquery/jquery.validate.min.js"></script>
+  <script src="lib/jquery/additional-methods.min.js"></script>  
+<div class="row pad add_new">
+    <a ui-sref="main.teachingmanage.teachinglist({id:''})" title="返回列表"><span class="icon-reply pull-right" style="line-height:0px;margin:0px 0px;font-size:22px;color:#AFC3E1"></span></a>
+    <form id="newsadd_form" class="form-horizontal">
+        <legend ng-bind="title" class="title0"></legend>
+        <div class="form-group row">
+          
+            <label for="name" class="col-lg-2 col-sm-3 control-label">选择授课老师</label>
+            <div  class="col-lg-7 col-sm-3 "> 
+              <div class="user_lay">
+                 
+                 <input type="text" name="name" id="name" ng-model="record.presideUser.name" required="required" style="line-height:0px;width:0px;border-color:#fff;display:inline-block;visibility: hidden">
+                  <span class="s_name" ng-show="record.presideUser.id"  required>{{record.presideUser.name}} <i class="icon-remove" ng-click="del_a()"></i></span>
+                
+                  <span style="position: relative;display: inline-block;">
+                      <a href="" ng-click="open_te(1)" style="line-height:34px;display: inline-block;"><i class="icon-plus"></i><!-- 选择授课老师 --></a>
+                  </span>
+                  <div class="clearfix"></div>
+                   
+              </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="title" class="col-lg-2 col-sm-3 control-label">课题</label>
+            <div  class="col-sm-7">
+            <input type="text" class="form-control" id="title" name="title" placeholder="" required="required" ng-model="record.classTitle">
+            </div>
+        </div>
+<!--          <div class="form-group">
+            <label for="title" class="col-lg-2 col-sm-3 control-label">地点</label>
+            <div  class="col-sm-7">
+            <input type="text" class="form-control" id="title" name="title" rows="3" placeholder="" required="required" ng-model="record.title">
+            </div>
+        </div> -->
+        <div class="form-group">
+          <label for="place1" class="col-lg-2 col-sm-3 control-label">地点</label>
+          <div class="col-sm-7">
+             <textarea id="place1" name="place1" class="form-control" rows="2" ng-model="record.lessionPlace"></textarea>
+          </div>
+        </div>
+         <div class="form-group row">
+             
+            <label for="sortsId" class="col-lg-2 col-sm-3 control-label">记录人</label>
+            <div  class="col-lg-7 col-sm-3"> 
+              <div class="user_lay">
+                <input type="text" name="name1" id="name1" ng-model="record.recorderList.name" required="required" style="line-height:0px;width:0px;border-color:#fff;display:inline-block;visibility: hidden">
+                <span class="s_name" ng-show="record.recorderList.id">{{record.recorderList.name}} <i class="icon-remove" ng-click="del_b()"></i></span>
+                
+                <span style="position: relative;display: inline-block;">
+                      <a href="" ng-click="open_te(2)" style="line-height:34px;display: inline-block;"><i class="icon-plus"></i><!-- 选择记录人 --></a>
+                </span>
+                <div class="clearfix"></div>
+              </div>
+            </div>
+          </div>
+
+         <div class="form-group row">
+      
+            <label for="sortsId" class="col-lg-2 col-sm-3 control-label">应邀参评人员</label>
+            <div  class="col-lg-7 col-sm-3"> 
+              <div class="user_lay">
+                
+                <span class="s_name" ng-repeat="(k,v) in record.attendeePlanList">{{v.name}} <i class="icon-remove" ng-click="del_c(k)"></i></span>
+                <input type="text" name="name2" id="name2" ng-model="record.attendeePlanList[0].name" required="required" style="line-height:0px;width:0px;border-color:#fff;display:inline-block;visibility: hidden">
+                <span style="position: relative;display: inline-block;">
+                      <a href="" ng-click="open_te(3)" style="line-height:34px;display: inline-block;"><i class="icon-plus"></i><!-- 选择参评人员 --></a>
+                </span>
+                <div class="clearfix"></div>
+              </div>
+            </div>
+        </div>
+        <div class="form-group"> 
+            <label for="date" class="col-lg-2 col-sm-3 control-label">作课时间</label>
+            <div class="col-sm-7 row">
+                   <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5" style="position:relative">      
+                    
+                       <input id="cycle-day-date" name="date" class="form-control glyphicon glyphicon-calendar" placeholder="开始作课时间"  value="" date-picker datefmt="yyyy-MM-dd HH:mm:ss" minDate:today ng-model="record.classTime" >
+                      
+                   </div>
+            </div> 
+            
+        </div>
+
+        
+        <div class="form-group list-group">
+        	<label for="content"  class="col-lg-2 col-sm-3 control-label">说课内容</label>
+        	<!-- <textarea name="" id="input" class="form-control" rows="3" required="required" ng-model="record.content"></textarea> -->
+            <div  class="col-sm-7">
+                <!-- <div class="ueditor" name="content"  ng-model="record.speakingContent" config="_simpleConfig" required></div> -->
+                 <textarea name="remark" id="remark" class="form-control" rows="3" ng-model="record.speakingContent"></textarea>
+            </div>
+        </div>
+        
+         
+        <div class="form-group">
+            <label for="content"  class="col-lg-2 col-sm-3 control-label"></label>
+            <div  class="col-sm-7">
+                <!-- <button type="submit" ng-click="set_sign(false)" class="btn btn-info">保存草稿</button> -->
+                <button type="submit" class="btn btn-success">发布</button>
+            </div>
+        </div>
+    </form>
+</div>
+<!-- toaster directive -->
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+<!-- / toaster directive -->

@@ -1,0 +1,31 @@
+
+<div id="breadcrumb">
+  <a ui-sref="main.desk"><i class="icon-home"></i> 学习云平台</a> 
+  <i class="icon-angle-right"></i><a>{{app_name}}</a>
+</div>
+<div class="news">
+	<div class="row  no-padding">
+		<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+
+<!-- 			<a class="btn btn-block btn-success acc" ng-click="selected = 1"  ui-sref="main.teachingmanage.teachingadd({id:''})" >
+				<i ng-class="{'fa icon-ok curr_ico': selected == 1}" ></i> 创建评课
+			</a>
+			<a class="btn btn-block btn-success acc" ng-click="selected = 2"  ui-sref="main.teachingmanage.teachinglist({id:''})" >
+				<i ng-class="{'fa icon-ok curr_ico': selected == 2}" ></i> 评课记录
+			</a> -->
+			<a class="btn btn-block btn-success acc" ng-click="selected = 1" ng-init="selected = 1" ui-sref="main.myteaching.teachingvisit({id:0})" >
+			<!-- <i class="fa icon-ok curr_ico" ng-show="value.id==curr"></i> -->
+				<i ng-class="{'fa icon-ok .curr_myteac': selected == 1}" class="wid"></i></i>我作课的评课
+			</a>
+			<a class="btn btn-block btn-success acc" ng-click="selected = 2" ui-sref="main.myteaching.teachingjoin({id:0})" >
+				<i ng-class="{'fa icon-ok .curr_myteac': selected == 2}" class="wid"></i></i>我参加的评课
+			</a>
+           
+            
+		</div>
+		<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 news_view_lay">
+			<div ui-view></div>
+		</div>
+	</div>
+
+</div>

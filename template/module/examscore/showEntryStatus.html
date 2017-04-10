@@ -1,0 +1,34 @@
+<!--<link rel="stylesheet" href="template/module/teachermanage/teacher.css">-->
+<script src="lib/jquery/jquery.validate.min.js"></script>
+<script src="lib/jquery/additional-methods.min.js"></script>
+<div class="ngdialog-title"  ng-bind="app_name" style="width:700px;"></div>
+<br>
+<div class="teacheradd">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="row pad">
+                <table class="table table-mailbox">
+                    <tr class="unread">
+                        <td class="type"></td>
+                        <td class="name" ng-repeat="item in examData.details">{{sDict[item.subject.id].name}}</td>
+                    </tr>
+                    <tr ng-repeat="item in entryStatus">
+                        <td class="name">{{item.eduClass.name}}</td>
+                        <td class="name" ng-repeat="i in examData.details"
+                        style='color:{{item[sDict[i.subject.id].code]==1?"green":"red"}}'
+                        >{{item[sDict[i.subject.id].code]==1?"已确认":"未确认"}}</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+
+                <button type="submit" class="btn btn-success" ng-click="do()">发布</button>
+
+                <button type="submit" class="btn btn-success" ng-click="cancel()">取消</button>
+
+            </div>
+
+
+        </div>
+    </div>
+</div>
